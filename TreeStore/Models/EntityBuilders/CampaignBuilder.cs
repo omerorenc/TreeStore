@@ -15,6 +15,10 @@ namespace TreeStore.Models.EntityBuilders
             entityBuilder.Property(c => c.StartedDate).IsRequired();
             entityBuilder.Property(c => c.EndDate).IsRequired();
 
+            entityBuilder.HasOne(c => c.Slider)
+                .WithMany(s => s.Campaigns)
+                .HasForeignKey(c => c.SliderId);
+
         }
     }
 }

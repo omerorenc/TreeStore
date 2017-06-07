@@ -12,6 +12,12 @@ namespace TreeStore.Models.EntityBuilders
         {
             entityBuilder.HasKey(c => c.Id);
             entityBuilder.Property(c => c.Name).HasMaxLength(200).IsRequired();
+            entityBuilder.HasOne(c => c.ParentCategory)
+                .WithMany(c => c.ChildCategories)
+                .HasForeignKey(c => c.ParentCategoryId);
+            entityBuilder.HasOne(c => c.Slider)
+                .WithMany(s => s.Categories)
+                .HasForeignKey(c => c.SliderId);
         }
     }
 }

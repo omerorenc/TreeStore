@@ -73,47 +73,6 @@ namespace TreeStore.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Campaigns",
-                columns: table => new
-                {
-                    Id = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CreateDate = table.Column<DateTime>(nullable: false),
-                    CreatedBy = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    EndDate = table.Column<DateTime>(nullable: false),
-                    ImagePath = table.Column<string>(nullable: true),
-                    IsActive = table.Column<bool>(nullable: false),
-                    Name = table.Column<string>(maxLength: 200, nullable: false),
-                    Slogan = table.Column<string>(nullable: true),
-                    StartedDate = table.Column<DateTime>(nullable: false),
-                    UpdateBy = table.Column<string>(nullable: true),
-                    UpdateDate = table.Column<DateTime>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Campaigns", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Categories",
-                columns: table => new
-                {
-                    Id = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CreateDate = table.Column<DateTime>(nullable: false),
-                    CreatedBy = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(maxLength: 200, nullable: false),
-                    UpdateBy = table.Column<string>(nullable: true),
-                    UpdateDate = table.Column<DateTime>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Categories", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Contacts",
                 columns: table => new
                 {
@@ -316,6 +275,68 @@ namespace TreeStore.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Campaigns",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CreateDate = table.Column<DateTime>(nullable: false),
+                    CreatedBy = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    EndDate = table.Column<DateTime>(nullable: false),
+                    ImagePath = table.Column<string>(nullable: true),
+                    IsActive = table.Column<bool>(nullable: false),
+                    Name = table.Column<string>(maxLength: 200, nullable: false),
+                    SliderId = table.Column<long>(nullable: true),
+                    Slogan = table.Column<string>(nullable: true),
+                    StartedDate = table.Column<DateTime>(nullable: false),
+                    UpdateBy = table.Column<string>(nullable: true),
+                    UpdateDate = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Campaigns", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Campaigns_Sliders_SliderId",
+                        column: x => x.SliderId,
+                        principalTable: "Sliders",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Categories",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CreateDate = table.Column<DateTime>(nullable: false),
+                    CreatedBy = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(maxLength: 200, nullable: false),
+                    ParentCategoryId = table.Column<long>(nullable: true),
+                    SliderId = table.Column<long>(nullable: true),
+                    UpdateBy = table.Column<string>(nullable: true),
+                    UpdateDate = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Categories", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Categories_Categories_ParentCategoryId",
+                        column: x => x.ParentCategoryId,
+                        principalTable: "Categories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Categories_Sliders_SliderId",
+                        column: x => x.SliderId,
+                        principalTable: "Sliders",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "CategoryCampaigns",
                 columns: table => new
                 {
@@ -443,6 +464,21 @@ namespace TreeStore.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Campaigns_SliderId",
+                table: "Campaigns",
+                column: "SliderId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Categories_ParentCategoryId",
+                table: "Categories",
+                column: "ParentCategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Categories_SliderId",
+                table: "Categories",
+                column: "SliderId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CategoryCampaigns_ApplicationUserId",

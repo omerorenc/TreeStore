@@ -16,17 +16,18 @@ namespace TreeStore.Areas.Admin.Controllers
     {
         private readonly ICategoryService categoryService;
         private readonly IProductService productService;
-        public CategoriesController(ICategoryService categoryService, IProductService _prodcutService)
+        public CategoriesController(ICategoryService categoryService, IProductService prodcutService)
         {
             this.categoryService = categoryService;
-            this.productService = _prodcutService;
+            this.productService = prodcutService;
         }
 
  
         public IActionResult Index()
         {
+            var categories = categoryService.GetCategories().AsQueryable().Include(c => c.ParentCategory).ToList();
            
-            return View(categoryService.GetCategories());
+            return View(categories);
         }
 
         // GET: Admin/Categories/Details/5
@@ -37,7 +38,7 @@ namespace TreeStore.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var category = categoryService.GetCategories().AsQueryable().Include(c => c.Products).Include(c => c.CategoryCampaign).FirstOrDefault(p => p.Id == id);
+            var category = categoryService.GetCategories().AsQueryable().Include(c => c.Products).Include(c => c.ParentCategory).Include(c => c.ChildCategories).FirstOrDefault(c => c.Id == id);
             if (category == null)
             {
                 return NotFound();
@@ -49,8 +50,8 @@ namespace TreeStore.Areas.Admin.Controllers
         // GET: Admin/Categories/Create
         public IActionResult Create()
         {
-            
-            //ViewData["ProductId"] = new SelectList(productService.GetProducts(), "Id", "Name");
+            ViewBag.ParentCategoryId = new SelectList(categoryService.GetCategories(), "Id", "Name");
+
             return View();
         }
 
@@ -61,8 +62,14 @@ namespace TreeStore.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Category category)
         {
+            Category newCategory;
             if (ModelState.IsValid)
             {
+                if(category.ParentCategoryId !=null && category.ParentCategory != null)
+                {
+                    newCategory = categoryService.GetCategories().FirstOrDefault(c => c.Id == category.ParentCategoryId);
+                    newCategory.ChildCategories.Add(category);
+                }
                 categoryService.CreateCategory(category);
                 categoryService.SaveCategory();
                 return RedirectToAction("Index");
@@ -79,8 +86,8 @@ namespace TreeStore.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
-            var category =categoryService.GetCategories().AsQueryable().Include(c => c.Products).Include(c => c.CategoryCampaign).FirstOrDefault(c => c.Id == id);
+            ViewBag.ParentCategoryId = new SelectList(categoryService.GetCategories(), "Id", "Name",categoryService.GetCategories().FirstOrDefault(c => c.ParentCategoryId == id));
+            var category =categoryService.GetCategories().AsQueryable().Include(c => c.Products).Include(c => c.ParentCategory).Include(c=> c.ChildCategories).FirstOrDefault(c => c.Id == id);
             if (category == null)
             {
                 return NotFound();
@@ -94,8 +101,9 @@ namespace TreeStore.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(long id, Category category)
+        public IActionResult Edit(long id,long? ParentCategoryId, Category category)
         {
+          
             if (id != category.Id)
             {
                 return NotFound();
@@ -103,10 +111,16 @@ namespace TreeStore.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
+                
+                
                 try
                 {
-                    categoryService.UpdateCategory(category);
-                    categoryService.SaveCategory();
+                  
+                        categoryService.UpdateCategory(category);
+                        categoryService.SaveCategory();
+             
+                    
+                    
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -134,7 +148,10 @@ namespace TreeStore.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var category = categoryService.GetCategories().AsQueryable().Include(c => c.Products).Include(c => c.CategoryCampaign).FirstOrDefault(c => c.Id == id);
+            var category = categoryService.GetCategories().AsQueryable().Include(c => c.Products).Include(c => c.CategoryCampaign)
+                .Include(c => c.ParentCategory)
+                .Include(c => c.ChildCategories)
+                .FirstOrDefault(c => c.Id == id);
             if (category == null)
             {
                 return NotFound();

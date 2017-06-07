@@ -9,5 +9,7 @@ namespace TreeStore.Models.Entities
     public class Slider:BaseEntity
     {
         public ICollection<Product> Products { get; set; }
+        public ICollection<Campaign> Campaigns { get; set; }
+        public ICollection<Category> Categories { get; set; }
     }
 }

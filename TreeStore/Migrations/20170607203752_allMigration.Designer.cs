@@ -8,7 +8,7 @@ using TreeStore.Data;
 namespace TreeStore.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170606190551_allMigration")]
+    [Migration("20170607203752_allMigration")]
     partial class allMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -218,6 +218,8 @@ namespace TreeStore.Migrations
                         .IsRequired()
                         .HasMaxLength(200);
 
+                    b.Property<long?>("SliderId");
+
                     b.Property<string>("Slogan");
 
                     b.Property<DateTime>("StartedDate");
@@ -227,6 +229,8 @@ namespace TreeStore.Migrations
                     b.Property<DateTime>("UpdateDate");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("SliderId");
 
                     b.ToTable("Campaigns");
                 });
@@ -246,11 +250,19 @@ namespace TreeStore.Migrations
                         .IsRequired()
                         .HasMaxLength(200);
 
+                    b.Property<long?>("ParentCategoryId");
+
+                    b.Property<long?>("SliderId");
+
                     b.Property<string>("UpdateBy");
 
                     b.Property<DateTime>("UpdateDate");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ParentCategoryId");
+
+                    b.HasIndex("SliderId");
 
                     b.ToTable("Categories");
                 });
@@ -558,6 +570,24 @@ namespace TreeStore.Migrations
                         .WithMany("Roles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("TreeStore.Models.Campaign", b =>
+                {
+                    b.HasOne("TreeStore.Models.Entities.Slider", "Slider")
+                        .WithMany("Campaigns")
+                        .HasForeignKey("SliderId");
+                });
+
+            modelBuilder.Entity("TreeStore.Models.Category", b =>
+                {
+                    b.HasOne("TreeStore.Models.Category", "ParentCategory")
+                        .WithMany("ChildCategories")
+                        .HasForeignKey("ParentCategoryId");
+
+                    b.HasOne("TreeStore.Models.Entities.Slider", "Slider")
+                        .WithMany("Categories")
+                        .HasForeignKey("SliderId");
                 });
 
             modelBuilder.Entity("TreeStore.Models.CategoryCampaign", b =>
