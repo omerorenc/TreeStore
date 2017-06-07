@@ -1,0 +1,51 @@
+﻿@model TreeStore.Models.Entities.Contact
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Mesaj Sil</h2>
+
+<h3>Bu mesajı silmek istediğinize emin misiniz?</h3>
+<hr />
+<div>
+    <form asp-action="Delete">
+        <dl class="dl-horizontal">
+            <input type="hidden" asp-for="Id" />
+            <dt>
+                @Html.DisplayNameFor(model => model.FullName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.FullName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Phone)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Phone)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Message)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Message)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CreateDate)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CreateDate)
+            </dd>
+        </dl>
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-danger" />
+            <a class="btn btn-default" asp-action="Index">Listeye Geri Dön</a>
+        </div>
+    </form>
+</div>

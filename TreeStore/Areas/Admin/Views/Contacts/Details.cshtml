@@ -1,0 +1,64 @@
+﻿@model TreeStore.Models.Entities.Contact
+
+@{
+    ViewData["Title"] = "Details";
+}
+@*<script src="//cdn.ckeditor.com/4.6.2/full/ckeditor.js"></script>*@
+<h2>Mesaj Detayları</h2>
+<hr />
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Message)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Message)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreateDate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-success" asp-action="Reply" asp-route-id="@Model.Id">Cevapla</a>
+    <a class="btn btn-default" asp-action="Index">Listeye Geri Dön</a>
+</div>
+<br />
+@*<form asp-area="Admin" asp-controller="Contact" asp-action="Contact" method="post">
+    <div id="demo" style="display:none">
+        <textarea asp-for="Reply" tabindex="3" class="form-control" rows="10"></textarea>
+        <span class="text-danger" asp-validation-for="Reply"></span>
+        <script type="text/javascript">
+            CKEDITOR.replace('Reply');
+            CKEDITOR.instances.Reply.getData()
+        </script>
+        <br />
+        <button type="submit" class="btn btn-primary">Gönder</button>
+    </div>
+</form>
+<script>
+            function myFunction() {
+                document.getElementById("demo").style.display = "block";
+}
+</script>*@

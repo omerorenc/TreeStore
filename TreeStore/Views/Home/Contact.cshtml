@@ -1,0 +1,68 @@
+﻿@model TreeStore.Models.Entities.Contact
+@{     
+ViewData["Title"] = "İletişim";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="wrap-title-page">
+                <h1 class="ui-title-page">Bizimle İletişime Geçin</h1>
+            </div>
+            @if (!String.IsNullOrEmpty(ViewBag.Message))
+            {
+                <div class="alert alert-success">@ViewBag.Message</div>
+            }
+        </div>
+    </div>
+</div>
+<div class="border-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <section class="section-area">
+                    <h2 class="ui-title-block ui-title-block_small"><i class="icon fa fa-bars"></i>İletişim Formu</h2>
+                    <form class="form-contact ui-form" asp-action="Contact" method="post">
+                        <input type="hidden" asp-for ="Id" />
+                        <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Ad - Soyad" name="FullName" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="tel" class="form-control" placeholder="Telefon Numarası" name="Phone">
+                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <input type="email" class="form-control" placeholder="E-Mail" name="Email" required>
+                            </div>
+                            <div class="col-xs-12">
+                                <textarea class="form-control" rows="10" placeholder="Mesajınızı Giriniz" name="Message" required></textarea>
+                                <button class="btn btn-primary">GÖNDER</button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+            <div class="col-md-5">
+                <section class="section-area section-contacts">
+                    <h2 class="ui-title-block ui-title-block_small"><i class="icon fa fa-bars"></i>ADRES</h2>
+                    <div class="contacts">
+                        <div class="contacts__item"> <span class="contacts__name"><i class="icon fa fa-map-marker"></i> ADRES</span> <span class="contacts__info">@ViewBag.Address</span> </div>
+                        <div class="contacts__item"> <span class="contacts__name"><i class="icon fa fa-phone"></i> Telefon</span> <span class="contacts__info">@ViewBag.Phone</span></div>
+                        <div class="contacts__item"> <span class="contacts__name"><i class="icon fa fa-fax"></i> Fax</span> <span class="contacts__info">@ViewBag.Fax</span></div>
+                        <div class="contacts__item"> <span class="contacts__name"><i class="icon fa fa-mail-forward"></i> E-Mail</span> <span class="contacts__info">@ViewBag.Mail</span> </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="section-area section-map"> <img class="img-responsive" src="assets/img/map.jpg" height="350" width="1170" alt="Map"> </div>
+            </div>
+        </div>
+    </div>
+</div>

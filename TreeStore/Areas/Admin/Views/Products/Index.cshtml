@@ -1,0 +1,98 @@
+﻿@model IEnumerable<TreeStore.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h2>Ürünler</h2>
+<hr />
+<table  id="tblRecords" class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.DiscountPrice)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.ImagePath)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.CompanyLink)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.CreateDate)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.UpdateDate)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.UpdateBy)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th data-orderable="false" class="all">Eylemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiscountPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImagePath)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsActive)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyLink)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreateDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdateDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdateBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.Name)
+                </td>
+                <td class="text-nowrap">
+                    <a class="btn btn-default" asp-action="Details" asp-route-id="@item.Id">Detaylar</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

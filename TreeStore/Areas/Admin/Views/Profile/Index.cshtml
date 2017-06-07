@@ -1,0 +1,61 @@
+﻿@model IndexViewModel
+@{
+    ViewData["Title"] = "Hesabını Yönet";
+}
+<p class="text-success">@ViewData["StatusMessage"]</p>
+<div>
+    <h4>Hesap ayarlarını değiştirin</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Şifre:</dt>
+        <dd>
+            @if (Model.HasPassword)
+            {
+                <a class="btn btn-primary" asp-controller="Profile" asp-action="ChangePassword" class="btn-bracketed">Değiştir</a>
+            }
+            else
+            {
+                <a asp-controller="Profile" asp-action="SetPassword" class="btn-bracketed">Oluştur</a>
+            }
+        </dd>
+        <br />
+        <dt>Harici Giriş:</dt>
+        <dd>
+            <a class="btn btn-primary" asp-controller="Profile" asp-action="ManageLogins">Yönet</a>
+        </dd>
+        <br />
+        <dt>Telefon Numarası:</dt>
+        <dd>
+
+            @if (Model.PhoneNumber != null)
+            {
+                <br />
+                    <a asp-controller="Profile" asp-action="AddPhoneNumber">Değiştir</a>
+                    <form asp-controller="Profile" asp-action="RemovePhoneNumber" method="post">
+                        [<button type="submit" class="btn-link">Remove</button>]
+                    </form>
+            }
+            else
+            {
+                <a class="btn btn-primary" asp-controller="Profile" asp-action="AddPhoneNumber">Ekle</a>
+            }
+        </dd>
+        <br />
+        @*<dt>İki Aşamalı Doğrulama:</dt>
+            <dd>
+
+               @if (Model.TwoFactor)
+                    {
+                        <form asp-controller="Manage" asp-action="DisableTwoFactorAuthentication" method="post" class="form-horizontal">
+                            Etkinleştir <button type="submit" class="btn-link btn-bracketed">Engelle</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <form asp-controller="Manage" asp-action="EnableTwoFactorAuthentication" method="post" class="form-horizontal">
+                            <button type="submit" class="btn-link btn-bracketed">Etkinleştir</button> Engelle
+                        </form>
+                    }
+            </dd>*@
+    </dl>
+</div>

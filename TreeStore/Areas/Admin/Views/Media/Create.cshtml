@@ -1,0 +1,75 @@
+@model TreeStore.Models.Entities.Media
+
+@{
+    ViewData["Title"] = "Media Ekle";
+}
+<link href="/metronic/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" /><br />
+
+<script src="//cdn.ckeditor.com/4.6.2/full/ckeditor.js"></script>
+<script src="~/js/generate-slug.js"> </script><br />
+
+<br />
+<div class="row">
+    <div class="col-md-12 ">
+        <!-- BEGIN SAMPLE FORM PORTLET-->
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption font-dark">
+                    <i class="icon-settings font-dark"></i>
+                    <span class="caption-subject bold uppercase ">Media Ekle</span>
+                </div>
+            </div>
+            <form asp-controller="Media" asp-action="Create" method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-12">
+                        @* @Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label asp-for="Title"></label>
+                            <input type="text" asp-for="Title" class="form-control" tabindex="1" autofocus="autofocus" />
+                            <span class="text-danger" asp-validation-for="Title"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Description"></label>
+                            <textarea rows="15" asp-for="Description" class="form-control" tabindex="2"></textarea>
+                            <span class="text-danger" asp-validation-for="Description"></span>
+                        </div>
+                        <div class="form-group">
+                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                                <div class="input-group input-large">
+                                    @*<div class="form-control uneditable-input input-fixed input-medium" data-trigger="fileinput">
+                                            <i class="fa fa-file fileinput-exists"></i>&nbsp;
+                                            <span class="fileinput-filename"></span>
+                                        </div>*@
+                                    <span class="input-group-addon btn default btn-file">
+                                        @*<span class="fileinput-new">Dosya Seç</span>*@
+                                        @*<span class="fileinput-exists">Deðiþtir</span>*@
+                                        <input type="file" id="FileName" name="uploadFile">
+                                    </span>
+                                    @*<a href="javascript:" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput">Kaldýr</a>*@
+                                </div>
+                                @*@Html.ValidationMessage("FileName", new { @class = "text-danger" })*@
+                                @Html.ValidationMessage("FileExist", new { @class = "text-danger" })
+                                <span class="text-danger" asp-validation-for="FileName"></span>
+                            </div>
+                            <div class="clearfix margin-top-10">
+                                <span class="label label-success">UYARI !</span> Dosyanýn uzantýsý <strong>.doc, .docx, .pdf, .rtf, .jpg, .gif,.mp4 </strong> ya da <strong>.png</strong> olmalýdýr.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" onclick="filePath" tabindex="10" class="btn blue">Kaydet</button>
+                        <a type="button" tabindex="11" class="btn default" href="/admin/media/Index">Ýptal</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
