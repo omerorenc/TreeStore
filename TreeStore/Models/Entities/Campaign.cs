@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using TreeStore.Models.Entities;
 
 namespace TreeStore.Models
 {
@@ -32,5 +33,8 @@ namespace TreeStore.Models
         public long[] CategoryIds { get; set; }
         public virtual ICollection<ProductCampaign> ProductCampaign { get; set; }
         public virtual ICollection<CategoryCampaign> CategoryCampaign { get; set; }
+
+        public long? SliderId { get; set; }
+        public Slider Slider { get; set; }
     }
 }

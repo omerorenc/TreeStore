@@ -23,8 +23,23 @@
         <dd>
             @Html.DisplayFor(model => model.Description)
         </dd>
-        
+        <dt>
+            @Html.DisplayNameFor(model => model.ParentCategory.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ParentCategory.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ParentCategory.Name)
+        </dt>
+        <dd>
+            @foreach (var child in Model.ChildCategories)
+            {
 
+                @child.Name;
+                <br />
+            }
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.CreateDate)
         </dt>
@@ -49,8 +64,8 @@
         <dd>
             @Html.DisplayFor(model => model.UpdateBy)
         </dd>
-    </dl>
-    
+
+    </dl>    
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
         <div class="form-actions no-color">

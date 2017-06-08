@@ -47,8 +47,10 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <ul class="top-header__links list-unstyled">
-                                    <li><a style="color:white;font-size:15px; " href="javascript:void(0);">
-                                                                     <img style="height:30px" src="~/images/loginIcon.png" /> Giriş</a></li>                               
+                                    <li>
+                                        <img style="height:25px" src="~/images/loginIcon.png" />
+                                        <a asp-controller="Account" asp-action="Login" style="font-size:18px; color:white ! important"> GİRİŞ</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -207,7 +209,34 @@
             </div>
             <!--end top-nav -->
             @RenderBody()
-            <br />
+            <div class="section-area section-default section-list-clients wow bounceInUp" data-wow-duration="2s">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="list-clients list-unstyled owl-carousel owl-theme_mod-a owl-theme enable-owl-carousel"
+                                 data-min480="2"
+                                 data-min768="4"
+                                 data-min992="4"
+                                 data-min1200="5"
+                                 data-pagination="false"
+                                 data-navigation="true"
+                                 data-auto-play="4000"
+                                 data-stop-on-hover="true">
+                                <div class="list-clients__item"> <img class="img-responsive" src="assets/media/clients/1.png" height="80" width="136" alt="Clients"> </div>
+                                <div class="list-clients__item"> <img class="img-responsive" src="assets/media/clients/2.png" height="80" width="146" alt="Clients"> </div>
+                                <div class="list-clients__item"> <img class="img-responsive" src="assets/media/clients/3.png" height="80" width="98" alt="Clients"> </div>
+                                <div class="list-clients__item"> <img class="img-responsive" src="assets/media/clients/4.png" height="80" width="171" alt="Clients"> </div>
+                                <div class="list-clients__item"> <img class="img-responsive" src="assets/media/clients/5.png" height="80" width="100" alt="Clients"> </div>
+                                <div class="list-clients__item"> <img class="img-responsive" src="assets/media/clients/3.png" height="80" width="98" alt="Clients"> </div>
+                            </div>
+                        </div>
+                        <!-- end col -->
+                    </div>
+                    <!-- end row -->
+                </div>
+                <!-- end container -->
+            </div>
+            <!-- end section-area -->
 
             <div class="container">
                 <div class="row">

@@ -16,6 +16,9 @@ namespace TreeStore.Models.EntityBuilders
             entityBuilder.HasOne(p => p.Category)
                 .WithMany(c => c.Products)
                 .HasForeignKey(p => p.CategoryId);
+            entityBuilder.HasOne(p => p.Slider)
+                .WithMany(s => s.Products)
+                .HasForeignKey(p => p.SliderId);
         }
     }
 }

@@ -13,6 +13,7 @@ namespace TreeStore.Models.EntityBuilders
         {
             entityBuilder.HasKey(s => s.Id);
             entityBuilder.Property(s => s.Name).HasMaxLength(200).IsRequired();
+            
         }
     }
 }

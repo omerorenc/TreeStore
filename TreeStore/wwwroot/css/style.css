@@ -1,0 +1,211 @@
+/* =========================================
+===  CSS TABLE CONTENT  ====
+============================================ 
+
+	1.0 Global Style
+	2.0 Header
+	2.1 Mega Menu 
+	2.2 Navbar
+	3.0 Slideshow
+	4.0 Banner
+	5.0 Owl-Carousel
+	6.0 Column Left
+	6.1 Product
+	6.2 Special Offer
+	6.3 Block: Layered Navigation
+	6.4 Testimonial
+	7.0 Column Right
+	7.1 Page Heading & Tittle Group
+	7.2 Toolbar
+	7.3 Product List
+	7.4 Product Shop
+	8.0 Blog Page
+	9.0 Cart Page
+	10.0 Checkout Page
+	11.0 404 Page
+	12.0 Contact Page
+	13.0 Catlist
+	14.0 Brand
+	15.0 Footer
+	16.0 Form
+
+============================================
+===  END CSS TABLE CONTENT  ====
+============================================ */
+
+
+
+/* Mega Menu */
+.mega-container {
+    position: relative;
+    z-index: 10000;
+}
+.navleft-container {
+    position: absolute;
+    width: 100%;
+}
+.mega-menu-title {
+    border-radius: 4px 0 0 0;
+    background-color: #d8373e;
+    color: #fff;
+    cursor: pointer;
+}
+.mega-menu-title h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+    padding: 10px 20px;
+    position: relative;
+}
+.mega-menu-title h3:after {
+    content: "";
+    display: inline-block;
+    background: #c5282f url(../images/icon-mega.png) no-repeat 50% 50%;
+    width: 52px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.mega-menu-category {
+    border: 1px solid #d9d9d9;
+    border-top: 0;
+}
+.mega-menu-category > .nav > li > a {
+    border-bottom: 2px solid #f1f1f1;
+    padding: 16.5px 15px;
+    color: #404040;
+    background-color: #fff;
+}
+.mega-menu-category > .nav > li > a:before {
+    content: "\f068";
+    font-family: FontAwesome;
+    display: inline-block;
+    font-size: 14px;
+    margin-right: 10px;
+}
+.mega-menu-category > .nav > li > a:after {
+    content: "\f105";
+    font-family: FontAwesome;
+    display: inline-block;
+    font-size: 14px;
+    position: absolute;
+    right: 15px;
+}
+.mega-menu-category > .nav > li.nosub > a:after {
+    display: none;
+}
+.mega-menu-category > .nav > li.more-menu {
+    display: none;
+}
+.mega-menu-category > .nav > li.view-more > a {
+    border-bottom: 0;
+}
+.mega-menu-category > .nav > li.view-more > a:after {
+    content: "\f0fe";
+}
+.mega-menu-category > .nav > li > a:hover,
+.mega-menu-category > .nav > li > a:focus,
+.mega-menu-category > .nav > li.active > a {
+    background-color: #d8373e;
+    color: #fff;
+}
+.wrap-popup {
+    position: absolute;
+    left: 110%;
+    top: 0;
+    width: 600px;
+    transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    z-index: 100;
+}
+.wrap-popup.column2 {
+    width: 400px;
+}
+.wrap-popup.column1 {
+    width: 200px;
+}
+.mega-menu-category > .nav > li.active .wrap-popup {
+    left: 100%;
+}
+.popup {
+    background-color: #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .15);
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, .15);
+    display: none;
+    text-align: left;
+    z-index: 3000;
+    padding: 30px;
+}
+.popup h3 {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+.popup .nav > li > a {
+    text-transform: uppercase;
+    color: #404040;
+    padding: 7px 0;
+}
+.popup .nav > li > a:hover,
+.popup .nav > li > a:focus {
+    color: #d8373e;
+    background-color: transparent;
+}
+.box-banner {
+    border-bottom: 2px solid #e5e5e5;
+    padding-bottom: 10px;
+}
+.box-banner + .box-banner {
+    margin-top: 10px;
+}
+.box-banner:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+.box-banner h3 {
+    color: #404040;
+    font-weight: 700;
+    font-size: 22px;
+    text-transform: capitalize;
+    margin: 0;
+}
+.box-banner .price-sale {
+    color: #d8373e;
+    font-size: 40px;
+    line-height: 40px;
+    font-weight: 300;
+}
+.box-banner .price-sale sub,
+.box-banner .price-sale sup {
+    font-size: 16px;
+    font-weight: 700;
+}
+.box-banner .price-sale sub {
+    bottom: 3px;
+    left: -22px;
+}
+.box-banner .price-sale sup {
+    top: -17px;
+    left: -8px;
+}
+.box-banner a {
+    text-transform: capitalize;
+    color: #7e7e7e;
+    text-decoration: underline;
+}
+.box-banner a:hover {
+    color: #d8373e;
+}
+.has-sep:before {
+    position: absolute;
+    content: "";
+    top: 0;
+    bottom: 0;
+    border-left: 1px solid #e5e5e5;
+    left: -10px;
+}
+
