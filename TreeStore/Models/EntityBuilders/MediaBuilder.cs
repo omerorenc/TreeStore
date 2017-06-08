@@ -12,7 +12,7 @@ namespace TreeStore.Models.EntityBuilders
         public MediaBuilder(EntityTypeBuilder<Media> entityBuilder)
         {
             entityBuilder.HasKey(c => c.Id);
-            entityBuilder.Property(c => c.Title).IsRequired().HasMaxLength(200);
+            entityBuilder.Property(c => c.Title).HasMaxLength(200);
             entityBuilder.Property(c => c.FileType).HasMaxLength(200);
             entityBuilder.Property(c => c.FileName).HasMaxLength(200);
         }

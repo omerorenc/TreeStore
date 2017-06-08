@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace TreeStore.Migrations
 {
-    public partial class allMigration : Migration
+    public partial class PriceFixed : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -174,7 +174,7 @@ namespace TreeStore.Migrations
                     FileUrl = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     Size = table.Column<decimal>(nullable: false),
-                    Title = table.Column<string>(maxLength: 200, nullable: false),
+                    Title = table.Column<string>(maxLength: 200, nullable: true),
                     UpdateBy = table.Column<string>(nullable: true),
                     UpdateDate = table.Column<DateTime>(nullable: false)
                 },

@@ -1,12 +1,12 @@
-@model TreeStore.Models.Campaign
+﻿@model TreeStore.Models.Campaign
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Create";
 }
 
-<h2>Edit</h2>
+<h2>Create</h2>
 
-<form asp-action="Edit">
+<form asp-action="Create">
     <div class="form-horizontal">
         <h4>Campaign</h4>
         <hr />
@@ -77,43 +77,41 @@
                 <span asp-validation-for="CategoryCampaign" class="text-danger"></span>
             </div>
             <label asp-for="ProductCampaign" class="col-md-2 control-label"></label>
-        
-                <div class="col-md-4">
-                    @foreach (var product in (IEnumerable<SelectListItem>)ViewBag.Products)
-                    {
-                        <input type="checkbox" name="ProductIds[]" value="@product.Value" checked="@product.Selected" /> @product.Text
-                        <br />
-                    }
-                    <span asp-validation-for="ProductCampaign" class="text-danger"></span>
-                </div>
-        </div>
-    <input type="hidden" asp-for="Id" />
 
+            <div class="col-md-4">
+                @foreach (var product in (IEnumerable<SelectListItem>)ViewBag.Products)
+                {
+                    <input type="checkbox" name="ProductIds[]" value="@product.Value" checked="@product.Selected" /> @product.Text
+                    <br />
+                }
+                <span asp-validation-for="ProductCampaign" class="text-danger"></span>
+            </div>
+        </div>
         <div class="form-group">
             <label asp-for="CreateDate" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="CreateDate" class="form-control" readonly/>
+                <input asp-for="CreateDate" class="form-control" readonly />
                 <span asp-validation-for="CreateDate" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
             <label asp-for="UpdateDate" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="UpdateDate" class="form-control" readonly/>
+                <input asp-for="UpdateDate" class="form-control" readonly />
                 <span asp-validation-for="UpdateDate" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
             <label asp-for="CreatedBy" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="CreatedBy" class="form-control" readonly/>
+                <input asp-for="CreatedBy" class="form-control" readonly />
                 <span asp-validation-for="CreatedBy" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
             <label asp-for="UpdateBy" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="UpdateBy" class="form-control" readonly/>
+                <input asp-for="UpdateBy" class="form-control" readonly />
                 <span asp-validation-for="UpdateBy" class="text-danger"></span>
             </div>
         </div>

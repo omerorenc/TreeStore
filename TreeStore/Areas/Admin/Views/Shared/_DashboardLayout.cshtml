@@ -129,39 +129,64 @@ License: You must have a valid license purchased only from themeforest(the above
                             <li class="heading">
                                 <h3 class="uppercase">Modüller</h3>
                             </li>
-                            <li class="nav-item @(ViewContext.RouteData.Values["controller"].ToString().ToLowerInvariant()=="companies"?"active":string.Empty) ">
-                                <a href="/admin/campaigns/index" class="nav-link nav-toggle">
+                            <li class="nav-item @(ViewContext.RouteData.Values["controller"].ToString().ToLowerInvariant()=="campaigns"?"active":string.Empty) ">
+                                <a href="/admin/Campaigns/index" class="nav-link nav-toggle">
                                     <i class="icon-bag"></i>
                                     <span class="title">Kampanyalar</span>
 
                                 </a>
                             </li>
-                            <li class="nav-item  @(ViewContext.RouteData.Values["controller"].ToString().ToLowerInvariant()=="certifications"?"active":string.Empty)">
-                                <a href="/admin/categories/index" class="nav-link nav-toggle">
+                            <li class="nav-item  @(ViewContext.RouteData.Values["controller"].ToString().ToLowerInvariant()=="categories"?"active":string.Empty)">
+                                <a href="/admin/Categories/index" class="nav-link nav-toggle">
                                     <i class="icon-book-open"></i>
                                     <span class="title">Kategoriler</span>
 
                                 </a>
                             </li>
-                            <li class="nav-item  @(ViewContext.RouteData.Values["controller"].ToString().ToLowerInvariant()=="consultancies"?"active":string.Empty)">
-                                <a href="/admin/media/index" class="nav-link nav-toggle">
+                            <li class="nav-item  @(ViewContext.RouteData.Values["controller"].ToString().ToLowerInvariant()=="media"?"active":string.Empty)">
+                                <a href="/admin/Media/index" class="nav-link nav-toggle">
                                     <i class="icon-picture"></i>
                                     <span class="title">Media</span>
 
                                 </a>
                             </li>
-                            <li class="nav-item  @(ViewContext.RouteData.Values["controller"].ToString().ToLowerInvariant()=="educations"?"active":string.Empty)">
-                                <a href="/admin/products/index" class="nav-link nav-toggle">
+                            <li class="nav-item  @(ViewContext.RouteData.Values["controller"].ToString().ToLowerInvariant()=="products"?"active":string.Empty)">
+                                <a href="/admin/Products/index" class="nav-link nav-toggle">
                                     <i class="icon-basket"></i>
                                     <span class="title">Ürünler</span>
 
                                 </a>
                             </li>
-                            <li class="nav-item  @(ViewContext.RouteData.Values["controller"].ToString().ToLowerInvariant()=="countries"?"active":string.Empty)">
-                                <a href="/admin/sliders/index" class="nav-link nav-toggle">
+                            <li class="nav-item  @(ViewContext.RouteData.Values["controller"].ToString().ToLowerInvariant()=="sliders"?"active":string.Empty)">
+                                <a href="/admin/Sliders/index" class="nav-link nav-toggle">
                                     <i class="icon-camera"></i>
                                     <span class="title">Slider</span>
 
+                                </a>
+                            </li>
+                            <li class="nav-item  @(ViewContext.RouteData.Values["controller"].ToString().ToLowerInvariant()=="applicationusers"?"active":string.Empty)">
+                                <a href="/admin/ApplicationUsers/index" class="nav-link nav-toggle">
+                                    <i class="icon-user"></i>
+                                    <span class="title">Üyeler</span>
+
+                                </a>
+                            </li>
+                            <li class="nav-item  @(ViewContext.RouteData.Values["controller"].ToString().ToLowerInvariant()=="contacts"?"active":string.Empty)">
+                                <a asp-area="Admin" asp-controller="Contacts" asp-action="index">
+                                    <i class="glyphicon glyphicon-envelope"></i>
+                                    Gelen Mesajlar
+                                </a>
+                            </li>
+                            <li class="nav-item  @(ViewContext.RouteData.Values["controller"].ToString().ToLowerInvariant()=="settings"?"active":string.Empty)">
+                                <a asp-area="Admin" asp-controller="Settings" asp-action="index">
+                                    <i class="glyphicon glyphicon-cog"></i>
+                                    Site Ayarları
+                                </a>
+                            </li>
+                            <li class="nav-item  @(ViewContext.RouteData.Values["controller"].ToString().ToLowerInvariant()=="mailsettings"?"active":string.Empty)">
+                                <a asp-area="Admin" asp-controller="MailSettings" asp-action="index">
+                                    <i class="glyphicon glyphicon-cog"></i>
+                                    Mail Ayarları
                                 </a>
                             </li>
                         </ul>
@@ -189,50 +214,32 @@ License: You must have a valid license purchased only from themeforest(the above
                             <li>
                                 @switch (ViewContext.RouteData.Values["controller"].ToString().ToLowerInvariant())
                                 {
-                                    case "companies":
-                                        @Html.Raw("Kurumlar");
+                                    case "campaigns":
+                                        @Html.Raw("Kampanyalar");
                                         break;
-                                    case "consultancies":
-                                        @Html.Raw("Danışmanlıklar");
+                                    case "categories":
+                                        @Html.Raw("Kategoriler");
                                         break;
-                                    case "certifications":
-                                        @Html.Raw("Belgelendirmeler");
+                                    case "media":
+                                        @Html.Raw("Medya");
                                         break;
-                                    case "countries":
-                                        @Html.Raw("Ülkeler");
+                                    case "products":
+                                        @Html.Raw("Ürünler");
                                         break;
-                                    case "educations":
-                                        @Html.Raw("Eğitimler");
-                                        break;
-                                    case "cities":
-                                        @Html.Raw("Şehirler");
-                                        break;
-                                    case "applicationmethods":
-                                        @Html.Raw("Başvuru Yöntemleri");
-                                        break;
-                                    case "marketingmethods":
-                                        @Html.Raw("Tanıtım Yöntemleri");
-                                        break;
-                                    case "sources":
-                                        @Html.Raw("Haberdar Olma Yöntemleri");
-                                        break;
-                                    case "companyfunctions":
-                                        @Html.Raw("Kurum İşlevleri");
-                                        break;
-                                    case "certificationresults":
-                                        @Html.Raw("Belgelendirme Sonuçları");
-                                        break;
-                                    case "educationcategories":
-                                        @Html.Raw("Eğitim Tipleri");
-                                        break;
-                                    case "services":
-                                        @Html.Raw("Hizmetler");
-                                        break;
-                                    case "servicefields":
-                                        @Html.Raw("Hizmet Alanları");
+                                    case "sliders":
+                                        @Html.Raw("Sliderlar");
                                         break;
                                     case "applicationusers":
-                                        @Html.Raw("Kişiler");
+                                        @Html.Raw("Üyeler");
+                                        break;
+                                    case "contacts":
+                                        @Html.Raw("Gelen Mesajlar");
+                                        break;
+                                    case "settings":
+                                        @Html.Raw("Site Ayarları");
+                                        break;
+                                    case "mailsettings":
+                                        @Html.Raw("Mail Ayarları");
                                         break;
                                     default:
                                         @Html.Raw(ViewContext.RouteData.Values["controller"].ToString());

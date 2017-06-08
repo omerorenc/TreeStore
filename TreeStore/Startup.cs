@@ -62,6 +62,7 @@ namespace TreeStore
             services.AddTransient<IMailSettingRepository, MailSettingRepository>();
             services.AddTransient<IMediaRepository, MediaRepository>();
             services.AddTransient<ICampaignRepository, CampaignRepository>();
+            services.AddTransient<ISliderRepository, SliderRepository>();
 
             //Services
             services.AddTransient<IProductService, ProductService>();
@@ -73,6 +74,7 @@ namespace TreeStore
             services.AddTransient<ICampaignService, CampaignService>();
             services.AddTransient<IProductCampaignService, ProductCampaignService>();
             services.AddTransient<ICategoryCampaignService, CategoryCampaignService>();
+            services.AddTransient<ISliderService, SliderService>();
 
         }
 

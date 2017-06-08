@@ -1,14 +1,14 @@
-@model TreeStore.Models.Campaign
+@model TreeStore.Models.Product
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Create";
 }
 
-<h2>Edit</h2>
+<h2>Create</h2>
 
-<form asp-action="Edit">
+<form asp-action="Create">
     <div class="form-horizontal">
-        <h4>Campaign</h4>
+        <h4>Product</h4>
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
@@ -26,24 +26,17 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Slogan" class="col-md-2 control-label"></label>
+            <label asp-for="Price" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="Slogan" class="form-control" />
-                <span asp-validation-for="Slogan" class="text-danger"></span>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="StartedDate" class="col-md-2 control-label"></label>
+            <label asp-for="DiscountPrice" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="StartedDate" class="form-control" />
-                <span asp-validation-for="StartedDate" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="EndDate" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="EndDate" class="form-control" />
-                <span asp-validation-for="EndDate" class="text-danger"></span>
+                <input asp-for="DiscountPrice" class="form-control" />
+                <span asp-validation-for="DiscountPrice" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
@@ -67,59 +60,55 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="CategoryCampaign" class="col-md-2 control-label"></label>
-            <div class="col-md-4">
-                @foreach (var category in (IEnumerable<SelectListItem>)ViewBag.Categories)
-                {
-                    <input type="checkbox" name="CategoryIds[]" value="@category.Value" checked="@category.Selected" /> @category.Text
-                    <br />
-                }
-                <span asp-validation-for="CategoryCampaign" class="text-danger"></span>
+            <label asp-for="CompanyLink" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="CompanyLink" class="form-control" />
+                <span asp-validation-for="CompanyLink" class="text-danger"></span>
             </div>
-            <label asp-for="ProductCampaign" class="col-md-2 control-label"></label>
-        
-                <div class="col-md-4">
-                    @foreach (var product in (IEnumerable<SelectListItem>)ViewBag.Products)
-                    {
-                        <input type="checkbox" name="ProductIds[]" value="@product.Value" checked="@product.Selected" /> @product.Text
-                        <br />
-                    }
-                    <span asp-validation-for="ProductCampaign" class="text-danger"></span>
-                </div>
         </div>
-    <input type="hidden" asp-for="Id" />
-
+        <div class="form-group">
+            <label asp-for="CategoryId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="CategoryId" class ="form-control" asp-items="ViewBag.CategoryId"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="SliderId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="SliderId" class ="form-control" asp-items="ViewBag.SliderId"></select>
+            </div>
+        </div>
         <div class="form-group">
             <label asp-for="CreateDate" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="CreateDate" class="form-control" readonly/>
+                <input asp-for="CreateDate" class="form-control" />
                 <span asp-validation-for="CreateDate" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
             <label asp-for="UpdateDate" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="UpdateDate" class="form-control" readonly/>
+                <input asp-for="UpdateDate" class="form-control" />
                 <span asp-validation-for="UpdateDate" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
             <label asp-for="CreatedBy" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="CreatedBy" class="form-control" readonly/>
+                <input asp-for="CreatedBy" class="form-control" />
                 <span asp-validation-for="CreatedBy" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
             <label asp-for="UpdateBy" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="UpdateBy" class="form-control" readonly/>
+                <input asp-for="UpdateBy" class="form-control" />
                 <span asp-validation-for="UpdateBy" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>

@@ -1,130 +1,123 @@
-﻿@model TreeStore.Models.Product
+@model TreeStore.Models.Product
 
 @{
     ViewData["Title"] = "Create";
 }
 
-<h2>Ürün Ekle</h2>
-<br/>
-<form asp-action="Create" method="post" enctype="multipart/form-data">
+<h2>Create</h2>
+
+<form asp-action="Create">
     <div class="form-horizontal">
-        <div class="row">
+        <h4>Product</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Name" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <hr />
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="Name" class="col-md-2 control-label"></label>
-                    <div class="col-md-10">
-                        <input asp-for="Name" class="form-control" />
-                        <span asp-validation-for="Name" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Description" class="col-md-2 control-label"></label>
-                    <div class="col-md-10">
-                        <input asp-for="Description" class="form-control" />
-                        <span asp-validation-for="Description" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Price" class="col-md-2 control-label"></label>
-                    <div class="col-md-10">
-                        <input asp-for="Price" class="form-control" />
-                        <span asp-validation-for="Price" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="DiscountPrice" class="col-md-2 control-label"></label>
-                    <div class="col-md-10">
-                        <input asp-for="DiscountPrice" class="form-control" />
-                        <span asp-validation-for="DiscountPrice" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="ImagePath" class="col-md-2 control-label">@Html.DisplayNameFor(model => model.ImagePath)</label>
-                    <div class="col-md-10">
-                        <input title="uploadFile" type="file" name="uploadFile" class="form-control" />
-                        @Html.ValidationMessage("ImagePath", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="ImagePath" class="col-md-2 control-label">@Html.DisplayNameFor(model => model.ImagePath)</label>
-                    <div class="col-md-10">
-                        <div class="input-group">
-                            <input asp-for="ImagePath" class="form-control" />
-                            <span class="input-group-btn">
-                                <a class="btn btn-info" id="uploadModal" type="button" onclick="browseMedia('ImagePath')">...</a>
-                            </span>
-                        </div>
-                    </div>
-                    @Html.ValidationMessageFor(model => model.ImagePath, "", new { @class = "text-danger" })
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="checkbox">
-                            <input asp-for="IsActive" />
-                            <label asp-for="IsActive"></label>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="CompanyLink" class="col-md-2 control-label"></label>
-                    <div class="col-md-10">
-                        <input asp-for="CompanyLink" class="form-control" />
-                        <span asp-validation-for="CompanyLink" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="CategoryId" class="col-md-2 control-label"></label>
-                    <div class="col-md-10">
-                        <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="CreateDate" class="col-md-2 control-label"></label>
-                    <div class="col-md-10">
-                        <input asp-for="CreateDate" class="form-control" />
-                        <span asp-validation-for="CreateDate" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="UpdateDate" class="col-md-2 control-label"></label>
-                    <div class="col-md-10">
-                        <input asp-for="UpdateDate" class="form-control" />
-                        <span asp-validation-for="UpdateDate" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="CreatedBy" class="col-md-2 control-label"></label>
-                    <div class="col-md-10">
-                        <input asp-for="CreatedBy" class="form-control" />
-                        <span asp-validation-for="CreatedBy" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="UpdateBy" class="col-md-2 control-label"></label>
-                    <div class="col-md-10">
-                        <input asp-for="UpdateBy" class="form-control" />
-                        <span asp-validation-for="UpdateBy" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Ürün Ekle" class="btn btn-default" />
-                    </div>
-                </div>
-            </div>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
         </div>
+        <div class="form-group">
+            <label asp-for="Description" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Price" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Price" class="form-control" type="number" min="0.00" max="10000.00" step="0.01"/>
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="DiscountPrice" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DiscountPrice" class="form-control" type="number" min="0.00" max="10000.00" step="0.01"/>
+                <span asp-validation-for="DiscountPrice" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ImagePath" class="col-md-2 control-label">@Html.DisplayNameFor(model => model.ImagePath)</label>
+            <div class="col-md-9">
+                <div class="input-group">
+                    <input asp-for="ImagePath" class="form-control" />
+                    <span class="input-group-btn">
+                        <a class="btn btn-info" id="uploadModal" type="button" onclick="browseMedia('ImagePath')">...</a>
+                    </span>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(model => model.ImagePath, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    <input asp-for="IsActive" />
+                    <label asp-for="IsActive"></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CompanyLink" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="CompanyLink" class="form-control" />
+                <span asp-validation-for="CompanyLink" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CategoryId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="CategoryId" class ="form-control" asp-items="ViewBag.CategoryId"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="SliderId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="SliderId" class ="form-control" asp-items="ViewBag.SliderId"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CreateDate" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="CreateDate" class="form-control" />
+                <span asp-validation-for="CreateDate" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="UpdateDate" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="UpdateDate" class="form-control" />
+                <span asp-validation-for="UpdateDate" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CreatedBy" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="CreatedBy" class="form-control" />
+                <span asp-validation-for="CreatedBy" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="UpdateBy" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="UpdateBy" class="form-control" />
+                <span asp-validation-for="UpdateBy" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
 </form>
-@Html.Partial("_BrowseMedia", new ViewDataDictionary(this.ViewData) { { "element", "ImagePath" } })
-<div>
-    <a class="btn btn-danger" asp-action="Index">Ürün Listesine geri dön</a>
-</div>
 
-<script src="~/assets/js/jquery/jquery-1.10.1.min.js"></script>
-<script src="~/assets/js/jquery.validate.js"></script>
-<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+@Html.Partial("_BrowseMedia", new ViewDataDictionary(this.ViewData) { { "element", "ImagePath" } })
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

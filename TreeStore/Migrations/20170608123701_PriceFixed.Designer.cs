@@ -8,8 +8,8 @@ using TreeStore.Data;
 namespace TreeStore.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170606190551_allMigration")]
-    partial class allMigration
+    [Migration("20170608123701_PriceFixed")]
+    partial class PriceFixed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -380,7 +380,6 @@ namespace TreeStore.Migrations
                     b.Property<decimal>("Size");
 
                     b.Property<string>("Title")
-                        .IsRequired()
                         .HasMaxLength(200);
 
                     b.Property<string>("UpdateBy");

@@ -14,10 +14,10 @@ namespace TreeStore.Models
         
         [Display(Name ="Açıklama")]
         public string Description { get; set; }
-        
-        [Display(Name = "Ücret")]
+       
+        [Display(Name = "Fiyat")]
         public decimal Price { get; set; }
-        
+
         [Display(Name = "İndirimli Fiyat")]
         public decimal DiscountPrice { get; set; }
         

@@ -12,6 +12,7 @@ namespace TreeStore.Models.EntityBuilders
         {
             entityBuilder.HasKey(p => p.Id);
             entityBuilder.Property(p => p.Name).HasMaxLength(200).IsRequired();
+            entityBuilder.Property(p => p.Price).IsRequired();
             entityBuilder.HasOne(p => p.Category)
                 .WithMany(c => c.Products)
                 .HasForeignKey(p => p.CategoryId);

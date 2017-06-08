@@ -5763,6 +5763,8 @@
     <Content Include="wwwroot\assets\pages\scripts\widgets.min.js" />
     <Content Include="wwwroot\css\editor.cs" />
     <Content Include="wwwroot\css\editor.css" />
+    <Content Include="wwwroot\images\tree.ico" />
+    <Content Include="wwwroot\images\tree.png" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
