@@ -61,6 +61,10 @@ namespace TreeStore.Controllers
                 contactService.CreateContact(contact);
                 contactService.SaveContact();
                 ViewBag.Message = "Mesajınız başarıyla gönderildi.";
+                ViewBag.Address = settingService.GetSettings().FirstOrDefault().Address;
+                ViewBag.Phone = settingService.GetSettings().FirstOrDefault().Phone;
+                ViewBag.Mail = settingService.GetSettings().FirstOrDefault().Mail;
+                ViewBag.Fax = settingService.GetSettings().FirstOrDefault().Fax;
                 return View(contact);
             }
             ViewBag.Address = settingService.GetSettings().FirstOrDefault().Address;
