@@ -17,16 +17,22 @@ namespace TreeStore.Controllers
         private readonly IMailSettingService mailSettingService;
         private readonly IContactService contactService;
         private readonly ISettingService settingService;
-        public HomeController( ISettingService settingService, IMailSettingService _mailSettingService, IContactService _contactService)
+        private readonly ICategoryService categoryService;
+        public HomeController( ISettingService settingService, IMailSettingService _mailSettingService, IContactService _contactService, ICategoryService categoryService)
         {
          
             this.mailSettingService = _mailSettingService;
             this.contactService = _contactService;
             this.settingService = settingService;
+            this.categoryService = categoryService;
         }
         
         public IActionResult Index()
         {
+            var mainCategories = categoryService.GetCategories().Where(c => c.ParentCategoryId == null);
+            var categories = categoryService.GetCategories().Where(c => c.ParentCategoryId != null);
+            ViewBag.Categories = categories;
+            ViewBag.MainCategories = mainCategories;
             return View();
         }
 

@@ -82,6 +82,8 @@ namespace TreeStore.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                campaign.CreatedBy = User.Identity.Name;
+                campaign.UpdateBy = User.Identity.Name;
                 campaignService.CreateCampaign(campaign);
                 campaignService.SaveCampaign();
 

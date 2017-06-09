@@ -225,8 +225,6 @@ namespace TreeStore.Migrations
 
                     b.Property<DateTime>("UpdateDate");
 
-                    b.Property<string>("UserId");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ApplicationUserId");
@@ -260,8 +258,6 @@ namespace TreeStore.Migrations
                     b.Property<string>("UpdateBy");
 
                     b.Property<DateTime>("UpdateDate");
-
-                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 
@@ -318,8 +314,6 @@ namespace TreeStore.Migrations
 
                     b.Property<DateTime>("UpdateDate");
 
-                    b.Property<string>("UserId");
-
                     b.HasKey("Id");
 
                     b.ToTable("Contacts");
@@ -368,8 +362,6 @@ namespace TreeStore.Migrations
 
                     b.Property<DateTime>("UpdateDate");
 
-                    b.Property<string>("UserId");
-
                     b.HasKey("Id");
 
                     b.ToTable("MailSettings");
@@ -404,8 +396,6 @@ namespace TreeStore.Migrations
                     b.Property<string>("UpdateBy");
 
                     b.Property<DateTime>("UpdateDate");
-
-                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 
@@ -449,8 +439,6 @@ namespace TreeStore.Migrations
 
                     b.Property<DateTime>("UpdateDate");
 
-                    b.Property<string>("UserId");
-
                     b.Property<string>("WelcomeText");
 
                     b.HasKey("Id");
@@ -474,8 +462,6 @@ namespace TreeStore.Migrations
                     b.Property<string>("UpdateBy");
 
                     b.Property<DateTime>("UpdateDate");
-
-                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 
@@ -516,8 +502,6 @@ namespace TreeStore.Migrations
                     b.Property<string>("UpdateBy");
 
                     b.Property<DateTime>("UpdateDate");
-
-                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 

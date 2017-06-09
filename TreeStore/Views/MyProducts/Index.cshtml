@@ -9,99 +9,62 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Description)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Price)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DiscountPrice)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ImagePath)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.IsActive)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CompanyLink)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CreateDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.UpdateDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CreatedBy)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.UpdateBy)
-                </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Slider)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DiscountPrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImagePath)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsActive)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CompanyLink)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreateDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdateDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdateBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Slider.Name)
-            </td>
-            <td>
+<div class="row">
+    <div class="col-md-3">
+        <aside class="sidebar">
+            <section class="widget widget-category widget-category_mod-a wow bounceInLeft" data-wow-duration="2s">
+                <h3 class="widget-title ui-title-block ui-title-block_small"><i class="icon fa fa-bars"></i>CATEGORIES</h3>
+                <div class="block_content">
+                    <ul class="list-categories list list-links">
+                        <li class="list-categoriesitem"> <a class="list-sidebarlink" href="javascript:void(0);"> <span class="list-categoriesname">T-SHIRTS & APPAREL</span> <span class="list-categoriesamout">(23)</span> </a> </li>
+                        <li class="list-categoriesitem"> <a class="list-sidebarlink" href="javascript:void(0);"> <span class="list-categoriesname">ELECTRONICS & GADGETS</span> <span class="list-categoriesamout">(23)</span> </a> </li>
+                        <li class="list-categoriesitem"> <a class="list-sidebarlink" href="javascript:void(0);"> <span class="list-categoriesname">TOOLS & OUTDOORS</span> <span class="list-categoriesamout">(23)</span> </a> </li>
+                        <li class="list-categoriesitem"> <a class="list-sidebarlink" href="javascript:void(0);"> <span class="list-categoriesname">ELECTRONICS & GADGETS</span> <span class="list-categoriesamout">(23)</span> </a> </li>
+                    </ul>
+                </div>
+            </section>
+        </aside>
+    </div>
+    <div class="col-md-9">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3">
+                <img src="~/uploads/6-2017/@item.ImagePath" height="260" width="260" alt="Goods">
+                <h4 class="products__name"><a href="#">@item.Name</a></h4>
+                <div class="products__category"><a href="#">@*@item.Category.Name*@</a></div>
+                <div class="products__inner clearfix">
+                    <span class="products__price-new">@item.DiscountPrice</span> <span class="products__price-old">@item.Price</span>
+                </div>
+                <footer class="products-btns clearfix"></footer>
+                <span class="label-wrap"><span class="label label-warning">NEW</span></span>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+            </div>
+
+
+        }
+    </div>
+</div>
+
+@*<li class="products__item">
+    <img src="~/uploads/6-2017/@item.ImagePath" height="260" width="260" alt="Goods">
+    <h4 class="products__name"><a href="#">@item.Name</a></h4>
+    <div class="products__category"><a href="#">@item.Category.Name</a></div>
+    <div class="products__inner clearfix">
+        <span class="products__price-new">@item.DiscountPrice</span> <span class="products__price-old">@item.Price</span>
+    </div>
+    <footer class="products-btns clearfix">
+       
+        
+    </footer>
+    <span class="label-wrap"><span class="label label-warning">NEW</span></span>
+</li>
+
+<td>
+    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+</td>
+        </tr>*@
+

@@ -20,18 +20,18 @@ namespace TreeStore.Areas.Admin.Controllers
         private readonly IProductService productService;
         private readonly ISliderService sliderService;
 
-        public ProductsController(IProductService _productService, ICategoryService _categoryService, ISliderService _sliderService)
+        public ProductsController(IProductService productService, ICategoryService categoryService, ISliderService sliderService)
         {
-            this.productService = _productService;
-            this.categoryService = _categoryService;
-            this.sliderService = _sliderService;
+            this.productService = productService;
+            this.categoryService = categoryService;
+            this.sliderService = sliderService;
         }
 
         // GET: Admin/Products
         public IActionResult Index()
         {
-            var applicationDbContext = productService.GetProducts().AsQueryable().Include(p => p.Category).Include(p => p.Slider);
-            return View(applicationDbContext.ToList());
+            var products = productService.GetProducts().AsQueryable().Include(p => p.Category).Include(p => p.Slider).ToList();
+            return View(products);
         }
 
         // GET: Admin/Products/Details/5
@@ -57,7 +57,8 @@ namespace TreeStore.Areas.Admin.Controllers
         // GET: Admin/Products/Create
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(categoryService.GetCategories(), "Id", "Name");
+            
+            ViewData["CategoryId"] = new SelectList(categoryService.GetCategories().Where(c=>c.ParentCategoryId != null), "Id", "Name");
             ViewData["SliderId"] = new SelectList(sliderService.GetSliders(), "Id", "Name");
             return View();
         }
@@ -71,11 +72,13 @@ namespace TreeStore.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                product.CreatedBy = User.Identity.Name;
+                product.UpdateBy = User.Identity.Name;
                 productService.CreateProduct(product);
                 productService.SaveProduct();
                 return RedirectToAction("Index");
             }
-            ViewData["CategoryId"] = new SelectList(categoryService.GetCategories(), "Id", "Name", product.CategoryId);
+            ViewData["CategoryId"] = new SelectList(categoryService.GetCategories().Where(c => c.ParentCategoryId != null), "Id", "Name", product.CategoryId);
             ViewData["SliderId"] = new SelectList(sliderService.GetSliders(), "Id", "Name", product.SliderId);
             return View(product);
         }
@@ -93,7 +96,7 @@ namespace TreeStore.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            ViewData["CategoryId"] = new SelectList(categoryService.GetCategories(), "Id", "Name", product.CategoryId);
+            ViewData["CategoryId"] = new SelectList(categoryService.GetCategories().Where(c => c.ParentCategoryId != null), "Id", "Name", product.CategoryId);
             ViewData["SliderId"] = new SelectList(sliderService.GetSliders(), "Id", "Name", product.SliderId);
             return View(product);
         }
@@ -114,6 +117,8 @@ namespace TreeStore.Areas.Admin.Controllers
             {
                 try
                 {
+                    product.UpdateBy = User.Identity.Name;
+
                     productService.UpdateProduct(product);
                     productService.SaveProduct();
                 }
@@ -160,7 +165,7 @@ namespace TreeStore.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(long id)
         {
-            var product = productService.GetProducts().SingleOrDefault(m => m.Id == id);
+           
             productService.DeleteProduct(id);
             productService.SaveProduct();
             return RedirectToAction("Index");
