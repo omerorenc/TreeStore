@@ -45,13 +45,8 @@
                 <div class="top-header" style="background-color:#d8373e">
                     <div class="container">
                         <div class="row">
-                            <div class="col-xs-12">
-                                <ul class="top-header__links list-unstyled">
-                                    <li>
-                                        <img style="height:25px" src="~/images/loginIcon.png" />
-                                        <a asp-controller="Account" asp-action="Login" style="font-size:16px; color:white ! important"> Giriş</a>
-                                    </li>
-                                </ul>
+                            <div class="col-xs-12" style="height:60px">
+                                @await Html.PartialAsync("_LoginPartial")
                             </div>
                         </div>
                     </div>
