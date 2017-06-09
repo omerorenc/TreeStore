@@ -8,10 +8,10 @@
 {
     <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="navbar-right">
         <ul class="nav navbar-nav pull-right">
-            <li class="dropdown dropdown-user">
+            <li style="padding-top:0px"!important class="dropdown dropdown-user">
                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                    <img style="height:25px" src="~/images/loginIcon.png" />
-                    <span style="color:white" class="username username-hide-on-mobile"> @User.Identity.Name </span>
+                    <img style="height:25px; padding-right:10px; " src="~/images/loginIcon.png" />
+                    <span style="color:white" class="username username-hide-on-mobile"><b> @User.Identity.Name </b></span>
                     <i class="fa fa-angle-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-default">
@@ -47,8 +47,8 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
-        <li><a asp-area="" asp-controller="Account" asp-action="Login">Log in</a></li>
+        <li><a style="color:white"  asp-area="" asp-controller="Account" asp-action="Register"><b>KAYIT OL</b></a></li>
+        <li style="padding-left:20px"><a style="color:white" asp-area="" asp-controller="Account" asp-action="Login"><b>GİRİŞ</b></a></li>
     </ul>
 }
 

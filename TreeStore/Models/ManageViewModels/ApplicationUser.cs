@@ -11,14 +11,19 @@ namespace TreeStore.Models
     {
         public ApplicationUser()
         {
-            CategoryCampaigns = new HashSet<CategoryCampaign>();  
+            Categories = new HashSet<Category>();
+            Products = new HashSet<Product>();
+            Campaigns = new HashSet<Campaign>();
         }
         public string CompanyName { get; set; }
-        public virtual ICollection<CategoryCampaign>CategoryCampaigns { get; set; }
+        public virtual ICollection<Category>Categories{ get; set; }
+        public virtual ICollection<Campaign> Campaigns { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
+
         public DateTime CreatedDate { get; set; }
-        public string CreatedBy { get; set; }
+        
         public DateTime UpdatedDate { get; set; }
-        public string UpdatedBy { get; set; }
+        
         public string Address { get; set; }
         public string Phone { get; set; }
         public string Fax { get; set; }

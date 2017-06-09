@@ -9,10 +9,12 @@ using TreeStore.Data;
 using TreeStore.Models.Entities;
 using Microsoft.AspNetCore.Hosting;
 using TreeStore.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TreeStore.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class SettingsController : Controller
     {
         private readonly IHostingEnvironment env;
