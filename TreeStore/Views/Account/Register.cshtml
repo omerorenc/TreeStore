@@ -1,42 +1,120 @@
 ﻿@model RegisterViewModel
+@using System.Collections.Generic
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Http.Authentication
+
 @{
     ViewData["Title"] = "Register";
 }
 
-<h2>@ViewData["Title"].</h2>
+<head>
+    <meta charset="utf-8" />
+    <title>TREESTORE - Kaydol</title>
+</head>
+<div class="border-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <section class="section-area">
+                    <h2 class="ui-title-block ui-title-block_small"><i class="icon fa fa-bars"></i>Giriş Yap</h2>
+                    <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+                        <div class="form-group">
+                            <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="E-posta" asp-for="Email" />
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Parola" asp-for="Password" />
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Giriş Yap</button>
+                        </div>
+                        @*<div class="form-actions">
+                        <div class="pull-left">
+                            <label class="rememberme mt-checkbox mt-checkbox-outline">
+                                <input type="checkbox"/> Beni hatırla
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>*@
+                    </form>
+                </section>
+            </div>
+          
+            <div class="col-md-2"></div>
+            <div class="col-md-5">
+                <section class="section-area">
+                    <h2 class="ui-title-block ui-title-block_small"><i class="icon fa fa-bars"></i>Yeni Hesap Oluştur</h2>
+                    <form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <input asp-for="CompanyName" class="form-control" placeholder="Firma Adı *" />
+                                <span asp-validation-for="CompanyName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <input asp-for="Email" class="form-control" placeholder="E-Mail *" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <input asp-for="Address" class="form-control" placeholder="Firma Adresi" />
+                                <span asp-validation-for="Address" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <input asp-for="Phone" class="form-control" placeholder="Firma Telefonu *" />
+                                <span asp-validation-for="Phone" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <input asp-for="Fax" class="form-control" placeholder="Fax" />
+                                <span asp-validation-for="Fax" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <div class="input-group">
+                                    <input asp-for="Logo" class="form-control" placeholder="Firma Logosu" readonly />
+                                    <span class="input-group-btn">
+                                        <a class="btn btn-info" id="uploadModal" type="button" onclick="browseMedia('logo')">Seç</a>
+                                    </span>
+                                </div>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Logo, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <input asp-for="Password" class="form-control" placeholder="Şifre *" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <input asp-for="ConfirmPassword" class="form-control" placeholder="Şifre(Tekrar) *" />
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary">Kaydol</button>
+                    </form>
+                    <br />
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
 
-<form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
-    <h4>Create a new account.</h4>
-    <hr />
-    <div asp-validation-summary="All" class="text-danger"></div>
-    <div class="form-group">
-        <label asp-for="Email" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <input asp-for="Email" class="form-control" />
-            <span asp-validation-for="Email" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="form-group">
-        <label asp-for="Password" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <input asp-for="Password" class="form-control" />
-            <span asp-validation-for="Password" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="form-group">
-        <label asp-for="ConfirmPassword" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <input asp-for="ConfirmPassword" class="form-control" />
-            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <button type="submit" class="btn btn-default">Register</button>
-        </div>
-    </div>
-</form>
 
+@Html.Partial("_BrowseMedia", new ViewDataDictionary(this.ViewData) { { "element", "logo" } });
 @section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    <script>
+        $(document).ready(function () {
+            $('#clickmewow').click(function () {
+                $('#radio1003').attr('checked', 'checked');
+            });
+        })
+    </script>
 }

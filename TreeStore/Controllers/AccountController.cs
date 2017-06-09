@@ -60,6 +60,7 @@ namespace TreeStore.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
         {
+            ViewBag.RememberMe = model.RememberMe;
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
@@ -114,7 +115,7 @@ namespace TreeStore.Controllers
            
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Address=model.Address, CompanyName=model.CompanyName, Fax=model.Fax, Logo=model.Logo, Phone=model.Phone };
                 var result = await _userManager.CreateAsync(user, model.Password);
 
 
@@ -133,7 +134,7 @@ namespace TreeStore.Controllers
                     //await _signInManager.SignInAsync(user, isPersistent: false);
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation(3, "User created a new account with password.");
-                    return RedirectToAction("Login", "Account");
+                    return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
             }
