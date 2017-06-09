@@ -346,8 +346,8 @@ img.pull-left {
 	background-color: #f7f7f7;
 }
 .top-header {
-	padding-top: 15px;
-	padding-bottom: 10px;
+	padding-top: 0px;
+	padding-bottom: 0px;
 	color: #aaa;
 	background-color: #f74545;
 }
