@@ -10,71 +10,43 @@
                     <div class="mega-menu-title"><h3>Category</h3></div>
                     <div class="mega-menu-category">
                         <ul class="nav">
+                           @foreach (var mainCategory in ViewBag.mainCategories)
+                           {
                             <li>
-                                <a href="#">Computer</a>
-                                <div class="wrap-popup">
+                                <a href="#">@mainCategory.Name</a> <div class="wrap-popup">
                                     <div class="popup">
                                         <div class="row">
-                                            <div class="col-md-3">
-                                                <h3>brand</h3>
-                                                <ul class="nav">
-                                                    <li><a href="#">canon</a></li>
-                                                    <li><a href="#">samsung</a></li>
-                                                    <li><a href="#">nikon</a></li>
-                                                    <li><a href="#">apple</a></li>
-                                                    <li><a href="#">toshiba</a></li>
-                                                    <li><a href="#">hp</a></li>
-                                                    <li><a href="#">nokia</a></li>
-                                                    <li><a href="#">Sony</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-md-3 has-sep">
-                                                <h3>accessories</h3>
-                                                <ul class="nav">
-                                                    <li><a href="#">Duis</a></li>
-                                                    <li><a href="#">autem </a></li>
-                                                    <li><a href="#">vel eum </a></li>
-                                                    <li><a href="#">iriure </a></li>
-                                                    <li><a href="#">dolor </a></li>
-                                                    <li><a href="#">hendrerit </a></li>
-                                                    <li><a href="#">vulputate </a></li>
-                                                    <li><a href="#">velit </a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-md-6 has-sep">
-                                                <div class="custom-menu-right">
-                                                    <div class="box-banner media">
-                                                        <div class="media-body">
-                                                            <h3>bags &amp; cases</h3>
-                                                            <div class="price-sale">40 <sup>%</sup><sub>off</sub></div>
-                                                            <a href="http://www.plazathemes.com/">&gt;shop now</a>
-                                                        </div>
-                                                        <div class="media-right"><img src="images/products/img-01.jpg" alt=""></div>
-                                                    </div>
-                                                    <div class="box-banner media">
-                                                        <div class="media-body">
-                                                            <h3>Lens Fulters</h3>
-                                                            <div class="price-sale">50 <sup>%</sup><sub>off</sub></div>
-                                                            <a href="http://www.plazathemes.com/">&gt;shop now</a>
-                                                        </div>
-                                                        <div class="media-right"><img src="images/products/img-02.jpg" alt=""></div>
-                                                    </div>
-                                                    <div class="box-banner media">
-                                                        <div class="media-body">
-                                                            <h3>Flashes</h3>
-                                                            <div class="price-sale">30 <sup>%</sup><sub>off</sub></div>
-                                                            <a href="http://www.plazathemes.com/">&gt;shop now</a>
-                                                        </div>
-                                                        <div class="media-right"><img src="images/products/img-03.jpg" alt=""></div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                               @foreach (var category in ViewBag.Categories)
+                                                {
+                                                    
+
+
+                                                        @if (category.ParentCategoryId == mainCategory.Id)
+
+                                                        {
+                                                            <div class="col-md-2 ">
+                                                                <h3>@category.Name</h3>
+                                                                <ul class="nav">
+                                                                    <li><a href="#">canon</a></li>
+                                                                    <li><a href="#">samsung</a></li>
+                                                                    <li><a href="#">nikon</a></li>
+                                                                    <li><a href="#">apple</a></li>
+                                                                    <li><a href="#">toshiba</a></li>
+                                                                    <li><a href="#">hp</a></li>
+                                                                    <li><a href="#">nokia</a></li>
+                                                                    <li><a href="#">Sony</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        }
+
+                                               }
+
                                         </div>
-                                        <br>
-                                        <a href="#" class="ads"><img alt="" src="images/ads/ads-08.jpg" class="img-responsive"></a>
+
                                     </div>
                                 </div>
                             </li>
+                           }
                             <li>
                                 <a href="#">Camera</a>
                                 <div class="wrap-popup">

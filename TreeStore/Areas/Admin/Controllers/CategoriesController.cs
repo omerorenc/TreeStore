@@ -72,6 +72,8 @@ namespace TreeStore.Areas.Admin.Controllers
                     newCategory = categoryService.GetCategories().FirstOrDefault(c => c.Id == category.ParentCategoryId);
                     newCategory.ChildCategories.Add(category);
                 }
+                category.CreatedBy = User.Identity.Name;
+                category.UpdateBy = User.Identity.Name;
                 categoryService.CreateCategory(category);
                 categoryService.SaveCategory();
                 return RedirectToAction("Index");
@@ -117,9 +119,10 @@ namespace TreeStore.Areas.Admin.Controllers
                 
                 try
                 {
-                  
-                        categoryService.UpdateCategory(category);
-                        categoryService.SaveCategory();
+                    
+                    category.UpdateBy = User.Identity.Name;
+                    categoryService.UpdateCategory(category);
+                    categoryService.SaveCategory();
              
                     
                     

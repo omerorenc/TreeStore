@@ -19,6 +19,6 @@ namespace TreeStore.Models
         public string CreatedBy { get; set; }
         [Display(Name = "Düzenleyen Kişi")]
         public string UpdateBy { get; set; }
-        public string UserId { get; set; }
+
     }
 }

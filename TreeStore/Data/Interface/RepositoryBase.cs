@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 
 using System;
@@ -12,6 +13,7 @@ using TreeStore.Models;
 
 namespace TreeStore.Data.Interface
 {
+    
     public abstract class RepositoryBase<T> where T:BaseEntity
     {
         private ApplicationDbContext context;
@@ -31,16 +33,14 @@ namespace TreeStore.Data.Interface
         
         public virtual void Add(T entity)
         {
-            entity.CreatedBy = "username";
             entity.CreateDate = DateTime.Now;
-            entity.UpdateBy = "username";
             entity.UpdateDate=entity.CreateDate;
             dataBaseSet.Add(entity);
         }
 
         public virtual void Update(T entity)
         {
-            entity.UpdateBy = "username";
+
             entity.UpdateDate = DateTime.Now;
             dataBaseSet.Attach(entity);
             context.Entry(entity).State = EntityState.Modified;

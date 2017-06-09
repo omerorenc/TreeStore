@@ -85,8 +85,7 @@ namespace TreeStore.Migrations
                     Phone = table.Column<string>(maxLength: 250, nullable: true),
                     Reply = table.Column<string>(nullable: true),
                     UpdateBy = table.Column<string>(nullable: true),
-                    UpdateDate = table.Column<DateTime>(nullable: false),
-                    UserId = table.Column<string>(nullable: true)
+                    UpdateDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -111,8 +110,7 @@ namespace TreeStore.Migrations
                     SmptServer = table.Column<string>(maxLength: 200, nullable: false),
                     Subject = table.Column<string>(maxLength: 200, nullable: false),
                     UpdateBy = table.Column<string>(nullable: true),
-                    UpdateDate = table.Column<DateTime>(nullable: false),
-                    UserId = table.Column<string>(nullable: true)
+                    UpdateDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -135,8 +133,7 @@ namespace TreeStore.Migrations
                     Size = table.Column<decimal>(nullable: false),
                     Title = table.Column<string>(maxLength: 200, nullable: true),
                     UpdateBy = table.Column<string>(nullable: true),
-                    UpdateDate = table.Column<DateTime>(nullable: false),
-                    UserId = table.Column<string>(nullable: true)
+                    UpdateDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -165,7 +162,6 @@ namespace TreeStore.Migrations
                     TermsOfUse = table.Column<string>(nullable: true),
                     UpdateBy = table.Column<string>(nullable: true),
                     UpdateDate = table.Column<DateTime>(nullable: false),
-                    UserId = table.Column<string>(nullable: true),
                     WelcomeText = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -183,8 +179,7 @@ namespace TreeStore.Migrations
                     CreatedBy = table.Column<string>(nullable: true),
                     Name = table.Column<string>(maxLength: 200, nullable: false),
                     UpdateBy = table.Column<string>(nullable: true),
-                    UpdateDate = table.Column<DateTime>(nullable: false),
-                    UserId = table.Column<string>(nullable: true)
+                    UpdateDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -295,8 +290,7 @@ namespace TreeStore.Migrations
                     Slogan = table.Column<string>(nullable: true),
                     StartedDate = table.Column<DateTime>(nullable: false),
                     UpdateBy = table.Column<string>(nullable: true),
-                    UpdateDate = table.Column<DateTime>(nullable: false),
-                    UserId = table.Column<string>(nullable: true)
+                    UpdateDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -329,8 +323,7 @@ namespace TreeStore.Migrations
                     ParentCategoryId = table.Column<long>(nullable: true),
                     SliderId = table.Column<long>(nullable: true),
                     UpdateBy = table.Column<string>(nullable: true),
-                    UpdateDate = table.Column<DateTime>(nullable: false),
-                    UserId = table.Column<string>(nullable: true)
+                    UpdateDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -398,8 +391,7 @@ namespace TreeStore.Migrations
                     Price = table.Column<decimal>(nullable: false),
                     SliderId = table.Column<long>(nullable: true),
                     UpdateBy = table.Column<string>(nullable: true),
-                    UpdateDate = table.Column<DateTime>(nullable: false),
-                    UserId = table.Column<string>(nullable: true)
+                    UpdateDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
