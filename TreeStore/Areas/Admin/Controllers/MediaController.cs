@@ -13,10 +13,12 @@ using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TreeStore.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class MediaController : Controller
     {
         private readonly IMediaService mediaService;

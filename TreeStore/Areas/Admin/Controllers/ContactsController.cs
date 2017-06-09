@@ -10,10 +10,12 @@ using TreeStore.Models.Entities;
 using MimeKit;
 using MailKit.Net.Smtp;
 using TreeStore.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TreeStore.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class ContactsController : Controller
     {
         private readonly IContactService contactService;
