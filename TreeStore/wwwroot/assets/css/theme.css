@@ -232,6 +232,14 @@ img.pull-left {
 	color: #222;
 	text-transform: uppercase;
 }
+
+.category-urunler
+{
+	height:550px;
+	
+	
+	
+}
 .ui-title-block {
 	margin-top: 12px;
 	margin-bottom: 35px;
@@ -346,10 +354,10 @@ img.pull-left {
 	background-color: #f7f7f7;
 }
 .top-header {
-	padding-top: 15px;
-	padding-bottom: 10px;
+	padding-top: 0px;
+	padding-bottom: 0px;
 	color: #aaa;
-	background-color: #f74545;
+	background-color: #222;
 }
 .top-header__select {
 	float: left;
@@ -366,9 +374,8 @@ img.pull-left {
 }
 .top-header__link a {
 	font-family: Montserrat;
-	font-size: 18px;
-	color: #white;
-	font-weight: bold;
+	font-size: 11px;
+	color: #aaa;
 	text-transform: uppercase;
 }
 .top-header__select .btn_select {
@@ -4120,11 +4127,10 @@ figure.effect-chico:hover p {
 	padding-bottom: 120px;
 }
 .section-social-links {
-	margin-top: 0px;
-	padding-top: 45px;
+	margin-top: -46px;
+	padding-top: 94px;
 	background-color: #f7f7f7;
 	text-align: center;
-
 }
 .section-advantages {
 	margin-top: 40px;
