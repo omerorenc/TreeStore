@@ -8,14 +8,12 @@
 {
     <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="navbar-right">
         <ul class="nav navbar-nav pull-right">
-
             <li class="dropdown dropdown-user">
                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                     <img style="height:25px" src="~/images/loginIcon.png" />
-                    <span class="username username-hide-on-mobile"> @User.Identity.Name </span>
+                    <span style="color:white" class="username username-hide-on-mobile"> @User.Identity.Name </span>
                     <i class="fa fa-angle-down"></i>
                 </a>
-
                 <ul class="dropdown-menu dropdown-menu-default">
                     <li>
                         <a asp-controller="Manage" asp-action="Index">
@@ -23,25 +21,18 @@
                         </a>
                     </li>
                     <li>
-                        <a asp-area="Admin" asp-controller="Contacts" asp-action="index">
-                            <i class="glyphicon glyphicon-envelope"></i>
-                            Gelen Mesajlar
+                        <a asp-controller="MyCampaigns" asp-action="index">
+                            <i class="glyphicon glyphicon-plus"></i>
+                            Kampanyalarım
                         </a>
                     </li>
                     <li>
-                        <a asp-area="Admin" asp-controller="Settings" asp-action="index">
-                            <i class="glyphicon glyphicon-cog"></i>
-                            Site Ayarları
+                        <a asp-controller="MyProducts" asp-action="index">
+                            <i class="glyphicon glyphicon-plus"></i>
+                            Ürünlerim
                         </a>
                     </li>
                     <li>
-                        <a asp-area="Admin" asp-controller="MailSettings" asp-action="index">
-                            <i class="glyphicon glyphicon-cog"></i>
-                            Mail Ayarları
-                        </a>
-                    </li>
-                    <li>
-
                         <a href="javascript:void(0);" onclick="document.getElementById('logoutForm').submit();">
                             <i class="icon-key"></i> Çıkış
                         </a>
@@ -49,13 +40,8 @@
                     </li>
                 </ul>
             </li>
-            <!-- END USER LOGIN DROPDOWN -->
-            <!-- BEGIN QUICK SIDEBAR TOGGLER -->
-            <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
             <li class="dropdown dropdown-quick-sidebar-toggler">
-            <!-- END QUICK SIDEBAR TOGGLER -->
         </ul>
-
     </form>
 }
 else
