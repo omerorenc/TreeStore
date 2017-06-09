@@ -5765,6 +5765,7 @@
     <Content Include="wwwroot\css\editor.css" />
     <Content Include="wwwroot\images\tree.ico" />
     <Content Include="wwwroot\images\tree.png" />
+    <Content Include="wwwroot\metronic\pages\img\Tree.png" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />

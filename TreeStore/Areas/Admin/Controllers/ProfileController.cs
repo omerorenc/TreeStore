@@ -3,22 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using TreeStore.Models;
 using Microsoft.AspNetCore.Identity;
-using NETCore.MailKit;
+using TreeStore.Models;
 using Microsoft.Extensions.Logging;
 using TreeStore.Data;
 using Microsoft.Extensions.Options;
 using TreeStore.Models.ManageViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TreeStore.Areas.Admin.Controllers
 {
+    [Authorize]
+    [Area("Admin")]
     public class ProfileController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly string _externalCookieScheme;
-        private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
 
         public ProfileController(
@@ -26,13 +27,11 @@ namespace TreeStore.Areas.Admin.Controllers
           UserManager<ApplicationUser> userManager,
           SignInManager<ApplicationUser> signInManager,
           IOptions<IdentityCookieOptions> identityCookieOptions,
-          IEmailSender emailSender,
-          ILoggerFactory loggerFactory) 
+          ILoggerFactory loggerFactory)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _externalCookieScheme = identityCookieOptions.Value.ExternalCookieAuthenticationScheme;
-            _emailSender = emailSender;
             _logger = loggerFactory.CreateLogger<ProfileController>();
         }
 
