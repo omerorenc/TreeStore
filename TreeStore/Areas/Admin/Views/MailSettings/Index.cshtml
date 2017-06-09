@@ -6,6 +6,10 @@
 
 <h2>Mail Ayarları</h2>
 <hr />
+@if (!String.IsNullOrEmpty(ViewBag.Message))
+{
+    <div class="alert alert-success">@ViewBag.Message</div>
+}
 <form asp-area="Admin" role="form" asp-controller="MailSettings" asp-action="Index" method="post" enctype="multipart/form-data">
     <div class="form-horizontal">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>

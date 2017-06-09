@@ -46,6 +46,11 @@ namespace TreeStore.Areas.Admin.Controllers
                     cms = mailSettingService.GetMailSettings().FirstOrDefault();
                     mailSettingService.UpdateMailSetting(cms);
                     mailSettingService.SaveMailSetting();
+                    ViewBag.Message = "Ayarlar baþarýyla güncellendi.";
+                }
+                else
+                {
+                    ViewBag.Message = "Ayarlar kaydedilemedi.";
                 }
             }
             return View(mailSetting);

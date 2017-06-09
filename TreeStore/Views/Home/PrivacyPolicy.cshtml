@@ -1,15 +1,11 @@
 ﻿@{
     ViewData["Title"] = "Gizlilik Sözleşmesi";
 }
-<header class="page-header bg-img size-lg">
-    <div class="container">
-        <h1 class="text-center">Gizlilik Sözleşmesi</h1>
-    </div>
-</header>
-<main>
-    <section>
-        <div class="container">
+<div class="row">
+    <div class="col-xs-12">
+        <section class="section-area section-about text-center">
+            <h2 class="ui-title-block ui-title-block_large ui-title-block_mod-a">Gizlilik Sözleşmesi</h2>
             <p>@Html.Raw(ViewBag.PrivacyPolicy)</p>
-        </div>
-    </section>
-</main>
+        </section>
+    </div>
+</div>
