@@ -8,10 +8,12 @@ using Microsoft.EntityFrameworkCore;
 using TreeStore.Data;
 using TreeStore.Models;
 using TreeStore.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TreeStore.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class CategoriesController : Controller
     {
         private readonly ICategoryService categoryService;

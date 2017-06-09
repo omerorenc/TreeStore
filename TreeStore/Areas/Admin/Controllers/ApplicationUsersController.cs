@@ -8,10 +8,12 @@ using Microsoft.EntityFrameworkCore;
 using TreeStore.Data;
 using TreeStore.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TreeStore.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class ApplicationUsersController : Controller
     {
        

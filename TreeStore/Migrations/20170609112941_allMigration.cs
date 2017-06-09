@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace TreeStore.Migrations
 {
-    public partial class AllMigration : Migration
+    public partial class allMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -47,7 +47,6 @@ namespace TreeStore.Migrations
                     Address = table.Column<string>(nullable: true),
                     CompanyName = table.Column<string>(nullable: true),
                     ConcurrencyStamp = table.Column<string>(nullable: true),
-                    CreatedBy = table.Column<string>(nullable: true),
                     CreatedDate = table.Column<DateTime>(nullable: false),
                     Email = table.Column<string>(maxLength: 256, nullable: true),
                     EmailConfirmed = table.Column<bool>(nullable: false),
@@ -63,7 +62,6 @@ namespace TreeStore.Migrations
                     PhoneNumberConfirmed = table.Column<bool>(nullable: false),
                     SecurityStamp = table.Column<string>(nullable: true),
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
-                    UpdatedBy = table.Column<string>(nullable: true),
                     UpdatedDate = table.Column<DateTime>(nullable: false),
                     UserName = table.Column<string>(maxLength: 256, nullable: true)
                 },
@@ -87,7 +85,8 @@ namespace TreeStore.Migrations
                     Phone = table.Column<string>(maxLength: 250, nullable: true),
                     Reply = table.Column<string>(nullable: true),
                     UpdateBy = table.Column<string>(nullable: true),
-                    UpdateDate = table.Column<DateTime>(nullable: false)
+                    UpdateDate = table.Column<DateTime>(nullable: false),
+                    UserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -112,7 +111,8 @@ namespace TreeStore.Migrations
                     SmptServer = table.Column<string>(maxLength: 200, nullable: false),
                     Subject = table.Column<string>(maxLength: 200, nullable: false),
                     UpdateBy = table.Column<string>(nullable: true),
-                    UpdateDate = table.Column<DateTime>(nullable: false)
+                    UpdateDate = table.Column<DateTime>(nullable: false),
+                    UserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -135,7 +135,8 @@ namespace TreeStore.Migrations
                     Size = table.Column<decimal>(nullable: false),
                     Title = table.Column<string>(maxLength: 200, nullable: true),
                     UpdateBy = table.Column<string>(nullable: true),
-                    UpdateDate = table.Column<DateTime>(nullable: false)
+                    UpdateDate = table.Column<DateTime>(nullable: false),
+                    UserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -164,6 +165,7 @@ namespace TreeStore.Migrations
                     TermsOfUse = table.Column<string>(nullable: true),
                     UpdateBy = table.Column<string>(nullable: true),
                     UpdateDate = table.Column<DateTime>(nullable: false),
+                    UserId = table.Column<string>(nullable: true),
                     WelcomeText = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -181,7 +183,8 @@ namespace TreeStore.Migrations
                     CreatedBy = table.Column<string>(nullable: true),
                     Name = table.Column<string>(maxLength: 200, nullable: false),
                     UpdateBy = table.Column<string>(nullable: true),
-                    UpdateDate = table.Column<DateTime>(nullable: false)
+                    UpdateDate = table.Column<DateTime>(nullable: false),
+                    UserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -280,6 +283,7 @@ namespace TreeStore.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ApplicationUserId = table.Column<string>(nullable: true),
                     CreateDate = table.Column<DateTime>(nullable: false),
                     CreatedBy = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
@@ -291,11 +295,18 @@ namespace TreeStore.Migrations
                     Slogan = table.Column<string>(nullable: true),
                     StartedDate = table.Column<DateTime>(nullable: false),
                     UpdateBy = table.Column<string>(nullable: true),
-                    UpdateDate = table.Column<DateTime>(nullable: false)
+                    UpdateDate = table.Column<DateTime>(nullable: false),
+                    UserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Campaigns", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Campaigns_AspNetUsers_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Campaigns_Sliders_SliderId",
                         column: x => x.SliderId,
@@ -310,6 +321,7 @@ namespace TreeStore.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ApplicationUserId = table.Column<string>(nullable: true),
                     CreateDate = table.Column<DateTime>(nullable: false),
                     CreatedBy = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
@@ -317,11 +329,18 @@ namespace TreeStore.Migrations
                     ParentCategoryId = table.Column<long>(nullable: true),
                     SliderId = table.Column<long>(nullable: true),
                     UpdateBy = table.Column<string>(nullable: true),
-                    UpdateDate = table.Column<DateTime>(nullable: false)
+                    UpdateDate = table.Column<DateTime>(nullable: false),
+                    UserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Categories", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Categories_AspNetUsers_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Categories_Categories_ParentCategoryId",
                         column: x => x.ParentCategoryId,
@@ -341,18 +360,11 @@ namespace TreeStore.Migrations
                 columns: table => new
                 {
                     CampaignId = table.Column<long>(nullable: false),
-                    CategoryId = table.Column<long>(nullable: false),
-                    ApplicationUserId = table.Column<string>(nullable: true)
+                    CategoryId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_CategoryCampaigns", x => new { x.CampaignId, x.CategoryId });
-                    table.ForeignKey(
-                        name: "FK_CategoryCampaigns_AspNetUsers_ApplicationUserId",
-                        column: x => x.ApplicationUserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_CategoryCampaigns_Campaigns_CampaignId",
                         column: x => x.CampaignId,
@@ -373,6 +385,7 @@ namespace TreeStore.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ApplicationUserId = table.Column<string>(nullable: true),
                     CategoryId = table.Column<long>(nullable: true),
                     CompanyLink = table.Column<string>(nullable: true),
                     CreateDate = table.Column<DateTime>(nullable: false),
@@ -385,11 +398,18 @@ namespace TreeStore.Migrations
                     Price = table.Column<decimal>(nullable: false),
                     SliderId = table.Column<long>(nullable: true),
                     UpdateBy = table.Column<string>(nullable: true),
-                    UpdateDate = table.Column<DateTime>(nullable: false)
+                    UpdateDate = table.Column<DateTime>(nullable: false),
+                    UserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Products_AspNetUsers_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Products_Categories_CategoryId",
                         column: x => x.CategoryId,
@@ -466,9 +486,19 @@ namespace TreeStore.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Campaigns_ApplicationUserId",
+                table: "Campaigns",
+                column: "ApplicationUserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Campaigns_SliderId",
                 table: "Campaigns",
                 column: "SliderId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Categories_ApplicationUserId",
+                table: "Categories",
+                column: "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Categories_ParentCategoryId",
@@ -481,14 +511,14 @@ namespace TreeStore.Migrations
                 column: "SliderId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CategoryCampaigns_ApplicationUserId",
-                table: "CategoryCampaigns",
-                column: "ApplicationUserId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_CategoryCampaigns_CategoryId",
                 table: "CategoryCampaigns",
                 column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Products_ApplicationUserId",
+                table: "Products",
+                column: "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_CategoryId",
@@ -545,9 +575,6 @@ namespace TreeStore.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
                 name: "Campaigns");
 
             migrationBuilder.DropTable(
@@ -555,6 +582,9 @@ namespace TreeStore.Migrations
 
             migrationBuilder.DropTable(
                 name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Sliders");

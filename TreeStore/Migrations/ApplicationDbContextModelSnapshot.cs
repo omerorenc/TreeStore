@@ -142,8 +142,6 @@ namespace TreeStore.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
-                    b.Property<string>("CreatedBy");
-
                     b.Property<DateTime>("CreatedDate");
 
                     b.Property<string>("Email")
@@ -177,8 +175,6 @@ namespace TreeStore.Migrations
 
                     b.Property<bool>("TwoFactorEnabled");
 
-                    b.Property<string>("UpdatedBy");
-
                     b.Property<DateTime>("UpdatedDate");
 
                     b.Property<string>("UserName")
@@ -200,6 +196,8 @@ namespace TreeStore.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ApplicationUserId");
 
                     b.Property<DateTime>("CreateDate");
 
@@ -227,7 +225,11 @@ namespace TreeStore.Migrations
 
                     b.Property<DateTime>("UpdateDate");
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
 
                     b.HasIndex("SliderId");
 
@@ -238,6 +240,8 @@ namespace TreeStore.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ApplicationUserId");
 
                     b.Property<DateTime>("CreateDate");
 
@@ -257,7 +261,11 @@ namespace TreeStore.Migrations
 
                     b.Property<DateTime>("UpdateDate");
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
 
                     b.HasIndex("ParentCategoryId");
 
@@ -272,11 +280,7 @@ namespace TreeStore.Migrations
 
                     b.Property<long?>("CategoryId");
 
-                    b.Property<string>("ApplicationUserId");
-
                     b.HasKey("CampaignId", "CategoryId");
-
-                    b.HasIndex("ApplicationUserId");
 
                     b.HasIndex("CategoryId");
 
@@ -313,6 +317,8 @@ namespace TreeStore.Migrations
                     b.Property<string>("UpdateBy");
 
                     b.Property<DateTime>("UpdateDate");
+
+                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 
@@ -362,6 +368,8 @@ namespace TreeStore.Migrations
 
                     b.Property<DateTime>("UpdateDate");
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("Id");
 
                     b.ToTable("MailSettings");
@@ -396,6 +404,8 @@ namespace TreeStore.Migrations
                     b.Property<string>("UpdateBy");
 
                     b.Property<DateTime>("UpdateDate");
+
+                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 
@@ -439,6 +449,8 @@ namespace TreeStore.Migrations
 
                     b.Property<DateTime>("UpdateDate");
 
+                    b.Property<string>("UserId");
+
                     b.Property<string>("WelcomeText");
 
                     b.HasKey("Id");
@@ -463,6 +475,8 @@ namespace TreeStore.Migrations
 
                     b.Property<DateTime>("UpdateDate");
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("Id");
 
                     b.ToTable("Sliders");
@@ -472,6 +486,8 @@ namespace TreeStore.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ApplicationUserId");
 
                     b.Property<long?>("CategoryId");
 
@@ -501,7 +517,11 @@ namespace TreeStore.Migrations
 
                     b.Property<DateTime>("UpdateDate");
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
 
                     b.HasIndex("CategoryId");
 
@@ -572,6 +592,10 @@ namespace TreeStore.Migrations
 
             modelBuilder.Entity("TreeStore.Models.Campaign", b =>
                 {
+                    b.HasOne("TreeStore.Models.ApplicationUser")
+                        .WithMany("Campaigns")
+                        .HasForeignKey("ApplicationUserId");
+
                     b.HasOne("TreeStore.Models.Entities.Slider", "Slider")
                         .WithMany("Campaigns")
                         .HasForeignKey("SliderId");
@@ -579,6 +603,10 @@ namespace TreeStore.Migrations
 
             modelBuilder.Entity("TreeStore.Models.Category", b =>
                 {
+                    b.HasOne("TreeStore.Models.ApplicationUser")
+                        .WithMany("Categories")
+                        .HasForeignKey("ApplicationUserId");
+
                     b.HasOne("TreeStore.Models.Category", "ParentCategory")
                         .WithMany("ChildCategories")
                         .HasForeignKey("ParentCategoryId");
@@ -590,10 +618,6 @@ namespace TreeStore.Migrations
 
             modelBuilder.Entity("TreeStore.Models.CategoryCampaign", b =>
                 {
-                    b.HasOne("TreeStore.Models.ApplicationUser")
-                        .WithMany("CategoryCampaigns")
-                        .HasForeignKey("ApplicationUserId");
-
                     b.HasOne("TreeStore.Models.Campaign", "Campaign")
                         .WithMany("CategoryCampaign")
                         .HasForeignKey("CampaignId")
@@ -606,6 +630,10 @@ namespace TreeStore.Migrations
 
             modelBuilder.Entity("TreeStore.Models.Product", b =>
                 {
+                    b.HasOne("TreeStore.Models.ApplicationUser")
+                        .WithMany("Products")
+                        .HasForeignKey("ApplicationUserId");
+
                     b.HasOne("TreeStore.Models.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId");

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
+using Microsoft.EntityFrameworkCore;
 
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Linq.Expressions;
 using System.Security.Principal;
 using System.Threading.Tasks;
 using TreeStore.Models;
+
 
 namespace TreeStore.Data.Interface
 {
@@ -26,6 +28,7 @@ namespace TreeStore.Data.Interface
             dataBaseSet = dbContext.Set<T>();
         }
 
+        
         public virtual void Add(T entity)
         {
             entity.CreatedBy = "username";
