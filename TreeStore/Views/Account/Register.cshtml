@@ -24,17 +24,22 @@
                         <div class="form-group">
                             <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Parola" asp-for="Password" />
                         </div>
-                        <div class="form-actions">
-                            <button class="btn btn-primary">Giriş Yap</button>
-                        </div>
-                        @*<div class="form-actions">
-                        <div class="pull-left">
-                            <label class="rememberme mt-checkbox mt-checkbox-outline">
-                                <input type="checkbox"/> Beni hatırla
-                                <span></span>
-                            </label>
-                        </div>
-                    </div>*@
+                        <div class="form-group">
+                         <div class="pull-left">
+                             <label class="rememberme mt-checkbox mt-checkbox-outline"> </label>
+                                 <input type="checkbox" /> Beni hatırla
+                                    
+                                
+                                 </div>
+                              <br />
+                            </div>
+                        <div class="form-group">
+                            <div class="pull-left">
+                                <button style="height:35px;" class="btn btn-primary">Giriş Yap</button>
+                                </div>
+                            </div>
+
+                        
                     </form>
                 </section>
             </div>
@@ -79,7 +84,7 @@
                                 <div class="input-group">
                                     <input asp-for="Logo" class="form-control" placeholder="Firma Logosu" readonly />
                                     <span class="input-group-btn">
-                                        <a class="btn btn-info" id="uploadModal" type="button" onclick="browseMedia('logo')">Seç</a>
+                                        <a  style="height:50px; width:50px;" class="btn btn-info" id="uploadModal"  onclick="browseMedia('logo')" ></a>
                                     </span>
                                 </div>
                             </div>
@@ -97,7 +102,7 @@
                                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                             </div>
                         </div>
-                        <button class="btn btn-primary">Kaydol</button>
+                        <button style="height:35px;" class="btn btn-primary">Kaydol</button>
                     </form>
                     <br />
                 </section>
