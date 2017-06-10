@@ -13,8 +13,8 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace TreeStore.Areas.Admin.Controllers
 {
-    [Area("Admin")]
     [Authorize]
+    [Area("Admin")]
     public class SettingsController : Controller
     {
         private readonly IHostingEnvironment env;

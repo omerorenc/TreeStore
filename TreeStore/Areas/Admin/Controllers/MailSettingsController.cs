@@ -15,8 +15,8 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace TreeStore.Areas.Admin.Controllers
 {
-    [Area("Admin")]
     [Authorize]
+    [Area("Admin")]
     public class MailSettingsController : Controller
     {
         private readonly IMailSettingService mailSettingService;

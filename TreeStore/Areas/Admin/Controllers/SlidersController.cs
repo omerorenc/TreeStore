@@ -11,8 +11,8 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace TreeStore.Areas.Admin.Controllers
 {
-    [Area("Admin")]
     [Authorize]
+    [Area("Admin")]
     public class SlidersController : Controller
     {
         private readonly ApplicationDbContext _context;
