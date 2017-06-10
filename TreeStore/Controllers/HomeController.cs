@@ -8,6 +8,7 @@ using TreeStore.Models.Entities;
 using MimeKit;
 using MailKit.Net.Smtp;
 using TreeStore.Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace TreeStore.Controllers
 {
@@ -18,21 +19,30 @@ namespace TreeStore.Controllers
         private readonly IContactService contactService;
         private readonly ISettingService settingService;
         private readonly ICategoryService categoryService;
-        public HomeController( ISettingService settingService, IMailSettingService _mailSettingService, IContactService _contactService, ICategoryService categoryService)
+        private readonly IProductService productService;
+        private readonly ICampaignService campaignService;
+        public HomeController( ISettingService settingService, IMailSettingService _mailSettingService, IContactService _contactService, ICategoryService categoryService, IProductService productService
+            ,ICampaignService campaignService)
         {
          
             this.mailSettingService = _mailSettingService;
             this.contactService = _contactService;
             this.settingService = settingService;
             this.categoryService = categoryService;
+            this.productService = productService;
+            this.campaignService = campaignService;
         }
         
         public IActionResult Index()
         {
             var mainCategories = categoryService.GetCategories().Where(c => c.ParentCategoryId == null);
             var categories = categoryService.GetCategories().Where(c => c.ParentCategoryId != null);
+            var products = productService.GetProducts().Where(p => p.IsActive);
+            var campaigns = campaignService.GetCampaigns().Where(c => c.IsActive);
             ViewBag.Categories = categories;
             ViewBag.MainCategories = mainCategories;
+            ViewBag.Products = products;
+            ViewBag.Campaigns = campaigns;
             return View();
         }
 

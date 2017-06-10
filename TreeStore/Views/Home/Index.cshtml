@@ -10,203 +10,40 @@
                     <div class="mega-menu-title"><h3>Category</h3></div>
                     <div class="mega-menu-category">
                         <ul class="nav">
-                           @foreach (var mainCategory in ViewBag.mainCategories)
-                           {
-                            <li>
-                                <a href="#">@mainCategory.Name</a> <div class="wrap-popup">
-                                    <div class="popup">
-                                        <div class="row">
-                                               @foreach (var category in ViewBag.Categories)
+                            @foreach (var mainCategory in ViewBag.mainCategories)
+                            {
+                                <li>
+                                    <a href="#">@mainCategory.Name</a> <div class="wrap-popup">
+                                        <div class="popup">
+                                            <div class="row">
+                                                @foreach (var category in ViewBag.Categories)
                                                 {
-                                                    
 
 
-                                                        @if (category.ParentCategoryId == mainCategory.Id)
 
-                                                        {
-                                                            <div class="col-md-2 ">
-                                                                <h3>@category.Name</h3>
-                                                                <ul class="nav">
-                                                                    <li><a href="#">canon</a></li>
-                                                                    <li><a href="#">samsung</a></li>
-                                                                    <li><a href="#">nikon</a></li>
-                                                                    <li><a href="#">apple</a></li>
-                                                                    <li><a href="#">toshiba</a></li>
-                                                                    <li><a href="#">hp</a></li>
-                                                                    <li><a href="#">nokia</a></li>
-                                                                    <li><a href="#">Sony</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        }
+                                                    @if (category.ParentCategoryId == mainCategory.Id)
 
-                                               }
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </li>
-                           }
-                            <li>
-                                <a href="#">Camera</a>
-                                <div class="wrap-popup">
-                                    <div class="popup">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <h3>brand</h3>
-                                                <ul class="nav">
-                                                    <li><a href="#">canon</a></li>
-                                                    <li><a href="#">samsung</a></li>
-                                                    <li><a href="#">nikon</a></li>
-                                                    <li><a href="#">apple</a></li>
-                                                    <li><a href="#">toshiba</a></li>
-                                                    <li><a href="#">hp</a></li>
-                                                    <li><a href="#">nokia</a></li>
-                                                    <li><a href="#">Sony</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-md-3 has-sep">
-                                                <h3>accessories</h3>
-                                                <ul class="nav">
-                                                    <li><a href="#">Duis</a></li>
-                                                    <li><a href="#">autem </a></li>
-                                                    <li><a href="#">vel eum </a></li>
-                                                    <li><a href="#">iriure </a></li>
-                                                    <li><a href="#">dolor </a></li>
-                                                    <li><a href="#">hendrerit </a></li>
-                                                    <li><a href="#">vulputate </a></li>
-                                                    <li><a href="#">velit </a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-md-6 has-sep">
-                                                <div class="custom-menu-right">
-                                                    <div class="box-banner media">
-                                                        <div class="media-body">
-                                                            <h3>bags &amp; cases</h3>
-                                                            <div class="price-sale">40 <sup>%</sup><sub>off</sub></div>
-                                                            <a href="http://www.plazathemes.com/">&gt;shop now</a>
+                                                    {
+                                                        <div class="col-md-3 ">
+                                                            <h3>@category.Name</h3>
+                                                            <ul class="nav">
+                                                                @foreach (var child in category.ChildCategories)
+                                                                {
+                                                                    <li><a href="#">@child.Name</a></li>
+                                                                }
+                                                            </ul>
                                                         </div>
-                                                        <div class="media-right"><img src="images/products/img-01.jpg" alt=""></div>
-                                                    </div>
-                                                    <div class="box-banner media">
-                                                        <div class="media-body">
-                                                            <h3>Lens Fulters</h3>
-                                                            <div class="price-sale">50 <sup>%</sup><sub>off</sub></div>
-                                                            <a href="http://www.plazathemes.com/">&gt;shop now</a>
-                                                        </div>
-                                                        <div class="media-right"><img src="images/products/img-02.jpg" alt=""></div>
-                                                    </div>
-                                                    <div class="box-banner media">
-                                                        <div class="media-body">
-                                                            <h3>Flashes</h3>
-                                                            <div class="price-sale">30 <sup>%</sup><sub>off</sub></div>
-                                                            <a href="http://www.plazathemes.com/">&gt;shop now</a>
-                                                        </div>
-                                                        <div class="media-right"><img src="images/products/img-03.jpg" alt=""></div>
-                                                    </div>
-                                                </div>
+                                                    }
+
+                                                }
+
                                             </div>
-                                        </div>
-                                        <br>
-                                        <a href="#" class="ads"><img alt="" src="images/ads/ads-08.jpg" class="img-responsive"></a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="#">Smart phone</a>
-                                <div class="wrap-popup column2">
-                                    <div class="popup">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <h3>brand</h3>
-                                                <ul class="nav">
-                                                    <li><a href="#">canon</a></li>
-                                                    <li><a href="#">samsung</a></li>
-                                                    <li><a href="#">nikon</a></li>
-                                                    <li><a href="#">apple</a></li>
-                                                    <li><a href="#">toshiba</a></li>
-                                                    <li><a href="#">hp</a></li>
-                                                    <li><a href="#">nokia</a></li>
-                                                    <li><a href="#">Sony</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-md-6 has-sep">
-                                                <h3>accessories</h3>
-                                                <ul class="nav">
-                                                    <li><a href="#">Duis</a></li>
-                                                    <li><a href="#">autem </a></li>
-                                                    <li><a href="#">vel eum </a></li>
-                                                    <li><a href="#">iriure </a></li>
-                                                    <li><a href="#">dolor </a></li>
-                                                    <li><a href="#">hendrerit </a></li>
-                                                    <li><a href="#">vulputate </a></li>
-                                                    <li><a href="#">velit </a></li>
-                                                </ul>
-                                            </div>
+
                                         </div>
                                     </div>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="#">Destop</a>
-                                <div class="wrap-popup column2">
-                                    <div class="popup">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <h3>brand</h3>
-                                                <ul class="nav">
-                                                    <li><a href="#">canon</a></li>
-                                                    <li><a href="#">samsung</a></li>
-                                                    <li><a href="#">nikon</a></li>
-                                                    <li><a href="#">apple</a></li>
-                                                    <li><a href="#">toshiba</a></li>
-                                                    <li><a href="#">hp</a></li>
-                                                    <li><a href="#">nokia</a></li>
-                                                    <li><a href="#">Sony</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-md-6 has-sep">
-                                                <h3>accessories</h3>
-                                                <ul class="nav">
-                                                    <li><a href="#">Duis</a></li>
-                                                    <li><a href="#">autem </a></li>
-                                                    <li><a href="#">vel eum </a></li>
-                                                    <li><a href="#">iriure </a></li>
-                                                    <li><a href="#">dolor </a></li>
-                                                    <li><a href="#">hendrerit </a></li>
-                                                    <li><a href="#">vulputate </a></li>
-                                                    <li><a href="#">velit </a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="#">Tablet</a>
-                                <div class="wrap-popup column1">
-                                    <div class="popup">
-                                        <h3>brand</h3>
-                                        <ul class="nav">
-                                            <li><a href="#">canon</a></li>
-                                            <li><a href="#">samsung</a></li>
-                                            <li><a href="#">nikon</a></li>
-                                            <li><a href="#">apple</a></li>
-                                            <li><a href="#">toshiba</a></li>
-                                            <li><a href="#">hp</a></li>
-                                            <li><a href="#">nokia</a></li>
-                                            <li><a href="#">Sony</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="nosub"><a href="#">Electtronic</a></li>
-                            <li class="nosub"><a href="#">New arrivals</a></li>
-                            <li class="nosub"><a href="#">Bestseller</a></li>
-                            <li class="more-menu"><a href="#">Bags &amp; Cases</a></li>
-                            <li class="more-menu"><a href="#">Accessories</a></li>
-                            <li class="view-more"><a href="#">More category</a></li>
-                        </ul>
+                                </li>
+                            }
+
                     </div>
                 </div>
             </div>
@@ -219,57 +56,122 @@
             <script type="text/javascript" src="assets/plugins/sliderpro/js/jquery.sliderPro.min.js"></script>
             <div id="sliderpro3" class="slider-pro main-slider">
                 <div class="sp-slides">
-                    <div class="sp-slide">
-                        <img class="sp-image"
-                             src="assets/media/main-slider/d.png"
-                             data-src="assets/media/main-slider/d.png"
-                             data-retina="assets/media/main-slider/d.png" alt="img" />
-                        <div class="item-wrap sp-layer  sp-padding" data-horizontal="605" data-vertical="25"
-                             data-show-transition="left" data-hide-transition="up" data-show-delay="400" data-hide-delay="200"><img src="assets/media/main-slider/d1.png" alt="slide element" /></div>
-                        <div class="item-wrap sp-layer  sp-padding" data-horizontal="635" data-vertical="95"
-                             data-show-transition="left" data-hide-transition="up" data-show-delay="700" data-hide-delay="200"><img src="assets/media/main-slider/d2.png" alt="slide element" /></div>
-                        <div class="item-wrap sp-layer  sp-padding" data-horizontal="25" data-vertical="25"
-                             data-show-transition="left" data-hide-transition="up" data-show-delay="500" data-hide-delay="300"><a href="category-1.html"><img src="assets/media/main-slider/d3.png" alt="slide element" /></a></div>
-                    </div>
-
-
-                    <div class="sp-slide">
-                        <img class="sp-image"
-                             src="assets/media/main-slider/z.png"
-                             data-src="assets/media/main-slider/z.png"
-                             data-retina="assets/media/main-slider/z.png" alt="img" />
-                        <div class="item-wrap sp-layer  sp-padding" data-horizontal="205px" data-vertical="25"
-                             data-show-transition="left" data-hide-transition="up" data-show-delay="400" data-hide-delay="200"><img src="assets/media/main-slider/z1.png" alt="slide element" /></div>
-                        <div class="item-wrap sp-layer  sp-padding" data-horizontal="270" data-vertical="135"
-                             data-show-transition="left" data-hide-transition="up" data-show-delay="700" data-hide-delay="200"><img src="assets/media/main-slider/z2.png" alt="slide element" /></div>
-                        <div class="item-wrap sp-layer  sp-padding" data-horizontal="25" data-vertical="-10"
-                             data-show-transition="left" data-hide-transition="up" data-show-delay="500" data-hide-delay="300"><a href="category-1.html"><img src="assets/media/main-slider/z3.png" alt="slide element" /></a></div>
-                    </div>
-
-
-
+                    @foreach (var campaing in ViewBag.Campaigns)
+            {
+                        <div class="sp-slide">
+                            <img class="sp-image"
+                                 src="~/uploads/6-2017/@campaing.ImagePath"
+                                 data-retina="~/uploads/6-2017/@campaing.ImagePath" />
+                            <div class="item-wrap sp-layer  sp-padding" data-horizontal="605" data-vertical="25"
+                                 data-show-transition="left" data-hide-transition="up" data-show-delay="400" data-hide-delay="200"><img src="assets/media/main-slider/d1.png" alt="slide element" /></div>
+                            <div class="item-wrap sp-layer  sp-padding" data-horizontal="635" data-vertical="95"
+                                 data-show-transition="left" data-hide-transition="up" data-show-delay="700" data-hide-delay="200"><img src="assets/media/main-slider/d2.png" alt="slide element" /></div>
+                            <div class="item-wrap sp-layer  sp-padding" data-horizontal="25" data-vertical="25"
+                                 data-show-transition="left" data-hide-transition="up" data-show-delay="500" data-hide-delay="300"><a href="category-1.html"><img src="assets/media/main-slider/d3.png" alt="slide element" /></a></div>
+                        </div>
+                    }
                 </div>
             </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="section-area">
+                            <ul id="filter" class="clearfix wow bounceInLeft" data-wow-duration="2s" data-wow-delay=".5s">
+                                <li><a href="" data-filter="*" class="current">ALL PRODUCTS</a></li>
+                                <li><a href="" data-filter=".best">BEST SELLERS</a></li>
+                                <li><a href="" data-filter=".newest">NEWEST ADDED</a></li>
+                            </ul>
+                        </div>
+                        <!-- end section-area -->
+                    </div>
+                    <!-- end col -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+            <div class="section-area">
+                <div class="isotope-frame wow bounceInRight" data-wow-duration="2s">
+                    <ul class="isotope-filter products clearfix">
+                        @foreach (var campaing in ViewBag.Campaigns)
+                        {
+                            <li class="isotope-item best products__item">
+                                <a class="products__foto" href="~/uploads/6-2017/@campaing.ImagePath" rel="prettyPhoto"> <img src="~/uploads/6-2017/@campaing.ImagePath" style="width:260px;height:260px" height="260" width="260" alt="Goods"> </a>
+                                <h4 class="products__name"><a href="#">@campaing.Name</a></h4>
 
+                                <div class="products__inner clearfix">
+                                    <span class="products__price-new">@campaing.StartedDate</span> <span class="products__price-old">@campaing.EndDate</span>
+                                    <ul class="rating">
+                                        <li><i class="icon fa fa-star"></i></li>
+                                        <li><i class="icon fa fa-star"></i></li>
+                                        <li><i class="icon fa fa-star"></i></li>
+                                        <li><i class="icon fa fa-star"></i></li>
+                                        <li><i class="icon fa fa-star disabled"></i></li>
+                                    </ul>
+                                </div>
+                                <footer class="products-btns clearfix">
+                                    <p>@campaing.Description</p>
+                                </footer>
+                                <span class="label-wrap"><span class="label label-danger">SALE</span></span>
+                            </li>
+                        }
 
-            <!-- end main-slider -->
-
-            <ul class="category-images cat-img-2">
-                <li class="grid">
-                    <figure class="effect-bubba wow fadeInLeft" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
-                        <img class="img-responsive" src="assets/media/420x170/1.jpg" height="170" width="420" alt="Foto">
-                        <figcaption> <span class="links-categories__inner"> <span class="links-categories__label">NEW</span> <span class="links-categories__name">FASHION COLLECTION</span> </span> <a href="#">View more</a> </figcaption>
-                    </figure>
-                </li>
-                <li class="grid left-space right-space">
-                    <figure class="effect-bubba wow fadeInUp" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
-                        <img class="img-responsive" src="assets/media/420x170/2.jpg" height="170" width="420" alt="Foto">
-                        <figcaption> <span class="links-categories__inner"> <span class="links-categories__label">NEW</span> <span class="links-categories__name">PERFUMES COLLECTION</span> </span> <a href="#">View more</a> </figcaption>
-                    </figure>
-                </li>
-
-            </ul>
+                    </ul>
+                </div>
+            </div>
             <!-- end section-area -->
+            @*<div id="sliderpro3" class="slider-pro main-slider">
+                    <div class="sp-slides">
+                        <div class="sp-slide">
+                            <img class="sp-image"
+                                 src="assets/media/main-slider/d.png"
+                                 data-src="assets/media/main-slider/d.png"
+                                 data-retina="assets/media/main-slider/d.png" alt="img" />
+                            <div class="item-wrap sp-layer  sp-padding" data-horizontal="605" data-vertical="25"
+                                 data-show-transition="left" data-hide-transition="up" data-show-delay="400" data-hide-delay="200"><img src="assets/media/main-slider/d1.png" alt="slide element" /></div>
+                            <div class="item-wrap sp-layer  sp-padding" data-horizontal="635" data-vertical="95"
+                                 data-show-transition="left" data-hide-transition="up" data-show-delay="700" data-hide-delay="200"><img src="assets/media/main-slider/d2.png" alt="slide element" /></div>
+                            <div class="item-wrap sp-layer  sp-padding" data-horizontal="25" data-vertical="25"
+                                 data-show-transition="left" data-hide-transition="up" data-show-delay="500" data-hide-delay="300"><a href="category-1.html"><img src="assets/media/main-slider/d3.png" alt="slide element" /></a></div>
+                        </div>
+
+
+                        <div class="sp-slide">
+                            <img class="sp-image"
+                                 src="assets/media/main-slider/z.png"
+                                 data-src="assets/media/main-slider/z.png"
+                                 data-retina="assets/media/main-slider/z.png" alt="img" />
+                            <div class="item-wrap sp-layer  sp-padding" data-horizontal="205px" data-vertical="25"
+                                 data-show-transition="left" data-hide-transition="up" data-show-delay="400" data-hide-delay="200"><img src="assets/media/main-slider/z1.png" alt="slide element" /></div>
+                            <div class="item-wrap sp-layer  sp-padding" data-horizontal="270" data-vertical="135"
+                                 data-show-transition="left" data-hide-transition="up" data-show-delay="700" data-hide-delay="200"><img src="assets/media/main-slider/z2.png" alt="slide element" /></div>
+                            <div class="item-wrap sp-layer  sp-padding" data-horizontal="25" data-vertical="-10"
+                                 data-show-transition="left" data-hide-transition="up" data-show-delay="500" data-hide-delay="300"><a href="category-1.html"><img src="assets/media/main-slider/z3.png" alt="slide element" /></a></div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+
+                <!-- end main-slider -->
+
+                <ul class="category-images cat-img-2">
+                    <li class="grid">
+                        <figure class="effect-bubba wow fadeInLeft" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                            <img class="img-responsive" src="assets/media/420x170/1.jpg" height="170" width="420" alt="Foto">
+                            <figcaption> <span class="links-categories__inner"> <span class="links-categories__label">NEW</span> <span class="links-categories__name">FASHION COLLECTION</span> </span> <a href="#">View more</a> </figcaption>
+                        </figure>
+                    </li>
+                    <li class="grid left-space right-space">
+                        <figure class="effect-bubba wow fadeInUp" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
+                            <img class="img-responsive" src="assets/media/420x170/2.jpg" height="170" width="420" alt="Foto">
+                            <figcaption> <span class="links-categories__inner"> <span class="links-categories__label">NEW</span> <span class="links-categories__name">PERFUMES COLLECTION</span> </span> <a href="#">View more</a> </figcaption>
+                        </figure>
+                    </li>
+
+                </ul>
+                <!-- end section-area -->*@
         </div>
         <!-- end col -->
     </div>
@@ -316,7 +218,51 @@
     <!-- end row -->
 </div>
 <!-- end container -->
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="section-area">
+                <section class="section-area section-list-posts wow bounceInRight" data-wow-duration="2s">
+                    <h3 class="ui-title-block"><i class="icon fa fa-bars"></i>LATEST BLOG POSTS</h3>
 
+                    <div class="wrap-slider">
+
+                        <div class="list-posts_mod-a list-posts_carusel list-unstyled owl-carousel owl-theme_mod-b owl-theme enable-owl-carousel"
+                             data-min480="1"
+                             data-min768="2"
+                             data-min992="2"
+                             data-min1200="2"
+                             data-pagination="false"
+                             data-navigation="true"
+                             data-auto-play="4000"
+                             data-stop-on-hover="true">
+                            @foreach (var product in ViewBag.Products)
+                            {
+                                <article class="list-posts__article clearfix">
+                                    <div class="row" style="width:300px;height:300px">
+                                        <div class="img-hover-effect"><img class="img-responsive" src="~/uploads/6-2017/@product.ImagePath" style="width:260px;height:260px" alt="Foto"></div>
+                                        <div class="list-posts__info"> <i class="icon icon-user"></i><span class="list-posts__autor">By <a class="color_primary" href="javascript:void(0);">MEX</a></span> <i class="icon icon-calendar"></i><span class="list-posts__date"> June 20, 2015 </span> </div>
+                                        <h2 class="list-posts__title">Praesent auctor justo et pulvinar</h2>
+                                        <p>@product.Description</p>
+                                        <a class="btn btn-info pull-right" href="javascript:void(0);">READ MORE</a>
+                                    </div>
+                                </article>
+
+
+                            }
+                        </div>
+                    </div>
+                    <!-- end wrap-slider -->
+                </section>
+            </div>
+            <!-- end section-area -->
+        </div>
+        <!-- end col -->
+    </div>
+    <!-- end row -->
+</div>
+<!-- end container -->
+<!-- end section-area -->
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
@@ -341,190 +287,29 @@
             <div class="section-area">
                 <div class="isotope-frame wow bounceInRight" data-wow-duration="2s">
                     <ul class="isotope-filter products clearfix">
-                        <li class="isotope-item best products__item">
-                            <a class="products__foto" href="assets/media/catalog/1.jpg" rel="prettyPhoto"> <img src="assets/media/catalog/1.jpg" height="260" width="260" alt="Goods"> </a>
-                            <h4 class="products__name"><a href="#">Montblanc Meisterstück</a></h4>
-                            <div class="products__category"><a href="#">WATCHES</a></div>
-                            <div class="products__inner clearfix">
-                                <span class="products__price-new">$4500</span> <span class="products__price-old">$89.00</span>
-                                <ul class="rating">
-                                    <li><i class="icon fa fa-star"></i></li>
-                                    <li><i class="icon fa fa-star"></i></li>
-                                    <li><i class="icon fa fa-star"></i></li>
-                                    <li><i class="icon fa fa-star"></i></li>
-                                    <li><i class="icon fa fa-star disabled"></i></li>
-                                </ul>
-                            </div>
-                            <footer class="products-btns clearfix">
-                                <button class="products-btns__btn products-btns__add"><i class="icon icon-bag color_primary" aria-hidden="true"></i> Add to cart</button>
-                                <span class="products-btns__other pull-right">
-                                    <button class="products-btns__btn"><i class="icon icon-shuffle"></i></button>
-                                    <button class="products-btns__btn"><i class="icon icon-heart"></i></button>
-                                </span>
-                            </footer>
-                            <span class="label-wrap"><span class="label label-danger">SALE</span></span>
-                        </li>
-                        <li class="isotope-item newest products__item">
-                            <a class="products__foto" href="assets/media/catalog/2.jpg" rel="prettyPhoto"> <img src="assets/media/catalog/2.jpg" height="260" width="260" alt="Goods"> </a>
-                            <h4 class="products__name"><a href="#">Samsung Galaxy S6 White</a></h4>
-                            <div class="products__category"><a href="#">SMARTPHONES</a></div>
-                            <div class="products__inner clearfix">
-                                <span class="products__price-new">$720</span> <span class="products__price-old">$89.00</span>
-                                <ul class="rating">
-                                    <li><i class="icon fa fa-star"></i></li>
-                                    <li><i class="icon fa fa-star"></i></li>
-                                    <li><i class="icon fa fa-star"></i></li>
-                                    <li><i class="icon fa fa-star"></i></li>
-                                    <li><i class="icon fa fa-star disabled"></i></li>
-                                </ul>
-                            </div>
-                            <footer class="products-btns clearfix">
-                                <button class="products-btns__btn products-btns__add"><i class="icon icon-bag color_primary" aria-hidden="true"></i> Add to cart</button>
-                                <span class="products-btns__other pull-right">
-                                    <button class="products-btns__btn"><i class="icon icon-shuffle"></i></button>
-                                    <button class="products-btns__btn"><i class="icon icon-heart"></i></button>
-                                </span>
-                            </footer>
-                            <span class="label-wrap"><span class="label label-warning">NEW</span></span>
-                        </li>
-                        <li class="isotope-item hot products__item">
-                            <a class="products__foto" href="assets/media/catalog/3.jpg" rel="prettyPhoto"> <img src="assets/media/catalog/3.jpg" height="260" width="260" alt="Goods"> </a>
-                            <h4 class="products__name"><a href="#">Perfume de Toilet</a></h4>
-                            <div class="products__category"><a href="#">PERFUMES</a></div>
-                            <div class="products__inner clearfix">
-                                <span class="products__price-new">$235</span> <span class="products__price-old">$89.00</span>
-                                <ul class="rating">
-                                    <li><i class="icon fa fa-star"></i></li>
-                                    <li><i class="icon fa fa-star"></i></li>
-                                    <li><i class="icon fa fa-star"></i></li>
-                                    <li><i class="icon fa fa-star"></i></li>
-                                    <li><i class="icon fa fa-star disabled"></i></li>
-                                </ul>
-                            </div>
-                            <footer class="products-btns clearfix">
-                                <button class="products-btns__btn products-btns__add"><i class="icon icon-bag color_primary" aria-hidden="true"></i> Add to cart</button>
-                                <span class="products-btns__other pull-right">
-                                    <button class="products-btns__btn"><i class="icon icon-shuffle"></i></button>
-                                    <button class="products-btns__btn"><i class="icon icon-heart"></i></button>
-                                </span>
-                            </footer>
-                            <span class="label-wrap"><span class="label label-info">HOT</span></span>
-                        </li>
-                        <li class="isotope-item newest products__item">
-                            <a class="products__foto" href="assets/media/catalog/4.jpg" rel="prettyPhoto"> <img src="assets/media/catalog/4.jpg" height="260" width="260" alt="Goods"> </a>
-                            <h4 class="products__name"><a href="#">Beats Solo Wireless</a></h4>
-                            <div class="products__category"><a href="#">HEADPHONES</a></div>
-                            <div class="products__inner clearfix">
-                                <span class="products__price-new">$360</span> <span class="products__price-old">$89.00</span>
-                                <ul class="rating">
-                                    <li><i class="icon fa fa-star"></i></li>
-                                    <li><i class="icon fa fa-star"></i></li>
-                                    <li><i class="icon fa fa-star"></i></li>
-                                    <li><i class="icon fa fa-star"></i></li>
-                                    <li><i class="icon fa fa-star disabled"></i></li>
-                                </ul>
-                            </div>
-                            <footer class="products-btns clearfix">
-                                <button class="products-btns__btn products-btns__add"><i class="icon icon-bag color_primary" aria-hidden="true"></i> Add to cart</button>
-                                <span class="products-btns__other pull-right">
-                                    <button class="products-btns__btn"><i class="icon icon-shuffle"></i></button>
-                                    <button class="products-btns__btn"><i class="icon icon-heart"></i></button>
-                                </span>
-                            </footer>
-                            <span class="label-wrap"><span class="label label-warning">NEW</span></span>
-                        </li>
-                        <li class="isotope-item hot products__item">
-                            <a class="products__foto" href="assets/media/catalog/9.jpg" rel="prettyPhoto"> <img src="assets/media/catalog/9.jpg" height="260" width="260" alt="Goods"> </a>
-                            <h4 class="products__name"><a href="#">Apple Macbook Air 13”</a></h4>
-                            <div class="products__category"><a href="#">LAPTOPS</a></div>
-                            <div class="products__inner clearfix">
-                                <span class="products__price-new">$1.333</span> <span class="products__price-old">$89.00</span>
-                                <ul class="rating">
-                                    <li><i class="icon fa fa-star"></i></li>
-                                    <li><i class="icon fa fa-star"></i></li>
-                                    <li><i class="icon fa fa-star"></i></li>
-                                    <li><i class="icon fa fa-star"></i></li>
-                                    <li><i class="icon fa fa-star disabled"></i></li>
-                                </ul>
-                            </div>
-                            <footer class="products-btns clearfix">
-                                <button class="products-btns__btn products-btns__add"><i class="icon icon-bag color_primary" aria-hidden="true"></i> Add to cart</button>
-                                <span class="products-btns__other pull-right">
-                                    <button class="products-btns__btn"><i class="icon icon-shuffle"></i></button>
-                                    <button class="products-btns__btn"><i class="icon icon-heart"></i></button>
-                                </span>
-                            </footer>
-                            <span class="label-wrap"><span class="label label-info">HOT</span></span>
-                        </li>
-                        <li class="isotope-item best products__item">
-                            <a class="products__foto" href="assets/media/catalog/10.jpg" rel="prettyPhoto"> <img src="assets/media/catalog/10.jpg" height="260" width="260" alt="Goods"> </a>
-                            <h4 class="products__name"><a href="#">Eye Shadow Makeup Kit</a></h4>
-                            <div class="products__category"><a href="#">MAKEUP</a></div>
-                            <div class="products__inner clearfix">
-                                <span class="products__price-new">$80</span> <span class="products__price-old">$89.00</span>
-                                <ul class="rating">
-                                    <li><i class="icon fa fa-star"></i></li>
-                                    <li><i class="icon fa fa-star"></i></li>
-                                    <li><i class="icon fa fa-star"></i></li>
-                                    <li><i class="icon fa fa-star"></i></li>
-                                    <li><i class="icon fa fa-star disabled"></i></li>
-                                </ul>
-                            </div>
-                            <footer class="products-btns clearfix">
-                                <button class="products-btns__btn products-btns__add"><i class="icon icon-bag color_primary" aria-hidden="true"></i> Add to cart</button>
-                                <span class="products-btns__other pull-right">
-                                    <button class="products-btns__btn"><i class="icon icon-shuffle"></i></button>
-                                    <button class="products-btns__btn"><i class="icon icon-heart"></i></button>
-                                </span>
-                            </footer>
-                            <span class="label-wrap"><span class="label label-danger">SALE</span></span>
-                        </li>
-                        <li class="isotope-item best products__item">
-                            <a class="products__foto" href="assets/media/catalog/5.jpg" rel="prettyPhoto"> <img src="assets/media/catalog/5.jpg" height="260" width="260" alt="Goods"> </a>
-                            <h4 class="products__name"><a href="#">MP3 Active 2 Neon Blue 4GB</a></h4>
-                            <div class="products__category"><a href="#">Music Players</a></div>
-                            <div class="products__inner clearfix">
-                                <span class="products__price-new">$235</span> <span class="products__price-old">$89.00</span>
-                                <ul class="rating">
-                                    <li><i class="icon fa fa-star"></i></li>
-                                    <li><i class="icon fa fa-star"></i></li>
-                                    <li><i class="icon fa fa-star"></i></li>
-                                    <li><i class="icon fa fa-star"></i></li>
-                                    <li><i class="icon fa fa-star disabled"></i></li>
-                                </ul>
-                            </div>
-                            <footer class="products-btns clearfix">
-                                <button class="products-btns__btn products-btns__add"><i class="icon icon-bag color_primary" aria-hidden="true"></i> Add to cart</button>
-                                <span class="products-btns__other pull-right">
-                                    <button class="products-btns__btn"><i class="icon icon-shuffle"></i></button>
-                                    <button class="products-btns__btn"><i class="icon icon-heart"></i></button>
-                                </span>
-                            </footer>
-                            <span class="label-wrap"><span class="label label-danger">SALE</span></span>
-                        </li>
-                        <li class="isotope-item hot products__item">
-                            <a class="products__foto" href="assets/media/catalog/7.jpg" rel="prettyPhoto"> <img src="assets/media/catalog/7.jpg" height="260" width="260" alt="Goods"> </a>
-                            <h4 class="products__name"><a href="#">Elekta 50” UHD 3D LED TV</a></h4>
-                            <div class="products__category"><a href="#">LED TV’s</a></div>
-                            <div class="products__inner clearfix">
-                                <span class="products__price-new">$685</span> <span class="products__price-old">$89.00</span>
-                                <ul class="rating">
-                                    <li><i class="icon fa fa-star"></i></li>
-                                    <li><i class="icon fa fa-star"></i></li>
-                                    <li><i class="icon fa fa-star"></i></li>
-                                    <li><i class="icon fa fa-star"></i></li>
-                                    <li><i class="icon fa fa-star disabled"></i></li>
-                                </ul>
-                            </div>
-                            <footer class="products-btns clearfix">
-                                <button class="products-btns__btn products-btns__add"><i class="icon icon-bag color_primary" aria-hidden="true"></i> Add to cart</button>
-                                <span class="products-btns__other pull-right">
-                                    <button class="products-btns__btn"><i class="icon icon-shuffle"></i></button>
-                                    <button class="products-btns__btn"><i class="icon icon-heart"></i></button>
-                                </span>
-                            </footer>
-                            <span class="label-wrap"><span class="label label-info">HOT</span></span>
-                        </li>
+                        @foreach (var product in ViewBag.Products)
+                        {
+                            <li class="isotope-item best products__item">
+                                <a class="products__foto" href="~/uploads/6-2017/@product.ImagePath" rel="prettyPhoto"> <img src="~/uploads/6-2017/@product.ImagePath" style="width:260px;height:260px" height="260" width="260" alt="Goods"> </a>
+                                <h4 class="products__name"><a href="#">@product.Name</a></h4>
+                                <div class="products__category"><a href="#">@product.Category.ParentCategory.Name</a></div>
+                                <div class="products__inner clearfix">
+                                    <span class="products__price-new">@product.DiscountPrice</span> <span class="products__price-old">@product.Price</span>
+                                    <ul class="rating">
+                                        <li><i class="icon fa fa-star"></i></li>
+                                        <li><i class="icon fa fa-star"></i></li>
+                                        <li><i class="icon fa fa-star"></i></li>
+                                        <li><i class="icon fa fa-star"></i></li>
+                                        <li><i class="icon fa fa-star disabled"></i></li>
+                                    </ul>
+                                </div>
+                                <footer class="products-btns clearfix">
+                                    <p>@product.Description</p>
+                                </footer>
+                                <span class="label-wrap"><span class="label label-danger">SALE</span></span>
+                            </li>
+                        }
+
                     </ul>
                 </div>
             </div>
@@ -955,8 +740,4 @@
     <!-- end container -->
 </div>
 <!-- end border-main -->
-
-
-
-
 <!-- end container -->
