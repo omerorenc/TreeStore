@@ -8,18 +8,19 @@ using Microsoft.EntityFrameworkCore;
 using TreeStore.Data;
 using TreeStore.Models;
 using TreeStore.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TreeStore.Controllers
 {
+    [Authorize(Roles = "Firma Sahibi")]
     public class MyCampaignsController : Controller
     {
         private readonly ICampaignService CampaignService;
-
         public MyCampaignsController(ICampaignService _CampaignService)
         {
             this.CampaignService = _CampaignService;
         }
-
+        
         // GET: MyCampaigns
         public IActionResult Index()
         {
@@ -47,8 +48,8 @@ namespace TreeStore.Controllers
         // GET: MyCampaigns/Create
         public IActionResult Create()
         {
-            var myCampaign = new Campaign();
-            return View(myCampaign);
+                var myCampaign = new Campaign();
+                return View(myCampaign);
         }
 
         // POST: MyCampaigns/Create
@@ -58,12 +59,12 @@ namespace TreeStore.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create([Bind("Description,Slogan,StartedDate,EndDate,ImagePath,IsActive,Id,Name,CreateDate,UpdateDate,CreatedBy,UpdateBy")] Campaign campaign)
         {
-            if (ModelState.IsValid)
-            {
-                CampaignService.CreateCampaign(campaign);
-                CampaignService.SaveCampaign();
-                return RedirectToAction("Index");
-            }
+                if (ModelState.IsValid)
+                {
+                    CampaignService.CreateCampaign(campaign);
+                    CampaignService.SaveCampaign();
+                    return RedirectToAction("Index");
+                }
             return View(campaign);
         }
 

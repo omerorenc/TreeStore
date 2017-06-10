@@ -64,8 +64,8 @@ namespace TreeStore.Data
 
         private static void AddRoles(RoleManager<Role> _roleManager)
         {
-            string[] roles = { "Admin", "Firma Sahibi" };
-            string[] stamp = { "1", "2" };
+            string[] roles = { "Admin", "Firma Sahibi" ,"Onaylanmamis Uye"};
+            string[] stamp = { "1", "2" , "3" };
 
             for (int i = 0; i < roles.Count(); i++)
             {

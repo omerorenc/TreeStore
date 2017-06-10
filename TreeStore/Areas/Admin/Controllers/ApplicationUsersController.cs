@@ -18,9 +18,10 @@ namespace TreeStore.Areas.Admin.Controllers
     {
        
         private readonly ApplicationDbContext _context;
-
-        public ApplicationUsersController(ApplicationDbContext context)
+        private readonly UserManager<ApplicationUser> _userManager;
+        public ApplicationUsersController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
+            this._userManager = userManager;
             _context = context;    
         }
 
@@ -83,7 +84,6 @@ namespace TreeStore.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            ViewData["Roles"] = new SelectList(_context.Roles.ToList(), "Id", "Name");
             return View(applicationUser);
         }
 
@@ -103,7 +103,13 @@ namespace TreeStore.Areas.Admin.Controllers
             {
                 try
                 {
-                    ViewData["Roles"] = new SelectList(_context.Roles.ToList(), "Id", "Name");
+                    if (applicationUser.EmailConfirmed == true)
+                    {
+                        await _userManager.RemoveFromRoleAsync(applicationUser, "Onaylanmamis Uye");
+                        _context.Update(applicationUser);
+                        await _context.SaveChangesAsync();
+                        await _userManager.AddToRoleAsync(applicationUser, "Firma Sahibi");
+                    }
                     _context.Update(applicationUser);
                     await _context.SaveChangesAsync();
                 }

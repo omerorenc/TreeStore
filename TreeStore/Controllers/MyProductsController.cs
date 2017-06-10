@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using TreeStore.Data;
 using TreeStore.Models;
 using TreeStore.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TreeStore.Controllers
 {
+    [Authorize(Roles = "Firma Sahibi")]
     public class MyProductsController : Controller
     {
         private readonly ICategoryService categoryService;

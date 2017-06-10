@@ -14,6 +14,7 @@ namespace TreeStore.Models
             Categories = new HashSet<Category>();
             Products = new HashSet<Product>();
             Campaigns = new HashSet<Campaign>();
+            this.EmailConfirmed = false;
         }
         public string CompanyName { get; set; }
         public virtual ICollection<Category>Categories{ get; set; }

@@ -13,6 +13,7 @@ using TreeStore.Services;
 using TreeStore.Models.Entities;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
+using TreeStore.Data;
 
 namespace TreeStore.Controllers
 {
@@ -38,7 +39,7 @@ namespace TreeStore.Controllers
             _logger = loggerFactory.CreateLogger<AccountController>();
             _roleManager = roleManager;
         }
-
+        
         //
         // GET: /Account/Login
         [HttpGet]
@@ -98,6 +99,7 @@ namespace TreeStore.Controllers
         [AllowAnonymous]
         public IActionResult Register(string returnUrl = null)
         {
+          
             ViewBag.Roles  = _roleManager.Roles.ToList<Role>();
             ViewData["ReturnUrl"] = returnUrl;
             return View();
@@ -110,21 +112,15 @@ namespace TreeStore.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model, IFormCollection frm, string returnUrl = null)
         {
+        
             ViewData["ReturnUrl"] = returnUrl;
-         
-           
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Address=model.Address, CompanyName=model.CompanyName, Fax=model.Fax, Logo=model.Logo, Phone=model.Phone };
                 var result = await _userManager.CreateAsync(user, model.Password);
-
-
-
-              
-
                 if (result.Succeeded)
                 {
-                    await _userManager.AddToRolesAsync(user, new string[] { "Firma Sahibi" });
+                    await _userManager.AddToRolesAsync(user, new string[] { "Onaylanmamis Uye" });
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
                     // Send an email with this link
                     //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
