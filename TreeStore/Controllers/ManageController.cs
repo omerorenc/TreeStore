@@ -10,6 +10,8 @@ using Microsoft.Extensions.Options;
 using TreeStore.Models;
 using TreeStore.Models.ManageViewModels;
 using TreeStore.Services;
+using TreeStore.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace TreeStore.Controllers
 {
@@ -19,6 +21,7 @@ namespace TreeStore.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly string _externalCookieScheme;
+        private readonly ApplicationDbContext _context;
      
         private readonly ILogger _logger;
 
@@ -26,13 +29,13 @@ namespace TreeStore.Controllers
           UserManager<ApplicationUser> userManager,
           SignInManager<ApplicationUser> signInManager,
           IOptions<IdentityCookieOptions> identityCookieOptions,
-      
+            ApplicationDbContext context,
           ILoggerFactory loggerFactory)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _externalCookieScheme = identityCookieOptions.Value.ExternalCookieAuthenticationScheme;
-        
+            this._context = context;
             _logger = loggerFactory.CreateLogger<ManageController>();
         }
 
@@ -86,32 +89,30 @@ namespace TreeStore.Controllers
             return RedirectToAction(nameof(ManageLogins), new { Message = message });
         }
 
-        //
-        // GET: /Manage/AddPhoneNumber
-        public IActionResult AddPhoneNumber()
+        public async Task<IActionResult> Edit()
         {
-            return View();
+            var applicationUser = await _context.ApplicationUser.SingleOrDefaultAsync(m => m.UserName == User.Identity.Name);
+            if (applicationUser == null)
+            {
+                return NotFound();
+            }
+            return View(applicationUser);
         }
 
-        //
-        // POST: /Manage/AddPhoneNumber
+        // POST: Admin/ApplicationUsers/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddPhoneNumber(AddPhoneNumberViewModel model)
+        public async Task<IActionResult> Edit(ApplicationUser applicationUser)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return View(model);
+                _context.Update(applicationUser);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
             }
-            // Generate the token and send it
-            var user = await GetCurrentUserAsync();
-            if (user == null)
-            {
-                return View("Error");
-            }
-            var code = await _userManager.GenerateChangePhoneNumberTokenAsync(user, model.PhoneNumber);
-            
-            return RedirectToAction(nameof(VerifyPhoneNumber), new { PhoneNumber = model.PhoneNumber });
+            return View(applicationUser);
         }
 
         //

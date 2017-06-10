@@ -28,8 +28,6 @@
                          <div class="pull-left">
                              <label class="rememberme mt-checkbox mt-checkbox-outline"> </label>
                                  <input type="checkbox" /> Beni hatırla
-                                    
-                                
                                  </div>
                               <br />
                             </div>
@@ -38,12 +36,9 @@
                                 <button style="height:35px;" class="btn btn-primary">Giriş Yap</button>
                                 </div>
                             </div>
-
-                        
                     </form>
                 </section>
             </div>
-          
             <div class="col-md-2"></div>
             <div class="col-md-5">
                 <section class="section-area">
@@ -81,17 +76,6 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-12">
-                                <div class="input-group">
-                                    <input asp-for="Logo" class="form-control" placeholder="Firma Logosu" readonly />
-                                    <span class="input-group-btn">
-                                        <a  style="height:50px; width:50px;" class="btn btn-info" id="uploadModal"  onclick="browseMedia('logo')" ></a>
-                                    </span>
-                                </div>
-                            </div>
-                            @Html.ValidationMessageFor(model => model.Logo, "", new { @class = "text-danger" })
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12">
                                 <input asp-for="Password" class="form-control" placeholder="Şifre *" />
                                 <span asp-validation-for="Password" class="text-danger"></span>
                             </div>
@@ -102,7 +86,7 @@
                                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                             </div>
                         </div>
-                        <button style="height:35px;" class="btn btn-primary">Kaydol</button>
+                        <button class="product ui-btn ui-btn_primary">Kaydol</button>
                     </form>
                     <br />
                 </section>
@@ -110,9 +94,6 @@
         </div>
     </div>
 </div>
-
-
-@Html.Partial("_BrowseMedia", new ViewDataDictionary(this.ViewData) { { "element", "logo" } });
 @section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
     <script>

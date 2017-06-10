@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace TreeStore.Areas.Admin.Controllers
 {
+    [Authorize(Roles ="Admin")]
     [Area("Admin")]
-    [Authorize]
     public class DashboardController : Controller
     {
         public IActionResult Index()
