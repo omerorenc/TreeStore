@@ -16,10 +16,10 @@ namespace TreeStore.Models
         public string Description { get; set; }
        
         [Display(Name = "Fiyat")]
-        public decimal Price { get; set; }
+        public float? Price { get; set; }
 
         [Display(Name = "İndirimli Fiyat")]
-        public decimal DiscountPrice { get; set; }
+        public float? DiscountPrice { get; set; }
         
         [Display(Name = "Resim Kaynağı")]
         public string ImagePath { get; set; }
