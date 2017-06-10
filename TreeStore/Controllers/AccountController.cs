@@ -50,7 +50,7 @@ namespace TreeStore.Controllers
 
             ViewData["ReturnUrl"] = returnUrl;
 
-            return View();
+            return await Task.FromResult(RedirectToAction("register"));
         }
 
         //
