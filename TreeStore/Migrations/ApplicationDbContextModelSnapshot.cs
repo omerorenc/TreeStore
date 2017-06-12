@@ -468,6 +468,46 @@ namespace TreeStore.Migrations
                     b.ToTable("Sliders");
                 });
 
+            modelBuilder.Entity("TreeStore.Models.Entities.Subscription", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ConfirmationCode")
+                        .HasMaxLength(200);
+
+                    b.Property<DateTime>("ConfirmationDate");
+
+                    b.Property<DateTime>("CreateDate");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(200);
+
+                    b.Property<string>("FullName")
+                        .HasMaxLength(200);
+
+                    b.Property<bool>("IsConfirmed");
+
+                    b.Property<bool>("IsSubscribed");
+
+                    b.Property<string>("Name");
+
+                    b.Property<DateTime>("SubscriptionDate");
+
+                    b.Property<DateTime>("UnsubscriptionDate");
+
+                    b.Property<string>("UpdateBy");
+
+                    b.Property<DateTime>("UpdateDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Subscriptions");
+                });
+
             modelBuilder.Entity("TreeStore.Models.Product", b =>
                 {
                     b.Property<long>("Id")
