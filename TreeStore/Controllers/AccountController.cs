@@ -14,6 +14,8 @@ using TreeStore.Models.Entities;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using TreeStore.Data;
+using MimeKit;
+using MailKit.Net.Smtp;
 
 namespace TreeStore.Controllers
 {
@@ -25,19 +27,20 @@ namespace TreeStore.Controllers
         private readonly RoleManager<Role> _roleManager;
         private readonly ILogger _logger;
         private readonly string _externalCookieScheme;
-
+        private readonly IMailSettingService mailSettingService;
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IOptions<IdentityCookieOptions> identityCookieOptions,
-            ILoggerFactory loggerFactory, RoleManager<Role> roleManager)
+            ILoggerFactory loggerFactory, RoleManager<Role> roleManager,
+            IMailSettingService _mailSettingService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _externalCookieScheme = identityCookieOptions.Value.ExternalCookieAuthenticationScheme;
-           
             _logger = loggerFactory.CreateLogger<AccountController>();
             _roleManager = roleManager;
+            this.mailSettingService = _mailSettingService;
         }
         
         //
@@ -112,11 +115,12 @@ namespace TreeStore.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model, IFormCollection frm, string returnUrl = null)
         {
-        
+            var user = new ApplicationUser();
+            var mailSetting = mailSettingService.GetMailSettings().FirstOrDefault();
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Address=model.Address, CompanyName=model.CompanyName, Fax=model.Fax, Logo=model.Logo, Phone=model.Phone };
+                user = new ApplicationUser { UserName = model.Email, Email = model.Email, Address=model.Address, CompanyName=model.CompanyName, Fax=model.Fax, Logo=model.Logo, Phone=model.Phone };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -130,11 +134,11 @@ namespace TreeStore.Controllers
                     //await _signInManager.SignInAsync(user, isPersistent: false);
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation(3, "User created a new account with password.");
+                    Methods.SendMemberMail(mailSetting, user);
                     return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
             }
-
             // If we got this far, something failed, redisplay form
             return View(model);
         }

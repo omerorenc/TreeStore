@@ -9,6 +9,7 @@ using TreeStore.Data;
 using TreeStore.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
+using TreeStore.Services;
 
 namespace TreeStore.Areas.Admin.Controllers
 {
@@ -19,10 +20,12 @@ namespace TreeStore.Areas.Admin.Controllers
        
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
-        public ApplicationUsersController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+        private readonly IMailSettingService mailSettingService;
+        public ApplicationUsersController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, IMailSettingService _mailSettingService)
         {
             this._userManager = userManager;
-            _context = context;    
+            _context = context;
+            this.mailSettingService = _mailSettingService;
         }
 
         // GET: Admin/ApplicationUsers
@@ -94,6 +97,7 @@ namespace TreeStore.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("CompanyName,CreatedDate,CreatedBy,UpdatedDate,UpdatedBy,Address,Phone,Fax,Logo,Id,UserName,NormalizedUserName,Email,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnd,LockoutEnabled,AccessFailedCount")] ApplicationUser applicationUser)
         {
+            var mailSetting = mailSettingService.GetMailSettings().FirstOrDefault();
             if (id != applicationUser.Id)
             {
                 return NotFound();
@@ -109,6 +113,7 @@ namespace TreeStore.Areas.Admin.Controllers
                         _context.Update(applicationUser);
                         await _context.SaveChangesAsync();
                         await _userManager.AddToRoleAsync(applicationUser, "Firma Sahibi");
+                        Methods.SendMemberMail(mailSetting, applicationUser);
                     }
                     _context.Update(applicationUser);
                     await _context.SaveChangesAsync();

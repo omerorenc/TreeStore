@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TreeStore.Models;
 using TreeStore.Models.Entities;
 
 namespace TreeStore
@@ -27,7 +28,6 @@ namespace TreeStore
 
             return guidResult.Substring(0, length);
         }
-
         public static void SendMail(MailSetting mailSetting, Contact contact)
         {
             var mimeMessage = new MimeMessage();
@@ -53,7 +53,6 @@ namespace TreeStore
             }
             else
             {
-
                 mimeMessage.Body = new TextPart("plain")
                 {
                     Text = contact.Reply
@@ -68,6 +67,40 @@ namespace TreeStore
                 client.Disconnect(true);
             }
 
+        }
+        public static void SendMemberMail(MailSetting mailSetting, ApplicationUser user)
+        {
+            var mimeMessage = new MimeMessage();
+            string BodyContent;
+            string FromAddress = mailSetting.FromAddress;
+            string FromAddressTitle = mailSetting.FromAddressTitle;
+            string ToAddress = user.Email;
+            string ToAddressTitle = user.CompanyName;
+            string Subject = "Üyelik Başvurunuz Hakkında";
+            string SmptServer = mailSetting.SmptServer;
+            int SmptPortNumber = mailSetting.SmptPortNumber;
+            if (user.EmailConfirmed == true)
+            {
+                BodyContent = "Firma üyeliğiniz onaylanmıştır. Firmanızın ürünlerini ekleyip paylaşabilirsiniz.\nTree Store\nİyi Çalışmalar Dileriz..";
+            }
+            else
+            {
+                BodyContent = "Üyelik başvurunuz elimize ulaşmıştır. Firma üyeliğiniz onaylandığında size mail ile bildirilecektir.\nTree Store\nİyi Çalışmalar Dileriz..";
+            }
+            mimeMessage.From.Add(new MailboxAddress(FromAddressTitle, FromAddress));
+            mimeMessage.To.Add(new MailboxAddress(ToAddressTitle, ToAddress));
+            mimeMessage.Subject = Subject;
+            mimeMessage.Body = new TextPart("plain")
+            {
+                Text = BodyContent
+            };
+            using (var client = new SmtpClient())
+            {
+                client.Connect(mailSetting.SmptServer, mailSetting.SmptPortNumber, false);
+                client.Authenticate(mailSetting.FromAddress, mailSetting.FromAddressPassword);
+                client.Send(mimeMessage);
+                client.Disconnect(true);
+            }
         }
     }
 }
