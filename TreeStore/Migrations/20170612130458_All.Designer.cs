@@ -8,8 +8,8 @@ using TreeStore.Data;
 namespace TreeStore.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170609120506_allMigration")]
-    partial class allMigration
+    [Migration("20170612130458_All")]
+    partial class All
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -469,6 +469,46 @@ namespace TreeStore.Migrations
                     b.ToTable("Sliders");
                 });
 
+            modelBuilder.Entity("TreeStore.Models.Entities.Subscription", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ConfirmationCode")
+                        .HasMaxLength(200);
+
+                    b.Property<DateTime>("ConfirmationDate");
+
+                    b.Property<DateTime>("CreateDate");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(200);
+
+                    b.Property<string>("FullName")
+                        .HasMaxLength(200);
+
+                    b.Property<bool>("IsConfirmed");
+
+                    b.Property<bool>("IsSubscribed");
+
+                    b.Property<string>("Name");
+
+                    b.Property<DateTime>("SubscriptionDate");
+
+                    b.Property<DateTime>("UnsubscriptionDate");
+
+                    b.Property<string>("UpdateBy");
+
+                    b.Property<DateTime>("UpdateDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Subscriptions");
+                });
+
             modelBuilder.Entity("TreeStore.Models.Product", b =>
                 {
                     b.Property<long>("Id")
@@ -486,7 +526,7 @@ namespace TreeStore.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<decimal>("DiscountPrice");
+                    b.Property<float?>("DiscountPrice");
 
                     b.Property<string>("ImagePath");
 
@@ -496,7 +536,8 @@ namespace TreeStore.Migrations
                         .IsRequired()
                         .HasMaxLength(200);
 
-                    b.Property<decimal>("Price");
+                    b.Property<float?>("Price")
+                        .IsRequired();
 
                     b.Property<long?>("SliderId");
 

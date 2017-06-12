@@ -243,9 +243,12 @@
                                 <div class="subscribe__inner"> <span class="subscribe__title">E-Bülten Üyeliği</span> <span class="subscribe__description">Güncel Kampanya ve İndirimlerden Haberdar Olun</span> </div>
                                 <form class="subscribe__form form-inline">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="E-Posta Adresiniz ...">
-                                        <input class="ui-btn ui-btn_warning" type="submit" value="KAYIT OL">
-                                    </div>
+                                        <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="E-posta adresi" class="form-control form-email-widget" />
+                                            <input areas="" asp-controller="Home" asp-action="Subscribe" type="submit" value="✓ KAYDOL" name="subscribe" id="mc-embedded-subscribe" class="product ui-btn ui-btn_primary" />
+                                            
+                                       
+                                        
+</div>
                                 </form>
                             </div>
                         </div>

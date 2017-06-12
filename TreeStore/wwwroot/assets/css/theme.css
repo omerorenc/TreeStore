@@ -3991,7 +3991,7 @@ figure.effect-chico:hover p {
 	font-size: 11px;
 	vertical-align: top;
 	border: none 0;
-	text-transform: uppercase;
+	
 }
 .subscribe .form-control::-webkit-input-placeholder {
  color: #212121;

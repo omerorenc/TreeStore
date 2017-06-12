@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace TreeStore.Migrations
 {
-    public partial class allMigration : Migration
+    public partial class All : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -184,6 +184,31 @@ namespace TreeStore.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Sliders", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Subscriptions",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ConfirmationCode = table.Column<string>(maxLength: 200, nullable: true),
+                    ConfirmationDate = table.Column<DateTime>(nullable: false),
+                    CreateDate = table.Column<DateTime>(nullable: false),
+                    CreatedBy = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(maxLength: 200, nullable: false),
+                    FullName = table.Column<string>(maxLength: 200, nullable: true),
+                    IsConfirmed = table.Column<bool>(nullable: false),
+                    IsSubscribed = table.Column<bool>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
+                    SubscriptionDate = table.Column<DateTime>(nullable: false),
+                    UnsubscriptionDate = table.Column<DateTime>(nullable: false),
+                    UpdateBy = table.Column<string>(nullable: true),
+                    UpdateDate = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Subscriptions", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -384,11 +409,11 @@ namespace TreeStore.Migrations
                     CreateDate = table.Column<DateTime>(nullable: false),
                     CreatedBy = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
-                    DiscountPrice = table.Column<decimal>(nullable: false),
+                    DiscountPrice = table.Column<float>(nullable: true),
                     ImagePath = table.Column<string>(nullable: true),
                     IsActive = table.Column<bool>(nullable: false),
                     Name = table.Column<string>(maxLength: 200, nullable: false),
-                    Price = table.Column<decimal>(nullable: false),
+                    Price = table.Column<float>(nullable: false),
                     SliderId = table.Column<long>(nullable: true),
                     UpdateBy = table.Column<string>(nullable: true),
                     UpdateDate = table.Column<DateTime>(nullable: false)
@@ -559,6 +584,9 @@ namespace TreeStore.Migrations
 
             migrationBuilder.DropTable(
                 name: "Settings");
+
+            migrationBuilder.DropTable(
+                name: "Subscriptions");
 
             migrationBuilder.DropTable(
                 name: "ProductCampaigns");
