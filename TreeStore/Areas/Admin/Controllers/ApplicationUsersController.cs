@@ -102,20 +102,28 @@ namespace TreeStore.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
             if (ModelState.IsValid)
             {
                 try
                 {
+                    var appUser = _context.ApplicationUser.FirstOrDefault(f => f.UserName == applicationUser.UserName);
+                    appUser.CompanyName = applicationUser.CompanyName;
+                    appUser.Address = applicationUser.Address;
+                    appUser.Phone = applicationUser.Phone;
+                    appUser.Fax = applicationUser.Fax;
+                    appUser.Logo = applicationUser.Logo;
+                    appUser.UserName = applicationUser.UserName;
+                    appUser.NormalizedUserName = applicationUser.NormalizedUserName;
+                    appUser.Email = applicationUser.Email;
+                    appUser.NormalizedEmail = applicationUser.NormalizedEmail;
+                    appUser.EmailConfirmed = applicationUser.EmailConfirmed;
                     if (applicationUser.EmailConfirmed == true)
-                    {
-                        await _userManager.RemoveFromRoleAsync(applicationUser, "Onaylanmamis Uye");
-                        _context.Update(applicationUser);
-                        await _context.SaveChangesAsync();
-                        await _userManager.AddToRoleAsync(applicationUser, "Firma Sahibi");
-                        Methods.SendMemberMail(mailSetting, applicationUser);
+                    {                        
+                        await _userManager.RemoveFromRoleAsync(appUser, "Onaylanmamis Uye");
+                        await _userManager.AddToRoleAsync(appUser, "Firma Sahibi");
+                        Methods.SendMemberMail(mailSetting, appUser);
                     }
-                    _context.Update(applicationUser);
+                    _context.Update(appUser);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)

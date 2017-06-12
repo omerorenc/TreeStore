@@ -81,11 +81,11 @@ namespace TreeStore
             int SmptPortNumber = mailSetting.SmptPortNumber;
             if (user.EmailConfirmed == true)
             {
-                BodyContent = "Firma üyeliğiniz onaylanmıştır. Firmanızın ürünlerini ekleyip paylaşabilirsiniz.\nTree Store\nİyi Çalışmalar Dileriz..";
+                BodyContent = "Firma üyeliğiniz onaylanmıştır. Firmanızın ürünlerini ekleyip paylaşabilirsiniz.\n Tree Store \n İyi Çalışmalar Dileriz..";
             }
             else
             {
-                BodyContent = "Üyelik başvurunuz elimize ulaşmıştır. Firma üyeliğiniz onaylandığında size mail ile bildirilecektir.\nTree Store\nİyi Çalışmalar Dileriz..";
+                BodyContent = "Üyelik başvurunuz elimize ulaşmıştır. Firma üyeliğiniz onaylandığında size mail ile bildirilecektir.\n Tree Store \n İyi Çalışmalar Dileriz..";
             }
             mimeMessage.From.Add(new MailboxAddress(FromAddressTitle, FromAddress));
             mimeMessage.To.Add(new MailboxAddress(ToAddressTitle, ToAddress));
