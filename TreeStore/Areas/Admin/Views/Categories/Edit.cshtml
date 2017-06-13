@@ -1,15 +1,13 @@
-@model TreeStore.Models.Category
+﻿@model TreeStore.Models.Category
 
 @{
     ViewData["Title"] = "Edit";
 }
 
-<h2>Edit</h2>
-
+<h2>Kategori Düzenle</h2>
+<hr />
 <form asp-action="Edit">
     <div class="form-horizontal">
-        <h4>Category</h4>
-        <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
             <label asp-for="Name" class="col-md-2 control-label"></label>
@@ -26,10 +24,10 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="ParentCategoryId" class="col-md-2 control-label"></label>
+            <label asp-for="ParentCategoryId" class="col-md-2 control-label">Üst Kategori</label>
             <div class="col-md-10">
                 <select asp-for="ParentCategoryId" class="form-control" asp-items="ViewBag.ParentCategoryId">
-                    <option value="">Se�iniz!</option>
+                    <option value="">Seçiniz!</option>
                 </select>
             </div>
         </div>
@@ -65,14 +63,14 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
             </div>
         </div>
     </div>
 </form>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-default" asp-action="Index">Listeye Geri Dön</a>
 </div>
 
 @section Scripts {

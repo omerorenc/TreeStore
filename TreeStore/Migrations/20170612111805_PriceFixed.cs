@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace TreeStore.Migrations
 {
-    public partial class allMigration : Migration
+    public partial class PriceFixed : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -384,11 +384,11 @@ namespace TreeStore.Migrations
                     CreateDate = table.Column<DateTime>(nullable: false),
                     CreatedBy = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
-                    DiscountPrice = table.Column<decimal>(nullable: false),
+                    DiscountPrice = table.Column<float>(nullable: true),
                     ImagePath = table.Column<string>(nullable: true),
                     IsActive = table.Column<bool>(nullable: false),
                     Name = table.Column<string>(maxLength: 200, nullable: false),
-                    Price = table.Column<decimal>(nullable: false),
+                    Price = table.Column<float>(nullable: false),
                     SliderId = table.Column<long>(nullable: true),
                     UpdateBy = table.Column<string>(nullable: true),
                     UpdateDate = table.Column<DateTime>(nullable: false)

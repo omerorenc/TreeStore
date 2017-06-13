@@ -9,10 +9,13 @@
     <thead>
         <tr>
             <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.Description)
             </th>
             <th class="text-nowrap">
-                @Html.DisplayNameFor(model => model.Slogan)
+                @Html.DisplayNameFor(model => model.IsActive)
             </th>
             <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.StartedDate)
@@ -24,10 +27,7 @@
                 @Html.DisplayNameFor(model => model.ImagePath)
             </th>
             <th class="text-nowrap">
-                @Html.DisplayNameFor(model => model.IsActive)
-            </th>
-            <th class="text-nowrap">
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.Slogan)
             </th>
             <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.CreateDate)
@@ -49,10 +49,13 @@
         {
             <tr>
                 <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Slogan)
+                    @Html.DisplayFor(modelItem => item.IsActive)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.StartedDate)
@@ -64,10 +67,7 @@
                     @Html.DisplayFor(modelItem => item.ImagePath)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.IsActive)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                    @Html.DisplayFor(modelItem => item.Slogan)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.CreateDate)
@@ -82,7 +82,7 @@
                     @Html.DisplayFor(modelItem => item.UpdateBy)
                 </td>
                 <td class="text-nowrap">
-                    <a class="btn btn-default" asp-action="Details" asp-route-id="@item.Id">Detaylar</a> |
+                    <a class="btn btn-default" asp-action="Details" asp-route-id="@item.Id">Detaylar</a> 
                     <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Sil</a>
                 </td>
             </tr>

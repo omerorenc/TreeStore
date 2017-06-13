@@ -8,8 +8,8 @@ using TreeStore.Data;
 namespace TreeStore.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170609120506_allMigration")]
-    partial class allMigration
+    [Migration("20170612111805_PriceFixed")]
+    partial class PriceFixed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -486,7 +486,7 @@ namespace TreeStore.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<decimal>("DiscountPrice");
+                    b.Property<float?>("DiscountPrice");
 
                     b.Property<string>("ImagePath");
 
@@ -496,7 +496,8 @@ namespace TreeStore.Migrations
                         .IsRequired()
                         .HasMaxLength(200);
 
-                    b.Property<decimal>("Price");
+                    b.Property<float?>("Price")
+                        .IsRequired();
 
                     b.Property<long?>("SliderId");
 

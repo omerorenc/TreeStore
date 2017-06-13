@@ -170,9 +170,15 @@ namespace TreeStore.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(long id)
         {
-
-            categoryService.DeleteCategory(id);
-            categoryService.SaveCategory();
+            try
+            {
+                categoryService.DeleteCategory(id);
+                categoryService.SaveCategory();
+            }
+            catch (Exception e)
+            {
+                ViewBag.Message = "Silmek istediðiniz kategori ile iliþkili ürünler veya kategoriler vardýr.Lütfen önce iliþkili kayýtlarý siliniz." + e.Message;
+            }
             return RedirectToAction("Index");
         }
 

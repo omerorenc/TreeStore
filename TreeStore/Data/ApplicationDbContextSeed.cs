@@ -23,6 +23,21 @@ namespace TreeStore.Data
             AddUsers(context, _userManager);
             AddRoles(_roleManager);
             AddRoleToUser(_userManager);
+            AddCategories(context);
+        }
+
+        private static void AddCategories(ApplicationDbContext context)
+        {
+            context.AddRange(
+                new Category { Name = "Beyaz Eşya" },
+                new Category { Name = "Market" },
+                new Category { Name = "Elektronik" },
+                new Category { Name = "Giyim" },
+                new Category { Name = "Erkek", ParentCategoryId = 4 },
+                new Category { Name = "Kadın", ParentCategoryId = 4 },
+                new Category { Name = "Çocuk", ParentCategoryId = 4 }
+                );
+            context.SaveChanges();
         }
 
         public static void AddMailSettings(ApplicationDbContext context)
@@ -54,7 +69,6 @@ namespace TreeStore.Data
             context.SaveChanges();
         }
         static ApplicationUser user;
-
         private static void AddUsers(ApplicationDbContext context, UserManager<ApplicationUser> _userManager)
         {
             user = new ApplicationUser { Id = Guid.NewGuid().ToString(), UserName = "arzugedik312@gmail.com", Email = "arzugedik312@gmail.com", EmailConfirmed = true, NormalizedEmail = "ARZUGEDIK312@GMAIL.COM", NormalizedUserName = "ARZUGEDIK312@GMAIL.COM" };

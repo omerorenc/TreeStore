@@ -32,7 +32,7 @@ namespace TreeStore.Controllers
             this.productService = productService;
             this.campaignService = campaignService;
         }
-        
+
         public IActionResult Index()
         {
             var mainCategories = categoryService.GetCategories().Where(c => c.ParentCategoryId == null);
@@ -46,12 +46,69 @@ namespace TreeStore.Controllers
             return View();
         }
 
-        [Route("hakkinda")]
-        public IActionResult About()
+        [HttpPost]
+        [Route("Search")]
+        public IActionResult Index(string query)
         {
-            ViewBag.About = settingService.GetSettings().FirstOrDefault().About;
+            var product = from p in productService.GetProducts() select p;
+
+            if (!String.IsNullOrEmpty(query))
+            {
+                product = product.Where(r =>
+                   r.Name.ToLower().Contains(query) ||
+                   r.Description.ToLower().Contains(query) ||
+                    r.Category.ToString().ToLower().Contains(query));
+            }
+            ViewBag.Result = product.ToList();
+            return View("Search");
+        //    ViewBag.Query = query;
+        //    if (String.IsNullOrEmpty(query))
+        //    {
+        //        // query parametresinden değer gelmiyorsa tüm kayıtları getir
+        //        var products = productService.GetProducts().AsQueryable()
+        //            .Include(x => x.Name)
+        //            .Include(x => x.CreateDate)
+        //            .Include(x => x.Category)
+        //            .Include(x => x.Description)
+        //            .Include(x => x.UpdateDate)
+        //            .Include(x => x.CreatedBy)
+
+        //            .Where(r => r.IsActive == true);
+        //        return View(products.OrderByDescending(i => i.UpdateDate).ToList());
+        //    }
+        //    else
+        //    {
+        //        // query'den değer geliyorsa where metoduyla filtreleme yap
+        //        query = query.ToLower();
+        //        string[] terms = query.Split(' ');
+        //        var products = productService.GetProducts().AsQueryable()
+        //            .Include(x => x.Name)
+        //            .Include(x => x.CreateDate)
+        //            .Include(x => x.Category)
+        //            .Include(x => x.Description)
+        //            .Include(x => x.UpdateDate)
+        //            .Include(x => x.CreatedBy)
+                   
+        //            .Where(r => r.IsActive == true);
+
+        //        foreach (var term in terms)
+        //        {
+        //            products = products.Where(r =>
+        //            r.Name.ToLower().Contains(term) ||
+        //            r.Description.ToLower().Contains(term) ||
+        //            r.Category.ToString().ToLower().Contains(term));
+        //        }
+
+        //        return View(products.OrderByDescending(i => i.UpdateDate).ToList());
+        //    }
+        //}
+
+        //[Route("hakkinda")]
+        //public IActionResult About()
+        //{
+        //    ViewBag.About = settingService.GetSettings().FirstOrDefault().About;
             
-            return View();
+        //    return View();
         }
 
         [Route("iletisim")]

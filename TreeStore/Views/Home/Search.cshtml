@@ -1,0 +1,18 @@
+@{
+    ViewData["Title"] = "Search";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <section class="section-area section-about text-center">
+            <h2 class="ui-title-block ui-title-block_large ui-title-block_mod-a">Arama Sonuçlarý</h2>
+            @foreach (var result in ViewBag.Result)
+            {
+             
+                    @result
+               
+              
+            }
+        </section>
+    </div>
+</div>
