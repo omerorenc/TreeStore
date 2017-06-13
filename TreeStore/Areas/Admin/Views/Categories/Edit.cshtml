@@ -23,6 +23,8 @@
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
         </div>
+
+        <input type="hidden" asp-for="ParentCategoryId" />
         <div class="form-group">
             <label asp-for="ParentCategoryId" class="col-md-2 control-label">Üst Kategori</label>
             <div class="col-md-10">
@@ -32,7 +34,6 @@
             </div>
         </div>
     <input type="hidden" asp-for="Id" />
-        <input type="hidden" asp-for="ParentCategoryId" />
         <div class="form-group">
             <label asp-for="CreateDate" class="col-md-2 control-label"></label>
             <div class="col-md-10">

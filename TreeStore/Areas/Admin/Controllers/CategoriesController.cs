@@ -28,7 +28,7 @@ namespace TreeStore.Areas.Admin.Controllers
         public IActionResult Index()
         {
             var categories = categoryService.GetCategories().AsQueryable().Include(c => c.ParentCategory).ToList();
-           
+            //Methods.indirim(categories.FirstOrDefault().Products, (float)0.1);
             return View(categories);
         }
 
@@ -119,7 +119,7 @@ namespace TreeStore.Areas.Admin.Controllers
                 
                 try
                 {
-                    
+                    Methods.indirim(category.Products, (float)0.1);
                     category.UpdateBy = User.Identity.Name;
                     categoryService.UpdateCategory(category);
                     categoryService.SaveCategory();

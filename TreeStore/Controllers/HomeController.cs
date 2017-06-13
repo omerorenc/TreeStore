@@ -21,8 +21,9 @@ namespace TreeStore.Controllers
         private readonly ICategoryService categoryService;
         private readonly IProductService productService;
         private readonly ICampaignService campaignService;
+        private readonly ISubscriptionService subscriptionService;
         public HomeController( ISettingService settingService, IMailSettingService _mailSettingService, IContactService _contactService, ICategoryService categoryService, IProductService productService
-            ,ICampaignService campaignService)
+            ,ICampaignService campaignService, ISubscriptionService _subscriptionService)
         {
          
             this.mailSettingService = _mailSettingService;
@@ -31,6 +32,7 @@ namespace TreeStore.Controllers
             this.categoryService = categoryService;
             this.productService = productService;
             this.campaignService = campaignService;
+            this.subscriptionService = _subscriptionService;
         }
 
         public IActionResult Index()
@@ -171,7 +173,26 @@ namespace TreeStore.Controllers
             return View();
         }
 
-        
-        
+        public IActionResult Subscribe(Subscription subscription)
+        {
+
+
+            var subs = subscriptionService.GetSubscriptions().FirstOrDefault(s => s.Email == subscription.Email);
+            if (subs==null)
+
+            {
+                subscription.CreatedBy = User.Identity.Name ?? "username";
+                subscription.UpdateBy = User.Identity.Name ?? "username";
+                subscription.SubscriptionDate = DateTime.Now;
+                subscription.ConfirmationCode = Guid.NewGuid().ToString();
+
+                subscriptionService.CreateSubscription(subscription);
+                subscriptionService.SaveSubscription();
+            }
+
+            return RedirectToAction("Index");
+
+        }
+
     }
 }
