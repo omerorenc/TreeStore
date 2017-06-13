@@ -60,10 +60,26 @@
                             <div class="col-sm-3 col-xs-12"> <a href="/" class="logo"> <img class="logo__img" src="/assets/img/logo.png" height="51" width="162" alt="Logo"> </a> </div>
                             <div class="col-sm-6 col-xs-12">
                                 <div class="header-search clearfix">
-                                        <form asp-area="" class="product-search" asp-controller="Home" asp-action="Index">
+                                   
+                                    <div class="header-search__filter">
+                                        <div class="jelect">
+                                            <input id="jelect" name="tool" value="0" data-text="imagemin" type="text" class="jelect-input">
+                                            <div tabindex="0" role="button" class="jelect-current">Filter By</div>
+                                            <ul class="jelect-options">
+                                                <li data-val='0' tabindex="0" class="jelect-option jelect-option_state_active" >Date</li>
+                                                <li data-val='1' tabindex="0" class="jelect-option">Title</li>
+                                                <li data-val='2' tabindex="0" class="jelect-option">CATEGORIES</li>
+                                            </ul>
+                                        </div>
+                                        <!-- end jelect -->
+                                    </div>
+                                    <div class="header-search__form">
+                                        <form asp-area="" class="product-search" asp-controller="Home" asp-action="Search">
+                                           
                                             <input id="query" class="product-search__field" type="text" value="@ViewBag.Query" placeholder="Ürün Adı, Mağaza Adı, Kampanya Adı, vs. ara.." name="query">
                                             <button class="product-search__btn ui-btn ui-btn_primary">ara</button>
                                         </form>
+                                        </div>
                                     </div>
                                 <!-- end header-search -->
                             </div>

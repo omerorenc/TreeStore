@@ -48,18 +48,16 @@ namespace TreeStore.Controllers
             return View();
         }
 
-        [HttpPost]
+      
         [Route("Search")]
-        public IActionResult Index(string query)
+        public IActionResult Search(string query)
         {
             var product = from p in productService.GetProducts() select p;
 
             if (!String.IsNullOrEmpty(query))
             {
                 product = product.Where(r =>
-                   r.Name.ToLower().Contains(query) ||
-                   r.Description.ToLower().Contains(query) ||
-                    r.Category.ToString().ToLower().Contains(query));
+                   r.Name.ToString().ToLower().Contains(query)|| r.Name.ToString().ToLower()==query.ToString().ToLower());
             }
             ViewBag.Result = product.ToList();
             return View("Search");
