@@ -18,9 +18,6 @@
                                             <div class="row">
                                                 @foreach (var category in ViewBag.Categories)
                                                 {
-
-
-
                                                     @if (category.ParentCategoryId == mainCategory.Id)
 
                                                     {
@@ -34,25 +31,18 @@
                                                             </ul>
                                                         </div>
                                                     }
-
                                                 }
-
                                             </div>
-
                                         </div>
                                     </div>
                                 </li>
                             }
-
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- end col -->
-
         <div class="col-md-9">
-
-
             <script type="text/javascript" src="assets/plugins/sliderpro/js/jquery.sliderPro.min.js"></script>
             <div id="sliderpro3" class="slider-pro main-slider">
                 <div class="sp-slides">
@@ -82,13 +72,9 @@
                                 <li><a href="" data-filter=".newest">NEWEST ADDED</a></li>
                             </ul>
                         </div>
-                        <!-- end section-area -->
                     </div>
-                    <!-- end col -->
                 </div>
-                <!-- end row -->
             </div>
-            <!-- end container -->
             <div class="section-area">
                 <div class="isotope-frame wow bounceInRight" data-wow-duration="2s">
                     <ul class="isotope-filter products clearfix">
@@ -114,11 +100,9 @@
                                 <span class="label-wrap"><span class="label label-danger">SALE</span></span>
                             </li>
                         }
-
                     </ul>
                 </div>
             </div>
-            <!-- end section-area -->
             @*<div id="sliderpro3" class="slider-pro main-slider">
                     <div class="sp-slides">
                         <div class="sp-slide">
@@ -170,15 +154,10 @@
                         </figure>
                     </li>
 
-                </ul>
-                <!-- end section-area -->*@
+                </ul>*@
         </div>
-        <!-- end col -->
     </div>
-    <!-- end row -->
 </div>
-<!-- end container -->
-
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
@@ -209,24 +188,17 @@
                         </a>
                     </li>
                 </ul>
-                <!-- end list-advantages -->
             </div>
-            <!-- end section-area -->
         </div>
-        <!-- end col -->
     </div>
-    <!-- end row -->
 </div>
-<!-- end container -->
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
             <div class="section-area">
                 <section class="section-area section-list-posts wow bounceInRight" data-wow-duration="2s">
                     <h3 class="ui-title-block"><i class="icon fa fa-bars"></i>LATEST BLOG POSTS</h3>
-
                     <div class="wrap-slider">
-
                         <div class="list-posts_mod-a list-posts_carusel list-unstyled owl-carousel owl-theme_mod-b owl-theme enable-owl-carousel"
                              data-min480="1"
                              data-min768="2"
@@ -247,22 +219,14 @@
                                         <a class="btn btn-info pull-right" href="javascript:void(0);">READ MORE</a>
                                     </div>
                                 </article>
-
-
                             }
                         </div>
                     </div>
-                    <!-- end wrap-slider -->
                 </section>
             </div>
-            <!-- end section-area -->
         </div>
-        <!-- end col -->
     </div>
-    <!-- end row -->
 </div>
-<!-- end container -->
-<!-- end section-area -->
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
@@ -273,14 +237,9 @@
                     <li><a href="" data-filter=".newest">NEWEST ADDED</a></li>
                 </ul>
             </div>
-            <!-- end section-area -->
         </div>
-        <!-- end col -->
     </div>
-    <!-- end row -->
 </div>
-<!-- end container -->
-
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
@@ -291,7 +250,7 @@
                         {
                             <li class="isotope-item best products__item">
                                 <a class="products__foto" href="~/uploads/6-2017/@product.ImagePath" rel="prettyPhoto"> <img src="~/uploads/6-2017/@product.ImagePath" style="width:260px;height:260px" height="260" width="260" alt="Goods"> </a>
-                                <h4 class="products__name"><a href="#">@product.Name</a></h4>
+                                <h4 class="products__name"><a href="/urun">@product.Name</a></h4>
                                 <div class="products__category"><a href="#">@product.Category.ParentCategory.Name</a></div>
                                 <div class="products__inner clearfix">
                                     <span class="products__price-new">@product.DiscountPrice</span> <span class="products__price-old">@product.Price</span>
@@ -309,18 +268,12 @@
                                 <span class="label-wrap"><span class="label label-danger">SALE</span></span>
                             </li>
                         }
-
                     </ul>
                 </div>
             </div>
-            <!-- end section-area -->
         </div>
-        <!-- end col -->
     </div>
-    <!-- end row -->
 </div>
-<!-- end container -->
-
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
@@ -334,12 +287,8 @@
                 </div>
             </div>
         </div>
-        <!-- end col -->
     </div>
-    <!-- end row -->
 </div>
-<!-- end container -->
-
 <div class="border-main">
     <div class="container">
         <div class="row">
@@ -424,8 +373,6 @@
                             </div>
                         </div>
                     </section>
-                    <!-- end widget-slider -->
-
                     <div class="widget text-center">
                         <a class="banner wow bounceInLeft" data-wow-duration="2s" href="javascript:void(0);">
                             <img class="img-responsive" src="assets/media/banners/1.jpg" height="585" width="270" alt="Banner">
@@ -435,8 +382,6 @@
                             <div class="label-wrap"><span class="label label-danger">NEW</span></div>
                         </a>
                     </div>
-                    <!-- end widget -->
-
                     <section class="widget widget-cloud clearfix wow bounceInLeft" data-wow-duration="2s">
                         <h3 class="widget-title ui-title-block"><i class="icon fa fa-bars"></i>TAGS</h3>
                         <div class="block_content">
@@ -457,12 +402,8 @@
                             </div>
                         </div>
                     </section>
-                    <!-- end widget-cloud -->
                 </aside>
-                <!-- end sidebar -->
             </div>
-            <!-- end col -->
-
             <div class="col-md-9">
                 <section class="section-area section-default wow bounceInRight" data-wow-duration="2s">
                     <h3 class="ui-title-block"><i class="icon fa fa-bars"></i>SPECIAL PRODUCTS</h3>
@@ -567,12 +508,8 @@
                                 <span class="label-wrap"><span class="label label-warning">NEW</span></span>
                             </li>
                         </ul>
-                        <!-- end products -->
                     </div>
-                    <!-- end wrap-slider -->
                 </section>
-                <!-- end section-area -->
-
                 <section class="section-area section-default wow bounceInRight" data-wow-duration="2s">
                     <h3 class="ui-title-block"><i class="icon fa fa-bars"></i>HOT DEALS</h3>
                     <div class="wrap-slider">
@@ -678,16 +615,11 @@
                                 <span class="label-wrap"><span class="label label-info">HOT</span></span>
                             </div>
                         </div>
-                        <!-- end products -->
                     </div>
-                    <!-- end wrap-slider -->
                 </section>
-                <!-- end section-area -->
-
                 <section class="section-area section-list-posts wow bounceInRight" data-wow-duration="2s">
                     <h3 class="ui-title-block"><i class="icon fa fa-bars"></i>LATEST BLOG POSTS</h3>
                     <div class="wrap-slider">
-
                         <div class="list-posts_mod-a list-posts_carusel list-unstyled owl-carousel owl-theme_mod-b owl-theme enable-owl-carousel"
                              data-min480="1"
                              data-min768="2"
@@ -726,18 +658,9 @@
                                 <a class="btn btn-info pull-right" href="javascript:void(0);">READ MORE</a>
                             </article>
                         </div>
-
                     </div>
-                    <!-- end wrap-slider -->
                 </section>
-                <!-- end section-area -->
-
             </div>
-            <!-- end col -->
         </div>
-        <!-- end row -->
     </div>
-    <!-- end container -->
 </div>
-<!-- end border-main -->
-<!-- end container -->

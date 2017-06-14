@@ -61,54 +61,25 @@ namespace TreeStore.Controllers
             }
             ViewBag.Result = product.ToList();
             return View("Search");
-        //    ViewBag.Query = query;
-        //    if (String.IsNullOrEmpty(query))
-        //    {
-        //        // query parametresinden değer gelmiyorsa tüm kayıtları getir
-        //        var products = productService.GetProducts().AsQueryable()
-        //            .Include(x => x.Name)
-        //            .Include(x => x.CreateDate)
-        //            .Include(x => x.Category)
-        //            .Include(x => x.Description)
-        //            .Include(x => x.UpdateDate)
-        //            .Include(x => x.CreatedBy)
-
-        //            .Where(r => r.IsActive == true);
-        //        return View(products.OrderByDescending(i => i.UpdateDate).ToList());
-        //    }
-        //    else
-        //    {
-        //        // query'den değer geliyorsa where metoduyla filtreleme yap
-        //        query = query.ToLower();
-        //        string[] terms = query.Split(' ');
-        //        var products = productService.GetProducts().AsQueryable()
-        //            .Include(x => x.Name)
-        //            .Include(x => x.CreateDate)
-        //            .Include(x => x.Category)
-        //            .Include(x => x.Description)
-        //            .Include(x => x.UpdateDate)
-        //            .Include(x => x.CreatedBy)
-                   
-        //            .Where(r => r.IsActive == true);
-
-        //        foreach (var term in terms)
-        //        {
-        //            products = products.Where(r =>
-        //            r.Name.ToLower().Contains(term) ||
-        //            r.Description.ToLower().Contains(term) ||
-        //            r.Category.ToString().ToLower().Contains(term));
-        //        }
-
-        //        return View(products.OrderByDescending(i => i.UpdateDate).ToList());
-        //    }
-        //}
-
-        //[Route("hakkinda")]
-        //public IActionResult About()
-        //{
-        //    ViewBag.About = settingService.GetSettings().FirstOrDefault().About;
-            
-        //    return View();
+        }
+        [Route("urun")]
+        public IActionResult Product()
+        {
+            var mainCategories = categoryService.GetCategories().Where(c => c.ParentCategoryId == null);
+            var categories = categoryService.GetCategories().AsQueryable().Include(c => c.ChildCategories).Where(c => c.ParentCategoryId != null);
+            var products = productService.GetProducts().Where(p => p.IsActive);
+            var campaigns = campaignService.GetCampaigns().Where(c => c.IsActive);
+            ViewBag.Categories = categories;
+            ViewBag.MainCategories = mainCategories;
+            ViewBag.Products = products;
+            ViewBag.Campaigns = campaigns;
+            ViewBag.Name = productService.GetProducts().FirstOrDefault().Name;
+            ViewBag.Description = productService.GetProducts().FirstOrDefault().Description;
+            ViewBag.Image = productService.GetProducts().FirstOrDefault().ImagePath;
+            ViewBag.Price = productService.GetProducts().FirstOrDefault().Price;
+            ViewBag.DiscountPrice = productService.GetProducts().FirstOrDefault().DiscountPrice;
+            ViewBag.IsActive = productService.GetProducts().FirstOrDefault().IsActive;
+            return View();
         }
 
         [Route("iletisim")]

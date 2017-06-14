@@ -1,0 +1,96 @@
+﻿@{
+    ViewData["Title"] = "Ürün Detayı";
+}
+<div><span class="spinner"></span></div>
+<div class="layout-theme animated-css" data-header="sticky" data-header-top="200">
+    <div class="border-main">
+        <div class="container">
+            <div class="row">
+            </div>
+            <section class="product-card">
+                <div class="col-md-3">
+                    <div class="mega-container visible-lg visible-md">
+                        <div class="navleft-container">
+                            <div class="mega-menu-title"><h3>Category</h3></div>
+                            <div class="mega-menu-category">
+                                <ul class="nav">
+                                    @foreach (var mainCategory in ViewBag.mainCategories)
+                                    {
+                                        <li>
+                                            <a href="#">@mainCategory.Name</a> <div class="wrap-popup">
+                                                <div class="popup">
+                                                    <div class="row">
+                                                        @foreach (var category in ViewBag.Categories)
+                                                        {
+                                                            @if (category.ParentCategoryId == mainCategory.Id)
+                                                            {
+                                                                <div class="col-md-3 ">
+                                                                    <h3>@category.Name</h3>
+                                                                    <ul class="nav">
+                                                                        @foreach (var child in category.ChildCategories)
+                                                                        {
+                                                                            <li><a href="#">@child.Name</a></li>
+                                                                        }
+                                                                    </ul>
+                                                                </div>
+                                                            }
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                    <div class="col-md-4">
+                        <div class="product-card__slider" id="image-block">
+                            <div class="slider-product flexslider">
+                                <ul class="slides">
+                                    <li> 
+                                        <a href="~/uploads/6-2017/@ViewBag.Image" class="prettyPhoto"> 
+                                            <img src="~/uploads/6-2017/@ViewBag.Image" height="570" width="460" title="Foto" alt="img"> 
+                                        </a> 
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="product-card__main">
+                            <h1 class="product-card__name">@ViewBag.Name</h1>
+                            @if (ViewBag.IsActive == true)
+                            {
+                                <div class="product-card__availability"><i class="icon fa fa-check-circle"></i>Ürün Aktif</div>
+                            }
+                            else
+                            {
+                                <div class="product-card__price-old"><i class="icon fa fa-times-circle"></i>Ürün Pasif</div>
+                            }
+                            <div class="product-card__price">
+                                <span class="product-card__price-new">@ViewBag.DiscountPrice &#8378</span> 
+                                <span class="product-card__price-old">@ViewBag.Price &#8378</span> 
+                            </div>
+                            <div class="product-card__description">
+                                <p>@ViewBag.Description</p>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+        </div>
+    </div>
+</div>
+<script src="assets/js/jquery-migrate-1.2.1.js"></script>
+<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/js/modernizr.custom.js"></script>
+<script src="assets/plugins/isotope/jquery.isotope.min.js"></script>
+<script src="assets/plugins/owl-carousel/owl.carousel.min.js"></script>
+<script src="assets/js/waypoints.min.js"></script>
+<script src="assets/plugins/prettyphoto/js/jquery.prettyPhoto.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script src="assets/plugins/jelect/jquery.jelect.js"></script>
+<script src="assets/plugins/nouislider/jquery.nouislider.all.min.js"></script>
+<script src="assets/plugins/flexslider/jquery.flexslider.js"></script> 
