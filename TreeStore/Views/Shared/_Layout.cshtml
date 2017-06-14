@@ -43,37 +43,22 @@
 
         <div id="wrapper">
             <header class="header">
-                <div class="top-header" style="background-color:#d8373e">
+                @*<div class="top-header" style="background-color:#d8373e">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-6  col-xs-6">
-                                <div class="navbar yamm">
-                                    <div class="navbar-header hidden-md  hidden-lg  hidden-sm">
-                                        <button type="button" data-toggle="collapse" data-target="#navbar-collapse-1" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                                        <a href="javascript:void(0);" class="navbar-brand">Menu</a>
-                                    </div>
-                                    <div id="navbar-collapse-1" class="navbar-collapse collapse">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="javascript:void(0);">Home</a></li>
-                                            <li> <a href="/hakkinda">Hakkımızda</a> </li>
-                                            <li> <a href="/iletisim">İletişim</a> </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-6" style="height:60px">
+                            <div class="col-xs-12" style="height:60px">
                                 @await Html.PartialAsync("_LoginPartial")
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>*@
                 <!-- end top-header -->
 
                 <div class="container">
                     <div class="header-inner">
                         <div class="row">
-                            <div class="col-sm-3 col-xs-12"> <a href="/" class="logo"> <img class="logo__img" src="/assets/img/logo.png" height="51" width="162" alt="Logo"> </a> </div>
-                            <div class="col-sm-6 col-xs-12">
+                            <div class="col-md-3"> <a href="/" class="logo"> <img class="logo__img" src="/assets/img/logo.png" height="51" width="162" alt="Logo"> </a> </div>
+                            <div class="col-md-6 ">
                                 <div class="header-search clearfix">
                                    
                                     <div class="header-search__filter">
@@ -96,7 +81,11 @@
                                         </form>
                                         </div>
                                     </div>
+                                
                                 <!-- end header-search -->
+                            </div>
+                            <div class="col-md-3" style="height:60px; color:black !important" >
+                                @await Html.PartialAsync("_LoginPartial")
                             </div>
                             <!-- end col -->
                         </div>
