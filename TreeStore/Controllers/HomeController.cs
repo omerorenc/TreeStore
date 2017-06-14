@@ -163,5 +163,18 @@ namespace TreeStore.Controllers
 
         }
 
+        public IActionResult getCategories()
+        {
+            var mainCategories = categoryService.GetCategories().Where(c => c.ParentCategoryId == null);
+            var categories = categoryService.GetCategories().AsQueryable().Include(c => c.ChildCategories).Where(c => c.ParentCategoryId != null);
+            var products = productService.GetProducts().Where(p => p.IsActive);
+            var campaigns = campaignService.GetCampaigns().Where(c => c.IsActive);
+            ViewBag.Categories = categories;
+            ViewBag.MainCategories = mainCategories;
+            ViewBag.Products = products;
+            ViewBag.Campaigns = campaigns;
+            return View();
+        }
+
     }
 }
