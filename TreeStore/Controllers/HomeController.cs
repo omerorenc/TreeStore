@@ -39,12 +39,14 @@ namespace TreeStore.Controllers
         {
             var mainCategories = categoryService.GetCategories().Where(c => c.ParentCategoryId == null);
             var categories = categoryService.GetCategories().AsQueryable().Include(c => c.ChildCategories).Where(c => c.ParentCategoryId != null);
-            var products = productService.GetProducts().Where(p => p.IsActive);
+            var products = productService.GetProducts().Where(p => p.IsActive).OrderBy(p => p.CreateDate).Take(24);
             var campaigns = campaignService.GetCampaigns().Where(c => c.IsActive);
+            var sliderProducts = productService.GetProducts().Where(p => p.SliderId != null);
             ViewBag.Categories = categories;
             ViewBag.MainCategories = mainCategories;
             ViewBag.Products = products;
             ViewBag.Campaigns = campaigns;
+            ViewBag.SliderProducts = sliderProducts;
             return View();
         }
 
@@ -63,22 +65,17 @@ namespace TreeStore.Controllers
             return View("Search");
         }
         [Route("urun")]
-        public IActionResult Product()
+        public IActionResult Product(long? id)
         {
             var mainCategories = categoryService.GetCategories().Where(c => c.ParentCategoryId == null);
             var categories = categoryService.GetCategories().AsQueryable().Include(c => c.ChildCategories).Where(c => c.ParentCategoryId != null);
-            var products = productService.GetProducts().Where(p => p.IsActive);
-            var campaigns = campaignService.GetCampaigns().Where(c => c.IsActive);
+
+            var product = productService.GetProducts().FirstOrDefault(p => p.Id == id);
             ViewBag.Categories = categories;
             ViewBag.MainCategories = mainCategories;
-            ViewBag.Products = products;
-            ViewBag.Campaigns = campaigns;
-            ViewBag.Name = productService.GetProducts().FirstOrDefault().Name;
-            ViewBag.Description = productService.GetProducts().FirstOrDefault().Description;
-            ViewBag.Image = productService.GetProducts().FirstOrDefault().ImagePath;
-            ViewBag.Price = productService.GetProducts().FirstOrDefault().Price;
-            ViewBag.DiscountPrice = productService.GetProducts().FirstOrDefault().DiscountPrice;
-            ViewBag.IsActive = productService.GetProducts().FirstOrDefault().IsActive;
+
+            ViewBag.Product = product;
+            
             return View();
         }
 
@@ -163,18 +160,7 @@ namespace TreeStore.Controllers
 
         }
 
-        public IActionResult getCategories()
-        {
-            var mainCategories = categoryService.GetCategories().Where(c => c.ParentCategoryId == null);
-            var categories = categoryService.GetCategories().AsQueryable().Include(c => c.ChildCategories).Where(c => c.ParentCategoryId != null);
-            var products = productService.GetProducts().Where(p => p.IsActive);
-            var campaigns = campaignService.GetCampaigns().Where(c => c.IsActive);
-            ViewBag.Categories = categories;
-            ViewBag.MainCategories = mainCategories;
-            ViewBag.Products = products;
-            ViewBag.Campaigns = campaigns;
-            return View();
-        }
+      
 
     }
 }

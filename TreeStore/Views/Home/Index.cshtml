@@ -82,7 +82,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <section class="section-area section-default wow bounceInRight" data-wow-duration="2s">
-                                    <h3 class="ui-title-block"><i class="icon fa fa-bars"></i>Ürünler</h3>
+                                    <h3 class="ui-title-block"><i class="icon fa fa-bars"></i>En Yeni Ürünler</h3>
                                     <div class="wrap-slider">
                                         <ul class="products clearfix owl-carousel owl-theme owl-theme_mod-b enable-owl-carousel"
                                             data-min480="2"
@@ -94,11 +94,11 @@
                                             data-auto-play="4000"
                                             data-stop-on-hover="true">
                                             
-                                                @foreach (var product in ViewBag.Products)
+                                                @foreach (var product in ViewBag.SliderProducts)
                                                 {
                                                     <li class="products__item">
-                                                        <a class="products__foto" href="assets/media/catalog/5.jpg" rel="prettyPhoto"> <img src="~/uploads/6-2017/@product.ImagePath" style="height:260px;width:260px" alt="Goods"> </a>
-                                                        <h4 class="products__name"><a href="#">@product.Name</a></h4>
+                                                        <a class="products__foto" href="assets/media/catalog/5.jpg" rel="prettyPhoto"> <img src="~/uploads/6-2017/@product.ImagePath" style="height:260px;width:260px" height="260" width="260" alt="Goods"> </a>
+                                                        <h4 class="products__name"><a href="/Urun?id=@product.Id">@product.Name</a></h4>
                                                         <div class="products__category"><a href="#">@product.Category.Name</a></div>
                                                         <div class="products__inner clearfix">
                                                             <span class="products__price-new">@product.DiscountPrice</span> <span class="products__price-old">@product.Price</span>
@@ -137,7 +137,7 @@
     <div class="row">
         <div class="col-xs-12">
             <section class="section-area section-about text-center">
-                <h2 class="ui-title-block ui-title-block_large ui-title-block_mod-a">ÜRÜNLER</h2>
+                <h2 class="ui-title-block ui-title-block_large ui-title-block_mod-a">YENİ EKLENENLER</h2>
                 
             </section>
         </div>
@@ -149,7 +149,7 @@
                         {
                             <li class="isotope-item best products__item">
                                 <a class="products__foto" href="~/uploads/6-2017/@product.ImagePath" rel="prettyPhoto"> <img src="~/uploads/6-2017/@product.ImagePath" style="width:260px;height:260px" height="260" width="260" alt="Goods"> </a>
-                                <h4 class="products__name"><a href="#">@product.Name</a></h4>
+                                <h4 class="products__name"><a href="/Urun?id=@product.Id">@product.Name</a></h4>
                                 <div class="products__category"><a href="#">@product.Category.ParentCategory.Name</a></div>
                                 <div class="products__inner clearfix">
                                     <span class="products__price-new">@product.DiscountPrice</span> <span class="products__price-old">@product.Price</span>
@@ -164,7 +164,7 @@
                                 <footer class="products-btns clearfix">
                                     <p>@product.Description</p>
                                 </footer>
-                                <span class="label-wrap"><span class="label label-danger">SALE</span></span>
+                                <span class="label-wrap"><span class="label label-danger">YENi ÜRÜN</span></span>
                             </li>
                         }
 
