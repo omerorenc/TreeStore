@@ -168,11 +168,10 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                 </a>
                             </li>
-                            <li class="nav-item  @(ViewContext.RouteData.Values["controller"].ToString().ToLowerInvariant()=="Subscriptions"?"active":string.Empty)">
-                                <a href="/admin/Subscriptions/index" class="nav-link nav-toggle">
-                                    <i class="icon-login"></i>
-                                    <span class="title">E-Bülten Aboneleri</span>
-
+                            <li class="nav-item  @(ViewContext.RouteData.Values["controller"].ToString().ToLowerInvariant()=="subscriptions"?"active":string.Empty)">
+                                <a asp-area="Admin" asp-controller="Subscriptions" asp-action="index">
+                                    <i class="glyphicon glyphicon-envelope"></i>
+                                    E-Bülten Aboneleri
                                 </a>
                             </li>
                             <li class="nav-item  @(ViewContext.RouteData.Values["controller"].ToString().ToLowerInvariant()=="contacts"?"active":string.Empty)">
@@ -235,6 +234,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                         break;
                                     case "applicationusers":
                                         @Html.Raw("Üyeler");
+                                        break;
+                                    case "subscriptions":
+                                        @Html.Raw("E-Bülten Aboneleri");
                                         break;
                                     case "contacts":
                                         @Html.Raw("Gelen Mesajlar");
