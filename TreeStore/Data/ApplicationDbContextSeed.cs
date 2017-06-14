@@ -64,7 +64,6 @@ namespace TreeStore.Data
             s.Phone = "02122121212";
             s.Fax = "02122122121";
             s.Mail = "ornek@mail.com";
-            s.WelcomeText = "Hoşgeldiniz";
             context.Settings.Add(s);
             context.SaveChanges();
         }

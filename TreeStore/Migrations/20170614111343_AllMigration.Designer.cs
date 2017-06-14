@@ -8,7 +8,7 @@ using TreeStore.Data;
 namespace TreeStore.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170613105154_AllMigration")]
+    [Migration("20170614111343_AllMigration")]
     partial class AllMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -416,7 +416,13 @@ namespace TreeStore.Migrations
 
                     b.Property<string>("CreatedBy");
 
+                    b.Property<string>("Facebook");
+
                     b.Property<string>("Fax");
+
+                    b.Property<string>("Google");
+
+                    b.Property<string>("Instagram");
 
                     b.Property<string>("Mail");
 
@@ -426,7 +432,11 @@ namespace TreeStore.Migrations
 
                     b.Property<string>("Phone");
 
+                    b.Property<string>("Pinterest");
+
                     b.Property<string>("PrivacyPolicy");
+
+                    b.Property<string>("RSS");
 
                     b.Property<string>("SeoDescription");
 
@@ -436,11 +446,13 @@ namespace TreeStore.Migrations
 
                     b.Property<string>("TermsOfUse");
 
+                    b.Property<string>("Twitter");
+
                     b.Property<string>("UpdateBy");
 
                     b.Property<DateTime>("UpdateDate");
 
-                    b.Property<string>("WelcomeText");
+                    b.Property<string>("YouTube");
 
                     b.HasKey("Id");
 

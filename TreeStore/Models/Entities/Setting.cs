@@ -8,9 +8,6 @@ namespace TreeStore.Models.Entities
 {
     public class Setting:BaseEntity
     {
-       
-        [Display(Name = "Hoşgeldiniz Metni")]
-        public string WelcomeText { get; set; }
         [Display(Name = "Üyelik Sözleşmesi")]
         public string MembershipAgreement { get; set; }
         [Display(Name = "SEO Başlık")]
@@ -33,5 +30,19 @@ namespace TreeStore.Models.Entities
         public string PrivacyPolicy { get; set; }
         [Display(Name = "Kullanım Koşulları")]
         public string TermsOfUse { get; set; }
+        [Display(Name = "Twitter Linki")]
+        public string Twitter { get; set; }
+        [Display(Name = "Facebook Linki")]
+        public string Facebook { get; set; }
+        [Display(Name = "Google+ Linki")]
+        public string Google { get; set; }
+        [Display(Name = "İnstagram Linki")]
+        public string Instagram { get; set; }
+        [Display(Name = "Pinterest Linki")]
+        public string Pinterest { get; set; }
+        [Display(Name = "RSS Linki")]
+        public string RSS { get; set; }
+        [Display(Name = "YouTube Linki")]
+        public string YouTube { get; set; }
     }
 }
