@@ -1,1 +1,51 @@
-﻿
+﻿<div class="row">
+    <div class="col-xs-12">
+        <section class="section-area section-about text-center">
+            <h2 class="ui-title-block ui-title-block_large ui-title-block_mod-a">KAMPANYALAR</h2>
+        </section>
+    </div>
+</div>
+<div class="layout-theme animated-css" data-header="sticky" data-header-top="200">
+    <div id="wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-9">
+                    <div class="section-area">
+                        <ul class="products products_details clearfix">
+                            @foreach (var campaigns in ViewBag.Campaigns)
+                            {
+                                <li class="products__item">
+                                    <a style="width:auto;height:auto" class="products__foto" href="~/uploads/6-2017/@campaigns.ImagePath" rel="prettyPhoto"> <img src="~/uploads/6-2017/@campaigns.ImagePath" height="260" width="260" alt="Goods"> </a>
+                                    <div class="products__wrap clearfix">
+                                        <h4 class="products__name"><a href="#">@campaigns.Name</a></h4>
+                                        <ul class="rating">
+                                            <li><i class="icon fa fa-star"></i></li>
+                                            <li><i class="icon fa fa-star"></i></li>
+                                            <li><i class="icon fa fa-star"></i></li>
+                                            <li><i class="icon fa fa-star"></i></li>
+                                            <li><i class="icon fa fa-star disabled"></i></li>
+                                        </ul>
+                                        <div class="products__description">
+                                            <p>@campaigns.Description</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="assets/js/jquery-migrate-1.2.1.js"></script>
+<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/js/modernizr.custom.js"></script>
+<script src="assets/plugins/isotope/jquery.isotope.min.js"></script>
+<script src="assets/plugins/owl-carousel/owl.carousel.min.js"></script>
+<script src="assets/js/waypoints.min.js"></script>
+<script src="assets/plugins/prettyphoto/js/jquery.prettyPhoto.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script src="assets/plugins/jelect/jquery.jelect.js"></script>
+<script src="assets/plugins/nouislider/jquery.nouislider.all.min.js"></script> 

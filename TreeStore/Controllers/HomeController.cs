@@ -160,6 +160,9 @@ namespace TreeStore.Controllers
         [Route("Campaigns")]
         public IActionResult Campaigns()
         {
+            List<Campaign> campaigns;
+            campaigns = campaignService.GetCampaigns().ToList();
+            ViewBag.Campaigns = campaigns;
             return View();
         }
 
