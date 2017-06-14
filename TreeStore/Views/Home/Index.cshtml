@@ -1,4 +1,4 @@
-﻿@model PagedList.Core.IPagedList<Product>
+﻿
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -65,7 +65,7 @@
                         {
                         <article class="list-posts__article clearfix">
                             <div class="img-hover-effect"><img class="img-responsive" src="~/uploads/6-2017/@campaign.ImagePath" height="250" width="420" alt="Foto"></div>
-                            <div class="list-posts__info"> <i class="icon icon-user"></i><span class="list-posts__autor"><a class="color_primary" href="javascript:void(0);">@campaign.CreatedBy</a></span> <i class="icon icon-calendar"></i><span class="list-posts__date">@campaign.EndDate</span> </div>
+                            <div class="list-posts__info"> <i class="icon icon-user"></i><span class="list-posts__autor"><a class="color_primary" href="javascript:void(0);">@campaign.CreatedBy</a></span> <i class="icon icon-calendar"></i><span class="list-posts__date">@campaign.EndDate.ToString("dd:MM:yyyy")</span> </div>
                             <h2 class="list-posts__title">@campaign.Name</h2>
                             <p>@campaign.Slogan</p>
                             <a class="btn btn-info pull-right" href="javascript:void(0);">READ MORE</a>
@@ -106,11 +106,8 @@
                                                         <div class="products__inner clearfix">
                                                             <span class="products__price-new">@product.DiscountPrice</span> <span class="products__price-old">@product.Price</span>
                                                             <ul class="rating">
-                                                                <li><i class="icon fa fa-star"></i></li>
-                                                                <li><i class="icon fa fa-star"></i></li>
-                                                                <li><i class="icon fa fa-star"></i></li>
-                                                                <li><i class="icon fa fa-star"></i></li>
-                                                                <li><i class="icon fa fa-star disabled"></i></li>
+                                                                <li><p>@product.Price-@product.DiscountPrice</p></li>
+                                                              
                                                             </ul>
                                                         </div>
                                                     </li>

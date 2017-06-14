@@ -9,6 +9,8 @@ using MimeKit;
 using MailKit.Net.Smtp;
 using TreeStore.Services;
 using Microsoft.EntityFrameworkCore;
+using TreeStore.Models;
+using System.Collections.ObjectModel;
 
 namespace TreeStore.Controllers
 {
@@ -37,15 +39,25 @@ namespace TreeStore.Controllers
 
         public IActionResult Index()
         {
+            
             var mainCategories = categoryService.GetCategories().Where(c => c.ParentCategoryId == null);
             var categories = categoryService.GetCategories().AsQueryable().Include(c => c.ChildCategories).Where(c => c.ParentCategoryId != null);
             var products = productService.GetProducts().Where(p => p.IsActive).OrderBy(p => p.CreateDate).Take(24);
             var campaigns = campaignService.GetCampaigns().Where(c => c.IsActive);
             var sliderProducts = productService.GetProducts().Where(p => p.SliderId != null);
+            Collection<Campaign> viewCampaigns = new Collection<Campaign>();
+            string[] names;
+            foreach(var campaign in campaigns)
+            {
+                names = campaign.CreatedBy.Split('@');
+                campaign.CreatedBy = names[0];
+                
+                viewCampaigns.Add(campaign);
+            }
             ViewBag.Categories = categories;
             ViewBag.MainCategories = mainCategories;
             ViewBag.Products = products;
-            ViewBag.Campaigns = campaigns;
+            ViewBag.Campaigns = viewCampaigns;
             ViewBag.SliderProducts = sliderProducts;
             return View();
         }
