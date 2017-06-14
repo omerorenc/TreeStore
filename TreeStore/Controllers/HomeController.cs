@@ -39,7 +39,13 @@ namespace TreeStore.Controllers
 
         public IActionResult Index()
         {
-            
+            ViewBag.Facebook = settingService.GetSettings().FirstOrDefault().Facebook;
+            ViewBag.Twitter = settingService.GetSettings().FirstOrDefault().Twitter;
+            ViewBag.YouTube = settingService.GetSettings().FirstOrDefault().YouTube;
+            ViewBag.RSS = settingService.GetSettings().FirstOrDefault().RSS;
+            ViewBag.Pinterest = settingService.GetSettings().FirstOrDefault().Pinterest;
+            ViewBag.Google = settingService.GetSettings().FirstOrDefault().Google;
+            ViewBag.Instagram = settingService.GetSettings().FirstOrDefault().Instagram;
             var mainCategories = categoryService.GetCategories().Where(c => c.ParentCategoryId == null);
             var categories = categoryService.GetCategories().AsQueryable().Include(c => c.ChildCategories).Where(c => c.ParentCategoryId != null);
             var products = productService.GetProducts().Where(p => p.IsActive).OrderBy(p => p.CreateDate).Take(24);
@@ -148,6 +154,40 @@ namespace TreeStore.Controllers
 
         public IActionResult Page404()
         {
+            return View();
+        }
+
+        [Route("Campaigns")]
+        public IActionResult Campaigns()
+        {
+            return View();
+        }
+
+        [Route("UserProducts")]
+        public IActionResult UserProducts()
+        {
+            return View();
+        }
+
+        [Route("Products")]
+        public IActionResult Products(long? id)
+        {
+            List<Product> products;
+            if (id != null) {
+                products = productService.GetProducts().Where(p => p.IsActive && p.CategoryId == id).ToList();
+                var category = categoryService.GetCategories().SingleOrDefault(c => c.Id == id);
+                ViewBag.Category = category.Name;
+             }
+            else
+            {
+                products = productService.GetProducts().AsQueryable().Include(p => p.Category).Where(p => p.IsActive).ToList();
+                ViewBag.Category = "ÜRÜNLER";
+            }
+      
+      
+           
+            ViewBag.Products = products;
+         
             return View();
         }
 

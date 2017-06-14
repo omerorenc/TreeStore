@@ -104,16 +104,6 @@ namespace TreeStore
         }
 
 
-        public static void indirim(ICollection<Product> products, float rate)
-        {
-           foreach(var product in products)
-            {
-                product.DiscountPrice = product.Price * rate;
-            } 
-           
-
-
-        }
  
             
     }

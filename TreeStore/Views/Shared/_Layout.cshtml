@@ -3,26 +3,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui">
-    
     <title>Tree Store</title>
     <link href="/assets/img/favicon.png" type="image/x-icon" rel="shortcut icon">
     <link href="/assets/css/master.css" rel="stylesheet">
-
-    <!-- SWITCHER -->
     <link href="/assets/plugins/switcher/css/switcher.css" rel="stylesheet" id="switcher-css" media="all">
     <link href="/assets/plugins/switcher/css/color1.css" rel="alternate stylesheet" title="color1" media="all">
     <script src="/assets/plugins/jquery/jquery-1.11.3.min.js"></script>
-    <!-- Category -->
     <link href="/css/category.css" rel="stylesheet">
-
-
 </head>
 <body>
-    <!-- Loader -->
     <div id="page-preloader"><span class="spinner"></span></div>
-    <!-- Loader end -->
     <div class="layout-theme animated-css " data-header="sticky" data-header-top="200">
-        <!-- Start Switcher -->
         <div class="switcher-wrapper">
             <div class="demo_changer">
                 <div class="form_holder">
@@ -39,8 +30,6 @@
                 </div>
             </div>
         </div>
-        <!-- End Switcher -->
-
         <div id="wrapper">
             <header class="header">
                 @*<div class="top-header" style="background-color:#d8373e">
@@ -53,7 +42,6 @@
                     </div>
                 </div>*@
                 <!-- end top-header -->
-
                 <div class="container">
                     <div class="header-inner">
                         <div class="row">
@@ -71,7 +59,6 @@
                                                 <li data-val='2' tabindex="0" class="jelect-option">CATEGORIES</li>
                                             </ul>
                                         </div>
-                                        <!-- end jelect -->
                                     </div>
                                     <div class="header-search__form">
                                         <form asp-area="" class="product-search" asp-controller="Home" asp-action="Search">
@@ -81,22 +68,14 @@
                                         </form>
                                         </div>
                                     </div>
-                                
-                                <!-- end header-search -->
                             </div>
                             <div class="col-md-3" style="height:60px; color:black !important" >
                                 @await Html.PartialAsync("_LoginPartial")
                             </div>
-                            <!-- end col -->
                         </div>
-                        <!-- end row-->
                     </div>
-                    <!-- end header-inner-->
                 </div>
-                <!-- end container-->
             </header>
-            <!-- HEADER END -->
-
             <div class="top-nav ">
                 <div class="container">
                     <div class="row">
@@ -108,7 +87,7 @@
                                 </div>
                                 <div id="navbar-collapse-1" class="navbar-collapse collapse">
                                     <ul class="nav navbar-nav">
-                                        <li><a href="javascript:void(0);">Home</a></li>
+                                        <li><a href="/">Ana Sayfa</a></li>
                                         <li> <a href="/hakkinda">Hakkımızda</a> </li>
                                         <li> <a href="/iletisim">İletişim</a> </li>
                                     </ul>
@@ -118,7 +97,6 @@
                     </div>
                 </div>
             </div>
-            <!--end top-nav -->
             @RenderBody()
             <div class="section-area section-default section-list-clients wow bounceInUp" data-wow-duration="2s">
                 <div class="container">
@@ -141,14 +119,9 @@
                                 <div class="list-clients__item"> <img class="img-responsive" src="/assets/media/clients/3.png" height="80" width="98" alt="Clients"> </div>
                             </div>
                         </div>
-                        <!-- end col -->
                     </div>
-                    <!-- end row -->
                 </div>
-                <!-- end container -->
             </div>
-            <!-- end section-area -->
-
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12">
@@ -160,24 +133,13 @@
                                     <div class="form-group">
                                         <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="E-posta adresi" class="form-control form-email-widget" />
                                             <input areas="" asp-controller="Home" asp-action="Subscribe" type="submit" value="✓ KAYDOL" name="subscribe" id="mc-embedded-subscribe" class="product ui-btn ui-btn_primary" />
-                                            
-                                       
-                                        
-</div>
+                                    </div>
                                 </form>
                             </div>
                         </div>
-                        <!-- end section-area -->
                     </div>
-                    <!-- end col -->
                 </div>
-                <!-- end row -->
             </div>
-            <!-- end container -->
-
-
-            <!-- end section-social-links -->
-
             <footer class="footer footer_mod-a wow bounceInUp" data-wow-duration="2s">
                 <div class="footer-top">
                     <div class="container">
@@ -186,9 +148,9 @@
                                 <img src="/assets/img/logo_mod-a.png" height="51" width="162" alt="Logo">
                                 <div class="footer-info">
                                     <p>Crabitur venenatis lacus nec erat. Sed veliter urna sollicitu euismo nec hendrerit vel belitu Mauris dolor. Aliquam erat volutpat ipsum In lorem felis sollicitudin sed.</p>
-                                    <a class="btn btn-default" href="javascript:void(0);">READ MORE</a>
                                 </div>
                             </div>
+                            <div class="col-md-2"></div>
                             <div class="col-md-2">
                                 <h3 class="footer-title">Bilgi</h3>
                                 <ul class="footer-list">
@@ -196,70 +158,31 @@
                                     <li class="footer-list__item"> <a class="footer-list__link" href="/TermsOfUse">Kullanım Koşulları</a> </li>
                                 </ul>
                             </div>
-                            <div class="col-md-2">
-                                <h3 class="footer-title">MY ACCOUNT</h3>
-                                <ul class="footer-list">
-                                    <li class="footer-list__item"> <a class="footer-list__link" href="javascript:void(0);">Order History</a> </li>
-                                    <li class="footer-list__item"> <a class="footer-list__link" href="javascript:void(0);">Personal Information</a> </li>
-                                    <li class="footer-list__item"> <a class="footer-list__link" href="javascript:void(0);">My Cart</a> </li>
-                                    <li class="footer-list__item"> <a class="footer-list__link" href="javascript:void(0);">Checkout & Pay</a> </li>
-                                    <li class="footer-list__item"> <a class="footer-list__link" href="javascript:void(0);">Shipping Information</a> </li>
-                                </ul>
-                            </div>
-                            <div class="col-md-2">
-                                <h3 class="footer-title">USEFUL LINKS</h3>
-                                <ul class="footer-list">
-                                    <li class="footer-list__item"> <a class="footer-list__link" href="javascript:void(0);">Secure Payment</a> </li>
-                                    <li class="footer-list__item"> <a class="footer-list__link" href="javascript:void(0);">Shopping Guide</a> </li>
-                                    <li class="footer-list__item"> <a class="footer-list__link" href="javascript:void(0);">Latest Deals</a> </li>
-                                    <li class="footer-list__item"> <a class="footer-list__link" href="javascript:void(0);">Best Sellers</a> </li>
-                                    <li class="footer-list__item"> <a class="footer-list__link" href="javascript:void(0);">Father’s Day Special</a> </li>
-                                </ul>
-                            </div>
                             <div class="col-md-3">
-                                <h3 class="footer-title">OUR ADDRESS</h3>
+                                <h3 class="footer-title">iletişim</h3>
                                 <div class="footer-contacts">
                                     <address>
-                                        <i class="icon icon-pointer"></i>383 Inner Street, Outer City, Newyork , LA&nbsp;USA 33021
+                                        <i class="icon icon-pointer"></i>Kadıköy
                                     </address>
                                 </div>
-                                <div class="footer-contacts"><i class="icon icon-call-end"></i>+1 234 567800</div>
-                                <div class="footer-contacts"><i class="icon icon-envelope-open"></i><a href="mailto:orders@domain.com"></a>orders@domain.com</div>
+                                <div class="footer-contacts"><i class="icon icon-call-end"></i>0212 123 45 67</div>
+                                <div class="footer-contacts"><i class="icon icon-envelope-open"></i><a href="mailto:treestorebem@gmail.com"></a>treestorebem@gmail.com</div>
                             </div>
                         </div>
-                        <!-- end row -->
                     </div>
-                    <!-- end container -->
                 </div>
-                <!-- end footer-top -->
-
                 <div class="footer-bottom">
                     <div class="container">
                         <div class="row">
                             <div class="col-xs-12">
-
-                                <ul class="footer-nav list-unstyled">
-                                    <li class="footer-nav__item"> <a class="footer-nav__link" href="javascript:void(0);">OUR BLOG</a> </li>
-                                    <li class="footer-nav__item"> <a class="footer-nav__link" href="javascript:void(0);">PARTNERS</a> </li>
-                                    <li class="footer-nav__item"> <a class="footer-nav__link" href="javascript:void(0);">ADVERTISE</a> </li>
-                                    <li class="footer-nav__item"> <a class="footer-nav__link" href="/PrivacyPolicy">PRIVACY POLICY</a> </li>
-                                    <li class="footer-nav__item"> <a class="footer-nav__link" href="/iletisim">CONTACT US</a> </li>
-                                </ul>
-                                <div class="copyright">Copyright © 2015 <a class="color_primary" href="javascript:void(0);">Templines. </a><span class="br">All Rights Reserved.</span></div>
+                                <div class="copyright">Copyright © @DateTime.Now.Year <a class="color_primary"> TREE STORE EKİBİ </a><span class="br">All Rights Reserved.</span></div>
                             </div>
                         </div>
-                        <!-- end row -->
                     </div>
-                    <!-- end container -->
                 </div>
-                <!-- end footer-bottom -->
             </footer>
         </div>
-        <!-- end #wrapper -->
-
     </div>
-    <!-- end layout-theme -->
-    <!-- SCRIPTS -->
     <script src="/assets/js/jquery-migrate-1.2.1.js"></script>
     <script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="/assets/js/modernizr.custom.js"></script>
@@ -270,22 +193,15 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
     <script src="/assets/plugins/jelect/jquery.jelect.js"></script>
     <script src="/assets/plugins/nouislider/jquery.nouislider.all.min.js"></script>
-    <!--Color Switcher-->
     <script src="/assets/plugins/switcher/js/bootstrap-select.js"></script>
     <script src="/assets/plugins/switcher/js/dmss.js"></script>
-    <!--THEME-->
     <script src="/assets/js/cssua.min.js"></script>
     <script src="/assets/js/wow.min.js"></script>
     <script src="/assets/js/custom.js"></script>
     <script src="/js/category.js"></script>
-
-    <!--Back to Top-->
     <script type="text/javascript">
-    // create the back to top button
     $('body').prepend('<a href="#" class="back-to-top">Back to Top</a>');
-
     var amountScrolled = 300;
-
     $(window).scroll(function () {
         if ($(window).scrollTop() > amountScrolled) {
             $('a.back-to-top').fadeIn('slow');
@@ -293,7 +209,6 @@
             $('a.back-to-top').fadeOut('slow');
         }
     });
-
     $('a.back-to-top, a.simple-back-to-top').click(function () {
         $('html, body').animate({
             scrollTop: 0

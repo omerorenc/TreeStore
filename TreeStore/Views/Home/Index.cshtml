@@ -5,13 +5,12 @@
 <br />
 <br />
 <br />
-<br />
 <div class="container">
     <div class="row">
         <div class="col-md-3">
             <div class="mega-container visible-lg visible-md">
                 <div class="navleft-container">
-                    <div class="mega-menu-title"><h3>Category</h3></div>
+                    <div class="mega-menu-title"><h3>Kategoriler</h3></div>
                     <div class="mega-menu-category">
                         <ul class="nav">
                             @foreach (var mainCategory in ViewBag.mainCategories)
@@ -30,7 +29,7 @@
                                                             <ul class="nav">
                                                                 @foreach (var child in category.ChildCategories)
                                                                 {
-                                                                    <li><a href="#">@child.Name</a></li>
+                                                                    <li><a href="/products?Id=@child.Id">@child.Name</a></li>
                                                                 }
                                                             </ul>
                                                         </div>
@@ -65,10 +64,15 @@
                         {
                         <article class="list-posts__article clearfix">
                             <div class="img-hover-effect"><img class="img-responsive" src="~/uploads/6-2017/@campaign.ImagePath" height="250" width="420" alt="Foto"></div>
-                            <div class="list-posts__info"> <i class="icon icon-user"></i><span class="list-posts__autor"><a class="color_primary" href="javascript:void(0);">@campaign.CreatedBy</a></span> <i class="icon icon-calendar"></i><span class="list-posts__date">@campaign.EndDate.ToString("dd:MM:yyyy")</span> </div>
+                            <div class="list-posts__info">
+                                <i class="icon icon-user"></i>
+                                <span class="list-posts__autor"><a class="color_primary" href="javascript:void(0);">@campaign.CreatedBy</a></span> 
+                                <i class="icon icon-calendar"></i><span class="list-posts__date">@campaign.StartedDate.ToString("dd:MM:yyyy")</span> 
+                                / <i class="icon icon-calendar"></i><span class="list-posts__date">@campaign.EndDate.ToString("dd:MM:yyyy")</span>
+                            </div>
                             <h2 class="list-posts__title">@campaign.Name</h2>
                             <p>@campaign.Slogan</p>
-                            <a class="btn btn-info pull-right" href="javascript:void(0);">READ MORE</a>
+                            <a class="btn btn-info pull-right" href="javascript:void(0);">Kampanya Detayları</a>
                         </article>
                         }
                     </div>
@@ -80,7 +84,7 @@
 
             </div>
         </div>
-
+    </div>
             <div class="container">
                         <div class="row">
                             <div class="col-md-12">
@@ -129,7 +133,7 @@
             
             <!-- end container -->
          
-     </div>
+    
 
 
 

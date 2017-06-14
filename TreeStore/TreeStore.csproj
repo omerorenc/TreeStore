@@ -5767,6 +5767,7 @@
     <Content Include="wwwroot\images\tree.png" />
     <Content Include="wwwroot\logo.png" />
     <Content Include="wwwroot\metronic\pages\img\Tree.png" />
+    <Content Include="wwwroot\uploads\kampanya.png" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
@@ -5797,7 +5798,6 @@
     <Folder Include="Migrations\" />
     <Folder Include="wwwroot\assets\apps\img\" />
     <Folder Include="wwwroot\assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
-    <Folder Include="wwwroot\uploads\" />
   </ItemGroup>
 
 </Project>

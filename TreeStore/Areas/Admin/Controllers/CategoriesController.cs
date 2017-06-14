@@ -119,7 +119,7 @@ namespace TreeStore.Areas.Admin.Controllers
                 
                 try
                 {
-                    Methods.indirim(category.Products, (float)0.1);
+                    
                     category.UpdateBy = User.Identity.Name;
                     categoryService.UpdateCategory(category);
                     categoryService.SaveCategory();

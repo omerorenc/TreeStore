@@ -6,63 +6,61 @@
     <div class="border-main">
         <div class="container">
             <div class="row">
-            </div>
-            <section class="product-card">
-                <div class="col-md-3">
-                    <div class="mega-container visible-lg visible-md">
-                        <div class="navleft-container">
-                            <div class="mega-menu-title"><h3>Category</h3></div>
-                            <div class="mega-menu-category">
-                                <ul class="nav">
-                                    @foreach (var mainCategory in ViewBag.mainCategories)
-                                    {
-                                        <li>
-                                            <a href="#">@mainCategory.Name</a> <div class="wrap-popup">
-                                                <div class="popup">
-                                                    <div class="row">
-                                                        @foreach (var category in ViewBag.Categories)
-                                                        {
-                                                            @if (category.ParentCategoryId == mainCategory.Id)
+                <section class="product-card">
+                    <div class="col-md-3">
+                        <div class="mega-container visible-lg visible-md">
+                            <div class="navleft-container">
+                                <div class="mega-menu-title"><h3>Category</h3></div>
+                                <div class="mega-menu-category">
+                                    <ul class="nav">
+                                        @foreach (var mainCategory in ViewBag.mainCategories)
+                                        {
+                                            <li>
+                                                <a href="#">@mainCategory.Name</a> <div class="wrap-popup">
+                                                    <div class="popup">
+                                                        <div class="row">
+                                                            @foreach (var category in ViewBag.Categories)
                                                             {
-                                                                <div class="col-md-3 ">
-                                                                    <h3>@category.Name</h3>
-                                                                    <ul class="nav">
-                                                                        @foreach (var child in category.ChildCategories)
-                                                                        {
-                                                                            <li><a href="#">@child.Name</a></li>
-                                                                        }
-                                                                    </ul>
-                                                                </div>
+                                                                @if (category.ParentCategoryId == mainCategory.Id)
+                                                                {
+                                                                    <div class="col-md-3 ">
+                                                                        <h3>@category.Name</h3>
+                                                                        <ul class="nav">
+                                                                            @foreach (var child in category.ChildCategories)
+                                                                            {
+                                                                                <li><a href="#">@child.Name</a></li>
+                                                                            }
+                                                                        </ul>
+                                                                    </div>
+                                                                }
                                                             }
-                                                        }
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                    }
-                                </ul>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-1"></div>
-                    <div class="col-md-4">
+                    <div class="col-md-7">
                         <div class="product-card__slider" id="image-block">
                             <div class="slider-product flexslider">
                                 <ul class="slides">
-                                    <li> 
-                                        <a href="~/uploads/6-2017/@ViewBag.Product.ImagePath" class="prettyPhoto"> 
-                                            <img src="~/uploads/6-2017/@ViewBag.Product.ImagePath" height="570" width="460" title="Foto" alt="img"> 
-                                        </a> 
+                                    <li>
+                                        <a href="~/uploads/6-2017/@ViewBag.Product.ImagePath" class="prettyPhoto">
+                                            <img src="~/uploads/6-2017/@ViewBag.Product.ImagePath" style="height:500px; width:920px" title="Foto" alt="img">
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-2">
                         <div class="product-card__main">
                             <h1 class="product-card__name">@ViewBag.Product.Name"</h1>
-                            @if (ViewBag.Product.IsActive== true)
+                            @if (ViewBag.Product.IsActive == true)
                             {
                                 <div class="product-card__availability"><i class="icon fa fa-check-circle"></i>Ürün Aktif</div>
                             }
@@ -71,15 +69,16 @@
                                 <div class="product-card__price-old"><i class="icon fa fa-times-circle"></i>Ürün Pasif</div>
                             }
                             <div class="product-card__price">
-                                <span class="product-card__price-new">@ViewBag.Product.DiscountPrice  TL</span> 
-                                <span class="product-card__price-old">@ViewBag.Product.Price  TL</span> 
+                                <span class="product-card__price-new">@ViewBag.Product.DiscountPrice  TL</span>
+                                <span class="product-card__price-old">@ViewBag.Product.Price  TL</span>
                             </div>
                             <div class="product-card__description">
                                 <p>@ViewBag.Product.Description</p>
                             </div>
                         </div>
                     </div>
-            </section>
+                </section>
+            </div>
         </div>
     </div>
 </div>

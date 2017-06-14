@@ -1,1 +1,54 @@
-﻿
+﻿<div class="row">
+    <div class="col-xs-12">
+        <section class="section-area section-about text-center">
+            <h2 class="ui-title-block ui-title-block_large ui-title-block_mod-a">@ViewBag.Category</h2>
+        </section>
+    </div>
+</div>
+    <div class="layout-theme animated-css" data-header="sticky" data-header-top="200">
+        <div id="wrapper">
+            <div class="border-main">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="section-area">
+                                <ul class="products clearfix">
+                                    @foreach (var product in ViewBag.Products)
+                                    {
+                                        <li class="isotope-item best products__item">
+                                            <a class="products__foto" href="~/uploads/6-2017/@product.ImagePath" rel="prettyPhoto"> <img src="~/uploads/6-2017/@product.ImagePath" style="width:260px;height:260px" height="260" width="260" alt="Goods"> </a>
+                                            <h4 class="products__name"><a href="/Urun?id=@product.Id">@product.Name</a></h4>
+                                            <div class="products__inner clearfix">
+                                                <span class="products__price-new">@product.DiscountPrice</span> <span class="products__price-old">@product.Price</span>
+                                                <ul class="rating">
+                                                    <li><i class="icon fa fa-star"></i></li>
+                                                    <li><i class="icon fa fa-star"></i></li>
+                                                    <li><i class="icon fa fa-star"></i></li>
+                                                    <li><i class="icon fa fa-star"></i></li>
+                                                    <li><i class="icon fa fa-star disabled"></i></li>
+                                                </ul>
+                                            </div>
+                                            <footer class="products-btns clearfix">
+                                                <p>@product.Description</p>
+                                            </footer>
+                                            <span class="label-wrap"><span class="label label-danger">YENi ÜRÜN</span></span>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/jquery-migrate-1.2.1.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/modernizr.custom.js"></script>
+    <script src="assets/plugins/isotope/jquery.isotope.min.js"></script>
+    <script src="assets/plugins/owl-carousel/owl.carousel.min.js"></script>
+    <script src="assets/js/waypoints.min.js"></script>
+    <script src="assets/plugins/prettyphoto/js/jquery.prettyPhoto.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="assets/plugins/jelect/jquery.jelect.js"></script>
+    <script src="assets/plugins/nouislider/jquery.nouislider.all.min.js"></script>

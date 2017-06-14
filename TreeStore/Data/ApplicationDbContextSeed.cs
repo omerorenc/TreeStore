@@ -24,18 +24,27 @@ namespace TreeStore.Data
             AddRoles(_roleManager);
             AddRoleToUser(_userManager);
             AddCategories(context);
+            AddCampaign(context);
         }
 
         private static void AddCategories(ApplicationDbContext context)
         {
             context.AddRange(
-                new Category { Name = "Beyaz Eşya" },
-                new Category { Name = "Market" },
-                new Category { Name = "Elektronik" },
-                new Category { Name = "Giyim" },
-                new Category { Name = "Erkek", ParentCategoryId = 4 },
-                new Category { Name = "Kadın", ParentCategoryId = 4 },
-                new Category { Name = "Çocuk", ParentCategoryId = 4 }
+                new Category { Name = "Beyaz Eşya", CreateDate = DateTime.Now, CreatedBy = user.UserName },
+                new Category { Name = "Market", CreateDate = DateTime.Now, CreatedBy = user.UserName },
+                new Category { Name = "Elektronik", CreateDate = DateTime.Now, CreatedBy = user.UserName },
+                new Category { Name = "Giyim", CreateDate = DateTime.Now, CreatedBy = user.UserName },
+                new Category { Name = "Erkek", ParentCategoryId = 4, CreateDate = DateTime.Now, CreatedBy = user.UserName },
+                new Category { Name = "Kadın", ParentCategoryId = 4, CreateDate = DateTime.Now, CreatedBy = user.UserName },
+                new Category { Name = "Çocuk", ParentCategoryId = 4, CreateDate = DateTime.Now, CreatedBy = user.UserName }
+                );
+            context.SaveChanges();
+        }
+
+        private static void AddCampaign(ApplicationDbContext context)
+        {
+            context.AddRange(
+                new Campaign { Name = "Kampanya", Slogan = "Büyük Kampanya", Description = "Açıklama", StartedDate = DateTime.Now, EndDate = DateTime.Now, IsActive = true, ImagePath = "kampanya.png", CreateDate = DateTime.Now, CreatedBy = user.UserName }
                 );
             context.SaveChanges();
         }
