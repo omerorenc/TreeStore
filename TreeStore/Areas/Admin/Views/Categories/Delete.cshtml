@@ -12,6 +12,7 @@
     <div class="alert alert-danger">Silmek istediğiniz kategori ile ilişkili ürünler veya kategoriler varsa lütfen önce ilişkili kayıtları siliniz.</div>
     <form asp-action="Delete">
         <dl class="dl-horizontal">
+            <input type="hidden" asp-for="Id" />
             <dt>
                 Kategori Adı
             </dt>
@@ -67,7 +68,7 @@
             </dd>
 
         </dl>
-        <input type="hidden" asp-for="Id" />
+     
         <div class="form-actions no-color">
             <input type="submit" value="Sil" class="btn btn-danger" /> 
             <a class="btn btn-default" asp-action="Index">Listeye Geri Dön</a>

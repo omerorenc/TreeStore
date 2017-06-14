@@ -1,14 +1,12 @@
 @model TreeStore.Models.Entities.Subscription
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Abone Sil";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
+<h2>Abone Sil</h2>
+<h3>Bu mesajý silmek istediðinize emin misiniz?</h3>
 <div>
-    <h4>Subscription</h4>
     <hr />
     <form asp-action="Delete">
         <dl class="dl-horizontal">
@@ -94,9 +92,10 @@
         </dl>
 
 
+
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            <a asp-action="Index">Back to List</a>
+            <input type="submit" value="Sil" class="btn btn-danger" />
+            <a class="btn btn-default" asp-action="Index">Listeye Geri Dön</a>
         </div>
     </form>
 </div>

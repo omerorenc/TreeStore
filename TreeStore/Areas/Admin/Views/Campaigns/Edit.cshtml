@@ -1,14 +1,13 @@
 @model TreeStore.Models.Campaign
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Kampanya Düzenle";
 }
 
-<h2>Edit</h2>
+<h2>Kampanya Düzenle</h2>
 
 <form asp-action="Edit">
     <div class="form-horizontal">
-        <h4>Campaign</h4>
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
@@ -89,7 +88,7 @@
         </div>
     <input type="hidden" asp-for="Id" />
 
-        <div class="form-group">
+        @*<div class="form-group">
             <label asp-for="CreateDate" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <input asp-for="CreateDate" class="form-control" readonly/>
@@ -116,17 +115,17 @@
                 <input asp-for="UpdateBy" class="form-control" readonly/>
                 <span asp-validation-for="UpdateBy" class="text-danger"></span>
             </div>
-        </div>
+        </div>*@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
             </div>
         </div>
     </div>
 </form>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-default" asp-action="Index">Listeye geri dön</a>
 </div>
 @Html.Partial("_BrowseMedia", new ViewDataDictionary(this.ViewData) { { "element", "ImagePath" } })
 @section Scripts {

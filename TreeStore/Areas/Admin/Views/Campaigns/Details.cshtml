@@ -1,13 +1,12 @@
 @model TreeStore.Models.Campaign
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Kampanya Detaylarý";
 }
 
-<h2>Details</h2>
+<h2>Kampanya Detaylarý</h2>
 
 <div>
-    <h4>Campaign</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -79,5 +78,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Düzenle</a> 
+    <a class="btn btn-default" asp-action="Index">Listeye geri dön</a>
 </div>

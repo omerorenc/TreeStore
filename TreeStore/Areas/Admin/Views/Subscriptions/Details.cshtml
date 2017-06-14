@@ -1,13 +1,13 @@
 @model TreeStore.Models.Entities.Subscription
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Abone Detaylarý";
 }
 
-<h2>Details</h2>
+<h2>Abone Detaylarý</h2>
 
 <div>
-    <h4>Subscription</h4>
+ 
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -91,6 +91,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-success" asp-action="Reply" asp-route-id="@Model.Id">Düzenle</a>
+    <a class="btn btn-default" asp-action="Index">Listeye Geri Dön</a>
 </div>
