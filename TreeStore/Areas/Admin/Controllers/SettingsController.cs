@@ -17,11 +17,9 @@ namespace TreeStore.Areas.Admin.Controllers
     [Area("Admin")]
     public class SettingsController : Controller
     {
-        private readonly IHostingEnvironment env;
         private readonly ISettingService settingService;
-        public SettingsController(IHostingEnvironment _env, ISettingService _settingService)
+        public SettingsController(ISettingService _settingService)
         {
-            this.env = _env;
             this.settingService = _settingService;
         }
         public IActionResult Index()

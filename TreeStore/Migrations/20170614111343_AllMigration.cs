@@ -150,19 +150,25 @@ namespace TreeStore.Migrations
                     Address = table.Column<string>(nullable: true),
                     CreateDate = table.Column<DateTime>(nullable: false),
                     CreatedBy = table.Column<string>(nullable: true),
+                    Facebook = table.Column<string>(nullable: true),
                     Fax = table.Column<string>(nullable: true),
+                    Google = table.Column<string>(nullable: true),
+                    Instagram = table.Column<string>(nullable: true),
                     Mail = table.Column<string>(nullable: true),
                     MembershipAgreement = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     Phone = table.Column<string>(nullable: true),
+                    Pinterest = table.Column<string>(nullable: true),
                     PrivacyPolicy = table.Column<string>(nullable: true),
+                    RSS = table.Column<string>(nullable: true),
                     SeoDescription = table.Column<string>(nullable: true),
                     SeoKeywords = table.Column<string>(nullable: true),
                     SeoTitle = table.Column<string>(nullable: true),
                     TermsOfUse = table.Column<string>(nullable: true),
+                    Twitter = table.Column<string>(nullable: true),
                     UpdateBy = table.Column<string>(nullable: true),
                     UpdateDate = table.Column<DateTime>(nullable: false),
-                    WelcomeText = table.Column<string>(nullable: true)
+                    YouTube = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

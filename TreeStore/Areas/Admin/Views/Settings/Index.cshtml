@@ -13,13 +13,6 @@
 <form asp-area="Admin" role="form" asp-controller="Settings" asp-action="Index" method="post" enctype="multipart/form-data">
     <div class="form-horizontal">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="form-group">
-            <label asp-for="WelcomeText" class="col-md-1 control-label"></label>
-            <div class="col-md-11">
-                <textarea asp-for="WelcomeText" rows="10" class="form-control"></textarea>
-                <span asp-validation-for="WelcomeText" class="text-danger"></span>
-            </div>
-        </div>
         <input type="hidden" asp-for="Id" />
         <div class="form-group">
             <label asp-for="MembershipAgreement" class="col-md-1 control-label"></label>
@@ -105,11 +98,59 @@
             </div>
         </div>
         <div class="form-group">
+            <label asp-for="Twitter" class="col-md-1 control-label"></label>
+            <div class="col-md-11">
+                <input asp-for="Twitter" class="form-control" />
+                <span asp-validation-for="Twitter" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Facebook" class="col-md-1 control-label"></label>
+            <div class="col-md-11">
+                <input asp-for="Facebook" class="form-control" />
+                <span asp-validation-for="Facebook" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Google" class="col-md-1 control-label"></label>
+            <div class="col-md-11">
+                <input asp-for="Google" class="form-control" />
+                <span asp-validation-for="Google" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Instagram" class="col-md-1 control-label"></label>
+            <div class="col-md-11">
+                <input asp-for="Instagram" class="form-control" />
+                <span asp-validation-for="Instagram" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Pinterest" class="col-md-1 control-label"></label>
+            <div class="col-md-11">
+                <input asp-for="Pinterest" class="form-control" />
+                <span asp-validation-for="Pinterest" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="RSS" class="col-md-1 control-label"></label>
+            <div class="col-md-11">
+                <input asp-for="RSS" class="form-control" />
+                <span asp-validation-for="RSS" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="YouTube" class="col-md-1 control-label"></label>
+            <div class="col-md-11">
+                <input asp-for="YouTube" class="form-control" />
+                <span asp-validation-for="YouTube" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
             <div class="col-md-offset-1 col-md-11">
                 <button type="submit" class="btn btn-primary">Kaydet</button>
             </div>
         </div>
-
     </div>
 </form>
 @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
