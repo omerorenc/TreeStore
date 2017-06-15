@@ -8,12 +8,12 @@ namespace TreeStore.Models.AccountViewModels
 {
     public class RegisterViewModel
     {
-        [Required]
+        [Required(ErrorMessage ="Lütfen E-Mailinizi giriniz.")]
         [EmailAddress]
         [Display(Name = "E-Mail")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Lütfen şifrenizi giriniz.")]
         [StringLength(100, ErrorMessage = "{0} en az {2} en fazla {1} karakter uzunluğunda olabilir.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Şifre")]
@@ -23,12 +23,12 @@ namespace TreeStore.Models.AccountViewModels
         [Display(Name = "Şifre(Tekrar)")]
         [Compare("Password", ErrorMessage = "Şifreler eşleşmiyor. Lütfen tekrar deneyin.")]
         public string ConfirmPassword { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Lütfen Firma Adını giriniz.")]
         [Display(Name ="Firma Adı")]
         public string CompanyName { get; set; }
         [Display(Name ="Firma Adresi")]
         public string Address { get; set; }
-        [Required(ErrorMessage ="Lütfen firma telefonunu giriniz.")]
+        [Required(ErrorMessage ="Lütfen Firma Telefonunu giriniz.")]
         [Display(Name = "Firma Telefonu")]
         public string Phone { get; set; }
         [Display(Name = "Firma Fax")]

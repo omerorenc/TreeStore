@@ -8,11 +8,11 @@ namespace TreeStore.Models.AccountViewModels
 {
     public class LoginViewModel : BaseEntity
     {
-        [Required]
+        [Required(ErrorMessage ="Lütfen E-mailinizi giriniz.")]
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Lütfen şifrenizi giriniz.")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 

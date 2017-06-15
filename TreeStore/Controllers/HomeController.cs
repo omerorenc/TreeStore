@@ -86,7 +86,7 @@ namespace TreeStore.Controllers
             {
                 return RedirectToAction("index");
             }
-            ViewBag.product = productService.GetProducts().FirstOrDefault();
+            ViewBag.product = productService.GetProducts().FirstOrDefault().CreatedBy;
             ViewBag.campaign = campaignService.GetCampaigns().FirstOrDefault().CreatedBy;
             ViewBag.ResultProduct = product.ToList();
             ViewBag.ResultCampaign = campaign.ToList();

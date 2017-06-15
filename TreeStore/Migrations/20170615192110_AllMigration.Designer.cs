@@ -8,7 +8,7 @@ using TreeStore.Data;
 namespace TreeStore.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170614111343_AllMigration")]
+    [Migration("20170615192110_AllMigration")]
     partial class AllMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

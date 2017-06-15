@@ -18,11 +18,13 @@
                 <section class="section-area">
                     <h2 class="ui-title-block ui-title-block_small"><i class="icon fa fa-bars"></i>Giriş Yap</h2>
                     <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
-                        <div asp-validation-summary="All" class="text-danger"></div><div class="form-group">
+                        <div class="form-group">
                             <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="E-posta" asp-for="Email" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Parola" asp-for="Password" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                          <div class="pull-left">
