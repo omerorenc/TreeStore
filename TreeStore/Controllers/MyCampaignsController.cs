@@ -24,7 +24,7 @@ namespace TreeStore.Controllers
         // GET: MyCampaigns
         public IActionResult Index()
         {
-            return View(CampaignService.GetCampaigns().ToList());
+            return View(CampaignService.GetCampaigns().Where(c=>c.CreatedBy == User.Identity.Name).ToList());
         }
 
         // GET: MyCampaigns/Details/5
@@ -35,7 +35,7 @@ namespace TreeStore.Controllers
                 return NotFound();
             }
 
-            var campaign = CampaignService.GetCampaigns()
+            var campaign = CampaignService.GetCampaigns().Where(c=>c.CreatedBy == User.Identity.Name)
                 .SingleOrDefault(m => m.Id == id);
             if (campaign == null)
             {
@@ -57,10 +57,12 @@ namespace TreeStore.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Description,Slogan,StartedDate,EndDate,ImagePath,IsActive,Id,Name,CreateDate,UpdateDate,CreatedBy,UpdateBy")] Campaign campaign)
+        public IActionResult Create( Campaign campaign)
         {
                 if (ModelState.IsValid)
                 {
+                    campaign.CreatedBy = User.Identity.Name;
+                    campaign.UpdateBy = User.Identity.Name;
                     CampaignService.CreateCampaign(campaign);
                     CampaignService.SaveCampaign();
                     return RedirectToAction("Index");
@@ -76,7 +78,7 @@ namespace TreeStore.Controllers
                 return NotFound();
             }
 
-            var campaign = CampaignService.GetCampaigns().SingleOrDefault(m => m.Id == id);
+            var campaign = CampaignService.GetCampaigns().Where(c => c.CreatedBy == User.Identity.Name).SingleOrDefault(m => m.Id == id);
             if (campaign == null)
             {
                 return NotFound();
@@ -100,6 +102,7 @@ namespace TreeStore.Controllers
             {
                 try
                 {
+                    campaign.UpdateBy = User.Identity.Name;
                     CampaignService.UpdateCampaign(campaign);
                     CampaignService.SaveCampaign();
                 }
@@ -127,7 +130,7 @@ namespace TreeStore.Controllers
                 return NotFound();
             }
 
-            var campaign = CampaignService.GetCampaigns()
+            var campaign = CampaignService.GetCampaigns().Where(c => c.CreatedBy == User.Identity.Name)
                 .SingleOrDefault(m => m.Id == id);
             if (campaign == null)
             {
@@ -142,15 +145,15 @@ namespace TreeStore.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(long id)
         {
-            var campaign = CampaignService.GetCampaigns().SingleOrDefault(m => m.Id == id);
+            
             CampaignService.DeleteCampaign(id);
-            CampaignService.DeleteCampaign(id);
+            
             return RedirectToAction("Index");
         }
 
         private bool CampaignExists(long id)
         {
-            return CampaignService.GetCampaigns().Any(e => e.Id == id);
+            return CampaignService.GetCampaigns().Where(c => c.CreatedBy == User.Identity.Name).Any(e => e.Id == id);
         }
     }
 }

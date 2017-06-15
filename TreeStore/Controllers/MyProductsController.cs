@@ -29,7 +29,7 @@ namespace TreeStore.Controllers
         // GET: MyProducts
         public IActionResult Index()
         {
-            var applicationDbContext = productService.GetProducts().AsQueryable().Include(p => p.Category).Include(p => p.Slider);
+            var applicationDbContext = productService.GetProducts().AsQueryable().Include(p => p.Category).Include(p => p.Slider).Where(p => p.CreatedBy == User.Identity.Name);
             return View(applicationDbContext.ToList());
         }
 
@@ -44,6 +44,7 @@ namespace TreeStore.Controllers
             var product = productService.GetProducts().AsQueryable()
                 .Include(p => p.Category)
                 .Include(p => p.Slider)
+                .Where(p => p.CreatedBy == User.Identity.Name)
                 .SingleOrDefault(m => m.Id == id);
             if (product == null)
             {
@@ -66,10 +67,12 @@ namespace TreeStore.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Description,Price,DiscountPrice,ImagePath,IsActive,CompanyLink,CategoryId,SliderId,Id,Name,CreateDate,UpdateDate,CreatedBy,UpdateBy")] Product product)
+        public IActionResult Create(Product product)
         {
             if (ModelState.IsValid)
             {
+                product.CreatedBy = User.Identity.Name;
+                product.UpdateBy = User.Identity.Name;
                 productService.CreateProduct(product);
                 productService.SaveProduct();
                 return RedirectToAction("Index");
@@ -87,7 +90,7 @@ namespace TreeStore.Controllers
                 return NotFound();
             }
 
-            var product = productService.GetProducts().SingleOrDefault(m => m.Id == id);
+            var product = productService.GetProducts().Where(p => p.CreatedBy == User.Identity.Name).SingleOrDefault(m => m.Id == id);
             if (product == null)
             {
                 return NotFound();
@@ -102,7 +105,7 @@ namespace TreeStore.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(long id, [Bind("Description,Price,DiscountPrice,ImagePath,IsActive,CompanyLink,CategoryId,SliderId,Id,Name,CreateDate,UpdateDate,CreatedBy,UpdateBy")] Product product)
+        public IActionResult Edit(long id,Product product)
         {
             if (id != product.Id)
             {
@@ -113,6 +116,7 @@ namespace TreeStore.Controllers
             {
                 try
                 {
+                    product.UpdateBy = User.Identity.Name;
                     productService.UpdateProduct(product);
                     productService.SaveProduct();
                 }
@@ -145,6 +149,7 @@ namespace TreeStore.Controllers
             var product = productService.GetProducts().AsQueryable()
                 .Include(p => p.Category)
                 .Include(p => p.Slider)
+                .Where(p => p.CreatedBy == User.Identity.Name)
                 .SingleOrDefault(m => m.Id == id);
             if (product == null)
             {
@@ -159,7 +164,7 @@ namespace TreeStore.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(long id)
         {
-            var product = productService.GetProducts().SingleOrDefault(m => m.Id == id);
+            
             productService.DeleteProduct(id);
             productService.SaveProduct();
             return RedirectToAction("Index");
@@ -167,7 +172,7 @@ namespace TreeStore.Controllers
 
         private bool ProductExists(long id)
         {
-            return productService.GetProducts().Any(e => e.Id == id);
+            return productService.GetProducts().Where(p => p.CreatedBy == User.Identity.Name).Any(e => e.Id == id);
         }
     }
 }
