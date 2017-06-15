@@ -25,6 +25,7 @@ namespace TreeStore.Data
             AddRoleToUser(_userManager);
             AddCategories(context);
             AddCampaign(context);
+            AddProducts(context);
         }
 
         private static void AddCategories(ApplicationDbContext context)
@@ -48,6 +49,96 @@ namespace TreeStore.Data
                 );
             context.SaveChanges();
         }
+        public static void AddProducts(ApplicationDbContext context)
+        {
+            context.AddRange(
+                new Product
+                {
+                    Name = "Asus X550V",
+                    CreatedBy = "arzugedik312@gmail.com",
+                    CreateDate = DateTime.Now,
+                    UpdateBy = "arzugedik312@gmail.com",
+                    UpdateDate = DateTime.Now,
+                    CategoryId = 3,
+                    Description = "Asus X550V",
+                    ImagePath = "images/Seed/asus.jpg",
+                    DiscountPrice = 3000,
+                    Price = 3200,
+                    IsActive = true
+                },
+                   new Product
+                   {
+                       Name = "Arcelik Buzdolabı",
+                       CreatedBy = "arzugedik312@gmail.com",
+                       CreateDate = DateTime.Now,
+                       UpdateBy = "arzugedik312@gmail.com",
+                       UpdateDate = DateTime.Now,
+                       CategoryId = 1,
+                       Description = "Buzdolabı",
+                       ImagePath = "images/Seed/arcelik.jpg",
+                       DiscountPrice = 1500,
+                       Price = 1700,
+                       IsActive = true
+                   },
+                      new Product
+                      {
+                          Name = "Mavi Tişört",
+                          CreatedBy = "arzugedik312@gmail.com",
+                          CreateDate = DateTime.Now,
+                          UpdateBy = "arzugedik312@gmail.com",
+                          UpdateDate = DateTime.Now,
+                          CategoryId = 5,
+                          Description = "Tişört",
+                          ImagePath = "uploads/Seed/mavi.jpg",
+                          DiscountPrice = 70,
+                          Price = 99,
+                          IsActive = true
+                      },
+                         new Product
+                         {
+                             Name = "Bluz",
+                             CreatedBy = "arzugedik312@gmail.com",
+                             CreateDate = DateTime.Now,
+                             UpdateBy = "username",
+                             UpdateDate = DateTime.Now,
+                             CategoryId = 6,
+                             Description = "Bluz",
+                             ImagePath = "uploads/Seed/bluz.jpg",
+                             DiscountPrice = 50,
+                             Price = 100,
+                             IsActive = true
+                         },
+                            new Product
+                            {
+                                Name = "Çocuk Ayakkabısı",
+                                CreatedBy = "arzugedik312@gmail.com",
+                                CreateDate = DateTime.Now,
+                                UpdateBy = "arzugedik312@gmail.com",
+                                UpdateDate = DateTime.Now,
+                                CategoryId = 7,
+                                Description = "Çocuk Ayakkabısı",
+                                ImagePath = "uploads/Seed/cocukayakkabi.jpg",
+                                DiscountPrice = 99,
+                                Price = 40,
+                                IsActive = true
+                            }, new Product
+                            {
+                                Name = "Kadın Parfüm",
+                                CreatedBy = "arzugedik312@gmail.com",
+                                CreateDate = DateTime.Now,
+                                UpdateBy = "arzugedik312@gmail.com",
+                                UpdateDate = DateTime.Now,
+                                CategoryId = 6,
+                                Description = "Kadın Parfüm",
+                                ImagePath = "uploads/Seed/kadinparfum.jpg",
+                                DiscountPrice = 224,
+                                Price = 250,
+                                IsActive = true
+                            }
+ );
+            context.SaveChanges();
+        }
+
 
         public static void AddMailSettings(ApplicationDbContext context)
         {
