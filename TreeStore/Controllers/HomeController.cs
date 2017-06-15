@@ -73,13 +73,23 @@ namespace TreeStore.Controllers
         public IActionResult Search(string query)
         {
             var product = from p in productService.GetProducts() select p;
+            var campaign = from c in campaignService.GetCampaigns() select c;
 
             if (!String.IsNullOrEmpty(query))
             {
                 product = product.Where(r =>
-                   r.Name.ToString().ToLower().Contains(query)|| r.Name.ToString().ToLower()==query.ToString().ToLower());
+                   r.Name.ToString().ToLower().Contains(query) || r.Name.ToString().ToLower() == query.ToString().ToLower());
+                campaign = campaign.Where(r =>
+                    r.Name.ToString().ToLower().Contains(query) || r.Name.ToString().ToLower() == query.ToString().ToLower());
             }
-            ViewBag.Result = product.ToList();
+            else
+            {
+                return RedirectToAction("index");
+            }
+            ViewBag.product = productService.GetProducts().FirstOrDefault();
+            ViewBag.campaign = campaignService.GetCampaigns().FirstOrDefault().CreatedBy;
+            ViewBag.ResultProduct = product.ToList();
+            ViewBag.ResultCampaign = campaign.ToList();
             return View("Search");
         }
         [Route("urun")]

@@ -45,28 +45,15 @@
                 <div class="container">
                     <div class="header-inner">
                         <div class="row">
-                            <div class="col-md-3"> <a href="/" class="logo"> <img class="logo__img" src="/assets/img/logo.png" height="51" width="162" alt="Logo"> </a> </div>
+                            <div class="col-md-3"> 
+                            <a href="/" class="logo"> <img class="logo__img" src="/assets/img/logo.png" height="51" width="162" alt="Logo"> </a> 
+                            </div>
                             <div class="col-md-6 ">
-                                <div class="header-search clearfix">
-                                   
-                                    <div class="header-search__filter">
-                                        <div class="jelect">
-                                            <input id="jelect" name="tool" value="0" data-text="imagemin" type="text" class="jelect-input">
-                                            <div tabindex="0" role="button" class="jelect-current">Filter By</div>
-                                            <ul class="jelect-options">
-                                                <li data-val='0' tabindex="0" class="jelect-option jelect-option_state_active" >Date</li>
-                                                <li data-val='1' tabindex="0" class="jelect-option">Title</li>
-                                                <li data-val='2' tabindex="0" class="jelect-option">CATEGORIES</li>
-                                            </ul>
-                                        </div>
-                                    </div>
                                     <div class="header-search__form">
                                         <form asp-area="" class="product-search" asp-controller="Home" asp-action="Search">
-                                           
-                                            <input id="query" class="product-search__field" type="text" value="@ViewBag.Query" placeholder="Ürün Adı, Mağaza Adı, Kampanya Adı, vs. ara.." name="query">
+                                            <input id="query" class="product-search__field" type="text" value="@ViewBag.Query" placeholder="Ürün Adı, Kampanya Adı  ara.." name="query">
                                             <button class="product-search__btn ui-btn ui-btn_primary">ara</button>
                                         </form>
-                                        </div>
                                     </div>
                             </div>
                             <div class="col-md-3" style="height:60px; color:black !important" >
