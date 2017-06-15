@@ -87,8 +87,7 @@ namespace TreeStore.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return View(model);
+                     return await Task.FromResult(RedirectToAction("register"));
                 }
             }
 
