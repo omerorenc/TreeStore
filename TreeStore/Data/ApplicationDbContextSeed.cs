@@ -37,7 +37,10 @@ namespace TreeStore.Data
                 new Category { Name = "Giyim", CreateDate = DateTime.Now, CreatedBy = user.UserName },
                 new Category { Name = "Erkek", ParentCategoryId = 4, CreateDate = DateTime.Now, CreatedBy = user.UserName },
                 new Category { Name = "Kadın", ParentCategoryId = 4, CreateDate = DateTime.Now, CreatedBy = user.UserName },
-                new Category { Name = "Çocuk", ParentCategoryId = 4, CreateDate = DateTime.Now, CreatedBy = user.UserName }
+                new Category { Name = "Çocuk", ParentCategoryId = 4, CreateDate = DateTime.Now, CreatedBy = user.UserName },
+                new Category { Name = "Buzdolabı", ParentCategoryId = 1, CreateDate = DateTime.Now, CreatedBy = user.UserName },
+                new Category { Name = "Bilgisayar", ParentCategoryId = 3, CreateDate = DateTime.Now, CreatedBy = user.UserName },
+                new Category { Name = "İçecek", ParentCategoryId = 2, CreateDate = DateTime.Now, CreatedBy = user.UserName }
                 );
             context.SaveChanges();
         }
@@ -59,9 +62,9 @@ namespace TreeStore.Data
                     CreateDate = DateTime.Now,
                     UpdateBy = "arzugedik312@gmail.com",
                     UpdateDate = DateTime.Now,
-                    CategoryId = 3,
+                    CategoryId = 9,
                     Description = "Asus X550V",
-                    ImagePath = "images/Seed/asus.jpg",
+                    ImagePath = "asus.jpg",
                     DiscountPrice = 3000,
                     Price = 3200,
                     IsActive = true
@@ -73,9 +76,9 @@ namespace TreeStore.Data
                        CreateDate = DateTime.Now,
                        UpdateBy = "arzugedik312@gmail.com",
                        UpdateDate = DateTime.Now,
-                       CategoryId = 1,
+                       CategoryId = 8,
                        Description = "Buzdolabı",
-                       ImagePath = "images/Seed/arcelik.jpg",
+                       ImagePath = "arcelik.jpg",
                        DiscountPrice = 1500,
                        Price = 1700,
                        IsActive = true
@@ -89,7 +92,7 @@ namespace TreeStore.Data
                           UpdateDate = DateTime.Now,
                           CategoryId = 5,
                           Description = "Tişört",
-                          ImagePath = "uploads/Seed/mavi.jpg",
+                          ImagePath = "mavi.jpg",
                           DiscountPrice = 70,
                           Price = 99,
                           IsActive = true
@@ -103,7 +106,7 @@ namespace TreeStore.Data
                              UpdateDate = DateTime.Now,
                              CategoryId = 6,
                              Description = "Bluz",
-                             ImagePath = "uploads/Seed/bluz.jpg",
+                             ImagePath = "bluz.jpg",
                              DiscountPrice = 50,
                              Price = 100,
                              IsActive = true
@@ -117,11 +120,12 @@ namespace TreeStore.Data
                                 UpdateDate = DateTime.Now,
                                 CategoryId = 7,
                                 Description = "Çocuk Ayakkabısı",
-                                ImagePath = "uploads/Seed/cocukayakkabi.jpg",
+                                ImagePath = "cocukayakkabi.jpg",
                                 DiscountPrice = 99,
                                 Price = 40,
                                 IsActive = true
-                            }, new Product
+                            }, 
+                            new Product
                             {
                                 Name = "Kadın Parfüm",
                                 CreatedBy = "arzugedik312@gmail.com",
@@ -130,12 +134,11 @@ namespace TreeStore.Data
                                 UpdateDate = DateTime.Now,
                                 CategoryId = 6,
                                 Description = "Kadın Parfüm",
-                                ImagePath = "uploads/Seed/kadinparfum.jpg",
+                                ImagePath = "kadinparfum.jpg",
                                 DiscountPrice = 224,
                                 Price = 250,
                                 IsActive = true
-                            }
- );
+                            });
             context.SaveChanges();
         }
 

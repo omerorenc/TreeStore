@@ -166,6 +166,14 @@ namespace TreeStore.Controllers
             return View();
         }
 
+        [Route("Campaign")]
+        public IActionResult Campaign(long? id)
+        {
+            var campaign = campaignService.GetCampaigns().FirstOrDefault(c => c.Id == id);
+            ViewBag.Campaigns = campaign;
+            return View();
+        }
+
         [Route("UserProducts")]
         public IActionResult UserProducts()
         {

@@ -5767,7 +5767,13 @@
     <Content Include="wwwroot\images\tree.png" />
     <Content Include="wwwroot\logo.png" />
     <Content Include="wwwroot\metronic\pages\img\Tree.png" />
+    <Content Include="wwwroot\uploads\arcelik.jpg" />
+    <Content Include="wwwroot\uploads\asus.jpg" />
+    <Content Include="wwwroot\uploads\bluz.jpg" />
+    <Content Include="wwwroot\uploads\cocukayakkabi.jpg" />
+    <Content Include="wwwroot\uploads\kadinparfum.jpg" />
     <Content Include="wwwroot\uploads\kampanya.png" />
+    <Content Include="wwwroot\uploads\mavi.jpg" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
