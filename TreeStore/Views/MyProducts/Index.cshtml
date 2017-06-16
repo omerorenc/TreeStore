@@ -1,13 +1,13 @@
-@model IEnumerable<TreeStore.Models.Product>
+﻿@model IEnumerable<TreeStore.Models.Product>
 
 @{
     ViewData["Title"] = "Index";
 }
-<h2>Index</h2>
+<br />
+<br />
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<br />
+<br />
 <div class="row">
     <div class="col-md-3">
         <aside class="sidebar">
@@ -25,26 +25,67 @@
         </aside>
     </div>
     <div class="col-md-9">
-        @foreach (var item in Model)
-        {
-            <div class="col-md-3">
-                <img src="~/uploads/6-2017/@item.ImagePath" height="260" width="260" alt="Goods">
-                <h4 class="products__name"><a href="#">@item.Name</a></h4>
-                <div class="products__category"><a href="#">@*@item.Category.Name*@</a></div>
-                <div class="products__inner clearfix">
-                    <span class="products__price-new">@item.DiscountPrice</span> <span class="products__price-old">@item.Price</span>
-                </div>
-                <footer class="products-btns clearfix"></footer>
-                <span class="label-wrap"><span class="label label-warning">NEW</span></span>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <p><a class="product ui-btn ui-btn_primary" asp-action="Create">Ürün Ekle</a></p><br />
+<br />
+            <div>
+                @foreach (var item in Model)
+                {
+            <!--/.item-->
+                    <div class="item col-sm-3 col-lg-3 col-md-3 col-xs-6">
+                        <div class="product">
+                            <div class="image">
+                                
+                                <a href="#">
+                                    <img src="/@item.ImagePath" alt="img" class="img-responsive" style="margin-top:10px;height:200px;"
+                                </a>
+                                @{ var discount = (int)(100 - ((@item.DiscountPrice * 100) / @item.Price));}
+                                <div class="promotion">
+                                    @{ if ((DateTime.Now.Day - item.UpdateDate.Day) < 3)
+                                        {
+                                            <span class="new-product"> Yeni</span>
+                                        }
+
+                                    }
+                                    <span class="discount">% @discount indirim</span>
+
+                                </div>
+
+                            </div>
+                            <div class="title">
+                                <h4 style="min-height: 25px;"><a href="product-details.html">@item.Name </a></h4>
+                                <div class="product-price">
+                                    <span class="price-standard" style="font-size:14px;"> @Html.DisplayFor(model => item.Price) </span>	&nbsp;
+                                    <span class="price-sales" style="font-size:24px;"> @Html.DisplayFor(model => item.DiscountPrice)</span>
+                                </div>
+
+                               
+                            </div>
+                            <br />
+                            <br />
+                            <div>
+                                <span class="label-wrap"><span class="label label-warning">NEW</span></span>
+                                <a asp-action="Edit" asp-route-id="@item.Id">Düzenle</a> |
+                                <a asp-action="Details" asp-route-id="@item.Id">Detaylar</a> |
+                                <a asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+                            </div>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                    </div>
+            <!--/.item--> 
             </div>
+                                        }
+            <!--/.categoryProduct || product content end-->
+        </div>
 
-
-        }
     </div>
 </div>
+    </div>
 
 @*<li class="products__item">
     <img src="~/uploads/6-2017/@item.ImagePath" height="260" width="260" alt="Goods">
