@@ -4943,6 +4943,7 @@
     <Content Include="wwwroot\assets\global\scripts\app.min.js" />
     <Content Include="wwwroot\assets\global\scripts\datatable.js" />
     <Content Include="wwwroot\assets\global\scripts\datatable.min.js" />
+    <Content Include="wwwroot\assets\img\logo-w.png" />
     <Content Include="wwwroot\assets\layouts\global\scripts\cookie-consent.js" />
     <Content Include="wwwroot\assets\layouts\global\scripts\cookie-consent.min.js" />
     <Content Include="wwwroot\assets\layouts\global\scripts\hor-timeline.js" />

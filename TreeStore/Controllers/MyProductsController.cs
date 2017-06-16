@@ -69,7 +69,9 @@ namespace TreeStore.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Product product)
         {
-            if (ModelState.IsValid)
+            try
+            {
+                if (ModelState.IsValid)
             {
                 product.CreateDate = DateTime.Now;
                 product.UpdateDate = DateTime.Now;
@@ -78,6 +80,13 @@ namespace TreeStore.Controllers
                 productService.CreateProduct(product);
                 productService.SaveProduct();
                 return RedirectToAction("Index");
+            }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                return RedirectToAction("Create");
+
             }
             ViewData["CategoryId"] = new SelectList(categoryService.GetCategories(), "Id", "Name", product.CategoryId);
             ViewData["SliderId"] = new SelectList(sliderService.GetSliders(), "Id", "Name", product.SliderId);

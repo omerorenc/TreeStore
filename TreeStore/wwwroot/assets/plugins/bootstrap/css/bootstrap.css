@@ -4995,7 +4995,7 @@ a.label:focus {
   background-color: #31b0d5;
 }
 .label-warning {
-  background-color: #fdbb56;
+  background-color: gray;
 }
 .label-warning[href]:hover,
 .label-warning[href]:focus {

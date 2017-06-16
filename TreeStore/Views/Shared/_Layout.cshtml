@@ -46,9 +46,9 @@
                     <div class="header-inner">
                         <div class="row">
                             <div class="col-md-3"> 
-                            <a href="/" class="logo"> <img class="logo__img" src="/assets/img/logo.png" height="51" width="162" alt="Logo"> </a> 
+                            <a href="/" class="logo"> <img class="logo__img" src="/assets/img/logo-w.png" height="51" width="162" alt="Logo"> </a> 
                             </div>
-                            <div class="col-md-6 ">
+                            <div class="col-md-6 col-md-pull-1 ">
                                     <div class="header-search__form">
                                         <form asp-area="" class="product-search" asp-controller="Home" asp-action="Search">
                                             <input id="query" class="product-search__field" type="text" value="@ViewBag.Query" placeholder="Ürün Adı, Kampanya Adı  ara.." name="query">
@@ -210,6 +210,7 @@
     <script src="/assets/js/custom.js"></script>
     <script src="/js/category.js"></script>
     <script type="text/javascript">
+
     $('body').prepend('<a href="#" class="back-to-top">Back to Top</a>');
     var amountScrolled = 300;
     $(window).scroll(function () {
@@ -227,5 +228,6 @@
     });
     </script>
     @RenderSection("Scripts", required: false)
+
 </body>
 </html>
