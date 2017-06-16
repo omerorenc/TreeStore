@@ -1,9 +1,9 @@
-@model TreeStore.Models.Product
+ï»¿@model TreeStore.Models.Product
 
 @{
-    ViewData["Title"] = "Ürün Ekle";
+    ViewData["Title"] = "ÃœrÃ¼n Ekle";
 }
-<h2>Ürün Ekle</h2>
+<h2>ÃœrÃ¼n Ekle</h2>
 
 <form asp-action="Create">
     <div class="form-horizontal">
@@ -60,7 +60,7 @@
         <div class="form-group">
             <label asp-for="CompanyLink" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="CompanyLink" class="form-control" />
+                <input asp-for="CompanyLink" class="form-control"/>
                 <span asp-validation-for="CompanyLink" class="text-danger"></span>
             </div>
         </div>
@@ -86,7 +86,7 @@
 </form>
 
 <div>
-    <a class="btn btn-default" asp-action="Index">Listeye Geri Dön</a>
+    <a class="btn btn-default" asp-action="Index">Listeye Geri DÃ¶n</a>
 </div>
 @Html.Partial("_BrowseMedia", new ViewDataDictionary(this.ViewData) { { "element", "ImagePath" } })
 @section Scripts {

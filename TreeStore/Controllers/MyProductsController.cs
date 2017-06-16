@@ -57,7 +57,7 @@ namespace TreeStore.Controllers
         // GET: MyProducts/Create
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(categoryService.GetCategories(), "Id", "Name");
+            ViewData["CategoryId"] = new SelectList(categoryService.GetCategories().Where(c => c.ParentCategoryId != null), "Id", "Name");
             ViewData["SliderId"] = new SelectList(sliderService.GetSliders(), "Id", "Name");
             return View();
         }
@@ -106,7 +106,7 @@ namespace TreeStore.Controllers
             {
                 return NotFound();
             }
-            ViewData["CategoryId"] = new SelectList(categoryService.GetCategories(), "Id", "Name", product.CategoryId);
+            ViewData["CategoryId"] = new SelectList(categoryService.GetCategories().Where(c => c.ParentCategoryId != null), "Id", "Name", product.CategoryId);
             ViewData["SliderId"] = new SelectList(sliderService.GetSliders(), "Id", "Name", product.SliderId);
             return View(product);
         }

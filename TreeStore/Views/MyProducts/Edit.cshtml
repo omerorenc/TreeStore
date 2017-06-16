@@ -46,9 +46,9 @@
                     <label asp-for="ImagePath" class="col-md-2 control-label">@Html.DisplayNameFor(model => model.ImagePath)</label>
                     <div class="col-md-9">
                         <div class="input-group">
-                            <input asp-for="ImagePath" class="form-control" />
+                            <input asp-for="ImagePath" class="form-control" readonly/>
                             <span class="input-group-btn">
-                                <a class="product ui-btn ui-btn_primary" id="uploadModal" onclick="browseMedia('ImagePath')">...</a>
+                                <a class="product ui-btn ui-btn_primary" id="uploadModal" onclick="browseMedia('ImagePath')">Seç</a>
                             </span>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                 <div class="form-group">
                     <label asp-for="CategoryId" class="control-label col-md-2"></label>
                     <div class="col-md-10">
-                        <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                        <select asp-for="CategoryId" class="form-control form-control-static" asp-items="ViewBag.CategoryId"></select>
                         <span asp-validation-for="CategoryId" class="text-danger"></span>
                     </div>
                 </div>

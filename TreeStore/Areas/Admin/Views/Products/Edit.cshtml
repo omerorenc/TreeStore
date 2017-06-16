@@ -1,14 +1,13 @@
-@model TreeStore.Models.Product
+﻿@model TreeStore.Models.Product
 
 @{
     ViewData["Title"] = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Ürün Düzenle</h2>
 
 <form asp-action="Edit">
     <div class="form-horizontal">
-        <h4>Product</h4>
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
@@ -45,7 +44,7 @@
                 <div class="input-group">
                     <input asp-for="ImagePath" class="form-control" />
                     <span class="input-group-btn">
-                        <a class="btn btn-info" id="uploadModal" type="button" onclick="browseMedia('ImagePath')">...</a>
+                        <a class="btn btn-info" id="uploadModal" type="button" onclick="browseMedia('ImagePath')">SEÇ</a>
                     </span>
                 </div>
             </div>
@@ -111,14 +110,14 @@
         </div>*@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
             </div>
         </div>
     </div>
 </form>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-default" asp-action="Index">Listeye Geri Dön</a>
 </div>
 @Html.Partial("_BrowseMedia", new ViewDataDictionary(this.ViewData) { { "element", "ImagePath" } })
 @section Scripts {
