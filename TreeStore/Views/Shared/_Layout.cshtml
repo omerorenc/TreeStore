@@ -45,33 +45,30 @@
                 <div class="container">
                     <div class="header-inner">
                         <div class="row">
-                            <div class="col-md-3"> 
-                            <a href="/" class="logo"> <img class="logo__img" src="/assets/img/logo.png" height="51" width="162" alt="Logo"> </a> 
+                            <div class="col-md-3">
+                                <a href="/" class="logo"> <img class="logo__img" src="/assets/img/logo.png" height="51" width="162" alt="Logo"> </a>
                             </div>
                             <div class="col-md-6 ">
-                                    <div class="header-search__form">
-                                        <form asp-area="" class="product-search" asp-controller="Home" asp-action="Search">
-                                            <input id="query" class="product-search__field" type="text" value="@ViewBag.Query" placeholder="Ürün Adı, Kampanya Adı  ara.." name="query">
-                                            <button class="product-search__btn ui-btn ui-btn_primary">ara</button>
-                                        </form>
-                                    </div>
+                                <div class="header-search__form">
+                                    <form asp-area="" class="product-search" asp-controller="Home" asp-action="Search">
+                                        <input id="query" class="product-search__field" type="text" value="@ViewBag.Query" placeholder="Ürün Adı, Kampanya Adı  ara.." name="query">
+                                        <button class="product-search__btn ui-btn ui-btn_primary">ara</button>
+                                    </form>
+                                </div>
                             </div>
-                            <div class="col-md-3" style="height:60px; color:black !important" >
+                            <div class="col-md-3" style="height:60px; color:black !important">
                                 @await Html.PartialAsync("_LoginPartial")
                             </div>
                         </div>
                     </div>
                 </div>
             </header>
-            <div class="top-nav ">
+            @*<div class="top-nav ">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12  col-xs-12">
                             <div class="navbar yamm">
-                                <div class="navbar-header hidden-md  hidden-lg  hidden-sm">
-                                    <button type="button" data-toggle="collapse" data-target="#navbar-collapse-1" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                                    <a href="javascript:void(0);" class="navbar-brand">Menu</a>
-                                </div>
+                                
                                 <div id="navbar-collapse-1" class="navbar-collapse collapse">
                                     <ul class="nav navbar-nav">
                                         <li><a href="/">Ana Sayfa</a></li>
@@ -82,117 +79,175 @@
                                     </ul>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @RenderBody()
-            <div class="section-area section-default section-list-clients wow bounceInUp" data-wow-duration="2s">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="list-clients list-unstyled owl-carousel owl-theme_mod-a owl-theme enable-owl-carousel"
-                                 data-min480="2"
-                                 data-min768="4"
-                                 data-min992="4"
-                                 data-min1200="5"
-                                 data-pagination="false"
-                                 data-navigation="true"
-                                 data-auto-play="4000"
-                                 data-stop-on-hover="true">
-                                <div class="list-clients__item"> <img class="img-responsive" src="/assets/media/clients/1.png" height="80" width="136" alt="Clients"> </div>
-                                <div class="list-clients__item"> <img class="img-responsive" src="/assets/media/clients/2.png" height="80" width="146" alt="Clients"> </div>
-                                <div class="list-clients__item"> <img class="img-responsive" src="/assets/media/clients/3.png" height="80" width="98" alt="Clients"> </div>
-                                <div class="list-clients__item"> <img class="img-responsive" src="/assets/media/clients/4.png" height="80" width="171" alt="Clients"> </div>
-                                <div class="list-clients__item"> <img class="img-responsive" src="/assets/media/clients/5.png" height="80" width="100" alt="Clients"> </div>
-                                <div class="list-clients__item"> <img class="img-responsive" src="/assets/media/clients/3.png" height="80" width="98" alt="Clients"> </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="section-area section-default">
-                            <div class="subscribe subscribe_mod-a">
-                                <i class="subscribe__icon icon-envelope-open"></i>
-                                <div class="subscribe__inner"> <span class="subscribe__title">E-Bülten Üyeliği</span> <span class="subscribe__description">Güncel Kampanya ve İndirimlerden Haberdar Olun</span> </div>
-                                <form class="subscribe__form form-inline">
-                                    <div class="form-group">
-                                        <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="E-posta adresi" class="form-control form-email-widget" />
-                                            <input areas="" asp-controller="Home" asp-action="Subscribe" type="submit" value="✓ KAYDOL" name="subscribe" id="mc-embedded-subscribe" class="product ui-btn ui-btn_primary" />
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <footer class="footer footer_mod-a wow bounceInUp" data-wow-duration="2s">
-                <div class="footer-top">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <img src="/assets/img/logo_mod-a.png" height="51" width="162" alt="Logo">
-                                <div class="footer-info">
-                                    <p>Crabitur venenatis lacus nec erat. Sed veliter urna sollicitu euismo nec hendrerit vel belitu Mauris dolor. Aliquam erat volutpat ipsum In lorem felis sollicitudin sed.</p>
-                                </div>
-                            </div>
-                            
-                            <div class="col-md-2">
-                                <h3 class="footer-title">Bilgi</h3>
-                                <ul class="footer-list">
-                                    <li class="footer-list__item"> <a class="footer-list__link" href="/PrivacyPolicy">Gizlilik Sözleşmesi</a> </li>
-                                    <li class="footer-list__item"> <a class="footer-list__link" href="/TermsOfUse">Kullanım Koşulları</a> </li>
-                                </ul>
-                            </div>
-                            <div class="col-md-3">
-                                <h3 class="footer-title">iletişim</h3>
-                                <div class="footer-contacts">
-                                    <address>
-                                        <i class="icon icon-pointer"></i>Kadıköy
-                                    </address>
-                                </div>
-                                <div class="footer-contacts"><i class="icon icon-call-end"></i>0212 123 45 67</div>
-                                <div class="footer-contacts"><i class="icon icon-envelope-open"></i><a href="mailto:treestorebem@gmail.com"></a>treestorebem@gmail.com</div>
-                            </div>
 
-                            <div class="col-md-2">
-                                <h3 class="footer-title">Bizi Takip Edin</h3>
-                                <ul class="share-buttons">
-                                    <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A54639&t=TreeStore" title="Share on Facebook" target="_blank"><img alt="Share on Facebook" src="/assets/img/Facebook.png"></a></li>
-                                    <li><a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Flocalhost%3A54639&text=TreeStore:%20http%3A%2F%2Flocalhost%3A54639" target="_blank" title="Tweet"><img alt="Tweet" src="/assets/img/Twitter.png"></a></li>
-                                    <li><a href="https://plus.google.com/share?url=http%3A%2F%2Flocalhost%3A54639" target="_blank" title="Share on Google+"><img alt="Share on Google+" src="/assets/img/Google.png"></a></li>
-                                    <li><a href="mailto:?subject=TreeStore&body=:%20http%3A%2F%2Flocalhost%3A54639" target="_blank" title="Send email"><img alt="Send email" src="/assets/img/Email.png"></a></li>
-                                </ul>
-                            </div>
-
-                            <div class="col-md-2">
-                                <h3 class="footer-title">QRCODE</h3>
-                                <img src="/assets/img/qrcode.png" height="162" width="162" alt="Logo">
-                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="footer-bottom">
+            </div>*@
+            <div class="row">
+                <div class="col-md-12  col-xs-12">
+                    <div id="header-wrap">
+                        <div class="container clearfix">
+                            <!-- Primary Navigation
+                    ============================================= -->
+                            <nav id="primary-menu" class="style-2">
+                                <ul>
+                                    <li><a href="/">Ana Sayfa</a></li>
+                                    <li class="current">
+                                        <a href="#"><div>Features</div></a>
+                                        <ul>
+                                            <li>
+                                                <a href="#"><div><i class="icon-stack"></i>Sliders</div></a>
+                                                <ul>
+                                                    <li>
+                                                        <a href="slider-revolution.html"><div>Revolution Slider</div></a>
+                                                        <ul>
+                                                            <li><a href="rs-demo-premium-concept.html"><div>Premium Templates</div></a></li>
+                                                            <li><a href="slider-revolution.html"><div>Full Screen</div></a></li>
+                                                            <li><a href="slider-revolution-fullwidth.html"><div>Full Width</div></a></li>
+                                                            <li><a href="slider-revolution-kenburns.html"><div>Kenburns Effect</div></a></li>
+                                                            <li><a href="slider-revolution-html5-videos.html"><div>HTML5 Video</div></a></li>
+                                                        </ul>
+                                                    </li>
+
+                                                </ul>
+                                            </li>
+
+                                        </ul>
+                                    </li>
+                                    <li> <a href="/products">Ürünler</a> </li>
+                                    <li> <a href="/campaigns">Kampanyalar</a> </li>
+                                    <li> <a href="/hakkinda">Hakkımızda</a> </li>
+                                    <li> <a href="/iletisim">İletişim</a> </li>
+                                </ul>
+
+                            </nav><!-- #primary-menu end -->
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+                @RenderBody()
+                <div class="section-area section-default section-list-clients wow bounceInUp" data-wow-duration="2s">
                     <div class="container">
                         <div class="row">
                             <div class="col-xs-12">
-                                <ul class="footer-nav list-unstyled">
-                                    <li class="footer-nav__item"> <a class="footer-nav__link" href="/">TreeStore</a> </li>
-                                    <li class="footer-nav__item"> <a class="footer-nav__link" href="/hakkinda">Hakkımızda</a> </li>
-                                    <li class="footer-nav__item"> <a class="footer-nav__link" href="/TermsOfUse">Kullanım Koşulları</a> </li>
-                                    <li class="footer-nav__item"> <a class="footer-nav__link" href="/PrivacyPolicy">Gizlilik</a> </li>
-                                </ul>
-                                <div class="copyright">Copyright © @DateTime.Now.Year <a class="color_primary"> TREE STORE EKİBİ </a><span class="br">All Rights Reserved.</span></div>
+                                <div class="list-clients list-unstyled owl-carousel owl-theme_mod-a owl-theme enable-owl-carousel"
+                                     data-min480="2"
+                                     data-min768="4"
+                                     data-min992="4"
+                                     data-min1200="5"
+                                     data-pagination="false"
+                                     data-navigation="true"
+                                     data-auto-play="4000"
+                                     data-stop-on-hover="true">
+                                    <div class="list-clients__item"> <img class="img-responsive" src="/assets/media/clients/1.png" height="80" width="136" alt="Clients"> </div>
+                                    <div class="list-clients__item"> <img class="img-responsive" src="/assets/media/clients/2.png" height="80" width="146" alt="Clients"> </div>
+                                    <div class="list-clients__item"> <img class="img-responsive" src="/assets/media/clients/3.png" height="80" width="98" alt="Clients"> </div>
+                                    <div class="list-clients__item"> <img class="img-responsive" src="/assets/media/clients/4.png" height="80" width="171" alt="Clients"> </div>
+                                    <div class="list-clients__item"> <img class="img-responsive" src="/assets/media/clients/5.png" height="80" width="100" alt="Clients"> </div>
+                                    <div class="list-clients__item"> <img class="img-responsive" src="/assets/media/clients/3.png" height="80" width="98" alt="Clients"> </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </footer>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="section-area section-default">
+                                <div class="subscribe subscribe_mod-a">
+                                    <i class="subscribe__icon icon-envelope-open"></i>
+                                    <div class="subscribe__inner"> <span class="subscribe__title">E-Bülten Üyeliği</span> <span class="subscribe__description">Güncel Kampanya ve İndirimlerden Haberdar Olun</span> </div>
+                                    <form class="subscribe__form form-inline">
+                                        <div class="form-group">
+                                            <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="E-posta adresi" class="form-control form-email-widget" />
+                                            <input areas="" asp-controller="Home" asp-action="Subscribe" type="submit" value="✓ KAYDOL" name="subscribe" id="mc-embedded-subscribe" class="product ui-btn ui-btn_primary" />
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer class="footer footer_mod-a wow bounceInUp" data-wow-duration="2s">
+                    <div class="footer-top">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <img src="/assets/img/logo_mod-a.png" height="51" width="162" alt="Logo">
+                                    <div class="footer-info">
+                                        <p>Crabitur venenatis lacus nec erat. Sed veliter urna sollicitu euismo nec hendrerit vel belitu Mauris dolor. Aliquam erat volutpat ipsum In lorem felis sollicitudin sed.</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <h3 class="footer-title">Bilgi</h3>
+                                    <ul class="footer-list">
+                                        <li class="footer-list__item"> <a class="footer-list__link" href="/PrivacyPolicy">Gizlilik Sözleşmesi</a> </li>
+                                        <li class="footer-list__item"> <a class="footer-list__link" href="/TermsOfUse">Kullanım Koşulları</a> </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-3">
+                                    <h3 class="footer-title">iletişim</h3>
+                                    <div class="footer-contacts">
+                                        <address>
+                                            <i class="icon icon-pointer"></i>Kadıköy
+                                        </address>
+                                    </div>
+                                    <div class="footer-contacts"><i class="icon icon-call-end"></i>0212 123 45 67</div>
+                                    <div class="footer-contacts"><i class="icon icon-envelope-open"></i><a href="mailto:treestorebem@gmail.com"></a>treestorebem@gmail.com</div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <h3 class="footer-title">Bizi Takip Edin</h3>
+                                    <ul class="share-buttons">
+                                        <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A54639&t=TreeStore" title="Share on Facebook" target="_blank"><img alt="Share on Facebook" src="/assets/img/Facebook.png"></a></li>
+                                        <li><a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Flocalhost%3A54639&text=TreeStore:%20http%3A%2F%2Flocalhost%3A54639" target="_blank" title="Tweet"><img alt="Tweet" src="/assets/img/Twitter.png"></a></li>
+                                        <li><a href="https://plus.google.com/share?url=http%3A%2F%2Flocalhost%3A54639" target="_blank" title="Share on Google+"><img alt="Share on Google+" src="/assets/img/Google.png"></a></li>
+                                        <li><a href="mailto:?subject=TreeStore&body=:%20http%3A%2F%2Flocalhost%3A54639" target="_blank" title="Send email"><img alt="Send email" src="/assets/img/Email.png"></a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <h3 class="footer-title">QRCODE</h3>
+                                    <img src="/assets/img/qrcode.png" height="162" width="162" alt="Logo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-bottom">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <ul class="footer-nav list-unstyled">
+                                        <li class="footer-nav__item"> <a class="footer-nav__link" href="/">TreeStore</a> </li>
+                                        <li class="footer-nav__item"> <a class="footer-nav__link" href="/hakkinda">Hakkımızda</a> </li>
+                                        <li class="footer-nav__item"> <a class="footer-nav__link" href="/TermsOfUse">Kullanım Koşulları</a> </li>
+                                        <li class="footer-nav__item"> <a class="footer-nav__link" href="/PrivacyPolicy">Gizlilik</a> </li>
+                                    </ul>
+                                    <div class="copyright">Copyright © @DateTime.Now.Year <a class="color_primary"> TREE STORE EKİBİ </a><span class="br">All Rights Reserved.</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
         </div>
-    </div>
+
+    <!-- External JavaScripts
+    ============================================= -->
+    <script type="text/javascript" src="js/jquery.js"></script>
+
+
+    <!-- Footer Scripts
+    ============================================= -->
+    <script type="text/javascript" src="js/functions.js"></script>
+    
+    
     <script src="/assets/js/jquery-migrate-1.2.1.js"></script>
     <script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="/assets/js/modernizr.custom.js"></script>
@@ -209,6 +264,7 @@
     <script src="/assets/js/wow.min.js"></script>
     <script src="/assets/js/custom.js"></script>
     <script src="/js/category.js"></script>
+
     <script type="text/javascript">
     $('body').prepend('<a href="#" class="back-to-top">Back to Top</a>');
     var amountScrolled = 300;
