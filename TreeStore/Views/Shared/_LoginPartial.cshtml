@@ -5,31 +5,20 @@
 @inject UserManager<ApplicationUser> UserManager
 
 @if (SignInManager.IsSignedIn(User))
+{  @if (User.IsInRole("Admin"))
 {
     <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="navbar-right">
         <ul class="nav navbar-nav pull-right">
-            <li style="padding-top:0px"!important class="dropdown dropdown-user">
+            <li style="padding-top:0px" !important class="dropdown dropdown-user">
                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                     <img style="height:25px; padding-right:10px; " src="~/images/loginIcon.png" />
                     <span style="color:white" class="username username-hide-on-mobile"><b> @User.Identity.Name </b></span>
-                   
+
                 </a>
                 <ul class="dropdown-menu dropdown-menu-default">
                     <li>
-                        <a asp-controller="Manage" asp-action="Index">
-                            <i class="icon-user"></i> Profilim
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-controller="MyCampaigns" asp-action="index">
-                            <i class="glyphicon glyphicon-plus"></i>
-                            Kampanyalarım
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-controller="MyProducts" asp-action="index">
-                            <i class="glyphicon glyphicon-plus"></i>
-                            Ürünlerim
+                        <a asp-area="Admin" asp-controller="Dashboard" asp-action="Index">
+                            <i class="icon-user"></i> Yönetim Paneli
                         </a>
                     </li>
                     <li>
@@ -40,11 +29,54 @@
                 </ul>
             </li>
             <li class="dropdown dropdown-quick-sidebar-toggler">
+
         </ul>
     </form>
+
+}
+else
+{<form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="navbar-right">
+    <ul class="nav navbar-nav pull-right">
+        <li style="padding-top:0px" !important class="dropdown dropdown-user">
+            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                <img style="height:25px; padding-right:10px; " src="~/images/loginIcon.png" />
+                <span style="color:white" class="username username-hide-on-mobile"><b> @User.Identity.Name </b></span>
+
+            </a>
+            <ul class="dropdown-menu dropdown-menu-default">
+                <li>
+                    <a asp-controller="Manage" asp-action="Index">
+                        <i class="icon-user"></i> Profilim
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="MyCampaigns" asp-action="index">
+                        <i class="glyphicon glyphicon-plus"></i>
+                        Kampanyalarım
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="MyProducts" asp-action="index">
+                        <i class="glyphicon glyphicon-plus"></i>
+                        Ürünlerim
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" onclick="document.getElementById('logoutForm').submit();">
+                        <i class="icon-key"></i> Çıkış
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="dropdown dropdown-quick-sidebar-toggler">
+
+    </ul>
+</form> }
+
 }
 else
 {
+
     <ul class="nav navbar-nav navbar-right">
         <li style="padding-left:20px"><a style="color:white;font-size:15px;font-weight:bold" asp-area="" asp-controller="Account" asp-action="Register"><b>Giriş Yap</b></a></li>
     </ul>

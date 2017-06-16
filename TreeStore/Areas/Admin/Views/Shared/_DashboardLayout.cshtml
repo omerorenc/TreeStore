@@ -168,6 +168,13 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                 </a>
                             </li>
+                            <li class="nav-item  @(ViewContext.RouteData.Values["controller"].ToString().ToLowerInvariant()=="roles"?"active":string.Empty)">
+                                <a href="/admin/Roles/index" class="nav-link nav-toggle">
+                                    <i class="icon-user"></i>
+                                    <span class="title">Roller</span>
+
+                                </a>
+                            </li>
                             <li class="nav-item  @(ViewContext.RouteData.Values["controller"].ToString().ToLowerInvariant()=="subscriptions"?"active":string.Empty)">
                                 <a asp-area="Admin" asp-controller="Subscriptions" asp-action="index">
                                     <i class="glyphicon glyphicon-share"></i>
@@ -234,6 +241,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                         break;
                                     case "applicationusers":
                                         @Html.Raw("Üyeler");
+                                        break;
+                                    case "roles":
+                                        @Html.Raw("Roller");
                                         break;
                                     case "subscriptions":
                                         @Html.Raw("E-Bülten Aboneleri");

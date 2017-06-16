@@ -10,6 +10,8 @@
     <link href="/assets/plugins/switcher/css/color1.css" rel="alternate stylesheet" title="color1" media="all">
     <script src="/assets/plugins/jquery/jquery-1.11.3.min.js"></script>
     <link href="/css/category.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.dataTables.min.css" />
 </head>
 <body>
     <div id="page-preloader"><span class="spinner"></span></div>
@@ -226,6 +228,24 @@
         }, 700);
         return false;
     });
+    </script>
+    <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#tblRecords').DataTable({
+                "responsive": true,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Turkish.json"
+                }
+            });
+            $('#clickmewow').click(function () {
+                $('#radio1003').attr('checked', 'checked');
+            });
+
+
+        });
+
     </script>
     @RenderSection("Scripts", required: false)
 

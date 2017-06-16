@@ -71,9 +71,9 @@ namespace TreeStore.Controllers
                 }
             }
             catch (Exception ex)
-            {   throw ex;
+            {   
                 return RedirectToAction("Create");
-                
+                throw ex;
             }
            
             return View(campaign);

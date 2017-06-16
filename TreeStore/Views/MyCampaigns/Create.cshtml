@@ -4,7 +4,7 @@
     ViewData["Title"] = "Create";
 }
 <div class="row">
-    <div class="col-md-8 col-md-offset-1">
+    <div class="col-md-8 col-md-offset-1 col-xs-12">
         <br />
         <br />
         <h2>Kampanya Ekle</h2>
@@ -39,14 +39,14 @@
                         <div class="form-group">
                             <label asp-for="StartedDate" class="col-md-2 control-label"></label>
                             <div class="col-md-10">
-                                <input asp-for="StartedDate" class="form-control" type="date" value="gg.aa.yy"/>
+                                <input asp-for="StartedDate" class="form-control" type="date" value="gg.aa.yy" />
                                 <span asp-validation-for="StartedDate" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label asp-for="EndDate" class="col-md-2 control-label"></label>
                             <div class="col-md-10">
-                                <input asp-for="EndDate" class="form-control" type="date" value="gg.aa.yy"/>
+                                <input asp-for="EndDate" class="form-control" type="date" value="gg.aa.yy" />
                                 <span asp-validation-for="EndDate" class="text-danger"></span>
                             </div>
                         </div>
@@ -70,8 +70,8 @@
                                 </div>
                             </div>
                         </div>
-                     
-                      
+
+
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
                                 <input type="submit" class="product ui-btn ui-btn_primary" value="Kampanya Ekle" />&nbsp;&nbsp;&nbsp;
@@ -84,7 +84,7 @@
 
         </form>
 
-</div>
+    </div>
     </div>
 @Html.Partial("_BrowseMedia", new ViewDataDictionary(this.ViewData) { { "element", "ImagePath" } })
         @section Scripts {

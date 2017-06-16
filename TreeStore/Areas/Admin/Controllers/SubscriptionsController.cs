@@ -57,12 +57,21 @@ namespace TreeStore.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Email,FullName,IsSubscribed,SubscriptionDate,UnsubscriptionDate,IsConfirmed,ConfirmationDate,ConfirmationCode,Id,Name,CreateDate,UpdateDate,CreatedBy,UpdateBy")] Subscription subscription)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _context.Add(subscription);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    _context.Add(subscription);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
             }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Create");
+                throw ex;
+            }
+            
             return View(subscription);
         }
 

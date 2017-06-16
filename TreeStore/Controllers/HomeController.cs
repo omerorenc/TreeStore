@@ -142,6 +142,13 @@ namespace TreeStore.Controllers
             ViewBag.Fax = settingService.GetSettings().FirstOrDefault().Fax;
             return View(contact);
         }
+        [Route("hakkinda")]
+        public IActionResult About()
+        {
+            ViewBag.About = settingService.GetSettings().FirstOrDefault().About;
+
+            return View();
+        }
 
 
         [Route("TermsOfUse")]

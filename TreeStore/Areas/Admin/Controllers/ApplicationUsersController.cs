@@ -65,11 +65,20 @@ namespace TreeStore.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("CompanyName,CreatedDate,CreatedBy,UpdatedDate,UpdatedBy,Address,Phone,Fax,Logo,Id,UserName,NormalizedUserName,Email,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnd,LockoutEnabled,AccessFailedCount")] ApplicationUser applicationUser)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _context.Add(applicationUser);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    _context.Add(applicationUser);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Create");
+                throw ex;
+               
             }
             return View(applicationUser);
         }
@@ -97,6 +106,7 @@ namespace TreeStore.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("CompanyName,CreatedDate,CreatedBy,UpdatedDate,UpdatedBy,Address,Phone,Fax,Logo,Id,UserName,NormalizedUserName,Email,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnd,LockoutEnabled,AccessFailedCount")] ApplicationUser applicationUser)
         {
+
             var mailSetting = mailSettingService.GetMailSettings().FirstOrDefault();
             if (id != applicationUser.Id)
             {

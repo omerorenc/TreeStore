@@ -60,16 +60,23 @@ namespace TreeStore.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,NormalizedName,ConcurrencyStamp")] Role applicationRole)
         {
-            if (ModelState.IsValid)
-            {
-                if (_roleManager == null)
+            try { if (ModelState.IsValid)
                 {
-                    return NotFound();
-                }
-                var roles = applicationRole;
-                await _roleManager.CreateAsync(roles);
-                return RedirectToAction("Index");
+                    if (_roleManager == null)
+                    {
+                        return NotFound();
+                    }
+                    var roles = applicationRole;
+                    await _roleManager.CreateAsync(roles);
+                    return RedirectToAction("Index");
+                } }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Create");
+                throw ex;
+
             }
+
             return View(applicationRole);
         }
 

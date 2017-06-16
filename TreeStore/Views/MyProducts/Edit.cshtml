@@ -4,7 +4,7 @@
     ViewData["Title"] = "Edit";
 }
 <div class="row">
-    <div class="col-md-8 col-md-offset-1">
+    <div class="col-md-8 col-md-offset-1 col-xs-12">
         <br />
         <br />
         <h2>Ürün Düzenle</h2>
@@ -46,7 +46,7 @@
                     <label asp-for="ImagePath" class="col-md-2 control-label">@Html.DisplayNameFor(model => model.ImagePath)</label>
                     <div class="col-md-9">
                         <div class="input-group">
-                            <input asp-for="ImagePath" class="form-control" readonly/>
+                            <input asp-for="ImagePath" class="form-control" readonly />
                             <span class="input-group-btn">
                                 <a class="product ui-btn ui-btn_primary" id="uploadModal" onclick="browseMedia('ImagePath')">Seç</a>
                             </span>
@@ -84,7 +84,7 @@
                     </div>
                 </div>
                 <input type="hidden" asp-for="Id" />
-                
+
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="submit" value="Kaydet" class="product ui-btn ui-btn_primary" />&nbsp;&nbsp;&nbsp;
@@ -93,7 +93,7 @@
                 </div>
             </div>
         </form>
-</div>
+    </div>
     </div>
 
         @Html.Partial("_BrowseMedia", new ViewDataDictionary(this.ViewData) { { "element", "ImagePath" } })
