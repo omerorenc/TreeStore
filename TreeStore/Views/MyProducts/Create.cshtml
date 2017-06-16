@@ -47,7 +47,7 @@
                              <label asp-for="ImagePath" class="col-md-2 control-label">@Html.DisplayNameFor(model => model.ImagePath)</label>
                              <div class="col-md-9">
                                  <div class="input-group">
-                                     <input asp-for="ImagePath" class="form-control" />
+                                     <input asp-for="ImagePath" class="form-control" readonly/>
                                      <span class="input-group-btn">
                                          <a class="product ui-btn ui-btn_primary" id="uploadModal" type="button" onclick="browseMedia('ImagePath')">Seç</a>
                                      </span>
