@@ -10,6 +10,9 @@
     <thead>
         <tr>
             <th class="text-nowrap">
+              Ürün Resmi
+            </th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.Description)
             </th>
             <th class="text-nowrap">
@@ -55,6 +58,9 @@
         @foreach (var item in Model)
         {
             <tr>
+                <td>
+                   <img src="~/uploads/6-2017/@item.ImagePath" style="width:45px;height:45px;" />
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
