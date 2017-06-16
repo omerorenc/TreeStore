@@ -71,6 +71,8 @@ namespace TreeStore.Controllers
         {
             if (ModelState.IsValid)
             {
+                product.CreateDate = DateTime.Now;
+                product.UpdateDate = DateTime.Now;
                 product.CreatedBy = User.Identity.Name;
                 product.UpdateBy = User.Identity.Name;
                 productService.CreateProduct(product);
@@ -116,6 +118,9 @@ namespace TreeStore.Controllers
             {
                 try
                 {
+                   
+                    product.UpdateDate = DateTime.Now;
+                  
                     product.UpdateBy = User.Identity.Name;
                     productService.UpdateProduct(product);
                     productService.SaveProduct();

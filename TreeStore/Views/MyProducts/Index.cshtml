@@ -9,22 +9,10 @@
 <br />
 <br />
 <div class="row">
-    <div class="col-md-3">
-        <aside class="sidebar">
-            <section class="widget widget-category widget-category_mod-a wow bounceInLeft" data-wow-duration="2s">
-                <h3 class="widget-title ui-title-block ui-title-block_small"><i class="icon fa fa-bars"></i>CATEGORIES</h3>
-                <div class="block_content">
-                    <ul class="list-categories list list-links">
-                        <li class="list-categoriesitem"> <a class="list-sidebarlink" href="javascript:void(0);"> <span class="list-categoriesname">T-SHIRTS & APPAREL</span> <span class="list-categoriesamout">(23)</span> </a> </li>
-                        <li class="list-categoriesitem"> <a class="list-sidebarlink" href="javascript:void(0);"> <span class="list-categoriesname">ELECTRONICS & GADGETS</span> <span class="list-categoriesamout">(23)</span> </a> </li>
-                        <li class="list-categoriesitem"> <a class="list-sidebarlink" href="javascript:void(0);"> <span class="list-categoriesname">TOOLS & OUTDOORS</span> <span class="list-categoriesamout">(23)</span> </a> </li>
-                        <li class="list-categoriesitem"> <a class="list-sidebarlink" href="javascript:void(0);"> <span class="list-categoriesname">ELECTRONICS & GADGETS</span> <span class="list-categoriesamout">(23)</span> </a> </li>
-                    </ul>
-                </div>
-            </section>
-        </aside>
+    <div class="col-md-1">
+        
     </div>
-    <div class="col-md-9">
+    <div class="col-md-11">
 
         <div class="col-lg-12 col-md-12 col-sm-12">
             <p><a class="product ui-btn ui-btn_primary" asp-action="Create">Ürün Ekle</a></p><br />
@@ -38,7 +26,7 @@
                             <div class="image">
                                 
                                 <a href="#">
-                                    <img src="/@item.ImagePath" alt="img" class="img-responsive" style="margin-top:10px;height:200px;"
+                                    <img src="/@item.ImagePath" alt="img" class="img-responsive" style="margin-top:10px;height:200px; width:290px"
                                 </a>
                                 @{ var discount = (int)(100 - ((@item.DiscountPrice * 100) / @item.Price));}
                                 <div class="promotion">

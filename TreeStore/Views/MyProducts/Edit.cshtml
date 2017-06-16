@@ -48,7 +48,7 @@
                         <div class="input-group">
                             <input asp-for="ImagePath" class="form-control" />
                             <span class="input-group-btn">
-                                <a class="btn btn-info" id="uploadModal" onclick="browseMedia('ImagePath')">...</a>
+                                <a class="product ui-btn ui-btn_primary" id="uploadModal" onclick="browseMedia('ImagePath')">...</a>
                             </span>
                         </div>
                     </div>
@@ -84,34 +84,7 @@
                     </div>
                 </div>
                 <input type="hidden" asp-for="Id" />
-                <div class="form-group">
-                    <label asp-for="CreateDate" class="col-md-2 control-label"></label>
-                    <div class="col-md-10">
-                        <input asp-for="CreateDate" class="form-control" />
-                        <span asp-validation-for="CreateDate" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="UpdateDate" class="col-md-2 control-label"></label>
-                    <div class="col-md-10">
-                        <input asp-for="UpdateDate" class="form-control" />
-                        <span asp-validation-for="UpdateDate" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="CreatedBy" class="col-md-2 control-label"></label>
-                    <div class="col-md-10">
-                        <input asp-for="CreatedBy" class="form-control" />
-                        <span asp-validation-for="CreatedBy" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="UpdateBy" class="col-md-2 control-label"></label>
-                    <div class="col-md-10">
-                        <input asp-for="UpdateBy" class="form-control" />
-                        <span asp-validation-for="UpdateBy" class="text-danger"></span>
-                    </div>
-                </div>
+                
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="submit" value="Kaydet" class="product ui-btn ui-btn_primary" />&nbsp;&nbsp;&nbsp;
