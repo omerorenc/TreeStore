@@ -5766,6 +5766,7 @@
     <Content Include="wwwroot\images\tree.ico" />
     <Content Include="wwwroot\images\tree.png" />
     <Content Include="wwwroot\logo.png" />
+    <Content Include="wwwroot\metronic\layouts\layout\img\tree.png" />
     <Content Include="wwwroot\metronic\pages\img\Tree.png" />
     <Content Include="wwwroot\uploads\arcelik.jpg" />
     <Content Include="wwwroot\uploads\asus.jpg" />
