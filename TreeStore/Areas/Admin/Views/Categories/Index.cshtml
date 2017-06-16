@@ -39,37 +39,38 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ParentCategory.Name)
-            </td>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ParentCategory.Name)
+                </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.CreateDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdateDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdateBy)
-            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreateDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdateDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdateBy)
+                </td>
 
-            <td class="text-nowrap">
-                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Düzenle</a> 
-                <a class="btn btn-default" asp-action="Details" asp-route-id="@item.Id">Detaylar</a> 
-                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Sil</a>
-            </td>
-        </tr>
-}
+                <td class="text-nowrap">
+                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Düzenle</a>
+                    <a class="btn btn-default" asp-action="Details" asp-route-id="@item.Id">Detaylar</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

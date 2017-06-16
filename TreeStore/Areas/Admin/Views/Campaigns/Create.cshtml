@@ -34,14 +34,14 @@
         <div class="form-group">
             <label asp-for="StartedDate" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="StartedDate" class="form-control" />
+                <input asp-for="StartedDate" class="form-control" type="date" value="gg.aa.yy"/>
                 <span asp-validation-for="StartedDate" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
             <label asp-for="EndDate" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="EndDate" class="form-control" />
+                <input asp-for="EndDate" class="form-control" type="date" value="gg.aa.yy"/>
                 <span asp-validation-for="EndDate" class="text-danger"></span>
             </div>
         </div>
@@ -51,7 +51,7 @@
                 <div class="input-group">
                     <input asp-for="ImagePath" class="form-control" />
                     <span class="input-group-btn">
-                        <a class="btn btn-info" id="uploadModal" type="button" onclick="browseMedia('ImagePath')">...</a>
+                        <a class="product ui-btn ui-btn_primary" id="uploadModal" type="button" onclick="browseMedia('ImagePath')">SEÇ</a>
                     </span>
                 </div>
             </div>
@@ -66,7 +66,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="CategoryCampaign" class="col-md-2 control-label"></label>
+            <label asp-for="CategoryCampaign" class="col-md-2 control-label">Kategoriler</label>
             <div class="col-md-4">
                 @foreach (var category in (IEnumerable<SelectListItem>)ViewBag.Categories)
                 {
@@ -75,7 +75,7 @@
                 }
                 <span asp-validation-for="CategoryCampaign" class="text-danger"></span>
             </div>
-            <label asp-for="ProductCampaign" class="col-md-2 control-label"></label>
+            <label asp-for="ProductCampaign" class="col-md-2 control-label">Ürünler</label>
 
             <div class="col-md-4">
                 @foreach (var product in (IEnumerable<SelectListItem>)ViewBag.Products)

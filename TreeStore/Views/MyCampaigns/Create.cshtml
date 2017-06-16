@@ -4,7 +4,7 @@
     ViewData["Title"] = "Create";
 }
 <div class="row">
-    <div class="col-md-8 col-md-offset-1">
+    <div class="col-md-8 col-md-offset-1 col-xs-12">
         <br />
         <br />
         <h2>Kampanya Ekle</h2>
@@ -15,6 +15,13 @@
                     <div class="col-md-10">
                         <hr />
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Name" class="col-md-2 control-label"></label>
+                            <div class="col-md-10">
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label asp-for="Description" class="col-md-2 control-label"></label>
                             <div class="col-md-10">
@@ -32,23 +39,28 @@
                         <div class="form-group">
                             <label asp-for="StartedDate" class="col-md-2 control-label"></label>
                             <div class="col-md-10">
-                                <input asp-for="StartedDate" class="form-control" />
+                                <input asp-for="StartedDate" class="form-control" type="date" value="gg.aa.yy" />
                                 <span asp-validation-for="StartedDate" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label asp-for="EndDate" class="col-md-2 control-label"></label>
                             <div class="col-md-10">
-                                <input asp-for="EndDate" class="form-control" />
+                                <input asp-for="EndDate" class="form-control" type="date" value="gg.aa.yy" />
                                 <span asp-validation-for="EndDate" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label asp-for="ImagePath" class="col-md-2 control-label"></label>
-                            <div class="col-md-10">
-                                <input asp-for="ImagePath" class="form-control" />
-                                <span asp-validation-for="ImagePath" class="text-danger"></span>
+                            <label asp-for="ImagePath" class="col-md-2 control-label">@Html.DisplayNameFor(model => model.ImagePath)</label>
+                            <div class="col-md-9">
+                                <div class="input-group">
+                                    <input asp-for="ImagePath" class="form-control" />
+                                    <span class="input-group-btn">
+                                        <a class="product ui-btn ui-btn_primary" id="uploadModal" onclick="browseMedia('ImagePath')">seç</a>
+                                    </span>
+                                </div>
                             </div>
+                            @Html.ValidationMessageFor(model => model.ImagePath, "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
@@ -58,44 +70,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label asp-for="Name" class="col-md-2 control-label"></label>
-                            <div class="col-md-10">
-                                <input asp-for="Name" class="form-control" />
-                                <span asp-validation-for="Name" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="CreateDate" class="col-md-2 control-label"></label>
-                            <div class="col-md-10">
-                                <input asp-for="CreateDate" class="form-control" />
-                                <span asp-validation-for="CreateDate" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="UpdateDate" class="col-md-2 control-label"></label>
-                            <div class="col-md-10">
-                                <input asp-for="UpdateDate" class="form-control" />
-                                <span asp-validation-for="UpdateDate" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="CreatedBy" class="col-md-2 control-label"></label>
-                            <div class="col-md-10">
-                                <input asp-for="CreatedBy" class="form-control" />
-                                <span asp-validation-for="CreatedBy" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="UpdateBy" class="col-md-2 control-label"></label>
-                            <div class="col-md-10">
-                                <input asp-for="UpdateBy" class="form-control" />
-                                <span asp-validation-for="UpdateBy" class="text-danger"></span>
-                            </div>
-                        </div>
+
+
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
-                                <a type="submit" class="product ui-btn ui-btn_primary">Kampanya Ekle</a>&nbsp;&nbsp;&nbsp;
+                                <input type="submit" class="product ui-btn ui-btn_primary" value="Kampanya Ekle" />&nbsp;&nbsp;&nbsp;
                                 <a class="product ui-btn ui-btn_primary" asp-action="Index">Kampanyalar Listesine geri dön!</a>
                             </div>
                         </div>
@@ -105,8 +84,9 @@
 
         </form>
 
-</div>
     </div>
+    </div>
+@Html.Partial("_BrowseMedia", new ViewDataDictionary(this.ViewData) { { "element", "ImagePath" } })
         @section Scripts {
             @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
         }

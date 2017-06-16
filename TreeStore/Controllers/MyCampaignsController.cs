@@ -59,7 +59,9 @@ namespace TreeStore.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create( Campaign campaign)
         {
-                if (ModelState.IsValid)
+            try
+            {
+                 if (ModelState.IsValid)
                 {
                     campaign.CreatedBy = User.Identity.Name;
                     campaign.UpdateBy = User.Identity.Name;
@@ -67,6 +69,13 @@ namespace TreeStore.Controllers
                     CampaignService.SaveCampaign();
                     return RedirectToAction("Index");
                 }
+            }
+            catch (Exception ex)
+            {   
+                return RedirectToAction("Create");
+                throw ex;
+            }
+           
             return View(campaign);
         }
 

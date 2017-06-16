@@ -10,6 +10,8 @@
     <link href="/assets/plugins/switcher/css/color1.css" rel="alternate stylesheet" title="color1" media="all">
     <script src="/assets/plugins/jquery/jquery-1.11.3.min.js"></script>
     <link href="/css/category.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.dataTables.min.css" />
 </head>
 <body>
     <div id="page-preloader"><span class="spinner"></span></div>
@@ -45,16 +47,16 @@
                 <div class="container">
                     <div class="header-inner">
                         <div class="row">
-                            <div class="col-md-3">
-                                <a href="/" class="logo"> <img class="logo__img" src="/assets/img/logo.png" height="51" width="162" alt="Logo"> </a>
+                            <div class="col-md-3"> 
+                            <a href="/" class="logo"> <img class="logo__img" src="/assets/img/logo-w.png" height="51" width="162" alt="Logo"> </a> 
                             </div>
-                            <div class="col-md-6 ">
-                                <div class="header-search__form">
-                                    <form asp-area="" class="product-search" asp-controller="Home" asp-action="Search">
-                                        <input id="query" class="product-search__field" type="text" value="@ViewBag.Query" placeholder="Ürün Adı, Kampanya Adı  ara.." name="query">
-                                        <button class="product-search__btn ui-btn ui-btn_primary">ara</button>
-                                    </form>
-                                </div>
+                            <div class="col-md-6 col-md-pull-1 ">
+                                    <div class="header-search__form">
+                                        <form asp-area="" class="product-search" asp-controller="Home" asp-action="Search">
+                                            <input id="query" class="product-search__field" type="text" value="@ViewBag.Query" placeholder="Ürün Adı, Kampanya Adı  ara.." name="query">
+                                            <button class="product-search__btn ui-btn ui-btn_primary">ara</button>
+                                        </form>
+                                    </div>
                             </div>
                             <div class="col-md-3" style="height:60px; color:black !important">
                                 @await Html.PartialAsync("_LoginPartial")
@@ -266,6 +268,7 @@
     <script src="/js/category.js"></script>
 
     <script type="text/javascript">
+
     $('body').prepend('<a href="#" class="back-to-top">Back to Top</a>');
     var amountScrolled = 300;
     $(window).scroll(function () {
@@ -282,6 +285,25 @@
         return false;
     });
     </script>
+    <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#tblRecords').DataTable({
+                "responsive": true,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Turkish.json"
+                }
+            });
+            $('#clickmewow').click(function () {
+                $('#radio1003').attr('checked', 'checked');
+            });
+
+
+        });
+
+    </script>
     @RenderSection("Scripts", required: false)
+
 </body>
 </html>

@@ -80,34 +80,42 @@ namespace TreeStore.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Campaign campaign)
         {
-            if (ModelState.IsValid)
+            try
             {
-                campaign.CreatedBy = User.Identity.Name;
-                campaign.UpdateBy = User.Identity.Name;
-                campaignService.CreateCampaign(campaign);
-                campaignService.SaveCampaign();
-
-                campaign.CategoryCampaign.Clear();
-                campaign.ProductCampaign.Clear();
-
-                if(campaign.CategoryIds != null)
+                if (ModelState.IsValid)
                 {
-                    foreach (var categoryId in campaign.CategoryIds)
+                    campaign.CreatedBy = User.Identity.Name;
+                    campaign.UpdateBy = User.Identity.Name;
+                    campaignService.CreateCampaign(campaign);
+                    campaignService.SaveCampaign();
+
+                    campaign.CategoryCampaign.Clear();
+                    campaign.ProductCampaign.Clear();
+
+                    if (campaign.CategoryIds != null)
                     {
-                        campaign.CategoryCampaign.Add(new CategoryCampaign() { CampaignId = campaign.Id, CategoryId = categoryId });
+                        foreach (var categoryId in campaign.CategoryIds)
+                        {
+                            campaign.CategoryCampaign.Add(new CategoryCampaign() { CampaignId = campaign.Id, CategoryId = categoryId });
+                        }
+
                     }
-                       
-                }
-                if(campaign.ProductIds != null)
-                {
-                    foreach(var productId in campaign.ProductIds)
+                    if (campaign.ProductIds != null)
                     {
-                        campaign.ProductCampaign.Add(new ProductCampaign() { CampaignId = campaign.Id, ProductId = productId });
+                        foreach (var productId in campaign.ProductIds)
+                        {
+                            campaign.ProductCampaign.Add(new ProductCampaign() { CampaignId = campaign.Id, ProductId = productId });
+                        }
                     }
+                    categoryService.SaveCategory();
+
+                    return RedirectToAction("Index");
                 }
-                categoryService.SaveCategory();
-                
-                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Create");
+                throw ex;
             }
             ViewData["Categories"] = new MultiSelectList(categoryService.GetCategories(), "Id", "Name",campaign.CategoryIds);
             ViewData["Products"] = new MultiSelectList(productService.GetProducts(), "Id", "Name",campaign.ProductIds);

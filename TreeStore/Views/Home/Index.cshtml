@@ -7,7 +7,7 @@
 <br />
 <div class="container">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 col-xs-3">
             <div class="mega-container visible-lg visible-md">
                 <div class="navleft-container">
                     <div class="mega-menu-title"><h3>Kategoriler</h3></div>
@@ -24,7 +24,7 @@
                                                     @if (category.ParentCategoryId == mainCategory.Id)
 
                                                     {
-                                                        <div class="col-md-3 ">
+                                                        <div class="col-md-3 col-xs-3 ">
                                                             <h3>@category.Name</h3>
                                                             <ul class="nav">
                                                                 @foreach (var child in category.ChildCategories)
@@ -45,7 +45,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-9 col-xs-9">
             <script type="text/javascript" src="assets/plugins/sliderpro/js/jquery.sliderPro.min.js"></script>
             <section  data-wow-duration="2s">
                 <h3 class="ui-title-block"><i class="icon fa fa-bars"></i>Kampanyalar</h3>
@@ -63,7 +63,7 @@
                         @foreach (var campaign in ViewBag.Campaigns)
                         {
                         <article class="list-posts__article clearfix">
-                            <div class="img-hover-effect"><img class="img-responsive" src="~/uploads/6-2017/@campaign.ImagePath" height="250" width="420" alt="Foto"></div>
+                            <div class="img-hover-effect"><img class="img-responsive" src="~/uploads/@campaign.ImagePath" height="250" width="420" alt="Foto"></div>
                             <div class="list-posts__info">
                                 <i class="icon icon-user"></i>
                                 <span class="list-posts__autor"><a class="color_primary" href="javascript:void(0);">@campaign.CreatedBy</a></span> 
@@ -87,7 +87,7 @@
     </div>
             <div class="container">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-12 col-xs-12">
                                 <section class="section-area section-default wow bounceInRight" data-wow-duration="2s">
                                     <h3 class="ui-title-block"><i class="icon fa fa-bars"></i>Ürünler</h3>
                                     <div class="wrap-slider">
@@ -104,7 +104,7 @@
                                                 @foreach (var product in ViewBag.SliderProducts)
                                                 {
                                                     <li class="products__item">
-                                                        <a class="products__foto" href="assets/media/catalog/5.jpg" rel="prettyPhoto"> <img src="~/uploads/6-2017/@product.ImagePath" style="height:260px;width:260px" height="260" width="260" alt="Goods"> </a>
+                                                        <a class="products__foto" href="assets/media/catalog/5.jpg" rel="prettyPhoto"> <img src="~/uploads/@product.ImagePath" style="height:260px;width:260px" height="260" width="260" alt="Goods"> </a>
                                                         <h4 class="products__name"><a href="/Urun?id=@product.Id">@product.Name</a></h4>
                                                         <div class="products__category"><a href="#">@product.Category.Name</a></div>
                                                         <div class="products__inner clearfix">
@@ -139,14 +139,14 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xs-12 col-md-12">
             <div class="section-area">
                 <div class="isotope-frame wow bounceInRight" data-wow-duration="2s">
                     <ul class="isotope-filter products clearfix">
                         @foreach (var product in ViewBag.Products)
                         {
                             <li class="isotope-item best products__item">
-                                <a class="products__foto" href="~/uploads/6-2017/@product.ImagePath" rel="prettyPhoto"> <img src="~/uploads/6-2017/@product.ImagePath" style="width:260px;height:260px" height="260" width="260" alt="Goods"> </a>
+                                <a class="products__foto" href="~/uploads/@product.ImagePath" rel="prettyPhoto"> <img src="~/uploads/@product.ImagePath" style="width:260px;height:260px" height="260" width="260" alt="Goods"> </a>
                                 <h4 class="products__name"><a href="/Urun?id=@product.Id">@product.Name</a></h4>
                                 <div class="products__category"><a href="#">@product.Category.ParentCategory.Name</a></div>
                                 <div class="products__inner clearfix">

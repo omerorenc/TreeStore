@@ -57,7 +57,7 @@ namespace TreeStore.Controllers
         // GET: MyProducts/Create
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(categoryService.GetCategories(), "Id", "Name");
+            ViewData["CategoryId"] = new SelectList(categoryService.GetCategories().Where(c => c.ParentCategoryId != null), "Id", "Name");
             ViewData["SliderId"] = new SelectList(sliderService.GetSliders(), "Id", "Name");
             return View();
         }
@@ -69,13 +69,24 @@ namespace TreeStore.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Product product)
         {
-            if (ModelState.IsValid)
+            try
             {
+                if (ModelState.IsValid)
+            {
+                product.CreateDate = DateTime.Now;
+                product.UpdateDate = DateTime.Now;
                 product.CreatedBy = User.Identity.Name;
                 product.UpdateBy = User.Identity.Name;
                 productService.CreateProduct(product);
                 productService.SaveProduct();
                 return RedirectToAction("Index");
+            }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                return RedirectToAction("Create");
+
             }
             ViewData["CategoryId"] = new SelectList(categoryService.GetCategories(), "Id", "Name", product.CategoryId);
             ViewData["SliderId"] = new SelectList(sliderService.GetSliders(), "Id", "Name", product.SliderId);
@@ -95,7 +106,7 @@ namespace TreeStore.Controllers
             {
                 return NotFound();
             }
-            ViewData["CategoryId"] = new SelectList(categoryService.GetCategories(), "Id", "Name", product.CategoryId);
+            ViewData["CategoryId"] = new SelectList(categoryService.GetCategories().Where(c => c.ParentCategoryId != null), "Id", "Name", product.CategoryId);
             ViewData["SliderId"] = new SelectList(sliderService.GetSliders(), "Id", "Name", product.SliderId);
             return View(product);
         }
@@ -116,6 +127,9 @@ namespace TreeStore.Controllers
             {
                 try
                 {
+                   
+                    product.UpdateDate = DateTime.Now;
+                  
                     product.UpdateBy = User.Identity.Name;
                     productService.UpdateProduct(product);
                     productService.SaveProduct();

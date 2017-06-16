@@ -106,8 +106,8 @@ namespace TreeStore.Areas.Admin.Controllers
                     || Path.GetExtension(uploadFile.FileName) == ".mp4"
                      )
                     {
-                        string category = DateTime.Now.Month + "-" + DateTime.Now.Year;
-                        string FilePath = env.WebRootPath + "\\uploads\\" + category + "\\";
+
+                        string FilePath = env.WebRootPath + "\\uploads\\";
                         string dosyaismi = Path.GetFileName(uploadFile.FileName);
                         var yuklemeYeri = Path.Combine(FilePath, dosyaismi);
                         try
