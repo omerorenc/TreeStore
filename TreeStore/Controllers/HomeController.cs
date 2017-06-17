@@ -46,8 +46,7 @@ namespace TreeStore.Controllers
             ViewBag.Pinterest = settingService.GetSettings().FirstOrDefault().Pinterest;
             ViewBag.Google = settingService.GetSettings().FirstOrDefault().Google;
             ViewBag.Instagram = settingService.GetSettings().FirstOrDefault().Instagram;
-            var mainCategories = categoryService.GetCategories().Where(c => c.ParentCategoryId == null);
-            var categories = categoryService.GetCategories().AsQueryable().Include(c => c.ChildCategories).Where(c => c.ParentCategoryId != null);
+           
             var products = productService.GetProducts().Where(p => p.IsActive).OrderBy(p => p.CreateDate).Take(24);
             var campaigns = campaignService.GetCampaigns().Where(c => c.IsActive);
             var sliderProducts = productService.GetProducts().Where(p => p.SliderId != null);
@@ -60,8 +59,7 @@ namespace TreeStore.Controllers
                 
                 viewCampaigns.Add(campaign);
             }
-            ViewBag.Categories = categories;
-            ViewBag.MainCategories = mainCategories;
+            CategoriesLayout();
             ViewBag.Products = products;
             ViewBag.Campaigns = viewCampaigns;
             ViewBag.SliderProducts = sliderProducts;
@@ -86,6 +84,7 @@ namespace TreeStore.Controllers
             {
                 return RedirectToAction("index");
             }
+            CategoriesLayout();
             ViewBag.product = productService.GetProducts().FirstOrDefault().CreatedBy;
             ViewBag.campaign = campaignService.GetCampaigns().FirstOrDefault().CreatedBy;
             ViewBag.ResultProduct = product.ToList();
@@ -103,13 +102,14 @@ namespace TreeStore.Controllers
             ViewBag.MainCategories = mainCategories;
 
             ViewBag.Product = product;
-            
+            CategoriesLayout();
             return View();
         }
 
         [Route("iletisim")]
         public IActionResult Contact()
         {
+            CategoriesLayout();
             var contact = new Contact();
             ViewBag.Address = settingService.GetSettings().FirstOrDefault().Address;
             ViewBag.Phone = settingService.GetSettings().FirstOrDefault().Phone;
@@ -122,6 +122,7 @@ namespace TreeStore.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Contact(Contact contact)
         {
+            CategoriesLayout();
             if (ModelState.IsValid)
             {
                 
@@ -140,13 +141,14 @@ namespace TreeStore.Controllers
             ViewBag.Phone = settingService.GetSettings().FirstOrDefault().Phone;
             ViewBag.Mail = settingService.GetSettings().FirstOrDefault().Mail;
             ViewBag.Fax = settingService.GetSettings().FirstOrDefault().Fax;
+            
             return View(contact);
         }
         [Route("hakkinda")]
         public IActionResult About()
         {
             ViewBag.About = settingService.GetSettings().FirstOrDefault().About;
-
+            CategoriesLayout();
             return View();
         }
 
@@ -154,23 +156,27 @@ namespace TreeStore.Controllers
         [Route("TermsOfUse")]
         public IActionResult TermsOfUse()
         {
+            CategoriesLayout();
             ViewBag.TermsOfUse = settingService.GetSettings().FirstOrDefault().TermsOfUse;
             return View();
         }
         [Route("PrivacyPolicy")]
         public IActionResult PrivacyPolicy()
         {
+            CategoriesLayout();
             ViewBag.PrivacyPolicy = settingService.GetSettings().FirstOrDefault().PrivacyPolicy;
             return View();
         }
 
         public IActionResult Error()
         {
+            CategoriesLayout();
             return View();
         }
 
         public IActionResult Page404()
         {
+            CategoriesLayout();
             return View();
         }
 
@@ -179,6 +185,7 @@ namespace TreeStore.Controllers
         {
             List<Campaign> campaigns;
             campaigns = campaignService.GetCampaigns().ToList();
+            CategoriesLayout();
             ViewBag.Campaigns = campaigns;
             return View();
         }
@@ -188,12 +195,14 @@ namespace TreeStore.Controllers
         {
             var campaign = campaignService.GetCampaigns().FirstOrDefault(c => c.Id == id);
             ViewBag.Campaigns = campaign;
+            CategoriesLayout();
             return View();
         }
 
         [Route("UserProducts")]
         public IActionResult UserProducts()
         {
+            CategoriesLayout();
             return View();
         }
 
@@ -211,9 +220,9 @@ namespace TreeStore.Controllers
                 products = productService.GetProducts().AsQueryable().Include(p => p.Category).Where(p => p.IsActive).ToList();
                 ViewBag.Category = "ÜRÜNLER";
             }
-      
-      
-           
+
+
+            CategoriesLayout();
             ViewBag.Products = products;
          
             return View();
@@ -235,12 +244,18 @@ namespace TreeStore.Controllers
                 subscriptionService.CreateSubscription(subscription);
                 subscriptionService.SaveSubscription();
             }
-
+            CategoriesLayout();
             return RedirectToAction("Index");
 
         }
 
-      
+      public void CategoriesLayout()
+        {
+            var categories = categoryService.GetCategories().AsQueryable().Include(c => c.ChildCategories).Where(c => c.ParentCategoryId != null);
+            var mainCategories = categoryService.GetCategories().Where(c => c.ParentCategoryId == null);
+            ViewBag.MainCategories = mainCategories;
+            ViewBag.Categories = categories;
+        }
 
     }
 }
