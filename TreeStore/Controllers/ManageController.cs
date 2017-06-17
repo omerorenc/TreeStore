@@ -104,11 +104,21 @@ namespace TreeStore.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(ApplicationUser applicationUser)
+        public async Task<IActionResult> Edit(string id, ApplicationUser applicationUser)
         {
+            var appUser = _context.ApplicationUser.FirstOrDefault(f => f.UserName == applicationUser.UserName);
+            appUser.CompanyName = applicationUser.CompanyName;
+            appUser.Address = applicationUser.Address;
+            appUser.Phone = applicationUser.Phone;
+            appUser.Fax = applicationUser.Fax;
+            appUser.Logo = applicationUser.Logo;
+            appUser.UserName = applicationUser.UserName;
+            appUser.NormalizedUserName = applicationUser.NormalizedUserName;
+            appUser.Email = applicationUser.Email;
+            appUser.NormalizedEmail = applicationUser.NormalizedEmail;
             if (ModelState.IsValid)
             {
-                _context.Update(applicationUser);
+                _context.Update(appUser);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
