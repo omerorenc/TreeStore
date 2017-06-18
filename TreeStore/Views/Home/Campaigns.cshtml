@@ -15,7 +15,7 @@
                             @foreach (var campaign in ViewBag.Campaigns)
                                     {
                                 <li class="isotope-item best Campaigns__item">
-                                    <a style="width:auto;height:auto" class="products__foto" href="~/uploads/@campaign.ImagePath" rel="prettyPhoto"> <img src="~/uploads/@campaign.ImagePath" height="260" width="260" alt="Goods"> </a>
+                                    <a style="width:auto;height:auto" class="products__foto"> <img src="~/uploads/@campaign.ImagePath" style="height:260px;width:260px" height="260" width="260" alt="Goods"> </a>
                                     <h4 class="products__name"><a href="#">@campaign.Name</a></h4>
                                     <div class="Campaigns__inner clearfix">
                                         <span class="Campaigns__price-new">@campaign.Slogan</span> 
