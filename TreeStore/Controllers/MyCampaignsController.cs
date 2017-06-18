@@ -156,6 +156,7 @@ namespace TreeStore.Controllers
         {
             
             CampaignService.DeleteCampaign(id);
+            CampaignService.SaveCampaign();
             
             return RedirectToAction("Index");
         }

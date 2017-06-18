@@ -151,6 +151,8 @@ namespace TreeStore.Areas.Admin.Controllers
             {
                 try
                 {
+                    campaign.UpdateBy = User.Identity.Name;
+                   
                     campaignService.UpdateCampaign(campaign);
                     campaignService.SaveCampaign();
 

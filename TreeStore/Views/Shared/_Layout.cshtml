@@ -96,26 +96,34 @@
                                 <ul>
                                     <li><a href="/">Ana Sayfa</a></li>
                                     <li class="current">
-                                        <a href="#"><div>Features</div></a>
+                                        <a href="#"><div>Kategoriler</div></a>
+                                        @if (ViewBag.mainCategories != null) { 
                                         <ul>
+                                             @foreach (var mainCategory in ViewBag.mainCategories)
+                                             {
                                             <li>
-                                                <a href="#"><div><i class="icon-stack"></i>Sliders</div></a>
-                                                <ul>
-                                                    <li>
-                                                        <a href="slider-revolution.html"><div>Revolution Slider</div></a>
-                                                        <ul>
-                                                            <li><a href="rs-demo-premium-concept.html"><div>Premium Templates</div></a></li>
-                                                            <li><a href="slider-revolution.html"><div>Full Screen</div></a></li>
-                                                            <li><a href="slider-revolution-fullwidth.html"><div>Full Width</div></a></li>
-                                                            <li><a href="slider-revolution-kenburns.html"><div>Kenburns Effect</div></a></li>
-                                                            <li><a href="slider-revolution-html5-videos.html"><div>HTML5 Video</div></a></li>
-                                                        </ul>
-                                                    </li>
+                                                    <a href="#"><div><i class="icon-stack"></i>@mainCategory.Name</div></a>
+                                                    <ul>
+                                                     @foreach (var category in ViewBag.Categories)
+                                                     {
+                                                      @if (category.ParentCategoryId == mainCategory.Id)
 
-                                                </ul>
-                                            </li>
-
-                                        </ul>
+                                                       {
+                                                        <li>
+                                                            <a href="slider-revolution.html"><div>@category.Name</div></a>
+                                                            <ul>
+                                                                @foreach (var child in category.ChildCategories)
+                                                                {
+                                                                    <li><a href="/products?Id=@child.Id"><div>@child.Name</div></a></li>
+                                                                }
+                                                            </ul>
+                                                        </li>
+                                                        }
+                                                      }
+                                                    </ul>
+                                                </li>
+                                             }
+                                        </ul>}
                                     </li>
                                     <li> <a href="/products">Ürünler</a> </li>
                                     <li> <a href="/campaigns">Kampanyalar</a> </li>
@@ -266,7 +274,7 @@
     <script src="/assets/js/wow.min.js"></script>
     <script src="/assets/js/custom.js"></script>
     <script src="/js/category.js"></script>
-
+    <script src="~/assets/plugins/isotope/jquery.isotope.min.js"></script>
     <script type="text/javascript">
 
     $('body').prepend('<a href="#" class="back-to-top">Back to Top</a>');
