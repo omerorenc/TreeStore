@@ -218,6 +218,25 @@ namespace TreeStore.Controllers
          
             return View();
         }
+        public async Task<IActionResult> ProductDetails(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var product = await productService.GetProducts().AsQueryable()
+                .Include(p => p.Category)
+                .Include(p => p.ProductCampaign)
+                .SingleOrDefaultAsync(m => m.Id == id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            return View(product);
+        }
+
 
         public IActionResult Subscribe(Subscription subscription)
         {

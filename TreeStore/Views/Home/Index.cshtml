@@ -77,7 +77,7 @@
                             </div>
                             <h2 class="list-posts__title">@campaign.Name</h2>
                             <p>@campaign.Slogan</p>
-                            <a class="btn btn-info pull-right" href="/campaign?id=@campaign.Id">Kampanya Detayları</a>
+                            <a class="btn btn-info" asp-controller="Home" asp-action="CampaignDetail"  asp-route-id="@campaign.Id">Kampanya Detayları</a>
                         </article>
                         }
                     </div>
@@ -109,7 +109,7 @@
                                                 @foreach (var product in ViewBag.SliderProducts)
                                                 {
                                                     <li class="products__item">
-                                                        <a class="products__foto" href="assets/media/catalog/5.jpg" rel="prettyPhoto"> <img src="~/uploads/@product.ImagePath" style="height:260px;width:260px" height="260" width="260" alt="Goods"> </a>
+                                                        <a asp-controller="Home" asp-action="ProductDetails" asp-route-id="@product.Id"> <img src="~/uploads/@product.ImagePath" style="height:260px;width:260px" height="260" width="260" alt="Goods"> </a>
                                                         <h4 class="products__name"><a href="/Urun?id=@product.Id">@product.Name</a></h4>
                                                         <div class="products__category"><a href="#">@product.Category.Name</a></div>
                                                         <div class="products__inner clearfix">
@@ -151,7 +151,7 @@
                         @foreach (var product in ViewBag.Products)
                         {
                             <li class="isotope-item best products__item">
-                                <a class="products__foto" href="~/uploads/@product.ImagePath" rel="prettyPhoto"> <img src="~/uploads/@product.ImagePath" style="width:260px;height:260px" height="260" width="260" alt="Goods"> </a>
+                                <a asp-controller="Home" asp-action="ProductDetails" asp-route-id="@product.Id"> <img src="~/uploads/@product.ImagePath" style="width:260px;height:260px" height="260" width="260" alt="Goods"> </a>
                                 <h4 class="products__name"><a href="/Urun?id=@product.Id">@product.Name</a></h4>
                                 <div class="products__category"><a href="#">@product.Category.ParentCategory.Name</a></div>
                                 <div class="products__inner clearfix">

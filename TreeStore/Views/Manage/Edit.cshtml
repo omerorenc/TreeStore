@@ -12,7 +12,19 @@
                 <h4>Profilimi Düzenle</h4>
                 <br />
                 <hr />
+                <div class="row">
+                    <div class="col-md-2 col-md-offset-1">
+                        <div class="form-group">
+                            <label asp-for="CompanyName" class="col-md-2 control-label">Firma Logosu</label>
+                            <div class="form-group" style="margin-left:920px;">
+                                <img src="~/uploads/@Model.Logo" style="width:80px;height:80px;margin-left:-810px;" />
+                            </div>
+                        </div>
+                    
+                </div>
+                    </div>
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                
                 <div class="form-group">
                     <label asp-for="CompanyName" class="col-md-2 control-label">Firma Adı</label>
                     <div class="col-md-10">

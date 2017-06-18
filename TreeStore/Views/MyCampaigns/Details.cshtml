@@ -1,90 +1,182 @@
 ﻿@model TreeStore.Models.Campaign
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Kampanya Detayları";
 }
-<div class="row">
-    <div class="col-md-8 col-md-offset-1 col-xs-12">
-        <h2>Kampanya Detayları</h2>
 
-        <div>
-            <hr />
-            <dl class="dl-horizontal" style="font-size:15px;">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Description)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.Description)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.Slogan)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.Slogan)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.StartedDate)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.StartedDate)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.EndDate)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.EndDate)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.ImagePath)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.ImagePath)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.IsActive)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.IsActive)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.Name)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.Name)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.CreateDate)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.CreateDate)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.UpdateDate)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.UpdateDate)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.CreatedBy)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.CreatedBy)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.UpdateBy)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.UpdateBy)
-                </dd>
-            </dl>
-        </div>
-        <br />
-        <br />
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <a type="submit" asp-action="Edit" asp-route-id="@Model.Id" class="product ui-btn ui-btn_primary">Düzenle</a>&nbsp;&nbsp;&nbsp;
-                <a class="product ui-btn ui-btn_primary" asp-action="Index">Kampanyalar Listesine geri dön!</a>
+
+<!-- /.Fixed navbar  -->
+<div class="container main-container headerOffset">
+
+
+    <!-- left column -->
+    <!-- product Image and Zoom -->
+
+    <div class="col-md-4 col-md-offset-1">
+        <div class="product-card__slider" id="image-block">
+            <div class="slider-product flexslider">
+
+                <ul class="slides">
+                    <li> <a href="~/uploads/@Model.ImagePath" class="prettyPhoto"> <img src="~/uploads/@Model.ImagePath" height="200" width="200" title="Foto" alt="img"> </a> </li>
+                    <li> <a href="~/uploads/@Model.ImagePath" class="prettyPhoto"> <img src="~/uploads/@Model.ImagePath" height="200" width="200" title="Foto" alt="img"> </a> </li>
+                    <li> <a href="~/uploads/@Model.ImagePath" class="prettyPhoto"> <img src="~/uploads/@Model.ImagePath" height="200" width="200" title="Foto" alt="img"> </a> </li>
+                    <li> <a href="~/uploads/@Model.ImagePath" class="prettyPhoto"> <img src="~/uploads/@Model.ImagePath" height="200" width="200" title="Foto" alt="img"> </a> </li>
+                </ul>
+            </div>
+            <div class="carousel-product flexslider">
+                <ul class="slides">
+                    <li> <img src="~/uploads/@Model.ImagePath" height="100" width="100" alt="img"> </li>
+                    <li> <img src="~/uploads/@Model.ImagePath" height="100" width="100" alt="img"> </li>
+                    <li> <img src="~/uploads/@Model.ImagePath" height="100" width="100" alt="img"> </li>
+                    <li> <img src="~/uploads/@Model.ImagePath" height="100" width="100" alt="img"> </li>
+                </ul>
             </div>
         </div>
-        </div>
+        <!-- end product-card__slider -->
     </div>
+
+    <!--/ left column end -->
+    <!-- right column -->
+    <div class="col-lg-6 col-md-6 col-sm-6">
+        <h1 class="product-title">
+            @Html.DisplayFor(model => model.Name)
+        </h1>
+
+        <h1 class="product-code">@Html.DisplayFor(model => model.Slogan)</h1>
+        <h1 class="product-code">@Html.DisplayFor(model => model.CategoryIds)</h1>
+
+        <div class="product-price">
+
+        </div>
+        <div class="details-description">
+            <p> </p>
+        </div>
+        <div class="product-tab w100 clearfix">
+
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane active" id="details">
+
+                </div>
+                <div class="tab-pane" id="size">
+                    @Html.DisplayFor(model => model.Slogan)
+
+                </div>
+                <div class="tab-pane" id="shipping">
+
+                </div>
+            </div>
+            <!-- /.tab content -->
+
+        </div>
+        <!--/.product-tab-->
+        <hr />
+        <div class="cart-actions">
+
+            <div style="clear:both"></div>
+            <div class="row">
+                <div class="col-md-5">
+                    <label asp-for="IsActive" class="control-label">Kampanya Aktif mi?</label>
+
+                </div>
+                <div class="col-md-7 col-md-pull-1">
+
+                    <input style="width:25px;height:25px;" asp-for="IsActive" class="form-control" disabled />
+
+                </div>
+            </div>
+
+
+
+
+        </div>
+        <!--/.cart-actions-->
+
+        <div class="clear"></div>
+
+
+        <div style="clear:both"></div>
+
+
+        <div class="row">
+
+            <div class="col-lg-12 col-md-10 col-sm-12 col-xs-12">
+                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Kampanyayı Düzenle</a>
+                <a class="btn btn-primary" asp-action="Index">Kampanya Listesine Geri Dön</a>
+            </div>
+        </div>
+        <!--/.product-share-->
+
+    </div>
+    <!--/ right column end -->
+
+
+
+
+
+</div>
+<!--/.row-->
+
+
+<div style="clear:both"></div>
+
+
+
+<!-- /main-container -->
+
+
+<div class="gap"></div>
+
+
+
+<!-- Modal review start -->
+<!-- /.Modal review -->
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- jquery-migrate only for product details -->
+<script src="~/assets/js/jquery-migrate-1.4.1.js"></script>
+
+<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+<!-- include jqueryCycle plugin -->
+<script src="/assets/js/jquery.cycle2.min.js"></script>
+<!-- include easing plugin -->
+<script src="/assets/js/jquery.easing.1.3.js"></script>
+
+<!-- include  parallax plugin -->
+<script type="text/javascript" src="/assets/js/jquery.parallax-1.1.js"></script>
+
+<!-- optionally include helper plugins -->
+<script type="text/javascript" src="/assets/js/helper-plugins/jquery.mousewheel.min.js"></script>
+
+<!-- include mCustomScrollbar plugin //Custom Scrollbar  -->
+
+<script type="text/javascript" src="/assets/js/jquery.mCustomScrollbar.js"></script>
+
+<!-- include icheck plugin // customized checkboxes and radio buttons   -->
+<script type="text/javascript" src="/assets/plugins/icheck-1.x/icheck.min.js"></script>
+
+<!-- include grid.js // for equal Div height  -->
+<script src="/assets/js/grids.js"></script>
+
+<!-- include carousel slider plugin  -->
+<script src="/assets/js/owl.carousel.min.js"></script>
+
+<!-- include smoothproducts // product zoom plugin  -->
+<script type="text/javascript" src="/assets/js/smoothproducts.min.js"></script>
+
+<!-- jQuery select2 // custom select   -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+
+<!-- include touchspin.js // touch friendly input spinner component   -->
+<script src="/assets/js/bootstrap.touchspin.js"></script>
+
+<!-- include custom script for site  -->
+<script src="/assets/js/script.js"></script>
+
+
+
+
+

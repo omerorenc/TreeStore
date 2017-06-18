@@ -9,7 +9,19 @@
 <form asp-action="Edit">
     <div class="form-horizontal">
         <hr />
+
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row">
+            <div class="col-md-2 col-md-offset-1">
+                <div class="form-group">
+                    <label asp-for="ImagePath" class="col-md-2 control-label">Kampanya Resmi</label>
+                    <div class="form-group" style="margin-left:920px;">
+                        <img src="~/uploads/@Model.ImagePath" style="width:80px;height:80px;margin-left:-810px;" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
         <div class="form-group">
             <label asp-for="Name" class="col-md-2 control-label"></label>
             <div class="col-md-10">

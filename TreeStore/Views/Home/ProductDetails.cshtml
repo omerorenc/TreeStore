@@ -1,8 +1,9 @@
 ﻿@model TreeStore.Models.Product
 
 @{
-    ViewData["Title"] = "Ürünler";
-}  <!-- Loader -->
+    ViewData["Title"] = "ProductDetails";
+}
+ <!-- Loader -->
 <!-- Loader end -->
 
 <div class="layout-theme animated-css" data-header="sticky" data-header-top="200">
@@ -27,9 +28,9 @@
                     @{ var discount = (int)(100 - ((@Model.DiscountPrice * 100) / @Model.Price));}
                     <div class="promotion">
                         @{ if ((DateTime.Now.Day - Model.UpdateDate.Day) < 3)
-                                        {
-                            <h5><span style="margin-left:240px;" class="label label-warning">Yeni-% @discount İNDİRİM</span> </h5>
-                                        }
+                            {
+                                <h5><span style="margin-left:240px;" class="label label-warning">Yeni-% @discount İNDİRİM</span> </h5>
+                            }
 
                         }
 
@@ -64,9 +65,9 @@
                                 <br />
                                 <br />
                                 @{ if ((DateTime.Now.Day - Model.UpdateDate.Day) < 3)
-                                             {
-                                    <div class="product-card__availability"><i class="icon fa fa-check-circle"></i>Kampanya Dahilinde</div>
-                                                }
+                                    {
+                                        <div class="product-card__availability"><i class="icon fa fa-check-circle"></i>Kampanya Dahilinde</div>
+                                    }
 
                                 }
 
@@ -102,9 +103,10 @@
     </div>
 </div>
 @section Scripts{
-<script src="/assets/plugins/isotope/jquery.isotope.min.js"></script>
+    <script src="/assets/plugins/isotope/jquery.isotope.min.js"></script>
 
 }
 <!-- end layout-theme -->
 <!-- SCRIPTS -->
 <!--Color Switcher-->
+
