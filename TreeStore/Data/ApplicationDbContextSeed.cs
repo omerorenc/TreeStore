@@ -26,6 +26,15 @@ namespace TreeStore.Data
             AddCategories(context);
             AddCampaign(context);
             AddProducts(context);
+            AddSlider(context);
+        }
+
+        private static void AddSlider(ApplicationDbContext context)
+        {
+            context.AddRange(
+                new Slider { Name = "Slider", CreateDate = DateTime.Now, UpdateDate = DateTime.Now }
+                );
+            context.SaveChanges();
         }
 
         private static void AddCategories(ApplicationDbContext context)
@@ -58,9 +67,9 @@ namespace TreeStore.Data
                 new Product
                 {
                     Name = "Asus X550V",
-                    CreatedBy = "arzugedik312@gmail.com",
+                    CreatedBy = user.UserName,
                     CreateDate = DateTime.Now,
-                    UpdateBy = "arzugedik312@gmail.com",
+                    UpdateBy = user.UserName,
                     UpdateDate = DateTime.Now,
                     CategoryId = 9,
                     Description = "Asus X550V",
@@ -72,9 +81,9 @@ namespace TreeStore.Data
                    new Product
                    {
                        Name = "Arcelik Buzdolabı",
-                       CreatedBy = "arzugedik312@gmail.com",
+                       CreatedBy = user.UserName,
                        CreateDate = DateTime.Now,
-                       UpdateBy = "arzugedik312@gmail.com",
+                       UpdateBy = user.UserName,
                        UpdateDate = DateTime.Now,
                        CategoryId = 8,
                        Description = "Buzdolabı",
@@ -86,9 +95,9 @@ namespace TreeStore.Data
                       new Product
                       {
                           Name = "Mavi Tişört",
-                          CreatedBy = "arzugedik312@gmail.com",
+                          CreatedBy = user.UserName,
                           CreateDate = DateTime.Now,
-                          UpdateBy = "arzugedik312@gmail.com",
+                          UpdateBy = user.UserName,
                           UpdateDate = DateTime.Now,
                           CategoryId = 5,
                           Description = "Tişört",
@@ -100,9 +109,9 @@ namespace TreeStore.Data
                          new Product
                          {
                              Name = "Bluz",
-                             CreatedBy = "arzugedik312@gmail.com",
+                             CreatedBy = user.UserName,
                              CreateDate = DateTime.Now,
-                             UpdateBy = "username",
+                             UpdateBy = user.UserName,
                              UpdateDate = DateTime.Now,
                              CategoryId = 6,
                              Description = "Bluz",
@@ -114,23 +123,23 @@ namespace TreeStore.Data
                             new Product
                             {
                                 Name = "Çocuk Ayakkabısı",
-                                CreatedBy = "arzugedik312@gmail.com",
+                                CreatedBy = user.UserName,
                                 CreateDate = DateTime.Now,
-                                UpdateBy = "arzugedik312@gmail.com",
+                                UpdateBy = user.UserName,
                                 UpdateDate = DateTime.Now,
                                 CategoryId = 7,
                                 Description = "Çocuk Ayakkabısı",
                                 ImagePath = "cocukayakkabi.jpg",
                                 DiscountPrice = 99,
-                                Price = 40,
+                                Price = 140,
                                 IsActive = true
-                            }, 
+                            },
                             new Product
                             {
                                 Name = "Kadın Parfüm",
-                                CreatedBy = "arzugedik312@gmail.com",
+                                CreatedBy = user.UserName,
                                 CreateDate = DateTime.Now,
-                                UpdateBy = "arzugedik312@gmail.com",
+                                UpdateBy = user.UserName,
                                 UpdateDate = DateTime.Now,
                                 CategoryId = 6,
                                 Description = "Kadın Parfüm",
@@ -167,6 +176,13 @@ namespace TreeStore.Data
             s.Phone = "02122121212";
             s.Fax = "02122122121";
             s.Mail = "ornek@mail.com";
+            s.Facebook = "https://www.facebook.com";
+            s.Google = "https://plus.google.com";
+            s.Twitter = "https://twitter.com";
+            s.YouTube = "https://www.youtube.com";
+            s.RSS = "https://www.rss.com";
+            s.Pinterest = "https://tr.pinterest.com";
+            s.Instagram = "https://www.instagram.com";
             context.Settings.Add(s);
             context.SaveChanges();
         }

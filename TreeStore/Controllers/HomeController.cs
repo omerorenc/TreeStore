@@ -109,6 +109,13 @@ namespace TreeStore.Controllers
         [Route("iletisim")]
         public IActionResult Contact()
         {
+            ViewBag.Facebook = settingService.GetSettings().FirstOrDefault().Facebook;
+            ViewBag.Twitter = settingService.GetSettings().FirstOrDefault().Twitter;
+            ViewBag.YouTube = settingService.GetSettings().FirstOrDefault().YouTube;
+            ViewBag.RSS = settingService.GetSettings().FirstOrDefault().RSS;
+            ViewBag.Pinterest = settingService.GetSettings().FirstOrDefault().Pinterest;
+            ViewBag.Google = settingService.GetSettings().FirstOrDefault().Google;
+            ViewBag.Instagram = settingService.GetSettings().FirstOrDefault().Instagram;
             CategoriesLayout();
             var contact = new Contact();
             ViewBag.Address = settingService.GetSettings().FirstOrDefault().Address;

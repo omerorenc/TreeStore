@@ -68,7 +68,7 @@
                         @foreach (var campaign in ViewBag.Campaigns)
                         {
                         <article class="list-posts__article clearfix">
-                            <div class="img-hover-effect"><img class="img-responsive" src="~/uploads/@campaign.ImagePath" height="250" width="420" alt="Foto"></div>
+                            <div class="img-hover-effect"><img class="img-responsive" src="~/uploads/@campaign.ImagePath" style="height:250px;width:420px" height="250" width="420" alt="Foto"></div>
                             <div class="list-posts__info">
                                 <i class="icon icon-user"></i>
                                 <span class="list-posts__autor"><a class="color_primary" href="javascript:void(0);">@campaign.CreatedBy</a></span> 
@@ -77,7 +77,8 @@
                             </div>
                             <h2 class="list-posts__title">@campaign.Name</h2>
                             <p>@campaign.Slogan</p>
-                            <a class="btn btn-info" asp-controller="Home" asp-action="CampaignDetail"  asp-route-id="@campaign.Id">Kampanya Detayları</a>
+                            <br />
+                            <a class="product ui-btn ui-btn_primary" asp-controller="Home" asp-action="CampaignDetail"  asp-route-id="@campaign.Id">Kampanya Detayları</a>
                         </article>
                         }
                     </div>
@@ -109,7 +110,7 @@
                                                 @foreach (var product in ViewBag.SliderProducts)
                                                 {
                                                     <li class="products__item">
-                                                        <a class="products__foto" href="/Urun?id=@product.Id" rel="prettyPhoto"> <img src="~/uploads/@product.ImagePath" style="height:260px;width:260px" height="260" width="260" alt="Goods"> </a>
+                                                        <a class="products__foto" href="/Urun?id=@product.Id"> <img src="~/uploads/@product.ImagePath" style="width:260px;height:260px" height="260" width="260" alt="Goods"> </a>
                                                         <h4 class="products__name"><a href="/Urun?id=@product.Id">@product.Name</a></h4>
                                                         <div class="products__category"><a href="#">@product.Category.Name</a></div>
                                                         <div class="products__inner clearfix">
@@ -146,6 +147,7 @@
     <div class="row">
         <div class="col-xs-12 col-md-12">
             <div class="section-area">
+                <h3 class="ui-title-block"><i class="icon fa fa-bars"></i>Ürünler</h3>
                 <div class="isotope-frame wow bounceInRight" data-wow-duration="2s">
                     <ul class="isotope-filter products clearfix">
                         @foreach (var product in ViewBag.Products)
