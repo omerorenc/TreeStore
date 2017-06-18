@@ -5777,6 +5777,7 @@
     <Content Include="wwwroot\logo.png" />
     <Content Include="wwwroot\metronic\layouts\layout\img\tree.png" />
     <Content Include="wwwroot\metronic\pages\img\Tree.png" />
+    <Content Include="wwwroot\uploads\404-1.png" />
     <Content Include="wwwroot\uploads\arcelik.jpg" />
     <Content Include="wwwroot\uploads\asus.jpg" />
     <Content Include="wwwroot\uploads\bluz.jpg" />
