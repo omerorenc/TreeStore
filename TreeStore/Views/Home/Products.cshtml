@@ -16,7 +16,7 @@
                                     @foreach (var product in ViewBag.Products)
                                     {
                                         <li class="isotope-item best products__item">
-                                            <a class="products__foto" href="~/uploads/@product.ImagePath" rel="prettyPhoto"> <img src="~/uploads/@product.ImagePath" style="width:260px;height:260px" height="260" width="260" alt="Goods"> </a>
+                                            <a class="products__foto" href="/Urun?id=@product.Id" > <img src="~/uploads/@product.ImagePath" style="width:260px;height:260px" height="260" width="260" alt="Goods"> </a>
                                             <h4 class="products__name"><a href="/Urun?id=@product.Id">@product.Name</a></h4>
                                             <div class="products__inner clearfix">
                                                 <span class="products__price-new">@product.DiscountPrice</span> <span class="products__price-old">@product.Price</span>
