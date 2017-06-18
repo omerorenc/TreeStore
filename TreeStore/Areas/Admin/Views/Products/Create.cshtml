@@ -73,7 +73,9 @@
         <div class="form-group">
             <label asp-for="SliderId" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <select asp-for="SliderId" class ="form-control" asp-items="ViewBag.SliderId"></select>
+                <select asp-for="SliderId" class ="form-control" asp-items="ViewBag.SliderId">
+                    <option value="">Seçiniz</option>
+                </select>
             </div>
         </div>
 
