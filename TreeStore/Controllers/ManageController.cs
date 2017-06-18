@@ -15,7 +15,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace TreeStore.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Firma Sahibi,Onaylanmamis Uye")]
     public class ManageController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
