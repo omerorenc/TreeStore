@@ -1,4 +1,5 @@
-﻿@{
+﻿@model TreeStore.Models.Product
+@{
     ViewData["Title"] = "Ürün Detayı";
 }
 <div><span class="spinner"></span></div>
@@ -44,20 +45,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-7">
+                    <div class="col-md-4">
                         <div class="product-card__slider" id="image-block">
                             <div class="slider-product flexslider">
                                 <ul class="slides">
                                     <li>
-                                        <a href="~/uploads/6-2017/@ViewBag.Product.ImagePath" class="prettyPhoto">
-                                            <img src="~/uploads/6-2017/@ViewBag.Product.ImagePath" style="height:500px; width:920px" title="Foto" alt="img">
+                                        <a href="~/uploads/@ViewBag.Product.ImagePath" rel="prettyPhoto"> <img src="~/uploads/@ViewBag.Product.ImagePath" style="height:500px; width:920px" title="Foto" alt="img">
                                         </a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-5">
                         <div class="product-card__main">
                             <h1 class="product-card__name">@ViewBag.Product.Name"</h1>
                             @if (ViewBag.Product.IsActive == true)
@@ -68,10 +68,10 @@
                             {
                                 <div class="product-card__price-old"><i class="icon fa fa-times-circle"></i>Ürün Pasif</div>
                             }
-                            <div class="product-card__price">
-                                <span class="product-card__price-new">@ViewBag.Product.DiscountPrice  TL</span>
-                                <span class="product-card__price-old">@ViewBag.Product.Price  TL</span>
-                            </div>
+                           
+                                <span class="product-card__price-new">@ViewBag.Product.DiscountPrice  ₺</span>
+                                <span class="product-card__price-old">@ViewBag.Product.Price  ₺</span>
+                   
                             <div class="product-card__description">
                                 <p>@ViewBag.Product.Description</p>
                             </div>

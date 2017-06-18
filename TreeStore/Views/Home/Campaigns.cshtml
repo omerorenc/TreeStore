@@ -9,16 +9,16 @@
     <div id="wrapper">
         <div class="container">
             <div class="row">
-                <div class="col-md-1"></div>
-                <div class="col-md-9">
+                <div class="col-md-12">
                     <div class="section-area">
-                        <ul class="products products_details clearfix">
-                            @foreach (var campaigns in ViewBag.Campaigns)
-                            {
-                                <li class="products__item">
-                                    <a style="width:auto;height:auto" class="products__foto" href="~/uploads/6-2017/@campaigns.ImagePath" rel="prettyPhoto"> <img src="~/uploads/6-2017/@campaigns.ImagePath" height="260" width="260" alt="Goods"> </a>
-                                    <div class="products__wrap clearfix">
-                                        <h4 class="products__name"><a href="#">@campaigns.Name</a></h4>
+                        <ul class="Campaigns clearfix">
+                            @foreach (var campaign in ViewBag.Campaigns)
+                                    {
+                                <li class="isotope-item best Campaigns__item">
+                                    <a style="width:auto;height:auto" class="products__foto" href="~/uploads/@campaign.ImagePath" rel="prettyPhoto"> <img src="~/uploads/@campaign.ImagePath" height="260" width="260" alt="Goods"> </a>
+                                    <h4 class="products__name"><a href="#">@campaign.Name</a></h4>
+                                    <div class="Campaigns__inner clearfix">
+                                        <span class="Campaigns__price-new">@campaign.Slogan</span> 
                                         <ul class="rating">
                                             <li><i class="icon fa fa-star"></i></li>
                                             <li><i class="icon fa fa-star"></i></li>
@@ -26,16 +26,17 @@
                                             <li><i class="icon fa fa-star"></i></li>
                                             <li><i class="icon fa fa-star disabled"></i></li>
                                         </ul>
-                                        <div class="products__description">
-                                            <p>@campaigns.Description</p>
-                                        </div>
+                                    </div>
+                                    <div class="products__description">
+                                        <p>@campaign.Description</p>
                                     </div>
                                 </li>
-                            }
+                                    }
                         </ul>
                     </div>
                 </div>
             </div>
+            
         </div>
     </div>
 </div>
