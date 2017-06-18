@@ -34,30 +34,18 @@
                         }
 
 
-                        <div class="col-md-4 col-md-offset-1">
+                        <div class="col-md-5 col-md-offset-1">
                             <div class="product-card__slider" id="image-block">
-                                <div class="slider-product flexslider">
+                                <div >
 
-                                    <ul class="slides">
-                                        <li> <a href="~/uploads/@Model.ImagePath" class="prettyPhoto"> <img src="~/uploads/@Model.ImagePath" height="200" width="200" title="Foto" alt="img"> </a> </li>
-                                        <li> <a href="~/uploads/@Model.ImagePath" class="prettyPhoto"> <img src="~/uploads/@Model.ImagePath" height="200" width="200" title="Foto" alt="img"> </a> </li>
-                                        <li> <a href="~/uploads/@Model.ImagePath" class="prettyPhoto"> <img src="~/uploads/@Model.ImagePath" height="200" width="200" title="Foto" alt="img"> </a> </li>
-                                        <li> <a href="~/uploads/@Model.ImagePath" class="prettyPhoto"> <img src="~/uploads/@Model.ImagePath" height="200" width="200" title="Foto" alt="img"> </a> </li>
-                                    </ul>
+                                   <img src="~/uploads/@Model.ImagePath" style="width:400px;height:350px;"/>
                                 </div>
-                                <div class="carousel-product flexslider">
-                                    <ul class="slides">
-                                        <li> <img src="~/uploads/@Model.ImagePath" height="100" width="100" alt="img"> </li>
-                                        <li> <img src="~/uploads/@Model.ImagePath" height="100" width="100" alt="img"> </li>
-                                        <li> <img src="~/uploads/@Model.ImagePath" height="100" width="100" alt="img"> </li>
-                                        <li> <img src="~/uploads/@Model.ImagePath" height="100" width="100" alt="img"> </li>
-                                    </ul>
-                                </div>
+                               
                             </div>
                             <!-- end product-card__slider -->
                         </div>
 
-                        <div class="col-md-5">
+                        <div class="col-md-6">
                             <div class="product-card__main">
                                 <h1 class="product-card__name">@Model.Name</h1>
                                 <div class="product-card__category"><a href="#">@Model.Category.Name</a></div>
