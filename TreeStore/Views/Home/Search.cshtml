@@ -3,50 +3,61 @@
 }
 
 <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
         <section class="section-area section-about text-center">
             <h2 class="ui-title-block ui-title-block_large ui-title-block_mod-a">Ürünler Arama Sonuçları</h2>
             @foreach (var result in ViewBag.ResultProduct)
             {
-                <article class="list-posts__article clearfix">
-                    <div class="row" style="width:300px;height:300px">
-                        <div class="img-hover-effect">
-                            <img class="img-responsive" src="~/uploads/6-2017/@result.ImagePath" style="width:260px;height:260px" alt="Foto">
+                <div class="col-md-3 col-md-offset-1">
+                    <article class="list-posts__article clearfix">
+                        <div class="row" style="width:300px;height:300px">
+                            <div class="img-hover-effect">
+                                <img class="img-responsive" src="~/uploads/@result.ImagePath" style="width:260px;height:260px" alt="Foto">
+                            </div>
+                            <div class="list-posts__info">
+                                <i class="icon icon-user"></i>
+                                <span class="list-posts__autor"><a class="color_primary" href="javascript:void(0);">@ViewBag.product</a></span>
+                                <i class="icon icon-calendar"></i>
+                                <span class="list-posts__date"> June 20, 2015 </span>
+                            </div>
+                            <p>@result.Name</p>
+                            <a class="product ui-btn ui-btn_primary pull-right" href="/Urun?id=@result.Id">Ürün Detayları</a>
                         </div>
-                        <div class="list-posts__info"> 
-                            <i class="icon icon-user"></i>
-                            <span class="list-posts__autor">By <a class="color_primary" href="javascript:void(0);">@ViewBag.product</a></span> 
-                            <i class="icon icon-calendar"></i>
-                            <span class="list-posts__date"> June 20, 2015 </span> 
-                        </div>
-                        <p>@result.Name</p>
-                        <a class="btn btn-info pull-right" href="javascript:void(0);">READ MORE</a>
-                    </div>
-                </article>
+                    </article>
+                </div>
             }
         </section>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
         <section class="section-area section-about text-center">
             <h2 class="ui-title-block ui-title-block_large ui-title-block_mod-a">Kampanyalar Arama Sonuçları</h2>
             @foreach (var result in ViewBag.ResultCampaign)
             {
-                <article class="list-posts__article clearfix">
-                    <div class="row" style="width:300px;height:300px">
-                        <div class="img-hover-effect">
-                            <img class="img-responsive" src="~/uploads/6-2017/@result.ImagePath" style="width:260px;height:260px" alt="Foto">
+                <div class="col-md-3 col-md-offset-1">
+                    <article class="list-posts__article clearfix">
+                        <div class="row" style="width:300px;height:300px">
+                            <div class="img-hover-effect">
+                                <img class="img-responsive" src="~/uploads/@result.ImagePath" style="width:260px;height:260px" alt="Foto">
+                            </div>
+                            <div class="list-posts__info">
+                                <i class="icon icon-user"></i>
+                                <span class="list-posts__autor"><a class="color_primary" href="javascript:void(0);">@ViewBag.campaign</a></span>
+                                <i class="icon icon-calendar"></i>
+                                <span class="list-posts__date"> June 20, 2015 </span>
+                            </div>
+                            <p>@result.Name</p>
+                            <a class="product ui-btn ui-btn_primary pull-right" href="/campaign?id=@result.Id">Kampanya Detayları</a>
                         </div>
-                        <div class="list-posts__info">
-                            <i class="icon icon-user"></i>
-                            <span class="list-posts__autor"><a class="color_primary" href="javascript:void(0);">@ViewBag.campaign</a></span>
-                            <i class="icon icon-calendar"></i>
-                            <span class="list-posts__date"> June 20, 2015 </span>
-                        </div>
-                        <p>@result.Name</p>
-                        <a class="btn btn-info pull-right" href="javascript:void(0);">READ MORE</a>
-                    </div>
-                </article>
+                    </article>
+                </div>
+                <br />
             }
         </section>
     </div>
-    <div class="col-md-2"></div>
+    <div class="col-md-1"></div>
 </div>
