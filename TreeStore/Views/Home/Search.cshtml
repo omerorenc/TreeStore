@@ -17,9 +17,9 @@
                             </div>
                             <div class="list-posts__info">
                                 <i class="icon icon-user"></i>
-                                <span class="list-posts__autor"><a class="color_primary" href="javascript:void(0);">@ViewBag.product</a></span>
+                                <span class="list-posts__autor"><a class="color_primary" href="javascript:void(0);">@result.CreatedBy</a></span>
                                 <i class="icon icon-calendar"></i>
-                                <span class="list-posts__date"> June 20, 2015 </span>
+                                <span class="list-posts__date">@result.CreateDate.ToString("dd:MM:yyyy")</span>
                             </div>
                             <p>@result.Name</p>
                             <a class="product ui-btn ui-btn_primary pull-right" href="/Urun?id=@result.Id">Ürün Detayları</a>
@@ -46,9 +46,9 @@
                             </div>
                             <div class="list-posts__info">
                                 <i class="icon icon-user"></i>
-                                <span class="list-posts__autor"><a class="color_primary" href="javascript:void(0);">@ViewBag.campaign</a></span>
+                                <span class="list-posts__autor"><a class="color_primary" href="javascript:void(0);">@result.CreatedBy</a></span>
                                 <i class="icon icon-calendar"></i>
-                                <span class="list-posts__date"> June 20, 2015 </span>
+                                <span class="list-posts__date">@result.CreateDate.ToString("dd:MM:yyyy")</span>
                             </div>
                             <p>@result.Name</p>
                             <a class="product ui-btn ui-btn_primary pull-right" href="/campaign?id=@result.Id">Kampanya Detayları</a>
