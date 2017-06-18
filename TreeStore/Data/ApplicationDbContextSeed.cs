@@ -31,9 +31,8 @@ namespace TreeStore.Data
 
         private static void AddSlider(ApplicationDbContext context)
         {
-            context.AddRange(
-                new Slider { Name = "Slider", CreateDate = DateTime.Now, UpdateDate = DateTime.Now },
-                new Slider { Name = "Slider2", CreateDate = DateTime.Now, UpdateDate = DateTime.Now }
+            context.Add(
+                new Slider { Name = "Slider", CreateDate = DateTime.Now, UpdateDate = DateTime.Now }
                 );
 
             context.SaveChanges();
@@ -60,9 +59,9 @@ namespace TreeStore.Data
         {
             context.AddRange(
                 new Campaign { Name = "Kampanya", Slogan = "Büyük Kampanya", Description = "Açıklama", StartedDate = DateTime.Now, EndDate = DateTime.Now, IsActive = true, ImagePath = "kampanya.png", CreateDate = DateTime.Now, CreatedBy = user.UserName },
-                 new Campaign { Name = "Kampanya2", Slogan = "Büyük Kampanya", Description = "Açıklama", StartedDate = DateTime.Now, EndDate = DateTime.Now, IsActive = true, ImagePath = "kampanya1.png", CreateDate = DateTime.Now, CreatedBy = user.UserName },
-                  new Campaign { Name = "Kampanya3", Slogan = "Büyük Kampanya", Description = "Açıklama", StartedDate = DateTime.Now, EndDate = DateTime.Now, IsActive = true, ImagePath = "kampanya2.png", CreateDate = DateTime.Now, CreatedBy = user.UserName },
-                   new Campaign { Name = "Kampanya4", Slogan = "Büyük Kampanya", Description = "Açıklama", StartedDate = DateTime.Now, EndDate = DateTime.Now, IsActive = true, ImagePath = "kampanya3.png", CreateDate = DateTime.Now, CreatedBy = user.UserName }
+                new Campaign { Name = "Kampanya2", Slogan = "Büyük Kampanya", Description = "Açıklama", StartedDate = DateTime.Now, EndDate = DateTime.Now, IsActive = true, ImagePath = "kampanya1.jpg", CreateDate = DateTime.Now, CreatedBy = user.UserName },
+                new Campaign { Name = "Kampanya3", Slogan = "Büyük Kampanya", Description = "Açıklama", StartedDate = DateTime.Now, EndDate = DateTime.Now, IsActive = true, ImagePath = "kampanya2.jpg", CreateDate = DateTime.Now, CreatedBy = user.UserName },
+                new Campaign { Name = "Kampanya4", Slogan = "Büyük Kampanya", Description = "Açıklama", StartedDate = DateTime.Now, EndDate = DateTime.Now, IsActive = true, ImagePath = "kampanya3.png", CreateDate = DateTime.Now, CreatedBy = user.UserName }
                 );
             context.SaveChanges();
         }
@@ -81,8 +80,7 @@ namespace TreeStore.Data
                     ImagePath = "asus.jpg",
                     DiscountPrice = 3000,
                     Price = 3200,
-                    IsActive = true,
-                    SliderId =1
+                    IsActive = true
                 },
                    new Product
                    {
@@ -96,8 +94,7 @@ namespace TreeStore.Data
                        ImagePath = "arcelik.jpg",
                        DiscountPrice = 1500,
                        Price = 1700,
-                       IsActive = true,
-                       SliderId = 1
+                       IsActive = true
                    },
                       new Product
                       {
@@ -111,8 +108,7 @@ namespace TreeStore.Data
                           ImagePath = "mavi.jpg",
                           DiscountPrice = 70,
                           Price = 99,
-                          IsActive = true,
-                          SliderId = 1
+                          IsActive = true
                       },
                          new Product
                          {
@@ -126,8 +122,7 @@ namespace TreeStore.Data
                              ImagePath = "bluz.jpg",
                              DiscountPrice = 50,
                              Price = 100,
-                             IsActive = true,
-                             SliderId = 1
+                             IsActive = true
                          },
                             new Product
                             {
@@ -141,8 +136,7 @@ namespace TreeStore.Data
                                 ImagePath = "cocukayakkabi.jpg",
                                 DiscountPrice = 99,
                                 Price = 140,
-                                IsActive = true,
-                                SliderId = 1
+                                IsActive = true
                             },
                             new Product
                             {
@@ -156,8 +150,7 @@ namespace TreeStore.Data
                                 ImagePath = "kadinparfum.jpg",
                                 DiscountPrice = 224,
                                 Price = 250,
-                                IsActive = true,
-                                SliderId = 1
+                                IsActive = true
                             });
             context.SaveChanges();
         }
