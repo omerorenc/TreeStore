@@ -77,18 +77,8 @@
                 </div>
                 <br />
                 <br />
-                <table style="font-size:15px;">
-                    <tr>
-                        <td>@Html.DisplayNameFor(model => model.StartedDate)</td>
-                        <td>:@Html.DisplayFor(model => model.StartedDate)</td>
-
-                    </tr>
-                    <br />
-                    <br />
-                    <tr>
-                        <td>@Html.DisplayNameFor(model => model.EndDate)</td>
-                        <td>:@Html.DisplayFor(model => model.EndDate)</td>
-                </table>
+                <i style="margin-left:20PX;" class="icon icon-calendar"></i><span class="list-posts__date">@Model.StartedDate.ToString("dd:MM:yyyy")</span>
+                / <i class="icon icon-calendar"></i><span class="list-posts__date">@Model.EndDate.ToString("dd:MM:yyyy")</span>
                 <br />
                 <br />
                
