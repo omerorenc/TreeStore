@@ -5762,6 +5762,14 @@
     <Content Include="wwwroot\assets\pages\scripts\v,..min.js" />
     <Content Include="wwwroot\assets\pages\scripts\widgets.js" />
     <Content Include="wwwroot\assets\pages\scripts\widgets.min.js" />
+    <Content Include="wwwroot\assets\plugins\flexslider\flexslider.css" />
+    <Content Include="wwwroot\assets\plugins\flexslider\fonts\flexslider-icon.eot" />
+    <Content Include="wwwroot\assets\plugins\flexslider\fonts\flexslider-icon.svg" />
+    <Content Include="wwwroot\assets\plugins\flexslider\fonts\flexslider-icon.ttf" />
+    <Content Include="wwwroot\assets\plugins\flexslider\fonts\flexslider-icon.woff" />
+    <Content Include="wwwroot\assets\plugins\flexslider\images\bg_play_pause.png" />
+    <Content Include="wwwroot\assets\plugins\flexslider\jquery.flexslider-min.js" />
+    <Content Include="wwwroot\assets\plugins\flexslider\jquery.flexslider.js" />
     <Content Include="wwwroot\css\editor.cs" />
     <Content Include="wwwroot\css\editor.css" />
     <Content Include="wwwroot\images\tree.ico" />

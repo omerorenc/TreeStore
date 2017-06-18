@@ -2,6 +2,10 @@
 @{
     ViewData["Title"] = "Ürün Detayı";
 }
+<link href="assets/plugins/switcher/css/switcher.css" rel="stylesheet" id="switcher-css" media="all">
+<link href="assets/plugins/switcher/css/color1.css" rel="alternate stylesheet" title="color1" media="all">
+<script src="assets/plugins/jquery/jquery-1.11.3.min.js"></script>
+<link href="css/category.css" rel="stylesheet">
 <div><span class="spinner"></span></div>
 <div class="layout-theme animated-css" data-header="sticky" data-header-top="200">
     <div class="border-main">
@@ -45,19 +49,26 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="product-card__slider" id="image-block">
-                            <div class="slider-product flexslider">
-                                <ul class="slides">
-                                    <li>
-                                        <a href="~/uploads/@ViewBag.Product.ImagePath" rel="prettyPhoto"> <img src="~/uploads/@ViewBag.Product.ImagePath" style="height:500px; width:920px" title="Foto" alt="img">
-                                        </a>
-                                    </li>
-                                </ul>
+                    <div class="col-md-1">
+                    @{ var discount = (int)(100 - ((@ViewBag.Product.DiscountPrice * 100) / @ViewBag.Product.Price));}
+                   
+                   </div>
+                  
+                    <div class="col-md-4 col-md-pull-1">
+                       
+                            <div class="product-card__slider" id="image-block">
+                                <div>
+                                    <ul class="slides">
+                                        <li>
+                                            <a href="~/uploads/@ViewBag.Product.ImagePath" rel="prettyPhoto">
+                                                <img src="~/uploads/@ViewBag.Product.ImagePath" style="width:400px;height:300px;" title="Foto" alt="@ViewBag.Product.Name">
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         <div class="product-card__main">
                             <h1 class="product-card__name">@ViewBag.Product.Name"</h1>
                             @if (ViewBag.Product.IsActive == true)
@@ -71,10 +82,18 @@
                            
                                 <span class="product-card__price-new">@ViewBag.Product.DiscountPrice  ₺</span>
                                 <span class="product-card__price-old">@ViewBag.Product.Price  ₺</span>
-                   
-                            <div class="product-card__description">
-                                <p>@ViewBag.Product.Description</p>
+                            <br /><br />
+                            <div><span style="font-size:25PX;color:red;font-weight:bold;">% @discount  İNDİRİM</span></div>
+                          
+                            <div class="product-card__description" style="font-size:15px;">
+                                
+                             <p>@ViewBag.Product.Description</p>
+                                
                             </div>
+                           @for(var i=0;i<=10;i++){
+                            <br />
+                           }
+
                         </div>
                     </div>
                 </section>
@@ -92,4 +111,12 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 <script src="assets/plugins/jelect/jquery.jelect.js"></script>
 <script src="assets/plugins/nouislider/jquery.nouislider.all.min.js"></script>
-<script src="assets/plugins/flexslider/jquery.flexslider.js"></script> 
+<script src="assets/plugins/flexslider/jquery.flexslider.js"></script>
+<!--Color Switcher-->
+<script src="assets/plugins/switcher/js/bootstrap-select.js"></script>
+<script src="assets/plugins/switcher/js/dmss.js"></script>
+<!--THEME-->
+<script src="assets/js/cssua.min.js"></script>
+<script src="assets/js/wow.min.js"></script>
+<script src="assets/js/custom.js"></script>
+<script src="js/category.js"></script>
