@@ -16,9 +16,16 @@
                 <hr />
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
+                    <label asp-for="Name" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label asp-for="Description" class="col-md-2 control-label"></label>
                     <div class="col-md-10">
-                        <input asp-for="Description" class="form-control" />
+                        <textarea asp-for="Description" class="form-control" rows="5"></textarea>
                         <span asp-validation-for="Description" class="text-danger"></span>
                     </div>
                 </div>
@@ -50,7 +57,7 @@
                     <label asp-for="ImagePath" class="col-md-2 control-label">@Html.DisplayNameFor(model => model.ImagePath)</label>
                     <div class="col-md-9">
                         <div class="input-group">
-                            <input asp-for="ImagePath" class="form-control" />
+                            <input asp-for="ImagePath" class="form-control" readonly/>
                             <span class="input-group-btn">
                                 <a class="product ui-btn ui-btn_primary" id="uploadModal" onclick="browseMedia('ImagePath')">seç</a>
                             </span>
@@ -67,14 +74,6 @@
                     </div>
                 </div>
                 <input type="hidden" asp-for="Id" />
-                <div class="form-group">
-                    <label asp-for="Name" class="col-md-2 control-label"></label>
-                    <div class="col-md-10">
-                        <input asp-for="Name" class="form-control" />
-                        <span asp-validation-for="Name" class="text-danger"></span>
-                    </div>
-                </div>
-                
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="submit" value="Kaydet" class="product ui-btn ui-btn_primary" />&nbsp;&nbsp;&nbsp;

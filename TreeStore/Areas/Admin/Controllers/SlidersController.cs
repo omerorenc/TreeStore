@@ -61,6 +61,10 @@ namespace TreeStore.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                slider.CreateDate = DateTime.Now;
+                slider.CreatedBy = User.Identity.Name;
+                slider.UpdateBy = User.Identity.Name;
+                slider.UpdateDate = DateTime.Now;
                 _context.Add(slider);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
@@ -100,6 +104,8 @@ namespace TreeStore.Areas.Admin.Controllers
             {
                 try
                 {
+                    slider.UpdateDate = DateTime.Now;
+                    slider.UpdateBy = User.Identity.Name;
                     _context.Update(slider);
                      _context.SaveChanges();
                 }

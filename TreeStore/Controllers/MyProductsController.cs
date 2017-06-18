@@ -84,8 +84,8 @@ namespace TreeStore.Controllers
             }
             catch (Exception ex)
             {
-                throw ex;
                 return RedirectToAction("Create");
+                throw ex;
 
             }
             ViewData["CategoryId"] = new SelectList(categoryService.GetCategories(), "Id", "Name", product.CategoryId);
