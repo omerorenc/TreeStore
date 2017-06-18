@@ -50,13 +50,11 @@
                             <div class="col-md-3"> 
                             <a href="/" class="logo"> <img class="logo__img" src="/assets/img/logo-w.png" height="51" width="162" alt="Logo"> </a> 
                             </div>
-                            <div class="col-md-6 col-md-pull-1 ">
-                                    <div class="header-search__form">
+                            <div class="col-md-6">
                                         <form asp-area="" class="product-search" asp-controller="Home" asp-action="Search">
                                             <input id="query" class="product-search__field" type="text" value="@ViewBag.Query" placeholder="Ürün Adı, Kampanya Adı  ara.." name="query">
                                             <button class="product-search__btn ui-btn ui-btn_primary">ara</button>
                                         </form>
-                                    </div>
                             </div>
                             <div class="col-md-3" style="height:60px; color:black !important">
                                 @await Html.PartialAsync("_LoginPartial")
