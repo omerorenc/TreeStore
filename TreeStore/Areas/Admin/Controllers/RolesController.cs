@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace TreeStore.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
     public class RolesController : Controller
     {

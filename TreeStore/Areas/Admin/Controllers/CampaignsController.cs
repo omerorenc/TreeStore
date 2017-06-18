@@ -12,7 +12,8 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace TreeStore.Areas.Admin.Controllers
 {
-    [Authorize]
+   
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
     public class CampaignsController : Controller
     {

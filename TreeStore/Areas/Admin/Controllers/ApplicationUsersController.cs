@@ -14,7 +14,7 @@ using TreeStore.Services;
 namespace TreeStore.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class ApplicationUsersController : Controller
     {
        

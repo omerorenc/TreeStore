@@ -19,7 +19,7 @@ using MailKit.Net.Smtp;
 
 namespace TreeStore.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Firma Sahibi")]
     public class AccountController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
