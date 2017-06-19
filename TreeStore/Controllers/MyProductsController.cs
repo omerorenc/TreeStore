@@ -9,6 +9,7 @@ using TreeStore.Data;
 using TreeStore.Models;
 using TreeStore.Services;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace TreeStore.Controllers
 {
@@ -71,7 +72,11 @@ namespace TreeStore.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
+                if (product.Price < product.DiscountPrice)
+                {
+                    ModelState.AddModelError("Price", "Normal fiyat indirimli fiyattan küçük olamaz.");
+                }
+                else if (ModelState.IsValid)
             {
                 product.CreateDate = DateTime.Now;
                 product.UpdateDate = DateTime.Now;
@@ -123,8 +128,11 @@ namespace TreeStore.Controllers
             {
                 return NotFound();
             }
-
-            if (ModelState.IsValid)
+            if (product.Price < product.DiscountPrice)
+            {
+                ModelState.AddModelError("Price", "Normal fiyat indirimli fiyattan küçük olamaz.");
+            }
+            else if (ModelState.IsValid)
             {
                 try
                 {

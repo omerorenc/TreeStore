@@ -17,7 +17,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace TreeStore.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin,Firma Sahibi,Onaylanmamis Uye")]
     [Area("Admin")]
     public class MediaController : Controller
     {

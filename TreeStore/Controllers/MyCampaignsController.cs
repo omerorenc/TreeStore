@@ -61,7 +61,11 @@ namespace TreeStore.Controllers
         {
             try
             {
-                 if (ModelState.IsValid)
+                if (campaign.StartedDate >= campaign.EndDate)
+                {
+                    ModelState.AddModelError("StartedDate", "Kampanya baþlangýç tarihi bitiþ tarihinden sonra olamaz.");
+                }
+                else if (ModelState.IsValid)
                 {
                     campaign.CreatedBy = User.Identity.Name;
                     campaign.UpdateBy = User.Identity.Name;
@@ -106,8 +110,11 @@ namespace TreeStore.Controllers
             {
                 return NotFound();
             }
-
-            if (ModelState.IsValid)
+            if (campaign.StartedDate >= campaign.EndDate)
+            {
+                ModelState.AddModelError("StartedDate", "Kampanya baþlangýç tarihi bitiþ tarihinden sonra olamaz.");
+            }
+            else if (ModelState.IsValid)
             {
                 try
                 {
