@@ -1,4 +1,4 @@
-@model TreeStore.Models.Entities.Media
+ï»¿@model TreeStore.Models.Entities.Media
 
 @{
     ViewData["Title"] = "Media Ekle";
@@ -45,24 +45,24 @@
                                             <span class="fileinput-filename"></span>
                                         </div>*@
                                     <span class="input-group-addon btn default btn-file">
-                                        @*<span class="fileinput-new">Dosya Seç</span>*@
-                                        @*<span class="fileinput-exists">Deðiþtir</span>*@
+                                        @*<span class="fileinput-new">Dosya SeÃ§</span>*@
+                                        @*<span class="fileinput-exists">DeÄŸiÅŸtir</span>*@
                                         <input type="file" id="FileName" name="uploadFile">
                                     </span>
-                                    @*<a href="javascript:" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput">Kaldýr</a>*@
+                                    @*<a href="javascript:" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput">KaldÄ±r</a>*@
                                 </div>
                                 @*@Html.ValidationMessage("FileName", new { @class = "text-danger" })*@
                                 @Html.ValidationMessage("FileExist", new { @class = "text-danger" })
                                 <span class="text-danger" asp-validation-for="FileName"></span>
                             </div>
                             <div class="clearfix margin-top-10">
-                                <span class="label label-success">UYARI !</span> Dosyanýn uzantýsý <strong>.doc, .docx, .pdf, .rtf, .jpg, .gif,.mp4 </strong> ya da <strong>.png</strong> olmalýdýr.
+                                <span class="label label-success">UYARI !</span> DosyanÄ±n uzantÄ±sÄ± <strong>.doc, .docx, .pdf, .rtf, .jpg, .gif,.mp4 </strong> ya da <strong>.png</strong> olmalÄ±dÄ±r.
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <button type="submit" onclick="filePath" tabindex="10" class="btn blue">Kaydet</button>
-                        <a type="button" tabindex="11" class="btn default" href="/admin/media/Index">Ýptal</a>
+                        <a type="button" tabindex="11" class="btn default" href="/admin/media/Index">Ä°ptal</a>
                     </div>
                 </div>
             </form>
