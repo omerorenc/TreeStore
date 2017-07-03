@@ -12,7 +12,7 @@
 <br />
 <div class="container">
     <div class="row">
-        <div class="col-md-3 col-xs-3">
+        @*<div class="col-md-3 col-xs-3">
             <div class="mega-container visible-lg visible-md">
                 <div class="navleft-container">
                     <div class="mega-menu-title"><h3>Kategoriler</h3></div>
@@ -49,8 +49,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-9 col-xs-9">
+        </div>*@
+        <div class="col-md-12 col-xs-12">
             <script type="text/javascript" src="assets/plugins/sliderpro/js/jquery.sliderPro.min.js"></script>
             <section  data-wow-duration="2s">
                 <h3 class="ui-title-block"><i class="icon fa fa-bars"></i>Kampanyalar</h3>
@@ -58,9 +58,9 @@
 
                     <div class="list-posts_mod-a list-posts_carusel list-unstyled owl-carousel owl-theme_mod-b owl-theme enable-owl-carousel"
                          data-min480="1"
-                         data-min768="2"
-                         data-min992="2"
-                         data-min1200="2"
+                         data-min768="3"
+                         data-min992="3"
+                         data-min1200="3"
                          data-pagination="false"
                          data-navigation="true"
                          data-auto-play="4000"
@@ -155,15 +155,17 @@
                             <li class="isotope-item best products__item">
                                 <a class="products__foto" href="/Urun?id=@product.Id"> <img src="~/uploads/@product.ImagePath" style="width:260px;height:260px" height="260" width="260" alt="Goods"> </a>
                                 <h4 class="products__name"><a href="/Urun?id=@product.Id">@product.Name</a></h4>
-                                <div class="products__category"><a href="#">@product.Category.ParentCategory.Name</a></div>
+                                @*<div class="products__category"><a href="#">@product.Category.ParentCategory.Name</a></div>*@
                                 <div class="products__inner clearfix">
                                     <span class="products__price-new">@product.DiscountPrice</span> <span class="products__price-old">@product.Price</span>
                                     <ul class="rating">
-                                        <li><i class="icon fa fa-star"></i></li>
-                                        <li><i class="icon fa fa-star"></i></li>
-                                        <li><i class="icon fa fa-star"></i></li>
-                                        <li><i class="icon fa fa-star"></i></li>
-                                        <li><i class="icon fa fa-star disabled"></i></li>
+                                        <li>@{
+                                            var Karınız = product.Price - product.DiscountPrice;
+
+                                        }
+                                            <span class="list-posts__autor"><a class="color_primary" >Kazancınız : @Karınız &#8378;</a></span>
+                                            </li>
+                                        
                                     </ul>
                                 </div>
                                 <footer class="products-btns clearfix">

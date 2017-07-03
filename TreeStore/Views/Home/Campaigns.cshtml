@@ -21,11 +21,13 @@
                                             <div class="Campaigns__inner clearfix">
                                                 <span class="Campaigns__price-new">@campaign.Slogan</span>
                                                 <ul class="rating">
-                                                    <li><i class="icon fa fa-star"></i></li>
-                                                    <li><i class="icon fa fa-star"></i></li>
-                                                    <li><i class="icon fa fa-star"></i></li>
-                                                    <li><i class="icon fa fa-star"></i></li>
-                                                    <li><i class="icon fa fa-star disabled"></i></li>
+                                                    <li>
+                                                        @{
+                                                            var lastdays = campaign.EndDate - campaign.StartedDate;
+
+                                                    }
+                                                    <span class="list-posts__autor"><a class="color_primary">Son: @lastdays gün</a></span>
+                                                </li>
                                                 </ul>
                                             </div>
                                             <div class="products__description">

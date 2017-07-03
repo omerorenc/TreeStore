@@ -21,11 +21,13 @@
                                             <div class="products__inner clearfix">
                                                 <span class="products__price-new">@product.DiscountPrice</span> <span class="products__price-old">@product.Price</span>
                                                 <ul class="rating">
-                                                    <li><i class="icon fa fa-star"></i></li>
-                                                    <li><i class="icon fa fa-star"></i></li>
-                                                    <li><i class="icon fa fa-star"></i></li>
-                                                    <li><i class="icon fa fa-star"></i></li>
-                                                    <li><i class="icon fa fa-star disabled"></i></li>
+                                                    <li>
+                                                        @{
+                                                        var Karınız = product.Price - product.DiscountPrice;
+
+                                                    }
+                                                    <span class="list-posts__autor"><a class="color_primary">Kazancınız : @Karınız &#8378;</a></span>
+                                                </li>
                                                 </ul>
                                             </div>
                                             <footer class="products-btns clearfix">

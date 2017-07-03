@@ -93,13 +93,13 @@
                                 <ul>
                                     <li><a href="/">Ana Sayfa</a></li>
                                     <li class="current">
-                                        <a href="#"><div>Kategoriler</div></a>
+                                        <a ><div>Kategoriler</div></a>
                                         @if (ViewBag.mainCategories != null) { 
                                         <ul>
                                              @foreach (var mainCategory in ViewBag.mainCategories)
                                              {
                                             <li>
-                                                    <a href="#"><div><i class="icon-stack"></i>@mainCategory.Name</div></a>
+                                                    <a><div><i class="icon-stack"></i>@mainCategory.Name</div></a>
                                                     <ul>
                                                      @foreach (var category in ViewBag.Categories)
                                                      {
@@ -107,13 +107,14 @@
 
                                                        {
                                                         <li>
-                                                            <a href="#"><div>@category.Name</div></a>
+                                                            <a href="/products?Id=@category.Id"><div>@category.Name</div></a>
                                                             <ul>
                                                                 @foreach (var child in category.ChildCategories)
                                                                 {
                                                                     <li><a href="/products?Id=@child.Id"><div>@child.Name</div></a></li>
                                                                 }
                                                             </ul>
+                                                        
                                                         </li>
                                                         }
                                                       }
