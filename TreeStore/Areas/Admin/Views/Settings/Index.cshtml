@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Site Ayarları";
 }
+<script src="//cdn.ckeditor.com/4.6.2/full/ckeditor.js"></script>
 <h2>Site Ayarları</h2>
 <hr />
 @if (!String.IsNullOrEmpty(ViewBag.Message))
@@ -17,8 +18,11 @@
         <div class="form-group">
             <label asp-for="MembershipAgreement" class="col-md-1 control-label"></label>
             <div class="col-md-11">
-                <textarea asp-for="MembershipAgreement" rows="10" class="form-control"></textarea>
+                <textarea asp-for="MembershipAgreement" tabindex="3" class="form-control"></textarea>
                 <span asp-validation-for="MembershipAgreement" class="text-danger"></span>
+                <script type="text/javascript">
+                    CKEDITOR.replace('MembershipAgreement');
+                </script>
             </div>
         </div>
         <div class="form-group">
@@ -45,10 +49,16 @@
         <div class="form-group">
             <label asp-for="About" class="col-md-1 control-label"></label>
             <div class="col-md-11">
-                <textarea asp-for="About" class="form-control" rows="10"></textarea>
+                <textarea asp-for="About" tabindex="3" form-control"></textarea>
                 <span asp-validation-for="About" class="text-danger"></span>
+                <script type="text/javascript">
+                    CKEDITOR.replace('About');
+                </script>
             </div>
         </div>
+
+      
+
         <div class="form-group">
             <label asp-for="Address" class="col-md-1 control-label"></label>
             <div class="col-md-11">
@@ -86,15 +96,21 @@
         <div class="form-group">
             <label asp-for="PrivacyPolicy" class="col-md-1 control-label"></label>
             <div class="col-md-11">
-                <textarea asp-for="PrivacyPolicy" rows="10" class="form-control"></textarea>
+                <textarea asp-for="PrivacyPolicy" tabindex="3"class="form-control"></textarea>
                 <span asp-validation-for="PrivacyPolicy" class="text-danger"></span>
+                <script type="text/javascript">
+                    CKEDITOR.replace('PrivacyPolicy');
+                </script>
             </div>
         </div>
         <div class="form-group">
             <label asp-for="TermsOfUse" class="col-md-1 control-label"></label>
             <div class="col-md-11">
-                <textarea asp-for="TermsOfUse" rows="10" class="form-control"></textarea>
+                <textarea asp-for="TermsOfUse" tabindex="3" class="form-control"></textarea>
                 <span asp-validation-for="TermsOfUse" class="text-danger"></span>
+                <script type="text/javascript">
+                    CKEDITOR.replace('TermsOfUse');
+                </script>
             </div>
         </div>
         <div class="form-group">
