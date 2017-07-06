@@ -1,0 +1,108 @@
+﻿@model TreeStore.Models.Entities.Advertisement
+
+@{
+    ViewData["Title"] = "Reklam Ekle";
+}
+
+<h2>Reklam Ekle</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Name" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="AdvertisementType" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select  asp-for="AdvertisementType" class="form-control" >
+                    <option>Seçiniz</option>
+                    <option value="1">Html</option>
+                    <option value="2">Resim</option>
+                </select>
+                <span asp-validation-for="AdvertisementType" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="AdvertisementLocation" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="AdvertisementLocation" class="form-control">
+                    <option>Seçiniz</option>
+                    <option value="1">SliderAlt1</option>
+                    <option value="2">SliderAlt2</option>
+                    <option value="3">KategoriAltı</option>
+                    <option value="4">ÜrünlerUstu</option>
+                    <option value="5">KampanyalarUstu</option>
+                </select>
+                <span asp-validation-for="AdvertisementLocation" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="AdvertisementUrl" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="AdvertisementUrl" class="form-control" />
+                <span asp-validation-for="AdvertisementUrl" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="AdvertisementImage" class="col-md-2 control-label">@Html.DisplayNameFor(model => model.AdvertisementImage)</label>
+            <div class="col-md-10">
+                <div class="input-group">
+                    <input asp-for="AdvertisementImage" class="form-control" readonly />
+                    <span class="input-group-btn">
+                        <a class="btn btn-info" id="uploadModal"  onclick="browseMedia('AdvertisementImage')">...</a>
+                    </span>
+                    </div>
+                </div>
+            @Html.ValidationMessageFor(model => model.AdvertisementImage, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <label asp-for="AdvertisementDescription" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <textarea rows="6" asp-for="AdvertisementDescription" class="form-control" ></textarea>
+                <span asp-validation-for="AdvertisementDescription" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    <input asp-for="IsActive" />
+                    <label asp-for="IsActive"></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="StartDate" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="StartDate" type="date" class="form-control" value="gg.aa.yy" />
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="FinishDate" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FinishDate" type="date" class="form-control" value="gg.aa.yy" />
+                <span asp-validation-for="FinishDate" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a class="btn btn-default" asp-action="Index">Listeye Geri Dön</a>
+</div>
+
+@Html.Partial("_BrowseMedia", new ViewDataDictionary(this.ViewData) { { "element", "AdvertisementImage" } })
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

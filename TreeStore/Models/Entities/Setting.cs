@@ -44,5 +44,8 @@ namespace TreeStore.Models.Entities
         public string RSS { get; set; }
         [Display(Name = "YouTube Linki")]
         public string YouTube { get; set; }
+        [Display(Name = "SSL Kullan")]
+        public bool UseSSL { get; set; }
+
     }
 }

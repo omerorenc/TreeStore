@@ -16,6 +16,7 @@ using TreeStore.Data.Repositories;
 using TreeStore.Data.Interface;
 using TreeStore.Models.Entities;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 namespace TreeStore
 {
@@ -51,6 +52,7 @@ namespace TreeStore
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+            services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
             services.AddMvc();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             //Repositories
@@ -64,6 +66,7 @@ namespace TreeStore
             services.AddTransient<ICampaignRepository, CampaignRepository>();
             services.AddTransient<ISliderRepository, SliderRepository>();
             services.AddTransient<ISubscriptionRepository, SubscriptionRepository>();
+            services.AddTransient<IAdvertisementRepository, AdvertisementRepository>();
 
             //Services
             services.AddTransient<IProductService, ProductService>();
@@ -77,6 +80,7 @@ namespace TreeStore
             services.AddTransient<ICategoryCampaignService, CategoryCampaignService>();
             services.AddTransient<ISliderService, SliderService>();
              services.AddTransient<ISubscriptionService, SubscriptionService>();
+            services.AddTransient<IAdvertisementService, AdvertisementService>();
 
         }
 

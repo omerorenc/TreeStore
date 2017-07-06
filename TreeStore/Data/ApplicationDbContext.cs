@@ -25,6 +25,7 @@ namespace TreeStore.Data
         public DbSet<MailSetting> MailSettings { get; set; }
         public DbSet<Media> Media { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
+        public DbSet<Advertisement> Advertisements { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -48,6 +49,9 @@ namespace TreeStore.Data
             new MailSettingBuilder(builder.Entity<MailSetting>());
             new MediaBuilder(builder.Entity<Media>());
             new SubscriptionBuilder(builder.Entity<Subscription>());
+            new AdvertisementBuilder(builder.Entity<Advertisement>());
         } 
+        
+       
     }
 }

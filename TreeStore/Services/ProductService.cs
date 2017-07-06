@@ -11,7 +11,7 @@ namespace TreeStore.Services
     public interface IProductService
     {
      
-        IEnumerable<Product> GetProducts();
+        IQueryable<Product> GetProducts();
         List<Product> GetProducts(string User, long id);
         Product GetProduct(long id);
         void CreateProduct(Product Product);
@@ -52,7 +52,7 @@ namespace TreeStore.Services
             return ProductRepository.GetMany(c => c.CreatedBy == User && c.Id == id).ToList();
         }
 
-        public IEnumerable<Product> GetProducts()
+        public IQueryable<Product> GetProducts()
         {
             var Products = ProductRepository.GetAll();
             return Products;

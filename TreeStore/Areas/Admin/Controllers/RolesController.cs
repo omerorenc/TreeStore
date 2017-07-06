@@ -19,9 +19,10 @@ namespace TreeStore.Areas.Admin.Controllers
         private readonly ApplicationDbContext _context;
         private readonly RoleManager<Role> _roleManager;
 
-        public RolesController(ApplicationDbContext context)
+        public RolesController(ApplicationDbContext context,RoleManager<Role> roleManager)
         {
             _context = context;
+            _roleManager = roleManager;
         }
 
         // GET: Admin/ApplicationRoles

@@ -1,6 +1,7 @@
-﻿<div class="row">
-    <div class="col-xs-12">
-        <section class="section-area section-about text-center">
+﻿@using PagedList.Core.Mvc
+<div class="row">
+    <div class="col-xs-12" >
+        <section  class="section-area section-about text-center">
             <h2 class="ui-title-block ui-title-block_large ui-title-block_mod-a">KAMPANYALAR</h2>
         </section>
     </div>
@@ -13,10 +14,10 @@
                     <div class="section-area">
                             @foreach (var campaign in ViewBag.Campaigns)
                             {
-                                <div class="col-md-3 col-md-offset-1">
+                                <div class="col-md-3">
                                     <ul class="Campaigns clearfix">
                                         <li class="isotope-item best Campaigns__item">
-                                            <a style="width:auto;height:auto" class="products__foto"> <img src="~/uploads/@campaign.ImagePath" style="height:260px;width:260px" height="260" width="260" alt="Goods"> </a>
+                                            <a style="width:auto;height:auto" class="products__foto"> <img src="~/uploads/@campaign.ImagePath" style="height:260px;width:260px"  alt="Goods"> </a>
                                             <h4 class="products__name"><a href="#">@campaign.Name</a></h4>
                                             <div class="Campaigns__inner clearfix">
                                                 <span class="Campaigns__price-new">@campaign.Slogan</span>
@@ -44,6 +45,10 @@
             
         </div>
     </div>
+</div>
+<div class="text-center">
+
+    <pager class="pager-container" list="@ViewBag.Campaigns" options="@PagedListRenderOptions.ClassicPlusFirstAndLast" asp-action="Campaigns" asp-controller="Home" />
 </div>
 <script src="assets/js/jquery-migrate-1.2.1.js"></script>
 <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>

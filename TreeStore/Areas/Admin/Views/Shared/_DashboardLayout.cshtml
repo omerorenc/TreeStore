@@ -126,6 +126,13 @@ License: You must have a valid license purchased only from themeforest(the above
                             <li class="heading">
                                 <h3 class="uppercase">Modüller</h3>
                             </li>
+                            <li class="nav-item  @(ViewContext.RouteData.Values["controller"].ToString().ToLowerInvariant()=="advertisements"?"active":string.Empty)">
+                                <a href="/admin/Advertisements/index" class="nav-link nav-toggle">
+                                    <i class="icon-book-open"></i>
+                                    <span class="title">Reklamlar</span>
+
+                                </a>
+                            </li>
                             <li class="nav-item @(ViewContext.RouteData.Values["controller"].ToString().ToLowerInvariant()=="campaigns"?"active":string.Empty) ">
                                 <a href="/admin/Campaigns/index" class="nav-link nav-toggle">
                                     <i class="icon-bag"></i>
@@ -224,6 +231,12 @@ License: You must have a valid license purchased only from themeforest(the above
                             <li>
                                 @switch (ViewContext.RouteData.Values["controller"].ToString().ToLowerInvariant())
                                 {
+                                    case "dashboard":
+                                        @Html.Raw("Admin");
+                                        break;
+                                    case "advertisements":
+                                        @Html.Raw("Reklamlar");
+                                        break;
                                     case "campaigns":
                                         @Html.Raw("Kampanyalar");
                                         break;

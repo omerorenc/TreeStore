@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace TreeStore.Migrations
 {
-    public partial class AllMigration : Migration
+    public partial class All : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -68,6 +68,31 @@ namespace TreeStore.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Advertisements",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    AdvertisementDescription = table.Column<string>(nullable: false),
+                    AdvertisementImage = table.Column<string>(nullable: false),
+                    AdvertisementLocation = table.Column<int>(nullable: false),
+                    AdvertisementType = table.Column<int>(nullable: false),
+                    AdvertisementUrl = table.Column<string>(nullable: false),
+                    CreateDate = table.Column<DateTime>(nullable: false),
+                    CreatedBy = table.Column<string>(nullable: true),
+                    FinishDate = table.Column<DateTime>(nullable: false),
+                    IsActive = table.Column<bool>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
+                    StartDate = table.Column<DateTime>(nullable: false),
+                    UpdateBy = table.Column<string>(nullable: true),
+                    UpdateDate = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Advertisements", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -168,6 +193,7 @@ namespace TreeStore.Migrations
                     Twitter = table.Column<string>(nullable: true),
                     UpdateBy = table.Column<string>(nullable: true),
                     UpdateDate = table.Column<DateTime>(nullable: false),
+                    UseSSL = table.Column<bool>(nullable: false),
                     YouTube = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -578,6 +604,9 @@ namespace TreeStore.Migrations
 
             migrationBuilder.DropTable(
                 name: "CategoryCampaigns");
+
+            migrationBuilder.DropTable(
+                name: "Advertisements");
 
             migrationBuilder.DropTable(
                 name: "Contacts");

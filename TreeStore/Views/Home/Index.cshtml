@@ -1,4 +1,4 @@
-﻿
+﻿@using PagedList.Core.Mvc
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -182,6 +182,10 @@
         <!-- end col -->
     </div>
     <!-- end row -->
+</div>
+<div class="text-center">
+
+    <pager class="pager-container" list="@ViewBag.Products" options="@PagedListRenderOptions.ClassicPlusFirstAndLast" asp-action="Campaigns" asp-controller="Home" />
 </div>
 <!-- end container -->
 

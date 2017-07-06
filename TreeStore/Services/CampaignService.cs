@@ -14,7 +14,7 @@ namespace TreeStore.Services
     public interface ICampaignService
     {
 
-        IEnumerable<Campaign> GetCampaigns();
+        IQueryable<Campaign> GetCampaigns();
         IEnumerable<Campaign> GetCampaignsWithRelated();
         List<Campaign> GetCampaigns(string User, long id);
         Campaign GetCampaign(long id);
@@ -58,7 +58,7 @@ namespace TreeStore.Services
             return campaignRepository.GetMany(c => c.CreatedBy == User && c.Id == id).ToList();
         }
 
-        public IEnumerable<Campaign> GetCampaigns()
+        public IQueryable<Campaign> GetCampaigns()
         {
             var Campaigns = campaignRepository.GetAll();
             return Campaigns;

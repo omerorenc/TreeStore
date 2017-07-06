@@ -1,11 +1,14 @@
-﻿<div class="row">
+﻿
+@using PagedList.Core.Mvc
+
+<div class="row">
     <div class="col-xs-12">
-        <section class="section-area section-about text-center">
+        <section  class="section-area section-about text-center">
             <h2 class="ui-title-block ui-title-block_large ui-title-block_mod-a">@ViewBag.Category</h2>
         </section>
     </div>
 </div>
-    <div class="layout-theme animated-css" data-header="sticky" data-header-top="200">
+    <div  class="layout-theme animated-css" data-header="sticky" data-header-top="200">
         <div id="wrapper">
             <div class="border-main">
                 <div class="container">
@@ -43,6 +46,11 @@
             </div>
         </div>
     </div>
+<div class="text-center">
+
+    <pager class="pager-container" list="@ViewBag.Products" options="@PagedListRenderOptions.ClassicPlusFirstAndLast" asp-action="Products" asp-controller="Home" />
+</div>
+
     <script src="assets/js/jquery-migrate-1.2.1.js"></script>
     <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/modernizr.custom.js"></script>

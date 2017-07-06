@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using TreeStore.Data;
+using TreeStore.Models.Entities;
 
 namespace TreeStore.Migrations
 {
@@ -283,6 +284,45 @@ namespace TreeStore.Migrations
                     b.ToTable("CategoryCampaigns");
                 });
 
+            modelBuilder.Entity("TreeStore.Models.Entities.Advertisement", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("AdvertisementDescription")
+                        .IsRequired();
+
+                    b.Property<string>("AdvertisementImage")
+                        .IsRequired();
+
+                    b.Property<int>("AdvertisementLocation");
+
+                    b.Property<int>("AdvertisementType");
+
+                    b.Property<string>("AdvertisementUrl")
+                        .IsRequired();
+
+                    b.Property<DateTime>("CreateDate");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime>("FinishDate");
+
+                    b.Property<bool>("IsActive");
+
+                    b.Property<string>("Name");
+
+                    b.Property<DateTime>("StartDate");
+
+                    b.Property<string>("UpdateBy");
+
+                    b.Property<DateTime>("UpdateDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Advertisements");
+                });
+
             modelBuilder.Entity("TreeStore.Models.Entities.Contact", b =>
                 {
                     b.Property<long>("Id")
@@ -450,6 +490,8 @@ namespace TreeStore.Migrations
                     b.Property<string>("UpdateBy");
 
                     b.Property<DateTime>("UpdateDate");
+
+                    b.Property<bool>("UseSSL");
 
                     b.Property<string>("YouTube");
 

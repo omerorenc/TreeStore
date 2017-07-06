@@ -11,6 +11,7 @@ using TreeStore.Services;
 using Microsoft.EntityFrameworkCore;
 using TreeStore.Models;
 using System.Collections.ObjectModel;
+using PagedList.Core;
 
 namespace TreeStore.Controllers
 {
@@ -35,9 +36,10 @@ namespace TreeStore.Controllers
             this.productService = productService;
             this.campaignService = campaignService;
             this.subscriptionService = _subscriptionService;
+           
         }
-
-        public IActionResult Index()
+      
+        public IActionResult Index(int page=1)
         {
             ViewBag.Facebook = settingService.GetSettings().FirstOrDefault().Facebook;
             ViewBag.Twitter = settingService.GetSettings().FirstOrDefault().Twitter;
@@ -47,12 +49,12 @@ namespace TreeStore.Controllers
             ViewBag.Google = settingService.GetSettings().FirstOrDefault().Google;
             ViewBag.Instagram = settingService.GetSettings().FirstOrDefault().Instagram;
            
-            var products = productService.GetProducts().Where(p => p.IsActive).OrderBy(p => p.CreateDate).Take(24);
-            var campaigns = campaignService.GetCampaigns().Where(c => c.IsActive);
+            var Products = productService.GetProducts().Where(p => p.IsActive).OrderBy(p => p.CreateDate).Take(9).ToPagedList<Product>(page, 10);
+            var Campaigns = campaignService.GetCampaigns().Where(c => c.IsActive).Take(9).ToPagedList<Campaign>(page, 10);
             var sliderProducts = productService.GetProducts().Where(p => p.SliderId != null);
             Collection<Campaign> viewCampaigns = new Collection<Campaign>();
             string[] names;
-            foreach(var campaign in campaigns)
+            foreach(var campaign in Campaigns)
             {
                 names = campaign.CreatedBy.Split('@');
                 campaign.CreatedBy = names[0];
@@ -60,7 +62,7 @@ namespace TreeStore.Controllers
                 viewCampaigns.Add(campaign);
             }
             CategoriesLayout();
-            ViewBag.Products = products;
+            ViewBag.Products = Products;
             ViewBag.Campaigns = viewCampaigns;
             ViewBag.SliderProducts = sliderProducts;
             return View();
@@ -188,10 +190,10 @@ namespace TreeStore.Controllers
         }
 
         [Route("Campaigns")]
-        public IActionResult Campaigns()
+        public IActionResult Campaigns(int page=1)
         {
-            List<Campaign> campaigns;
-            campaigns = campaignService.GetCampaigns().ToList();
+            IPagedList<Campaign> campaigns;
+            campaigns = campaignService.GetCampaigns().Take(9).ToPagedList<Campaign>(page, 10); ;
             CategoriesLayout();
             ViewBag.Campaigns = campaigns;
             return View();
@@ -214,17 +216,17 @@ namespace TreeStore.Controllers
         }
 
         [Route("Products")]
-        public IActionResult Products(long? id)
+        public IActionResult Products(long? id,int page=1)
         {
-            List<Product> products;
+            IPagedList<Product> products;
             if (id != null) {
-                products = productService.GetProducts().Where(p => p.IsActive && p.CategoryId == id).ToList();
+                products = productService.GetProducts().Where(p => p.IsActive && p.CategoryId == id).Take(9).ToPagedList<Product>(page, 10);
                 var category = categoryService.GetCategories().SingleOrDefault(c => c.Id == id);
                 ViewBag.Category = category.Name;
              }
             else
             {
-                products = productService.GetProducts().AsQueryable().Include(p => p.Category).Where(p => p.IsActive).ToList();
+                products = productService.GetProducts().AsQueryable().Include(p => p.Category).Where(p => p.IsActive).Take(9).ToPagedList<Product>(page, 10);
                 ViewBag.Category = "ÜRÜNLER";
             }
 

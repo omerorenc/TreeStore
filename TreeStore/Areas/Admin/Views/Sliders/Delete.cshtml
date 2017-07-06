@@ -10,8 +10,9 @@
 <div>
     <hr />
     <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
         <dl class="dl-horizontal">
-            <input type="hidden" asp-for="Id" />
+           
             <dt>
                 @Html.DisplayNameFor(model => model.Name)
             </dt>

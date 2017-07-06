@@ -20,8 +20,8 @@ namespace TreeStore.Data.Interface
         // Get an entity using delegate
         T Get(Expression<Func<T, bool>> where, params string[] navigations);
         // Gets all entities of type T
-        IEnumerable<T> GetAll(params string[] navigations);
+        IQueryable<T> GetAll(params string[] navigations);
         // Gets entities using delegate
-        IEnumerable<T> GetMany(Expression<Func<T, bool>> where, params string[] navigations);
+        IQueryable<T> GetMany(Expression<Func<T, bool>> where, params string[] navigations);
     }
 }

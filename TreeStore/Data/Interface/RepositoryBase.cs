@@ -71,7 +71,7 @@ namespace TreeStore.Data.Interface
             return set.FirstOrDefault(f => f.Id == id);
         }
 
-        public virtual IEnumerable<T> GetAll(params string[] navigations)
+        public virtual IQueryable<T> GetAll(params string[] navigations)
         {
             var set = dataBaseSet.AsQueryable();
             foreach (string nav in navigations)
@@ -79,10 +79,10 @@ namespace TreeStore.Data.Interface
                 set = set.Include(nav);
             }
 
-            return set.AsEnumerable();
+            return set.AsQueryable();
         }
 
-        public virtual IEnumerable<T> GetMany(Expression<Func<T, bool>> where, params string[] navigations)
+        public virtual IQueryable<T> GetMany(Expression<Func<T, bool>> where, params string[] navigations)
         {
             var set = dataBaseSet.AsQueryable();
             foreach (string nav in navigations)
@@ -90,7 +90,7 @@ namespace TreeStore.Data.Interface
                 set = set.Include(nav);
             }
 
-            return set.Where(where).AsEnumerable();
+            return set.Where(where).AsQueryable();
         }
 
         public T Get(Expression<Func<T, bool>> where, params string[] navigations)

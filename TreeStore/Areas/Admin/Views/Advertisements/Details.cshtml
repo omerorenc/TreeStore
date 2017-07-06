@@ -1,0 +1,72 @@
+﻿@model TreeStore.Models.Entities.Advertisement
+
+@{
+    ViewData["Title"] = "Reklam Detayları";
+}
+
+<h2>Reklam Detayları</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AdvertisementType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AdvertisementType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AdvertisementLocation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AdvertisementLocation)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AdvertisementUrl)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AdvertisementUrl)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AdvertisementImage)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AdvertisementImage)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AdvertisementDescription)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AdvertisementDescription)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FinishDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FinishDate)
+        </dd>
+      
+    </dl>
+</div>
+<div>
+    <a class="btn btn-success" asp-action="edit" asp-route-id="@Model.Id">Düzenle</a>
+    <a class="btn btn-default" asp-action="Index">Listeye Geri Dön</a>
+</div>
