@@ -1,17 +1,18 @@
-﻿@using PagedList.Core.Mvc
-<div class="row">
-    <div class="col-xs-12" >
-        <section  class="section-area section-about text-center">
-            <h2 class="ui-title-block ui-title-block_large ui-title-block_mod-a">KAMPANYALAR</h2>
-        </section>
+﻿<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <section class="section-area section-about text-center">
+                <h2 class="ui-title-block ui-title-block_large ui-title-block_mod-a">KAMPANYALAR</h2>
+            </section>
+        </div>
     </div>
 </div>
-<div class="layout-theme animated-css" data-header="sticky" data-header-top="200">
-    <div id="wrapper">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="section-area">
+    <div class="layout-theme animated-css" data-header="sticky" data-header-top="200">
+        <div id="wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-area">
                             @foreach (var campaign in ViewBag.Campaigns)
                             {
                                 <div class="col-md-3">
@@ -26,9 +27,9 @@
                                                         @{
                                                             var lastdays = campaign.EndDate - campaign.StartedDate;
 
-                                                    }
-                                                    <span class="list-posts__autor"><a class="color_primary">Son: @lastdays gün</a></span>
-                                                </li>
+                                                        }
+                                                        <span class="list-posts__autor"><a class="color_primary">Son: @lastdays gün</a></span>
+                                                    </li>
                                                 </ul>
                                             </div>
                                             <div class="products__description">

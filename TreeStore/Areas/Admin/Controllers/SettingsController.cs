@@ -37,6 +37,26 @@ namespace TreeStore.Areas.Admin.Controllers
                     settingService.UpdateSetting(setting);
                     settingService.SaveSetting();
                     ViewBag.Message = "Ayarlar baþarýyla güncellendi.";
+                    ViewBag.Title = setting.SeoTitle;
+                    ViewBag.MembershipAgreement = setting.MembershipAgreement;
+                    ViewBag.SeoDescription = setting.SeoDescription;
+                    ViewBag.SeoKeywords = setting.SeoKeywords;
+                    ViewBag.Address = setting.Address;
+                    ViewBag.Phone = setting.Phone;
+                    ViewBag.Fax = setting.Fax;
+                    ViewBag.Mail = setting.Mail;
+                    ViewBag.About = setting.About;
+                    ViewBag.PrivacyPolicy = setting.PrivacyPolicy;
+                    ViewBag.TermsOfUse = setting.TermsOfUse;
+                    ViewBag.Twitter = setting.Twitter;
+                    ViewBag.Facebook = setting.Facebook;
+                    ViewBag.Google = setting.Google;
+                    ViewBag.Instagram = setting.Instagram;
+                    ViewBag.Pinterest = setting.Pinterest;
+                    ViewBag.RSS = setting.RSS;
+                    ViewBag.YouTube = setting.YouTube;
+
+
                 }
                 else
                 {

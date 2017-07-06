@@ -1,14 +1,13 @@
-﻿
-@using PagedList.Core.Mvc
-
-<div class="row">
-    <div class="col-xs-12">
-        <section  class="section-area section-about text-center">
-            <h2 class="ui-title-block ui-title-block_large ui-title-block_mod-a">@ViewBag.Category</h2>
-        </section>
+﻿<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <section class="section-area section-about text-center">
+                <h2 class="ui-title-block ui-title-block_large ui-title-block_mod-a">@ViewBag.Category</h2>
+            </section>
+        </div>
     </div>
 </div>
-    <div  class="layout-theme animated-css" data-header="sticky" data-header-top="200">
+    <div class="layout-theme animated-css" data-header="sticky" data-header-top="200">
         <div id="wrapper">
             <div class="border-main">
                 <div class="container">
@@ -19,25 +18,25 @@
                                     @foreach (var product in ViewBag.Products)
                                     {
                                         <li class="isotope-item best products__item">
-                                            <a class="products__foto" href="/Urun?id=@product.Id" > <img src="~/uploads/@product.ImagePath" style="width:260px;height:260px" height="260" width="260" alt="Goods"> </a>
+                                            <a class="products__foto" href="/Urun?id=@product.Id"> <img src="~/uploads/@product.ImagePath" style="width:260px;height:260px" height="260" width="260" alt="Goods"> </a>
                                             <h4 class="products__name"><a href="/Urun?id=@product.Id">@product.Name</a></h4>
                                             <div class="products__inner clearfix">
                                                 <span class="products__price-new">@product.DiscountPrice</span> <span class="products__price-old">@product.Price</span>
                                                 <ul class="rating">
                                                     <li>
                                                         @{
-                                                        var Karınız = product.Price - product.DiscountPrice;
+                                                            var Karınız = product.Price - product.DiscountPrice;
 
-                                                    }
-                                                    <span class="list-posts__autor"><a class="color_primary">Kazancınız : @Karınız &#8378;</a></span>
-                                                </li>
+                                                        }
+                                                        <span class="list-posts__autor"><a class="color_primary">Kazancınız : @Karınız &#8378;</a></span>
+                                                    </li>
                                                 </ul>
                                             </div>
                                             <footer class="products-btns clearfix">
                                                 <p>@product.Description</p>
                                             </footer>
                                         </li>
-                                    }
+                                                            }
                                 </ul>
                             </div>
                         </div>

@@ -68,17 +68,17 @@
                         @foreach (var campaign in ViewBag.Campaigns)
                         {
                         <article class="list-posts__article clearfix">
-                            <div class="img-hover-effect"><img class="img-responsive" src="~/uploads/@campaign.ImagePath" style="height:250px;width:420px" height="250" width="420" alt="Foto"></div>
+                            <div class="img-hover-effect"><a asp-controller="Home" asp-action="Campaign" asp-route-id="@campaign.Id"> <img class="img-responsive" src="~/uploads/@campaign.ImagePath" style="height:250px;width:420px" height="250" width="420" alt="Foto"></a></div>
                             <div class="list-posts__info">
                                 <i class="icon icon-user"></i>
                                 <span class="list-posts__autor"><a class="color_primary" href="javascript:void(0);">@campaign.CreatedBy</a></span> 
                                 <i class="icon icon-calendar"></i><span class="list-posts__date">@campaign.StartedDate.ToString("dd:MM:yyyy")</span> 
                                 / <i class="icon icon-calendar"></i><span class="list-posts__date">@campaign.EndDate.ToString("dd:MM:yyyy")</span>
                             </div>
-                            <h2 class="list-posts__title">@campaign.Name</h2>
+                            <h2 class="list-posts__title"><a asp-controller="Home" asp-action="Campaign"  asp-route-id="@campaign.Id">@campaign.Name</a></h2>
                             <p>@campaign.Slogan</p>
                             <br />
-                            <a class="product ui-btn ui-btn_primary" asp-controller="Home" asp-action="Campaign"  asp-route-id="@campaign.Id">Kampanya Detayları</a>
+                          @*  <a class="product ui-btn ui-btn_primary" asp-controller="Home" asp-action="Campaign"  asp-route-id="@campaign.Id">Kampanya Detayları</a>*@
                         </article>
                         }
                     </div>
@@ -95,7 +95,7 @@
                         <div class="row">
                             <div class="col-md-12 col-xs-12">
                                 <section class="section-area section-default wow bounceInRight" data-wow-duration="2s">
-                                    <h3 class="ui-title-block"><i class="icon fa fa-bars"></i>Ürünler</h3>
+                                    <h3 class="ui-title-block"><i class="icon fa fa-bars"></i>FIRSAT ÜRÜNLERİ</h3>
                                     <div class="wrap-slider">
                                         <ul class="products clearfix owl-carousel owl-theme owl-theme_mod-b enable-owl-carousel"
                                             data-min480="2"
