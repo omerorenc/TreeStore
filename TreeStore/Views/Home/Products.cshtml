@@ -1,13 +1,35 @@
 ﻿@using PagedList.Core.Mvc
+@model TreeStore.Models.Entities.Advertisement
 <div class="container">
     <div class="row">
-        <div class="col-md-12 col-xs-12">
+        <div class="col-md-12 col-xs-12" style="margin-top:-80px;">
             <section class="section-area section-about text-center">
                 <h2 class="ui-title-block ui-title-block_large ui-title-block_mod-a">@ViewBag.Category</h2>
             </section>
         </div>
     </div>
 </div>
+@*@if (Model.IsActive==true && Model.AdvertisementLocation.Equals("Onproducts"))
+{
+    <div>
+        <div class="row" style="height:100px;width:800px;margin:0 auto;margin-top:-80px;">
+            <div class="col-md-12">
+               @Model.AdvertisementImage
+            </div>
+        </div>
+    </div>
+
+}
+else
+{
+    <div>
+        <div class="row" style="height:100px;width:800px;margin:0 auto;margin-top:-80px;">
+            <div class="col-md-12">
+
+            </div>
+        </div>
+    </div>
+}*@
     <div class="layout-theme animated-css" data-header="sticky" data-header-top="200">
         <div id="wrapper">
             <div class="border-main">

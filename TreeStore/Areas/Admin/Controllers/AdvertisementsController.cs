@@ -25,6 +25,7 @@ namespace TreeStore.Areas.Admin.Controllers
         public IActionResult Index()
         {
             var advertisements = advertisementservice.GetAdvertisements().ToList();
+            ViewBag.Advertisements = advertisements;
             return View(advertisements);
         }
 

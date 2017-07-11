@@ -87,12 +87,14 @@ namespace TreeStore.Controllers
                 }
                 else
                 {
-                     return await Task.FromResult(RedirectToAction("register"));
+                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    return Redirect(Request.Headers["Referer"].ToString() + "?message=Yanlis sifre veya e-posta girdiniz");
                 }
-            }
 
+            }
             // If we got this far, something failed, redisplay form
-            return View(model);
+
+            return Redirect(Request.Headers["Referer"].ToString());
         }
 
         //
