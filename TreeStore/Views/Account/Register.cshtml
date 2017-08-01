@@ -18,9 +18,10 @@
                     <section class="section-area">
                         <h2 class="ui-title-block ui-title-block_small"><i class="icon fa fa-bars"></i>Giriş Yap</h2>
                         <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+                          
                             <div class="form-group">
                                 <div class="form-title">
-                                    <span class="form-subtitle">Lütfen giriş yapın</span>
+                                    @ViewData["Message"]
                                 </div><br />
                                 <div asp-validation-summary="All" class="text-danger"></div>
                                

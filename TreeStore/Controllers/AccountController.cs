@@ -88,7 +88,7 @@ namespace TreeStore.Controllers
                 else
                 {
                     ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return Redirect(Request.Headers["Referer"].ToString() + "?message=Yanlis sifre veya e-posta girdiniz");
+                    return Redirect(Request.Headers["Referer"].ToString() + "?message=Yanlis sifre veya e-posta girdiniz!!!");
                 }
 
             }
@@ -101,11 +101,12 @@ namespace TreeStore.Controllers
         // GET: /Account/Register
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult Register(string returnUrl = null)
+        public IActionResult Register(string message="",string returnUrl = null)
         {
           
             ViewBag.Roles  = _roleManager.Roles.ToList<Role>();
             ViewData["ReturnUrl"] = returnUrl;
+            ViewData["Message"] = message;
             return View();
         }
 

@@ -26,7 +26,7 @@
                                                 <ul class="rating">
                                                     <li>
                                                         @{
-                                                            var lastdays = campaign.EndDate - campaign.StartedDate;
+                                                            var lastdays = campaign.EndDate - DateTime.Now;
 
                                                         }
                                                         <span class="list-posts__autor"><a class="color_primary">Son: @lastdays gün</a></span>
