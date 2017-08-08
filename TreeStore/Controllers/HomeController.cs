@@ -161,6 +161,10 @@ namespace TreeStore.Controllers
             return View();
         }
 
+        public IActionResult Successful(int id)
+        {
+            return View("Successful");
+        }
 
         [Route("TermsOfUse")]
         public IActionResult TermsOfUse()

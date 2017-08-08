@@ -16,7 +16,7 @@ namespace TreeStore.Models
         public string Description { get; set; }
        
         [Display(Name = "Fiyat")]
-        [DataType(DataType.Currency)]
+        [DataType(DataType.Currency),]
         public float? Price { get; set; }
 
         [Display(Name = "İndirimli Fiyat")]

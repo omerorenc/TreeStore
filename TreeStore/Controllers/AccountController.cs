@@ -279,24 +279,65 @@ namespace TreeStore.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel model)
         {
+          
+            var mailSetting = mailSettingService.GetMailSettings().FirstOrDefault();
             if (ModelState.IsValid)
             {
                 var user = await _userManager.FindByEmailAsync(model.Email);
-                if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
+                if (user == null)
                 {
-                    // Don't reveal that the user does not exist or is not confirmed
-                    return View("ForgotPasswordConfirmation");
+                    ViewBag.Message = "Error while  resetting your password!";
+                    return RedirectToAction("Page404", "Home");
+
+
+
                 }
+                     var code = await _userManager.GeneratePasswordResetTokenAsync(user);
+                     var callbackUrl = Url.Action(nameof(ResetPassword), "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
 
-                // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=532713
-                // Send an email with this link
-                //var code = await _userManager.GeneratePasswordResetTokenAsync(user);
-                //var callbackUrl = Url.Action(nameof(ResetPassword), "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
-                //await _emailSender.SendEmailAsync(model.Email, "Reset Password",
-                //   $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
-                //return View("ForgotPasswordConfirmation");
+                var mimeMessage = new MimeMessage();
+                string BodyContent;
+                string FromAddress = mailSetting.FromAddress;
+                string FromAddressTitle = mailSetting.FromAddressTitle;
+                string ToAddress = user.Email;
+                string ToAddressTitle = user.CompanyName;
+                string Subject = "Şifremi Unuttum";
+                string SmptServer = mailSetting.SmptServer;
+                int SmptPortNumber = mailSetting.SmptPortNumber;
+                if (user.EmailConfirmed == true)
+                {
+                    BodyContent = "Şifrenizi sıfırlamak için linke tıklayınız!!!" +" "+ $"{callbackUrl}"; 
+                }
+                else
+                {
+                    BodyContent = "Üyelik başvurunuz elimize ulaşmıştır. Firma üyeliğiniz onaylandığında size mail ile bildirilecektir.\n Tree Store \n İyi Çalışmalar Dileriz..";
+                }
+                mimeMessage.From.Add(new MailboxAddress(FromAddressTitle, FromAddress));
+                mimeMessage.To.Add(new MailboxAddress(ToAddressTitle, ToAddress));
+                mimeMessage.Subject = Subject;
+                mimeMessage.Body = new TextPart("plain")
+                {
+                    Text = BodyContent
+                };
+                using (var client = new SmtpClient())
+                {
+                    client.Connect(mailSetting.SmptServer, mailSetting.SmptPortNumber, false);
+                    client.Authenticate(mailSetting.FromAddress, mailSetting.FromAddressPassword);
+                    client.Send(mimeMessage);
+                    client.Disconnect(true);
+                }
+                ViewBag.ForgotPasswordMessage = "Şifre sıfırlama linki mailinize gönderilmiştir!!!";
+
+
+                return View("ForgotPassword");
+                //For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=532713
+                //Send an email with this link
+
+               //await _emailSender.SendEmailAsync(model.Email, "Reset Password",
+               //   $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
+               // return View("ForgotPasswordConfirmation");
             }
-
+        
             // If we got this far, something failed, redisplay form
             return View(model);
         }
@@ -314,9 +355,9 @@ namespace TreeStore.Controllers
         // GET: /Account/ResetPassword
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult ResetPassword(string code = null)
+        public IActionResult ResetPassword(string code)
         {
-            return code == null ? View("Error") : View();
+            return View();
         }
 
         //
@@ -330,19 +371,33 @@ namespace TreeStore.Controllers
             {
                 return View(model);
             }
-            var user = await _userManager.FindByEmailAsync(model.Email);
-            if (user == null)
-            {
-                // Don't reveal that the user does not exist
-                return RedirectToAction(nameof(AccountController.ResetPasswordConfirmation), "Account");
-            }
-            var result = await _userManager.ResetPasswordAsync(user, model.Code, model.Password);
+
+            var user = _userManager.
+               FindByNameAsync(model.Email).Result;
+
+            var result = await _userManager.ResetPasswordAsync
+                      (user, model.Code, model.Password);
             if (result.Succeeded)
             {
-                return RedirectToAction(nameof(AccountController.ResetPasswordConfirmation), "Account");
+                ViewBag.Message = "Password reset successful!";
+                return RedirectToAction("Successful", "Home");
             }
-            AddErrors(result);
-            return View();
+
+            ViewBag.Message = "Error while resetting the password!";
+            return View("Error");
+            //var user = await _userManager.FindByEmailAsync(model.Email);
+            //if (user == null)
+            //{
+            //    // Don't reveal that the user does not exist
+            //    return RedirectToAction(nameof(AccountController.ResetPasswordConfirmation), "Account");
+            //}
+            //var result = await _userManager.ResetPasswordAsync(user, model.Code, model.Password);
+            //if (result.Succeeded)
+            //{
+            //    return RedirectToAction(nameof(AccountController.ResetPasswordConfirmation), "Account");
+            //}
+            //AddErrors(result);
+            //return View();
         }
 
         //

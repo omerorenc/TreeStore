@@ -1,4 +1,5 @@
 ﻿using MailKit.Net.Smtp;
+using Microsoft.AspNetCore.Http;
 using MimeKit;
 using System;
 using System.Collections.Generic;
@@ -102,10 +103,11 @@ namespace TreeStore
                 client.Disconnect(true);
             }
         }
+       
 
 
- 
-            
+
+
     }
     
 }
