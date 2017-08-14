@@ -17,6 +17,7 @@ using TreeStore.Data.Interface;
 using TreeStore.Models.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using System.Globalization;
 
 namespace TreeStore
 {
@@ -100,8 +101,13 @@ namespace TreeStore
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+            var supportedCultures = new List<CultureInfo>
+                {
+                     new CultureInfo("en-US")
+                      { NumberFormat = { CurrencySymbol = CultureInfo.CurrentCulture.NumberFormat.CurrencySymbol + " " } }
+                    };
 
-            app.UseStaticFiles();
+        app.UseStaticFiles();
 
             app.UseIdentity();
             app.ApplicationServices.GetRequiredService<ApplicationDbContext>().Seed(app.ApplicationServices.GetRequiredService<UserManager<ApplicationUser>>(), app.ApplicationServices.GetRequiredService<RoleManager<Role>>());

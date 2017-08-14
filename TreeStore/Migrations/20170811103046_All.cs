@@ -85,7 +85,7 @@ namespace TreeStore.Migrations
                     CreatedBy = table.Column<string>(nullable: true),
                     FinishDate = table.Column<DateTime>(nullable: false),
                     IsActive = table.Column<bool>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(maxLength: 200, nullable: false),
                     StartDate = table.Column<DateTime>(nullable: false),
                     UpdateBy = table.Column<string>(nullable: true),
                     UpdateDate = table.Column<DateTime>(nullable: false)
@@ -441,11 +441,11 @@ namespace TreeStore.Migrations
                     CreateDate = table.Column<DateTime>(nullable: false),
                     CreatedBy = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
-                    DiscountPrice = table.Column<float>(nullable: true),
+                    DiscountPrice = table.Column<decimal>(type: "money", nullable: false),
                     ImagePath = table.Column<string>(nullable: true),
                     IsActive = table.Column<bool>(nullable: false),
                     Name = table.Column<string>(maxLength: 200, nullable: false),
-                    Price = table.Column<float>(nullable: false),
+                    Price = table.Column<decimal>(type: "money", nullable: false),
                     SliderId = table.Column<long>(nullable: true),
                     UpdateBy = table.Column<string>(nullable: true),
                     UpdateDate = table.Column<DateTime>(nullable: false)

@@ -50,6 +50,9 @@ namespace TreeStore.Data
             new MediaBuilder(builder.Entity<Media>());
             new SubscriptionBuilder(builder.Entity<Subscription>());
             new AdvertisementBuilder(builder.Entity<Advertisement>());
+            builder.Entity<Product>().Property(p => p.Price).HasColumnType<decimal>("money") ;
+            builder.Entity<Product>().Property(p => p.DiscountPrice).HasColumnType<decimal>("money");
+
         } 
         
        

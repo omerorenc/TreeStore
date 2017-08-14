@@ -310,7 +310,9 @@ namespace TreeStore.Migrations
 
                     b.Property<bool>("IsActive");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200);
 
                     b.Property<DateTime>("StartDate");
 
@@ -579,7 +581,8 @@ namespace TreeStore.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<float?>("DiscountPrice");
+                    b.Property<decimal>("DiscountPrice")
+                        .HasColumnType("money");
 
                     b.Property<string>("ImagePath");
 
@@ -589,8 +592,8 @@ namespace TreeStore.Migrations
                         .IsRequired()
                         .HasMaxLength(200);
 
-                    b.Property<float?>("Price")
-                        .IsRequired();
+                    b.Property<decimal>("Price")
+                        .HasColumnType("money");
 
                     b.Property<long?>("SliderId");
 
